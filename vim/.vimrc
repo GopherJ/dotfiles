@@ -1,6 +1,8 @@
 set nu
 set nocompatible
 
+set mouse=a
+
 set autochdir
 
 set number
@@ -73,16 +75,16 @@ nnoremap <C-Left>  :tabp<CR>
 nnoremap <C-Right> :tabn<CR>
 
 " tmux
-" let g:tmux_navigator_no_mappings = 1
+let g:tmux_navigator_no_mappings = 1
 
-" nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
-" nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
-" nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
-" nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 
 nnoremap <C-A>     ggVG$
 
-nnoremap <F6>      :tabnew .<CR>
+" nnoremap <F6>      :tabnew .<CR>
 
 nnoremap c         "_c
 
@@ -92,8 +94,8 @@ nnoremap p(        vi(p
 nnoremap p'        vi'p
 nnoremap p"        vi"p
 
-" nnoremap <left>    :bp<CR>
-" nnoremap <right>   :bn<CR>
+nnoremap <left>    :bp<CR>
+nnoremap <right>   :bn<CR>
 
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin()
@@ -109,7 +111,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'posva/vim-vue'
 Plug 'leafgarland/typescript-vim'
-"cd ~/.vim/plugged && python3 install.py --rust-completer --go-completer --ts-completer --clangd-completer
+" cd ~/.vim/plugged/YouCompleteMe && python3 install.py --rust-completer --ts-completer --clangd-completer
 Plug 'Valloric/YouCompleteMe'
 Plug 'racer-rust/vim-racer'
 Plug 'tpope/vim-fugitive'
@@ -127,10 +129,14 @@ Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'pseewald/vim-anyfold'
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install'  }
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'cespare/vim-toml' 
+Plug 'cespare/vim-toml'
+Plug 'janko/vim-test'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc'
+" Plug 'dense-analysis/ale'
 
 call plug#end()
 
@@ -144,6 +150,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 autocmd FileType vue syntax sync fromstart
 
 " rust-vim
+let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'xclip -selection clipboard'
 
 " vim-racer
@@ -162,15 +169,15 @@ let g:ycm_rust_src_path = '/home/cheng/.rustup/toolchains/nightly-x86_64-unknown
 " LSP
 " rustup update
 " rustup component add rls rust-analysis rust-src
-" sudo npm i -g javascript-typescript-langserver 
-let g:LanguageClient_serverCommands = { 
+" npm i -g javascript-typescript-langserver
+let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
-    \ 'typescript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript': ['/home/cheng/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
+    \ 'typescript': ['/home/cheng/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
     \ }
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-noremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 
 " Limelight
@@ -181,7 +188,7 @@ autocmd! User GoyoLeave Limelight!
 let g:fzf_layout    = { 'down': '~20%' }
 nnoremap <C-P>  : Files<CR>
 nnoremap <C-B>  : Buffers<CR>
-nnoremap <C-F>  : Rg 
+nnoremap <C-F>  : Rg
 command! -bang -nargs=* Rg
     \ call fzf#vim#grep(
     \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
@@ -196,16 +203,32 @@ let g:anyfold_fold_comments=1
 set foldlevel=0
 hi Folded term=NONE cterm=NONE
 
-" markdown-preview
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
-
 " airline tabline extension
 let g:airline#extensions#tabline#enabled = 1
+
+" vim-javascript
+let g:javascript_plugin_jsdoc = 1
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" vim-test
+nnoremap <silent> <F6> :TestFile<CR>
+
+" ale
+" let b:ale_linters = {'javascript': ['eslint'],'vue': ['eslint']}
+" let g:ale_sign_column_always = 1
+" let g:airline#extensions#ale#enabled = 1
+" let b:ale_warn_about_trailing_whitespace = 1
+" let g:ale_pattern_options = {
+"     \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
+"     \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
+"     \}
+" nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+" nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
