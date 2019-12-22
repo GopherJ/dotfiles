@@ -54,7 +54,7 @@ command -v rustup > /dev/null || {
 }
 
 echoc "=> Configuring rust..." \
-    && source $HOME/.cargo/env
+    && source $HOME/.cargo/env \
     && rustup default nightly \ 
     && rustup component add rls rust-analysis rust-src \
     && cargo +nightly install racer
