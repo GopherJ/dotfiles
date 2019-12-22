@@ -164,7 +164,7 @@ au FileType rust nmap gx <Plug>(rust-def-vertical)
 au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " YCompleteMe
-let g:ycm_rust_src_path = '/home/cheng/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
+let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 
 " LSP
 " rustup update
@@ -172,8 +172,8 @@ let g:ycm_rust_src_path = '/home/cheng/.rustup/toolchains/nightly-x86_64-unknown
 " npm i -g javascript-typescript-langserver
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
-    \ 'javascript': ['/home/cheng/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
-    \ 'typescript': ['/home/cheng/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
+    \ 'javascript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
+    \ 'typescript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
     \ }
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
