@@ -6,6 +6,10 @@ if [ $DISTRO != "Deepin" ]; then
     echo "Error: distribution is not one of (deepin)" && exit 1
 fi
 
+function echoc() {
+    echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
+}
+
 deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
@@ -51,13 +55,13 @@ echoc "=> Installing lts node..."
 nvm install --lts \
     && nvm install-latest-npm \
     && nvm use --lts \
-    && nvm alias default --lts
+    && nvm alias default $(node -v)
 
 echoc "=> Installing js language server, eslint, markdown render, beautify tools..." \
     && npm i -g javascript-typescript-langserver \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g instant-markdown-d@next \
-    && npm i -g js-beautify typescript-formatter remark-cli
+    && npm i -g js-beautify typescript-formatter remark-cli \
     && npm install -g git+https://github.com/ramitos/jsctags.git
 
 NODE_VERSION=$(node -v)
@@ -71,8 +75,8 @@ curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimr
     && npm install
 
 echoc "=> Configuring neovim..."
-ln -s ~/.vim .config/nvim \
-    && ln -s ~/.vimrc .config/nvim/init.vim \
+ln -s ~/.vim ~/.config/nvim \
+    && ln -s ~/.vimrc ~/.config/nvim/init.vim \
     && pip3 install --user --upgrade pynvim
 
 command -v rustup > /dev/null || {
@@ -117,7 +121,3 @@ echoc "=> Installing fzf..."
 sudo apt -y install fzf
 
 echoc "=> Done!"
-
-function echoc() {
-    echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
-}

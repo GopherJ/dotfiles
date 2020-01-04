@@ -303,8 +303,8 @@ let g:gist_open_browser_after_post = 1
 let g:github_enterprise_urls = []
 
 " fugitive-gitlab.vim
-let g:fugitive_gitlab_domains = ['https://GITLAB_DOMAIN']
-let g:gitlab_api_keys = {'GITLAB_DOMAIN': 'GITLAB_ACCESS_TOKEN'}
+let g:fugitive_gitlab_domains = [ 'https://GITLAB_DOMAIN' ]
+let g:gitlab_api_keys = { 'GITLAB_DOMAIN' : 'GITLAB_ACCESS_TOKEN' }
 
 " emmet
 imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
@@ -366,7 +366,7 @@ nmap <S-Tab><S-Tab> <Plug>(fold-cycle-close)
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " vim-github-dashboard
-let g:github_dashboard = { 'username': 'GITHUB_USERNAME, 'password': 'GITHUB_ACCESS_TOKEN' }
+let g:github_dashboard = { 'username': 'GITHUB_USERNAME', 'password': 'GITHUB_ACCESS_TOKEN' }
 
 " rainbow
 let g:rainbow_active = 1
