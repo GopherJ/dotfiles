@@ -1,4 +1,5 @@
-set encoding=UTF-8
+set encoding=utf8
+let mapleader = "\<Space>"
 
 set nu
 set nocompatible
@@ -6,6 +7,7 @@ set nocompatible
 set mouse=a
 
 set cursorline
+set cursorcolumn
 
 set autochdir
 
@@ -50,6 +52,7 @@ set confirm
 
 set ignorecase
 set incsearch
+set nohlsearch
 
 set backspace=indent,eol,start
 set formatoptions=tcqro
@@ -69,10 +72,9 @@ nnoremap vco       :vert term<CR>
 nnoremap hs        <C-W>v
 nnoremap vs        <C-W>s
 
-nnoremap <C-Q>     :qall!<CR>
+nnoremap <C-D>     :qall!<CR>
 
 nnoremap <C-]>     :vertical res +2<CR>
-nnoremap <C-[>     :vertical res -2<CR>
 
 nnoremap <C-L>     <C-W>l
 nnoremap <C-K>     <C-W>k
@@ -80,19 +82,19 @@ nnoremap <C-J>     <C-W>j
 nnoremap <C-H>     <C-W>h
 
 nnoremap <C-T>     :tabnew<CR>
-nnoremap <C-C>     :tabc<CR>
+nnoremap <C-C>     :bd!<CR>
 nnoremap <C-Left>  :tabp<CR>
 nnoremap <C-Right> :tabn<CR>
 
 " tmux
-let g:tmux_navigator_no_mappings = 1
+if (match($TMUX, "/tmp/tmux") != -1)
+    let g:tmux_navigator_no_mappings = 1
 
-nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
-nnoremap <silent> <C-L> :TmuxNavigateRight<CR>
-" Todo: fix navigation in normal vim
-" https://www.reddit.com/r/vim/comments/56a2dc/check_if_vim_is_running_inside_tmux_session/
-nnoremap <silent> <C-J> :TmuxNavigateDown<CR>
-nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
+    nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
+    nnoremap <silent> <C-L> :TmuxNavigateRight<CR>
+    nnoremap <silent> <C-J> :TmuxNavigateDown<CR>
+    nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
+endif
 
 nnoremap <C-A>     ggVG$
 
@@ -114,6 +116,8 @@ if has('nvim')
     tnoremap <C-L> <C-\><C-N><C-W>l
 
     tnoremap <Esc> <C-\><C-N>:bd!<CR>
+else
+    tnoremap <Esc> <C-W><C-C>:bd!<CR>
 endif
 
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
@@ -149,6 +153,8 @@ Plug 'arecarn/vim-fold-cycle'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'yggdroot/indentline'
 Plug 'FooSoft/vim-argwrap'
+Plug 'andymass/vim-matchup'
+Plug 'justinmk/vim-sneak'
 
 Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
@@ -163,8 +169,9 @@ Plug 'ervandew/supertab'
 " sudo apt install -y build-essential cmake python3-dev
 Plug 'Valloric/YouCompleteMe'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'honza/vim-snippets'
 Plug 'ternjs/tern_for_vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
@@ -180,9 +187,9 @@ Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'junegunn/vim-github-dashboard'
 
 Plug 'cespare/vim-toml'
+Plug 'stephpy/vim-yaml'
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
-Plug 'zlogin/vim-markdown-toc' 
 
 Plug 'janko/vim-test'
 
@@ -225,6 +232,8 @@ let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu
 let g:ycm_semantic_triggers =  {
             \ 'rust': ['.', ':', '{', ',', ' ', '['],
             \ }
+set cmdheight=2
+set updatetime=300
 
 " LSP
 " rustup update
@@ -370,6 +379,13 @@ let g:github_dashboard = { 'username': 'GITHUB_USERNAME', 'password': 'GITHUB_AC
 
 " rainbow
 let g:rainbow_active = 1
+
+" ultisnips
+let g:UltiSnipsExpandTrigger="<leader><leader>"
+let g:UltiSnipsJumpForwardTrigger="<C-B>"
+let g:UltiSnipsJumpBackwardTrigger="<C-Z>"
+let g:UltiSnipsSnippetsDir          = $HOME.'/.vim/UltiSnips/'
+let g:UltiSnipsSnippetDirectories   = [ "UltiSnips" ]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions

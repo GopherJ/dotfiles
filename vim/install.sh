@@ -99,7 +99,7 @@ if [ ! -z "$GITHUB_USERNAME" ] && [ ! -z "$GITHUB_ACCESS_TOKEN" ]; then
     git config --global github.user $GITHUB_USERNAME
     sed -i "s/GITHUB_USERNAME/$GITHUB_USERNAME/g"  ~/.vimrc
     sed -i "s/GITHUB_ACCESS_TOKEN/$GITHUB_ACCESS_TOKEN/g" ~/.vimrc
-    echo "machine api.github.com login $GITHUB_USERNAME password $GITHUB_ACCESS_TOKEN"
+    echo "machine api.github.com login $GITHUB_USERNAME password $GITHUB_ACCESS_TOKEN" > ~/.netrc
 fi
 
 echoc "=> Configuring figutive-gitlab..."
