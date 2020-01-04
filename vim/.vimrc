@@ -1,5 +1,5 @@
 set encoding=utf8
-let mapleader = "\<Space>"
+" let mapleader = "\<Space>"
 
 set nu
 set nocompatible
@@ -386,6 +386,10 @@ let g:UltiSnipsJumpForwardTrigger="<C-B>"
 let g:UltiSnipsJumpBackwardTrigger="<C-Z>"
 let g:UltiSnipsSnippetsDir          = $HOME.'/.vim/UltiSnips/'
 let g:UltiSnipsSnippetDirectories   = [ "UltiSnips" ]
+
+" argwrap
+let g:argwrap_tail_comma = 1
+au filetype vim let g:argwrap_line_prefix = '\'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions
