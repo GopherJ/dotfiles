@@ -182,6 +182,7 @@ Plug 'junegunn/vim-github-dashboard'
 Plug 'cespare/vim-toml'
 Plug 'plasticboy/vim-markdown'
 Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'zlogin/vim-markdown-toc' 
 
 Plug 'janko/vim-test'
 
@@ -192,7 +193,7 @@ call plug#end()
 
 " NERDTree
 nnoremap <C-N> :NERDTreeToggle<CR>
-let NERDTreeWinSize=20
+let NERDTreeWinSize=25
 let NERDTreeChDirMode=1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
@@ -231,8 +232,8 @@ let g:ycm_semantic_triggers =  {
 " npm i -g javascript-typescript-langserver
 let g:LanguageClient_serverCommands = {
             \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
-            \ 'javascript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
-            \ 'typescript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
+            \ 'javascript': ['~/.nvm/versions/node/v10.25.3/bin/javascript-typescript-stdio'],
+            \ 'typescript': ['~/.nvm/versions/node/v10.25.3/bin/javascript-typescript-stdio'],
             \ }
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -279,7 +280,7 @@ let g:jsdoc_input_description = 1
 " Todo: switch to universal-ctags which has native support for rust: https://github.com/universal-ctags/ctags
 nnoremap <F8> :TagbarToggle<CR>
 autocmd FileType * call tagbar#autoopen(0)
-let g:tagbar_width=15
+let g:tagbar_width=25
 let g:tagbar_type_rust = {
             \ 'ctagstype' : 'rust',
             \ 'kinds' : [
@@ -310,6 +311,7 @@ imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 
 " vim-autofmt
 " npm i -g js-beautify typescript-formatter remark-cli
+" npm install -g git+https://github.com/ramitos/jsctags.git
 " sudo apt install clang-format
 nnoremap <F3> :Autoformat<CR>
 au BufWrite * :Autoformat<CR>

@@ -58,6 +58,7 @@ echoc "=> Installing js language server, eslint, markdown render, beautify tools
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g instant-markdown-d@next \
     && npm i -g js-beautify typescript-formatter remark-cli
+    && npm install -g git+https://github.com/ramitos/jsctags.git
 
 NODE_VERSION=$(node -v)
 echoc "=> Configuring vim and building YCM..."
