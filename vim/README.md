@@ -11,12 +11,12 @@ cd ~ & curl -O https://raw.githubusercontent.com/GopherJ/vimrc/master/_vimrc
 /**
  * if you don't have curl in windows, please go to the url and copy it to ~/_vimrc
  */
-```
+ ```
 
-linux
-```
-cd ~ & curl -O https://raw.githubusercontent.com/GopherJ/vimrc/master/.vimrc
-```
+ linux
+ ```
+ cd ~ & curl -O https://raw.githubusercontent.com/GopherJ/vimrc/master/.vimrc
+ ```
 
 # tutorial
 

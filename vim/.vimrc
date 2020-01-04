@@ -154,8 +154,9 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'tomtom/tcomment_vim'
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
-Plug 'christoomey/vim-tmux-navigator'
 Plug 'yggdroot/indentline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'Valloric/ListToggle'
 
 Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
@@ -190,7 +191,7 @@ Plug 'junegunn/vim-github-dashboard'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'plasticboy/vim-markdown'
-Plug 'suan/vim-instant-markdown', {'for': 'markdown'}
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 Plug 'janko/vim-test'
 
@@ -231,7 +232,9 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " YCompleteMe
 let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:ycm_semantic_triggers =  {
-            \ 'rust': ['.', ':', '{', ',', ' ', '['],
+            \ 'rust': ['.', ':', '{', ',', '['],
+            \ 'javascript': ['.', '{', ',', '['],
+            \ 'typescript': ['.', ':', '{', ',', '['],
             \ }
 set cmdheight=2
 set updatetime=300
@@ -286,24 +289,97 @@ let g:jsdoc_enable_es6 = 1
 let g:jsdoc_input_description = 1
 
 " tagbar
-" sudo apt install exuberant-ctags
-" Todo: switch to universal-ctags which has native support for rust: https://github.com/universal-ctags/ctags
+
+" git clone https://github.com/jszakmeister/markdown2ctags
+" ~/.vim/markdown2ctags
+" sudo apt install autoconf
+" git clone https://github.com/universal-ctags/ctags ~/.vim/ctags \
+"   && cd ~/.vim/ctags \
+"   && ./autogen.sh \
+"   && ./configure \
+"   && make \
+"   && sudo make install
+"
+" npm install -g git+https://github.com/ramitos/jsctags.git
+" npm install -g git+https://github.com/Perlence/tstags.git
 nnoremap <F8> :TagbarToggle<CR>
 autocmd FileType * call tagbar#autoopen(0)
 let g:tagbar_width=25
+let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+let g:rust_use_custom_ctags_defs = 1
 let g:tagbar_type_rust = {
+            \ 'ctagsbin' : '/usr/local/bin/ctags',
             \ 'ctagstype' : 'rust',
             \ 'kinds' : [
-            \'T:types,type definitions',
-            \'f:functions,function definitions',
-            \'g:enum,enumeration names',
-            \'s:structure names',
-            \'m:modules,module names',
-            \'c:consts,static constants',
-            \'t:traits',
-            \'i:impls,trait implementations',
-            \]
-            \}
+            \ 'n:modules',
+            \ 's:structures:1',
+            \ 'i:interfaces',
+            \ 'c:implementations',
+            \ 'f:functions:1',
+            \ 'g:enumerations:1',
+            \ 't:type aliases:1:0',
+            \ 'v:constants:1:0',
+            \ 'M:macros:1',
+            \ 'm:fields:1:0',
+            \ 'e:enum variants:1:0',
+            \ 'P:methods:1',
+            \ ],
+            \ 'sro': '::',
+            \ 'kind2scope' : {
+            \ 'n': 'module',
+            \ 's': 'struct',
+            \ 'i': 'interface',
+            \ 'c': 'implementation',
+            \ 'f': 'function',
+            \ 'g': 'enum',
+            \ 't': 'typedef',
+            \ 'v': 'variable',
+            \ 'M': 'macro',
+            \ 'm': 'field',
+            \ 'e': 'enumerator',
+            \ 'P': 'method',
+            \ }
+            \ }
+let g:tagbar_type_css = {
+            \ 'ctagstype' : 'Css',
+            \ 'kinds'     : [
+            \ 'c:classes',
+            \ 's:selectors',
+            \ 'i:identities'
+            \ ]
+            \ }
+let g:tagbar_type_typescript = {
+            \ 'ctagsbin' : 'tstags',
+            \ 'ctagsargs' : '-f-',
+            \ 'kinds': [
+            \ 'e:enums:0:1',
+            \ 'f:function:0:1',
+            \ 't:typealias:0:1',
+            \ 'M:Module:0:1',
+            \ 'I:import:0:1',
+            \ 'i:interface:0:1',
+            \ 'C:class:0:1',
+            \ 'm:method:0:1',
+            \ 'p:property:0:1',
+            \ 'v:variable:0:1',
+            \ 'c:const:0:1',
+            \ ],
+            \ 'sort' : 0
+            \ }
+let g:tagbar_type_markdown = {
+            \ 'ctagstype': 'markdown',
+            \ 'ctagsbin' : '~/.vim/markdown2ctags/markdown2ctags.py',
+            \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+            \ 'kinds' : [
+            \ 's:sections',
+            \ 'i:images'
+            \ ],
+            \ 'sro' : '»',
+            \ 'kind2scope' : {
+            \ 's' : 'section',
+            \ },
+            \ 'sort': 0,
+            \ }
 
 " gist-vim
 let g:gist_clip_command = 'xclip -selection clipboard'
@@ -321,17 +397,24 @@ imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 
 " vim-autofmt
 " npm i -g js-beautify typescript-formatter remark-cli
-" npm install -g git+https://github.com/ramitos/jsctags.git
 " sudo apt install clang-format
 nnoremap <F3> :Autoformat<CR>
 au BufWrite * :Autoformat<CR>
 
-" vim-instant-markdown
-" npm i -g instant-markdown-d@next
-let g:instant_markdown_autostart = 1
-let g:instant_markdown_autoscroll = 1
-let g:instant_markdown_allow_external_content = 1
-let g:instant_markdown_allow_unsafe_content = 1
+" markdown-preview.nvim
+let g:mkdp_auto_start = 1
+let g:mkdp_auto_close = 1
+let g:mkdp_open_to_the_world = 1
+let g:mkdp_preview_options = {
+            \ 'mkit': {},
+            \ 'katex': {},
+            \ 'uml': {},
+            \ 'maid': {},
+            \ 'disable_sync_scroll': 0,
+            \ 'sync_scroll_type': 'middle',
+            \ 'hide_yaml_meta': 1,
+            \ 'sequence_diagrams': {}
+            \ }
 
 " vim-test
 nnoremap <silent> t<C-n> :TestNearest<CR>
@@ -347,19 +430,19 @@ let b:ale_warn_about_trailing_whitespace = 1
 let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
             \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-            \}
+            \ }
 let g:ale_fixers = {
-            \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \   'javascript': ['prettier', 'eslint'],
-            \   'vue': ['vue'],
-            \}
+            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+            \ 'javascript': ['eslint'],
+            \ 'vue': ['vue'],
+            \ }
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_insert_leave = 0
 nnoremap <F4> :ALEDisable<CR>
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
 " tern_for_vim
 " cd ~/.vim/plugged/tern_for_vim && npm install
@@ -392,6 +475,10 @@ let g:UltiSnipsSnippetDirectories   = [ "UltiSnips" ]
 let g:argwrap_tail_comma = 1
 au filetype vim let g:argwrap_line_prefix = '\'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" listToggle
+let g:lt_location_list_toggle_map = '<leader>l'
+let g:lt_quickfix_list_toggle_map = '<leader>q'
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

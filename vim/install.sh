@@ -10,7 +10,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format")
+deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -27,10 +27,6 @@ curl -fLo ~/.vim/autoload/onedark.vim --create-dirs \
 curl -fLo ~/.vim/colors/onedark.vim --create-dirs \
     https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim -m 15 --retry-delay 2 --retry 3
 
-echoc "=> Configuring ctags..."
-curl -fLo ~/.ctags --create-dirs \
-    https://raw.githubusercontent.com/GopherJ/cfg/master/ctags/.ctags -m 15 --retry-delay 2 --retry 3
-
 echoc "=> Configuring tern..."
 curl -fLo ~/.tern-config --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tern/.tern-config -m 15 --retry-delay 2 --retry 3
@@ -42,6 +38,17 @@ curl -fLo ~/.tmux.conf --create-dirs \
 echoc "=> Configuring eslint..."
 curl -fLo ~/.eslintrc.js --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/eslint/.eslintrc.js -m 15 --retry-delay 2 --retry 3
+
+echoc "=> Install markdown2ctags..."
+git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
+
+echoc "=> Configuring universal ctags..."
+git clone https://github.com/universal-ctags/ctags ~/.vim/ctags \
+    && cd ~/.vim/ctags \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && sudo make install
 
 command -v nvm > /dev/null || {
 echoc "=> Installing nvm..." \
@@ -57,12 +64,15 @@ nvm install --lts \
     && nvm use --lts \
     && nvm alias default $(node -v)
 
-echoc "=> Installing js language server, eslint, markdown render, beautify tools..." \
+echoc "=> Installing yarn, js language server, eslint, markdown render, beautify tools..." \
+    && npm i -g yarn \
     && npm i -g javascript-typescript-langserver \
     && npm i -g eslint eslint-plugin-vue \
-    && npm i -g instant-markdown-d@next \
-    && npm i -g js-beautify typescript-formatter remark-cli \
-    && npm install -g git+https://github.com/ramitos/jsctags.git
+    && npm i -g js-beautify typescript-formatter remark-cli prettier \
+    && npm i -g git+https://github.com/ramitos/jsctags.git \
+    && npm i -g git+https://github.com/Perlence/tstags.git \
+    && npm i -g @typescript-eslint/parser \
+    && npm i -g @typescript-eslint/eslint-plugin
 
 NODE_VERSION=$(node -v)
 echoc "=> Configuring vim and building YCM..."
