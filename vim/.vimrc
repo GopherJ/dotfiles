@@ -1,7 +1,8 @@
+"let mapleader = "\<Space>"
 set encoding=utf8
-" let mapleader = "\<Space>"
 
 set nu
+set relativenumber
 set nocompatible
 
 set mouse=a
@@ -11,10 +12,8 @@ set cursorcolumn
 
 set autochdir
 
-set number
-set relativenumber
-
 set ruler
+
 set showcmd
 set showmode
 
@@ -62,10 +61,26 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
-let g:solarized_termcolors=256
 
 syntax enable
-colorscheme onedark
+
+" colorscheme monokai
+
+" colorscheme onedark
+
+" let g:solarized_termcolors=256
+" set background=light
+" colorscheme solarized
+
+let g:airline_theme='one'
+set background=dark
+colorscheme one
+
+nnoremap <silent>  n nzz
+nnoremap <silent>  N Nzz
+nnoremap <silent>  * *zz
+nnoremap <silent>  # #zz
+nnoremap <silent>  g* g*zz
 
 nnoremap hco       :term<CR>
 nnoremap vco       :vert term<CR>
@@ -87,7 +102,7 @@ nnoremap <C-Left>  :tabp<CR>
 nnoremap <C-Right> :tabn<CR>
 
 " tmux
-if (match($TMUX, "/tmp/tmux") != -1)
+if !empty($TMUX)
     let g:tmux_navigator_no_mappings = 1
 
     nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
@@ -139,6 +154,7 @@ Plug 'justinmk/vim-sneak'
 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+Plug 'vhdirk/vim-cmake'
 
 Plug 'sheerun/vim-polyglot'
 
@@ -157,6 +173,11 @@ Plug 'junegunn/limelight.vim'
 Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Valloric/ListToggle'
+Plug 'edkolev/tmuxline.vim'
+Plug 'joshdick/onedark.vim'
+Plug 'sickill/vim-monokai'
+Plug 'rakr/vim-one'
+Plug 'altercation/vim-colors-solarized'
 
 Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
@@ -197,6 +218,8 @@ Plug 'janko/vim-test'
 
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-rooter'
+
+Plug 'skywind3000/asyncrun.vim'
 
 call plug#end()
 
@@ -245,8 +268,8 @@ set updatetime=300
 " npm i -g javascript-typescript-langserver
 let g:LanguageClient_serverCommands = {
             \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
-            \ 'javascript': ['~/.nvm/versions/node/v10.25.3/bin/javascript-typescript-stdio'],
-            \ 'typescript': ['~/.nvm/versions/node/v10.25.3/bin/javascript-typescript-stdio'],
+            \ 'javascript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
+            \ 'typescript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
             \ }
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -277,8 +300,22 @@ let g:anyfold_fold_toplevel=1
 set foldlevel=0
 hi Folded term=NONE cterm=NONE
 
-" airline tabline extension
+" airline
+let g:airline#extensions#ale#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tmuxline#enabled = 1
+
+" tmuxline
+let g:tmuxline_preset = 'tmux'
+let g:tmuxline_theme = 'airline'
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_separators = {
+            \ 'left' : '',
+            \ 'left_alt': '>',
+            \ 'right' : '',
+            \ 'right_alt' : '<',
+            \ 'space' : ' '}
+
 
 " vim-javascript
 let g:javascript_plugin_jsdoc = 1
@@ -298,7 +335,7 @@ let g:jsdoc_input_description = 1
 "   && ./autogen.sh \
 "   && ./configure \
 "   && make \
-"   && sudo make install
+"   && make install
 "
 " npm install -g git+https://github.com/ramitos/jsctags.git
 " npm install -g git+https://github.com/Perlence/tstags.git
@@ -380,6 +417,19 @@ let g:tagbar_type_markdown = {
             \ },
             \ 'sort': 0,
             \ }
+let g:tagbar_type_make = {
+            \ 'kinds':[
+            \ 'm:macros',
+            \ 't:targets'
+            \ ]
+            \ }
+let g:tagbar_type_ansible = {
+            \ 'ctagstype' : 'ansible',
+            \ 'kinds' : [
+            \ 't:tasks'
+            \ ],
+            \ 'sort' : 0
+            \ }
 
 " gist-vim
 let g:gist_clip_command = 'xclip -selection clipboard'
@@ -424,22 +474,47 @@ nnoremap <silent> t<C-l> :TestLast<CR>
 nnoremap <silent> t<C-g> :TestVisit<CR>
 
 " ale
+augroup FiletypeGroup
+    autocmd!
+    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+augroup END
+
+let g:ale_lint_delay=200
+
+let g:ale_completion_enabled = 1
+set omnifunc=ale#completion#OmniFunc
+let g:ale_completion_tsserver_autoimport = 1
+
 let g:ale_sign_column_always = 1
-let g:airline#extensions#ale#enabled = 1
-let b:ale_warn_about_trailing_whitespace = 1
+let g:ale_warn_about_trailing_whitespace = 1
+let g:ale_open_list = 1
+
 let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
             \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
             \ }
+let g:ale_linter_aliases = {
+            \ 'jsx': ['css', 'javascript'],
+            \ 'vue': ['vue', 'javascript'],
+            \ }
+let g:ale_linters = {
+            \ 'jsx': ['stylelint', 'eslint'],
+            \ 'javascript': ['eslint'],
+            \ 'vue': ['eslint', 'vls'],
+            \ 'cpp': ['cppcheck'],
+            \ 'python': ['flake8', 'pylint'],
+            \ }
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'javascript': ['eslint'],
-            \ 'vue': ['vue'],
+            \ 'python': ['yapf'],
+            \ 'javascript': ['js-beautify', 'eslint'],
+            \ 'typescript': ['typescript-formatter'],
+            \ 'markdown': ['remark-cli'],
             \ }
+
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 1
 nnoremap <F4> :ALEDisable<CR>
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
@@ -478,6 +553,24 @@ au filetype vim let g:argwrap_line_prefix = '\'
 " listToggle
 let g:lt_location_list_toggle_map = '<leader>l'
 let g:lt_quickfix_list_toggle_map = '<leader>q'
+
+" vim-one
+if empty($TMUX)
+    if (has("nvim"))
+        let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    endif
+    if (has("termguicolors"))
+        set termguicolors
+    endif
+else
+    if (!has("nvim"))
+        set t_8b=^[[48;2;%lu;%lu;%lum
+        set t_8f=^[[38;2;%lu;%lu;%lum
+    endif
+endif
+
+" gitgutter
+let g:gitgutter_max_signs = 1000
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions

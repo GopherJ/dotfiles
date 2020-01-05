@@ -3,11 +3,12 @@ module.exports = {
     // parser: '@typescript-eslint/parser',
     // plugins: ['@typescript-eslint'],
     parserOptions: {
-        ecmaVersion: 2015,
+        ecmaVersion: 2018,
         sourceType: 'module'
     },
     extends: [
         // "plugin:vue/essential",
+        // "plugin:prettier/recommended"
         // "@vue/airbnb",
         "eslint:recommended",
     ],

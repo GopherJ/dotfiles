@@ -10,7 +10,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf")
+deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf" "cppcheck" "flake8" "pylint" "yapf")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -27,6 +27,16 @@ curl -fLo ~/.vim/autoload/onedark.vim --create-dirs \
 curl -fLo ~/.vim/colors/onedark.vim --create-dirs \
     https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim -m 15 --retry-delay 2 --retry 3
 
+echoc "=> Installing monokai.vim..."
+curl -fLo ~/.vim/colors/monokai.vim --create-dirs \
+    https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim -m 15 --retry-delay 2 --retry 3
+
+echoc "=> Installing one.vim..."
+curl -fLo ~/.vim/colors/one.vim --create-dirs \
+    https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim -m 15 --retry-delay 2 --retry 3
+curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs \
+    https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim -m 15 --retry-delay 2 --retry 3
+
 echoc "=> Configuring tern..."
 curl -fLo ~/.tern-config --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tern/.tern-config -m 15 --retry-delay 2 --retry 3
@@ -38,6 +48,16 @@ curl -fLo ~/.tmux.conf --create-dirs \
 echoc "=> Configuring eslint..."
 curl -fLo ~/.eslintrc.js --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/eslint/.eslintrc.js -m 15 --retry-delay 2 --retry 3
+
+echoc "=> Configuring stylint..."
+curl -fLo ~/.stylelintrc --create-dirs \
+    https://raw.githubusercontent.com/GopherJ/cfg/master/stylelint/.stylelintrc -m 15 --retry-delay 2 --retry 3
+
+echoc "=> Configuring ctags..."
+curl -fLo ~/.ctags.d/makefile.ctags --create-dirs \
+    https://raw.githubusercontent.com/GopherJ/cfg/master/ctags/.ctags.d/makefile.ctags -m 15 --retry-delay 2 --retry 3
+curl -fLo ~/.ctags.d/ansible.ctags --create-dirs \
+    https://raw.githubusercontent.com/GopherJ/cfg/master/ctags/.ctags.d/ansible.ctags -m 15 --retry-delay 2 --retry 3
 
 echoc "=> Install markdown2ctags..."
 git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
@@ -72,7 +92,9 @@ echoc "=> Installing yarn, js language server, eslint, markdown render, beautify
     && npm i -g git+https://github.com/ramitos/jsctags.git \
     && npm i -g git+https://github.com/Perlence/tstags.git \
     && npm i -g @typescript-eslint/parser \
-    && npm i -g @typescript-eslint/eslint-plugin
+    && npm i -g @typescript-eslint/eslint-plugin \
+    && npm i -g eslint-plugin-prettier eslint-config-prettier \
+    && npm i -g stylelint stylelint-processor-styled-components stylelint-config-styled-components stylelint-config-recommended
 
 NODE_VERSION=$(node -v)
 echoc "=> Configuring vim and building YCM..."
