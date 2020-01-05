@@ -1,7 +1,4 @@
-"let mapleader = "\<Space>"
-set encoding=utf8
-
-set nu
+"let mapleader = "\<Space>" set encoding=utf8 set nu
 set relativenumber
 set nocompatible
 
@@ -177,7 +174,6 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'sickill/vim-monokai'
 Plug 'rakr/vim-one'
-Plug 'altercation/vim-colors-solarized'
 
 Plug 'posva/vim-vue'
 Plug 'ap/vim-css-color'
