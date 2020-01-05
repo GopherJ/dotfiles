@@ -1,16 +1,18 @@
 #!/bin/bash
 
+set -e
+
 DISTRO="$(lsb_release -is)"
 
-if [ $DISTRO != "Deepin" ]; then
-    echo "Error: distribution is not one of (deepin)" && exit 1
+if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ]; then
+    echo "Error: distribution is not one of (deepin, ubuntu)" && exit 1
 fi
 
 function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf" "cppcheck" "flake8" "pylint" "yapf")
+deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf" "cppcheck" "flake8" "pylint" "yapf" "gem")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -37,6 +39,24 @@ curl -fLo ~/.vim/colors/one.vim --create-dirs \
 curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs \
     https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim -m 15 --retry-delay 2 --retry 3
 
+echoc "=> Installing sass-convert (scss formatter)..."
+sudo gem install sass
+
+echoc "=> Installing shfmt..."
+curl -LO https://github.com/mvdan/sh/releases/download/v3.0.0/shfmt_v3.0.0_linux_amd64 -m 15 --retry-delay 2 --retry 3 \
+    && mv ./shfmt_v3.0.0_linux_amd64 shfmt \
+    && chmod u+x ./shfmt \
+    && sudo mv ./shfmt /usr/local/bin/
+
+echoc "=> Installing sass-convert (scss formatter)..."
+sudo gem install sass
+
+echoc "=> Installing shfmt..."
+curl -LO https://github.com/mvdan/sh/releases/download/v3.0.0/shfmt_v3.0.0_linux_amd64
+
+
+
+
 echoc "=> Configuring tern..."
 curl -fLo ~/.tern-config --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tern/.tern-config -m 15 --retry-delay 2 --retry 3
@@ -44,6 +64,8 @@ curl -fLo ~/.tern-config --create-dirs \
 echoc "=> Configuring tmux..."
 curl -fLo ~/.tmux.conf --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf -m 15 --retry-delay 2 --retry 3
+curl -fLo ~/.tmuxline_snapshot --create-dirs \
+    https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot -m 15 --retry-delay 2 --retry 3
 
 echoc "=> Configuring eslint..."
 curl -fLo ~/.eslintrc.js --create-dirs \
@@ -148,8 +170,5 @@ echoc "=> Installing ripgrep..."
 curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb -m 15 --retry-delay 2 --retry 3 \
     && sudo dpkg -i ripgrep_11.0.2_amd64.deb \
     && rm ripgrep_11.0.2_amd64.deb
-
-echoc "=> Installing fzf..."
-sudo apt -y install fzf
 
 echoc "=> Done!"

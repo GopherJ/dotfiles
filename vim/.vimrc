@@ -1,5 +1,10 @@
-"let mapleader = "\<Space>" set encoding=utf8 set nu
+"let mapleader = "\<Space>"
+"
+set encoding=utf8
+
+set nu
 set relativenumber
+
 set nocompatible
 
 set mouse=a
@@ -302,7 +307,15 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tmuxline#enabled = 1
 
 " tmuxline
-let g:tmuxline_preset = 'tmux'
+let g:tmuxline_preset = {
+            \'a'    : '#S',
+            \'b'    : '#W',
+            \'c'    : '#H',
+            \'win'  : '#I #W',
+            \'cwin' : '#I #W',
+            \'x'    : '%a',
+            \'y'    : '#W %R',
+            \'z'    : '#H'}
 let g:tmuxline_theme = 'airline'
 let g:tmuxline_powerline_separators = 0
 let g:tmuxline_separators = {
@@ -446,6 +459,8 @@ imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 " sudo apt install clang-format
 nnoremap <F3> :Autoformat<CR>
 au BufWrite * :Autoformat<CR>
+autocmd FileType make let b:autoformat_autoindent=0
+autocmd FileType make let b:autoformat_retab=0
 
 " markdown-preview.nvim
 let g:mkdp_auto_start = 1
