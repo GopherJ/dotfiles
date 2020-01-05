@@ -459,8 +459,8 @@ imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 " sudo apt install clang-format
 nnoremap <F3> :Autoformat<CR>
 au BufWrite * :Autoformat<CR>
-autocmd FileType make let b:autoformat_autoindent=0
-autocmd FileType make let b:autoformat_retab=0
+autocmd FileType make,sh let b:autoformat_autoindent=0
+autocmd FileType make,sh let b:autoformat_retab=0
 
 " markdown-preview.nvim
 let g:mkdp_auto_start = 1
@@ -498,7 +498,9 @@ let g:ale_completion_tsserver_autoimport = 1
 
 let g:ale_sign_column_always = 1
 let g:ale_warn_about_trailing_whitespace = 1
-let g:ale_open_list = 1
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+let g:ale_list_window_size = 5
 
 let g:ale_pattern_options = {
             \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
@@ -509,18 +511,20 @@ let g:ale_linter_aliases = {
             \ 'vue': ['vue', 'javascript'],
             \ }
 let g:ale_linters = {
-            \ 'jsx': ['stylelint', 'eslint'],
+            \ 'jsx': ['eslint', 'stylelint'],
             \ 'javascript': ['eslint'],
-            \ 'vue': ['eslint', 'vls'],
+            \ 'typescript': ['tsserver'],
+            \ 'vue': ['vls', 'eslint'],
             \ 'cpp': ['cppcheck'],
             \ 'python': ['flake8', 'pylint'],
             \ }
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
             \ 'python': ['yapf'],
-            \ 'javascript': ['js-beautify', 'eslint'],
-            \ 'typescript': ['typescript-formatter'],
+            \ 'javascript': ['eslint', 'prettier'],
+            \ 'typescript': ['eslint', 'prettier'],
             \ 'markdown': ['remark-cli'],
+            \ 'vue': ['prettier'],
             \ }
 
 let g:ale_fix_on_save = 1

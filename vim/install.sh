@@ -108,7 +108,7 @@ nvm install --lts \
 
 echoc "=> Installing yarn, js language server, eslint, markdown render, beautify tools..." \
     && npm i -g yarn \
-    && npm i -g javascript-typescript-langserver \
+    && npm i -g javascript-typescript-langserver vue-language-server typescript \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g js-beautify typescript-formatter remark-cli prettier \
     && npm i -g git+https://github.com/ramitos/jsctags.git \
