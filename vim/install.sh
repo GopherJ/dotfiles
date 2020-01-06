@@ -3,6 +3,7 @@
 set -e
 
 DISTRO="$(lsb_release -is)"
+NODE_VERSION="v10.15.3"
 
 if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ]; then
     echo "Error: distribution is not one of (deepin, ubuntu)" && exit 1
@@ -54,9 +55,6 @@ sudo gem install sass
 echoc "=> Installing shfmt..."
 curl -LO https://github.com/mvdan/sh/releases/download/v3.0.0/shfmt_v3.0.0_linux_amd64
 
-
-
-
 echoc "=> Configuring tern..."
 curl -fLo ~/.tern-config --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tern/.tern-config -m 15 --retry-delay 2 --retry 3
@@ -101,10 +99,10 @@ echoc "=> Installing nvm..." \
 }
 
 echoc "=> Installing lts node..."
-nvm install --lts \
+nvm install $NODE_VERSION \
     && nvm install-latest-npm \
-    && nvm use --lts \
-    && nvm alias default $(node -v)
+    && nvm use $NODE_VERSION \
+    && nvm alias default $NODE_VERSION
 
 echoc "=> Installing yarn, js language server, eslint, markdown render, beautify tools..." \
     && npm i -g yarn \
@@ -118,7 +116,6 @@ echoc "=> Installing yarn, js language server, eslint, markdown render, beautify
     && npm i -g eslint-plugin-prettier eslint-config-prettier \
     && npm i -g stylelint stylelint-processor-styled-components stylelint-config-styled-components stylelint-config-recommended
 
-NODE_VERSION=$(node -v)
 echoc "=> Configuring vim and building YCM..."
 curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimrc -m 15 --retry-delay 2 --retry 3 \
     && sed -i "s/v10.15.3/$NODE_VERSION/g" ~/.vimrc \
