@@ -270,7 +270,8 @@ set updatetime=300
 let g:LanguageClient_serverCommands = {
             \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
             \ 'javascript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
-            \ 'typescript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
+            \ 'typescript': ['~/.nvm/versions/node/v10.15.3/bin/tsserver'],
+            \ 'vue': ['~/.nvm/versions/node/v10.15.3/bin/vls'],
             \ }
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
