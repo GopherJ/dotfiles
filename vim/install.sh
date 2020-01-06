@@ -49,12 +49,6 @@ curl -LO https://github.com/mvdan/sh/releases/download/v3.0.0/shfmt_v3.0.0_linux
     && chmod u+x ./shfmt \
     && sudo mv ./shfmt /usr/local/bin/
 
-echoc "=> Installing sass-convert (scss formatter)..."
-sudo gem install sass
-
-echoc "=> Installing shfmt..."
-curl -LO https://github.com/mvdan/sh/releases/download/v3.0.0/shfmt_v3.0.0_linux_amd64
-
 echoc "=> Configuring tern..."
 curl -fLo ~/.tern-config --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tern/.tern-config -m 15 --retry-delay 2 --retry 3
