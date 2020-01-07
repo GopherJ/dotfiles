@@ -1,5 +1,5 @@
 "let mapleader = "\<Space>"
-"
+
 set encoding=utf8
 
 set nu
@@ -256,9 +256,9 @@ au FileType rust nmap <leader>gd <Plug>(rust-doc)
 " YCompleteMe
 let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
 let g:ycm_semantic_triggers =  {
-            \ 'rust': ['.', ':', '{', ',', '['],
-            \ 'javascript': ['.', '{', ',', '['],
-            \ 'typescript': ['.', ':', '{', ',', '['],
+            \ 'rust': ['.', ':', '{', ',', '[', ', ', '<'],
+            \ 'javascript': ['.', '{', ',', '[', ', '],
+            \ 'typescript': ['.', ':', '{', ',', '[', ', '],
             \ }
 set cmdheight=2
 set updatetime=300
@@ -460,8 +460,8 @@ imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 " sudo apt install clang-format
 nnoremap <F3> :Autoformat<CR>
 au BufWrite * :Autoformat<CR>
-autocmd FileType make,sh let b:autoformat_autoindent=0
-autocmd FileType make,sh let b:autoformat_retab=0
+autocmd FileType make,sh,csv let b:autoformat_autoindent=0
+autocmd FileType make,sh,csv let b:autoformat_retab=0
 
 " markdown-preview.nvim
 let g:mkdp_auto_start = 1
