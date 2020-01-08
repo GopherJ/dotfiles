@@ -240,6 +240,7 @@ autocmd FileType vue syntax sync fromstart
 " rust-vim
 let g:rustfmt_autosave = 1
 let g:rust_clip_command = 'xclip -selection clipboard'
+nnoremap <leader>= :'<,'>RustFmtRange<CR>
 
 " vim-racer
 " cargo +nightly install racer
@@ -459,7 +460,7 @@ imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 " npm i -g js-beautify typescript-formatter remark-cli
 " sudo apt install clang-format
 nnoremap <F3> :Autoformat<CR>
-au BufWrite * :Autoformat<CR>
+" au BufWrite * :Autoformat<CR>
 autocmd FileType make,sh,csv let b:autoformat_autoindent=0
 autocmd FileType make,sh,csv let b:autoformat_retab=0
 
