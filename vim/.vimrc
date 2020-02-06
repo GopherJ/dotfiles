@@ -33,6 +33,7 @@ set noswapfile
 
 set autoindent
 set smartindent
+set cindent
 
 set autoread
 set so=7
@@ -52,6 +53,7 @@ set viminfo=
 set confirm
 
 set ignorecase
+set smartcase
 set incsearch
 set nohlsearch
 
@@ -494,7 +496,7 @@ augroup END
 
 let g:ale_lint_delay=200
 
-let g:ale_completion_enabled = 1
+let g:ale_completion_enabled = 0
 set omnifunc=ale#completion#OmniFunc
 let g:ale_completion_tsserver_autoimport = 1
 
