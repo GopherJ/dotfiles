@@ -73,8 +73,10 @@ curl -fLo ~/.ctags.d/makefile.ctags --create-dirs \
 curl -fLo ~/.ctags.d/ansible.ctags --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/ctags/.ctags.d/ansible.ctags -m 15 --retry-delay 2 --retry 3
 
-echoc "=> Install markdown2ctags..."
-git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
+if [ ! -d ~/.vim/markdown2ctags ]; then
+    echoc "=> Install markdown2ctags..."
+    git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
+fi
 
 echoc "=> Configuring universal ctags..."
 git clone https://github.com/universal-ctags/ctags ~/.vim/ctags \
