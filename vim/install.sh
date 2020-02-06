@@ -78,13 +78,15 @@ if [ ! -d ~/.vim/markdown2ctags ]; then
     git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
 fi
 
-echoc "=> Configuring universal ctags..."
-git clone https://github.com/universal-ctags/ctags ~/.vim/ctags \
-    && cd ~/.vim/ctags \
-    && ./autogen.sh \
-    && ./configure \
-    && make \
-    && sudo make install
+if [ ! -d ~/.vim/ctags ]; then
+    echoc "=> Configuring universal ctags..."
+    git clone https://github.com/universal-ctags/ctags ~/.vim/ctags \
+        && cd ~/.vim/ctags \
+        && ./autogen.sh \
+        && ./configure \
+        && make \
+        && sudo make install
+fi
 
 command -v nvm > /dev/null || {
 echoc "=> Installing nvm..." \
