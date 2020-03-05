@@ -5,7 +5,7 @@ set -e
 DISTRO="$(lsb_release -is)"
 NODE_VERSION="v10.15.3"
 
-if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ]; then
+if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ] && [ $DISTRO != "LinuxMint" ]; then
     echo "Error: distribution is not one of (deepin, ubuntu)" && exit 1
 fi
 
@@ -13,7 +13,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf" "cppcheck" "flake8" "pylint" "yapf" "ruby" "ruby-dev")
+deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "yapf" "ruby" "ruby-dev")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
