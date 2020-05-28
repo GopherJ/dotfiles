@@ -149,7 +149,6 @@ Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
 Plug 'easymotion/vim-easymotion'
 Plug 'AndrewRadev/splitjoin.vim'
-Plug 'terryma/vim-expand-region'
 Plug 'pseewald/vim-anyfold'
 Plug 'arecarn/vim-fold-cycle'
 Plug 'FooSoft/vim-argwrap'
@@ -172,8 +171,6 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'tomtom/tcomment_vim'
-Plug 'junegunn/goyo.vim'
-Plug 'junegunn/limelight.vim'
 Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Valloric/ListToggle'
@@ -280,10 +277,6 @@ nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-
-" Limelight
-autocmd! User GoyoEnter Limelight
-autocmd! User GoyoLeave Limelight!
 
 " vim-fzf
 let g:fzf_layout    = { 'down': '~20%' }
@@ -590,6 +583,9 @@ endif
 
 " gitgutter
 let g:gitgutter_max_signs = 1000
+
+" asyncrun
+let g:asyncrun_open = 6
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions

@@ -13,7 +13,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "exuberant-ctags" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "yapf" "ruby" "ruby-dev")
+deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "yapf" "ruby" "ruby-dev" "golang-go" "rust-lldb" "lldb")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -102,8 +102,9 @@ nvm install $NODE_VERSION \
     && nvm use $NODE_VERSION \
     && nvm alias default $NODE_VERSION
 
-echoc "=> Installing yarn, js language server, eslint, markdown render, beautify tools..." \
+echoc "=> Installing yarn, vue, js language server, eslint, markdown render, beautify tools..." \
     && npm i -g yarn \
+    && npm i -g @vue/cli \
     && npm i -g javascript-typescript-langserver vue-language-server typescript \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g js-beautify typescript-formatter remark-cli prettier \
@@ -119,7 +120,7 @@ curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimr
     && sed -i "s/v10.15.3/$NODE_VERSION/g" ~/.vimrc \
     && vim -c "PlugInstall" ~/.vimrc \
     && cd ~/.vim/plugged/YouCompleteMe \
-    && python3 install.py --rust-completer --ts-completer --clangd-completer --js-completer \
+    && python3 install.py --rust-completer --ts-completer --clangd-completer --js-completer --go-completer \
     && cd ~/.vim/plugged/tern_for_vim \
     && npm install
 
@@ -137,7 +138,12 @@ echoc "=> Configuring rust..." \
     && source $HOME/.cargo/env \
     && rustup default nightly \
     && rustup component add rls rust-analysis rust-src clippy \
-    && cargo +nightly install racer
+    && cargo +nightly install racer \
+    && cargo install cargo-edit \
+    && cargo install cargo-benchcmp \
+    && cargo install cargo-tree \
+    && cargo install cargo-fix \
+    && cargo install cargo-watch
 
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
 echo "Your github username?"
