@@ -517,7 +517,7 @@ let g:ale_linters = {
             \ }
 let g:ale_fixers = {
             \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'python': ['yapf'],
+            \ 'python': ['yapf3'],
             \ 'javascript': ['eslint', 'prettier'],
             \ 'typescript': ['eslint', 'prettier'],
             \ 'markdown': ['remark-cli'],

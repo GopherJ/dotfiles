@@ -5,15 +5,15 @@ set -e
 DISTRO="$(lsb_release -is)"
 NODE_VERSION="v10.15.3"
 
-if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ] && [ $DISTRO != "LinuxMint" ]; then
-    echo "Error: distribution is not one of (deepin, ubuntu)" && exit 1
+if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ] && [ $DISTRO != "Linuxmint" ]; then
+    echo "Error: distribution is not one of (deepin, ubuntu, LinuxMint)" && exit 1
 fi
 
 function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "yapf" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh")
+deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -162,10 +162,16 @@ echoc "=> Configuring rust..." \
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
 echo "Your github username?"
 read -p ">" GITHUB_USERNAME
+echo "Your name?"
+read -p ">" GIT_CFG_NAME
+echo "Your email?"
+read -p ">" GIT_CFG_EMAIL
 echo "Your github personal access token? (developer settings -> personal access token)"
 read -p ">" GITHUB_ACCESS_TOKEN
 if [ ! -z "$GITHUB_USERNAME" ] && [ ! -z "$GITHUB_ACCESS_TOKEN" ]; then
     git config --global github.user $GITHUB_USERNAME
+    git config --global user.name "$GIT_CFG_NAME"
+    git config --global user.email "$GIT_CFG_EMAIL"
     sed -i "s/GITHUB_USERNAME/$GITHUB_USERNAME/g"  ~/.vimrc
     sed -i "s/GITHUB_ACCESS_TOKEN/$GITHUB_ACCESS_TOKEN/g" ~/.vimrc
     echo "machine api.github.com login $GITHUB_USERNAME password $GITHUB_ACCESS_TOKEN" > ~/.netrc
