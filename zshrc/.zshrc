@@ -1,4 +1,3 @@
-alias rrepl="rustup run nightly-2016-08-01 ~/.cargo/bin/rusti"
 alias ta="tmux a"
 alias tk="tmux kill-server"
 alias tl="tmux ls"
@@ -36,18 +35,6 @@ function doc-crate {
 function ra {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         rg $1 -l | xargs -i sed -i "s/$1/$2/g" {}
-    fi
-}
-function curljson {
-    if [ "$#" -gt 1 ]; then
-        args=( "$@" )
-        last="${@: -1}"
-        unset "args[${#args[@]}]"
-
-        curl --header "Content-Type: application/json" \
-            --request POST \
-            --data "$(jsg $args)" \
-            "$last"
     fi
 }
 
@@ -125,7 +112,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export PATH="$HOME/.cargo/bin:$PATH"
+export GOPATH="$HOME/go"
 export CARGO_HOME="$HOME/.cargo"
+export PATH="$CARGO_HOME/bin:$GOPATH/bin:$PATH"
 export TERM=xterm-256color
 export EDITOR=vim

@@ -13,7 +13,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "yapf" "ruby" "ruby-dev" "golang-go" "rust-lldb" "lldb")
+deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "yapf" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -44,10 +44,11 @@ echoc "=> Installing sass-convert (scss formatter)..."
 sudo gem install sass
 
 echoc "=> Installing shfmt..."
-curl -LO https://github.com/mvdan/sh/releases/download/v3.0.0/shfmt_v3.0.0_linux_amd64 -m 15 --retry-delay 2 --retry 3 \
-    && mv ./shfmt_v3.0.0_linux_amd64 shfmt \
-    && chmod u+x ./shfmt \
-    && sudo mv ./shfmt /usr/local/bin/
+if [ ! -f ~/Downloads/shfmt_v3.0.0_linux_amd64 ]; then
+    curl -fLo ~/Downloads/shfmt_v3.0.0_linux_amd64 https://github.com/mvdan/sh/releases/download/v3.0.0/shfmt_v3.0.0_linux_amd64 -m 15 --retry-delay 2 --retry 3 \
+        && sudo cp ~/Downloads/shfmt_v3.0.0_linux_amd64 /usr/local/bin/shfmt \
+        && sudo chmod u+x /usr/local/bin/shfmt
+fi
 
 echoc "=> Configuring tern..."
 curl -fLo ~/.tern-config --create-dirs \
@@ -73,6 +74,17 @@ curl -fLo ~/.ctags.d/makefile.ctags --create-dirs \
 curl -fLo ~/.ctags.d/ansible.ctags --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/ctags/.ctags.d/ansible.ctags -m 15 --retry-delay 2 --retry 3
 
+echoc "=> Configuring oh-my-zsh..."
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+    && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc -m 15 --retry-delay 2 --retry 3 >> ~/.zshrc \
+    && source ~/.zshrc
+
+echoc "=> Installing golang1.14.4..."
+if [ ! -f ~/Downloads/go1.14.4.linux-amd64.tar.gz ]; then
+    curl -fLo ~/Downloads/go1.14.4.linux-amd64.tar.gz https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz -m 15 --retry-delay 2 --retry 3 \
+        && sudo tar -C /usr/local -xzf ~/Downloads/go1.14.4.linux-amd64.tar.gz
+fi
+
 if [ ! -d ~/.vim/markdown2ctags ]; then
     echoc "=> Install markdown2ctags..."
     git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
@@ -96,7 +108,7 @@ echoc "=> Installing nvm..." \
     && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 }
 
-echoc "=> Installing lts node..."
+echoc "=> Installing node${NODE_VERSION}..."
 nvm install $NODE_VERSION \
     && nvm install-latest-npm \
     && nvm use $NODE_VERSION \
@@ -125,9 +137,11 @@ curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimr
     && npm install
 
 echoc "=> Configuring neovim..."
-ln -s ~/.vim ~/.config/nvim \
-    && ln -s ~/.vimrc ~/.config/nvim/init.vim \
-    && pip3 install --user --upgrade pynvim
+if [ ! -d ~/.config/nvim ]; then
+    ln -s ~/.vim ~/.config/nvim \
+        && ln -s ~/.vimrc ~/.config/nvim/init.vim \
+        && pip3 install --user --upgrade wheel pynvim
+fi
 
 command -v rustup > /dev/null || {
 echoc "=> Installing rustup toolchain..." \
@@ -168,8 +182,11 @@ if [ ! -z "$GITLAB_DOMAIN" ] && [ ! -z "$GITLAB_ACCESS_TOKEN" ]; then
 fi
 
 echoc "=> Installing ripgrep..."
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb -m 15 --retry-delay 2 --retry 3 \
-    && sudo dpkg -i ripgrep_11.0.2_amd64.deb \
-    && rm ripgrep_11.0.2_amd64.deb
+command -v rg > /dev/null || {
+    if [ ! -f  ~/Downloads/ripgrep_11.0.2_amd64.deb ]; then
+        curl -fLo ~/Downloads/ripgrep_11.0.2_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb -m 15 --retry-delay 2 --retry 3 \
+            && sudo dpkg -i ~/Downloads/ripgrep_11.0.2_amd64.deb
+    fi
+}
 
 echoc "=> Done!"
