@@ -86,8 +86,6 @@ nnoremap <silent>  * *zz
 nnoremap <silent>  # #zz
 nnoremap <silent>  g* g*zz
 
-nnoremap hco       :term<CR>
-nnoremap vco       :vert term<CR>
 nnoremap hs        <C-W>v
 nnoremap vs        <C-W>s
 
@@ -128,36 +126,18 @@ nnoremap p"        vi"p
 nnoremap <M-left>    :bp<CR>
 nnoremap <M-right>   :bn<CR>
 
-if has('nvim')
-    tnoremap <C-H> <C-\><C-N><C-W>h
-    tnoremap <C-J> <C-\><C-N><C-W>j
-    tnoremap <C-K> <C-\><C-N><C-W>k
-    tnoremap <C-L> <C-\><C-N><C-W>l
-
-    tnoremap <Esc> <C-\><C-N>:bd!<CR>
-else
-    tnoremap <Esc> <C-W><C-C>:bd!<CR>
-endif
-
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 call plug#begin()
 
-
-Plug 'tpope/vim-repeat'
-Plug 'tpope/vim-surround'
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
-Plug 'easymotion/vim-easymotion'
-Plug 'AndrewRadev/splitjoin.vim'
 Plug 'pseewald/vim-anyfold'
-Plug 'arecarn/vim-fold-cycle'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'justinmk/vim-sneak'
 
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
-Plug 'vhdirk/vim-cmake'
 
 Plug 'sheerun/vim-polyglot'
 
@@ -175,6 +155,7 @@ Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Valloric/ListToggle'
 Plug 'edkolev/tmuxline.vim'
+
 Plug 'joshdick/onedark.vim'
 Plug 'sickill/vim-monokai'
 Plug 'rakr/vim-one'
@@ -185,7 +166,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
 Plug 'leafgarland/typescript-vim'
 Plug 'mattn/emmet-vim'
-Plug 'othree/javascript-libraries-syntax.vim'
 
 Plug 'ervandew/supertab'
 " cd ~/.vim/plugged/YouCompleteMe && python3 install.py --rust-completer --ts-completer --js-completer --clangd-completer
@@ -193,8 +173,6 @@ Plug 'ervandew/supertab'
 Plug 'Valloric/YouCompleteMe'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
 Plug 'ternjs/tern_for_vim'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
@@ -534,14 +512,6 @@ nmap <silent> <leader>j <Plug>(ale_next_wrap)
 " tern_for_vim
 " cd ~/.vim/plugged/tern_for_vim && npm install
 
-" javascript-libraries-syntax.vim
-let g:used_javascript_libs = 'vue,ramda,d3,lodash'
-
-" vim-fold-cycle
-let g:fold_cycle_default_mapping = 0 "disable default mappings
-nmap <Tab><Tab> <Plug>(fold-cycle-open)
-nmap <S-Tab><S-Tab> <Plug>(fold-cycle-close)
-
 " vim-argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
 
@@ -550,13 +520,6 @@ let g:github_dashboard = { 'username': 'GITHUB_USERNAME', 'password': 'GITHUB_AC
 
 " rainbow
 let g:rainbow_active = 1
-
-" ultisnips
-let g:UltiSnipsExpandTrigger="<leader><leader>"
-let g:UltiSnipsJumpForwardTrigger="<C-B>"
-let g:UltiSnipsJumpBackwardTrigger="<C-Z>"
-let g:UltiSnipsSnippetsDir          = $HOME.'/.vim/UltiSnips/'
-let g:UltiSnipsSnippetDirectories   = [ "UltiSnips" ]
 
 " argwrap
 let g:argwrap_tail_comma = 1
