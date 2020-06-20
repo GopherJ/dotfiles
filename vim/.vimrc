@@ -138,6 +138,7 @@ Plug 'justinmk/vim-sneak'
 
 Plug 'rust-lang/rust.vim'
 " Plug 'racer-rust/vim-racer'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 Plug 'sheerun/vim-polyglot'
 
