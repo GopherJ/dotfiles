@@ -137,7 +137,7 @@ Plug 'andymass/vim-matchup'
 Plug 'justinmk/vim-sneak'
 
 Plug 'rust-lang/rust.vim'
-Plug 'racer-rust/vim-racer'
+" Plug 'racer-rust/vim-racer'
 
 Plug 'sheerun/vim-polyglot'
 
@@ -213,6 +213,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " vim-vue
 " npm i -g eslint eslint-plugin-vue
 autocmd FileType vue syntax sync fromstart
+let g:vue_pre_processors = ['sass', 'scss']
 
 " rust-vim
 let g:rustfmt_autosave = 1
@@ -221,15 +222,15 @@ nnoremap <leader>= :'<,'>RustFmtRange<CR>
 
 " vim-racer
 " cargo +nightly install racer
-set hidden
-let g:racer_cmd = "~/.cargo/bin/racer"
-let g:racer_experimental_completer = 1
-let g:racer_insert_paren = 1
-au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap gt <Plug>(rust-def-tab)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
+" set hidden
+" let g:racer_cmd = "~/.cargo/bin/racer"
+" let g:racer_experimental_completer = 1
+" let g:racer_insert_paren = 1
+" au FileType rust nmap gd <Plug>(rust-def)
+" au FileType rust nmap gs <Plug>(rust-def-split)
+" au FileType rust nmap gx <Plug>(rust-def-vertical)
+" au FileType rust nmap gt <Plug>(rust-def-tab)
+" au FileType rust nmap <leader>gd <Plug>(rust-doc)
 
 " YCompleteMe
 let g:ycm_rust_src_path = '~/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src'
