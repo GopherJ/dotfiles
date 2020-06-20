@@ -1,4 +1,6 @@
 "let mapleader = "\<Space>"
+let &t_TI = ""
+let &t_TE = ""
 
 set encoding=utf8
 
@@ -131,7 +133,7 @@ call plug#begin()
 
 Plug 'godlygeek/tabular'
 Plug 'jiangmiao/auto-pairs'
-Plug 'pseewald/vim-anyfold'
+" Plug 'pseewald/vim-anyfold'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'justinmk/vim-sneak'
@@ -173,7 +175,9 @@ Plug 'ervandew/supertab'
 " sudo apt install -y build-essential cmake python3-dev
 Plug 'Valloric/YouCompleteMe'
 Plug 'autozimu/LanguageClient-neovim', { 'branch': 'next', 'do': 'bash install.sh' }
-Plug 'ternjs/tern_for_vim'
+" Plug 'ternjs/tern_for_vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 
 Plug 'Chiel92/vim-autoformat'
 Plug 'dense-analysis/ale'
@@ -273,12 +277,12 @@ command! -bang -nargs=* Rg
             \ <bang>0)
 
 " vim-anyfold
-filetype plugin indent on
-autocmd Filetype * AnyFoldActivate
-let g:anyfold_fold_comments=1
-let g:anyfold_fold_toplevel=1
-set foldlevel=0
-hi Folded term=NONE cterm=NONE
+" filetype plugin indent on
+" autocmd Filetype * AnyFoldActivate
+" let g:anyfold_fold_comments=1
+" let g:anyfold_fold_toplevel=1
+" set foldlevel=0
+" hi Folded term=NONE cterm=NONE
 
 " airline
 let g:airline#extensions#ale#enabled = 1
@@ -554,6 +558,12 @@ let g:gitgutter_max_signs = 1000
 " asyncrun
 let g:asyncrun_open = 6
 
+" ultisnips
+let g:UltiSnipsExpandTrigger="<C-J>"
+let g:UltiSnipsJumpForwardTrigger="<C-J>"
+let g:UltiSnipsJumpBackwardTrigger="<C-K>"
+let g:UltiSnipsSnippetsDir          = $HOME.'/.vim/UltiSnips/'
+let g:UltiSnipsSnippetDirectories   = [ "UltiSnips" ]
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
