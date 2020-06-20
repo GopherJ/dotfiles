@@ -1,0 +1,10 @@
+REGEDIT4
+[HKEY_LOCAL_MACHINE\Software\Microsoft\Windows NT\CurrentVersion\FontLink\SystemLink]
+"Lucida Sans Unicode"="msyh_consola.ttf"
+"Microsoft Sans Serif"="msyh_consola.ttf"
+"MS Sans Serif"="msyh_consola.ttf"
+"Tahoma"="msyh_consola.ttf"
+"Tahoma Bold"="msyhbd.ttc"
+"msyh"="msyh_consola.ttf"
+"Arial"="msyh_consola.ttf"
+"Arial Black"="msyh_consola.ttf"
