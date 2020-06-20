@@ -264,7 +264,7 @@ nnoremap <C-B>  : Buffers<CR>
 nnoremap <C-F>  : Rg<CR>
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/package-lock.json' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' ".shellescape(<q-args>), 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \ <bang>0)

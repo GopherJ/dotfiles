@@ -5,7 +5,7 @@ set -e
 DISTRO="$(lsb_release -is)"
 NODE_VERSION="v10.15.3"
 
-if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ] && [ $DISTRO != "Linuxmint" ]; then
+if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ] && [ $DISTRO != "Linuxmint" ] && [ $DISTRO != "LinuxMint" ]; then
     echo "Error: distribution is not one of (deepin, ubuntu, linuxmint)" && exit 1
 fi
 

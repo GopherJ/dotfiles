@@ -4,7 +4,7 @@ alias tl="tmux ls"
 alias x="chmod u+x "
 alias o="xdg-open "
 alias c='xclip -selection c'
-alias rg="rg -i --iglob '!**/package-lock.json' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/yarn.lock' --hidden"
+alias rg="rg --ignore-case --hidden --iglob '!**/package-lock.json' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/yarn.lock'"
 alias h="history -n"
 alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder:nightly-2019-04-17'
 alias rust-musl-builder-stable='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
@@ -38,6 +38,11 @@ function doc-crate {
 function ra {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         rg $1 -l | xargs -i sed -i "s/$1/$2/g" {}
+    fi
+}
+function ge {
+    if [ ! -z "$1" ]; then
+        git fetch origin +refs/pull/$1/merge
     fi
 }
 
