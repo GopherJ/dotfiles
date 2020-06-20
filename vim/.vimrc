@@ -158,6 +158,7 @@ Plug 'yggdroot/indentline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'Valloric/ListToggle'
 Plug 'edkolev/tmuxline.vim'
+Plug 'alpertuna/vim-header'
 
 Plug 'joshdick/onedark.vim'
 Plug 'sickill/vim-monokai'
@@ -243,9 +244,11 @@ let g:ycm_semantic_triggers =  {
             \ 'rust': ['.', ':', '{', ',', '[', ', ', '<'],
             \ 'javascript': ['.', '{', ',', '[', ', '],
             \ 'typescript': ['.', ':', '{', ',', '[', ', '],
+            \ 'go': ['.', '[', '{', ',', ', '],
             \ }
 let g:ycm_complete_in_comments = 1
 let g:ycm_auto_hover = ''
+let g:ycm_key_invoke_completion = '<C-J>'
 " let g:ycm_auto_hover = 'CursorHold'
 set completeopt-=preview
 set cmdheight=2
@@ -566,6 +569,11 @@ let g:UltiSnipsJumpForwardTrigger="<C-J>"
 let g:UltiSnipsJumpBackwardTrigger="<C-K>"
 let g:UltiSnipsSnippetsDir          = $HOME.'/.vim/UltiSnips/'
 let g:UltiSnipsSnippetDirectories   = [ "UltiSnips" ]
+
+" vim-header
+let g:header_field_author = 'Cheng JIANG'
+let g:header_field_author_email = 'jiang.cheng@vip.163.com'
+let g:header_auto_add_header = 0
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => helper functions
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
