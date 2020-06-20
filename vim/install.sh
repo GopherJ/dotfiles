@@ -135,7 +135,8 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
 echoc "=> Configuring vim and building YCM..."
 curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimrc --retry-delay 2 --retry 3 \
     && sed -i "s/v10.15.3/$NODE_VERSION/g" ~/.vimrc \
-    && vim -c "PlugInstall" ~/.vimrc \
+    && vim +PlugInstall \
+    && vim +GoInstallBinaries \
     && cd ~/.vim/plugged/YouCompleteMe \
     && python3 install.py --rust-completer --ts-completer --clangd-completer --js-completer --go-completer \
     && cd ~/.vim/plugged/tern_for_vim \
