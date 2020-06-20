@@ -13,7 +13,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "vim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev")
+deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -24,6 +24,46 @@ echoc "=> Adding neovim PPA..."
 sudo add-apt-repository ppa:neovim-ppa/stable \
     && sudo apt update \
     && sudo apt upgrade
+
+echoc "=> Compiling vim from source..."
+sudo apt install -y libncurses5-dev \
+    libgnome2-dev \
+    libgnomeui-dev \
+    libgtk2.0-dev \
+    libatk1.0-dev \
+    libbonoboui2-dev \
+    libcairo2-dev \
+    libx11-dev \
+    libxpm-dev \
+    libxt-dev \
+    python-dev \
+    python3-dev \
+    ruby-dev \
+    lua5.1 \
+    liblua5.1-dev \
+    libperl-dev \
+    git
+sudo apt remove \
+    vim \
+    vim-runtime \
+    gvim
+if [ ! -f ~/Downloads/vim ]; then
+    git clone https://github.com/vim/vim.git ~/Downloads/vim
+fi
+cd vim && ./configure --with-features=huge \
+    --enable-multibyte \
+    --enable-rubyinterp=yes \
+    --enable-python3interp=yes \
+    --with-python3-config-dir=$(python3-config --configdir) \
+    --enable-perlinterp=yes \
+    --enable-luainterp=yes \
+    --enable-gui=gtk2 \
+    --enable-cscope \
+    --prefix=/usr/local
+make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
+sudo make install
+sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
+sudo update-alternatives --set vi /usr/local/bin/vim
 
 echoc "=> Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

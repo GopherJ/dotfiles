@@ -240,6 +240,8 @@ let g:ycm_semantic_triggers =  {
             \ 'javascript': ['.', '{', ',', '[', ', '],
             \ 'typescript': ['.', ':', '{', ',', '[', ', '],
             \ }
+let g:ycm_complete_in_comments = 1
+set completeopt-=preview
 set cmdheight=2
 set updatetime=300
 
