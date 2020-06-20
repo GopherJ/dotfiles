@@ -20,6 +20,11 @@ do
     sudo apt install -y  $dep
 done
 
+echoc "=> Adding neovim PPA..."
+sudo add-apt-repository ppa:neovim-ppa/stable \
+    && sudo apt update \
+    && sudo apt upgrade
+
 echoc "=> Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3
