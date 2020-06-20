@@ -245,6 +245,8 @@ let g:ycm_semantic_triggers =  {
             \ 'typescript': ['.', ':', '{', ',', '[', ', '],
             \ }
 let g:ycm_complete_in_comments = 1
+let g:ycm_auto_hover = ''
+" let g:ycm_auto_hover = 'CursorHold'
 set completeopt-=preview
 set cmdheight=2
 set updatetime=300
