@@ -125,3 +125,7 @@ export CARGO_HOME="$HOME/.cargo"
 export PATH="$CARGO_HOME/bin:$GOPATH/bin:/usr/local/go/bin:$PATH"
 export TERM=xterm-256color
 export EDITOR=vim
+export GITHUB_API_TOKEN=""
+export GITLAB_PRIVATE_TOKEN=""
+export JAVA_HOME="/usr/bin/java"
+export FZF_DEFAULT_COMMAND="fd"
