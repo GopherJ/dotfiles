@@ -85,7 +85,8 @@ nnoremap vs        <C-W>s
 nnoremap <C-W>     :wq!<CR>
 nnoremap <C-D>     :qall!<CR>
 
-nnoremap <C-]>     :vertical res +2<CR>
+nnoremap <M-]>     :vertical res +2<CR>
+nnoremap <M-[>     :vertical res -2<CR>
 
 nnoremap <C-L>     <C-W>l
 nnoremap <C-K>     <C-W>k

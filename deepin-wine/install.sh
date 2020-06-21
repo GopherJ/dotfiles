@@ -41,5 +41,3 @@ cp ~/Downloads/msyh_consola.ttf ~/.deepinwine/Deepin-WeChat/drive_c/windows/Font
 
 echoc "=> Download other softwares if you need..."
 xdg-open https://mirrors.aliyun.com/deepin/pool/non-free/d
-
-
