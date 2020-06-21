@@ -30,13 +30,17 @@ if [ ! -f  ~/Downloads/$WECHAT_DEB ]; then
     curl -fLo  ~/Downloads/$WECHAT_DEB https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/$WECHAT_DEB --retry-delay 2 --retry 3
 fi
 sudo dpkg -i ~/Downloads/$WECHAT_DEB
-if [ ! -f msyh_consola.ttf ]; then
-    curl -fLo ~/Downloads/msyh_consola.ttf https://github.com/GopherJ/Fonts/GopherJ/Fonts/raw/master/msyh_consola.ttf
+if [ ! -f ~/Downloads/msyh_consola.ttf ]; then
+    curl -fLo ~/Downloads/msyh_consola.ttf https://github.com/GopherJ/Fonts/GopherJ/Fonts/raw/master/msyh_consola.ttf --retry-delay 2 --retry 3
 fi
+if [ ! -f ~/Downloads/msyh_consola_config.reg ]; then
+    curl -fLo ~/Downloads/msyh_consola_config.reg https://github.com/GopherJ/cfg/blob/master/deepinwine/msyh_consola_config.reg --retry-delay 2 --retry 3
+fi
+
 cp ~/Downloads/msyh_consola.ttf ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts \
-    && cp ./msyh_consola_config.reg ~/.deepinwine/Deepin-WeChat \
-    && sed - i 's/"MS Shell Dlg"=".*"/"MS Shell Dlg"="msyh_consola"/g' ~/.deepinwine/Deepin-WeChat/system.reg \
-    && sed - i 's/"MS Shell Dlg 2"=".*"/"MS Shell Dlg 2"="msyh_consola"/g' ~/.deepinwine/Deepin-WeChat/system.reg \
+    && cp ~/Downloads/msyh_consola_config.reg ~/.deepinwine/Deepin-WeChat \
+    && sed -i 's/"MS Shell Dlg"=".*"/"MS Shell Dlg"="msyh_consola"/g' ~/.deepinwine/Deepin-WeChat/system.reg \
+    && sed -i 's/"MS Shell Dlg 2"=".*"/"MS Shell Dlg 2"="msyh_consola"/g' ~/.deepinwine/Deepin-WeChat/system.reg \
     && cd ~/.deepinwine/Deepin-WeChat && WINEPREFIX=~/.deepinwine/Deepin-WeChat deepin-wine regedit msyh_consola_config.reg
 
 echoc "=> Download other softwares if you need..."
