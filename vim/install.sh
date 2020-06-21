@@ -13,7 +13,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jre")
+deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jre" "ccls")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do

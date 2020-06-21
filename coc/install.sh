@@ -8,3 +8,6 @@
 # :CocInstall coc-git
 # :CocInstall coc-lists
 # :CocInstall coc-snippets
+# :CocInstall coc-emmet
+# :CocInstall coc-jest
+# :CocInstall coc-json
