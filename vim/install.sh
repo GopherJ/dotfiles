@@ -13,7 +13,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev")
+deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jre")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -178,7 +178,7 @@ curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimr
     && vim +PlugInstall \
     && vim +GoInstallBinaries \
     && cd ~/.vim/plugged/YouCompleteMe \
-    && python3 install.py --rust-completer --ts-completer --clangd-completer --js-completer --go-completer \
+    && python3 install.py --rust-completer --ts-completer --clangd-completer --js-completer --go-completer --java-completer \
     && cd ~/.vim/plugged/tern_for_vim \
     && npm install
 
