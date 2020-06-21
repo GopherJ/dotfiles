@@ -124,6 +124,12 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc \
     && source ~/.zshrc
 
+echoc "=> Installing autojump.zsh..."
+if [ ! -f ~/.autojump.zsh ]; then
+    curl -fLo ~/.autojump.zsh https://raw.githubusercontent.com/wting/autojump/master/bin/autojump.zsh --retry-delay 2 --retry 3 \
+        && echo "[ -f ~/.autojump.zsh ] && source ~/.autojump.zsh" >> ~/.zshrc
+fi
+
 echoc "=> Installing golang1.14.4..."
 if [ ! -f ~/Downloads/go1.14.4.linux-amd64.tar.gz ]; then
     curl -fLo ~/Downloads/go1.14.4.linux-amd64.tar.gz https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz --retry-delay 2 --retry 3 \
@@ -203,7 +209,8 @@ echoc "=> Configuring rust..." \
     && cargo install cargo-benchcmp \
     && cargo install cargo-tree \
     && cargo install cargo-fix \
-    && cargo install cargo-watch
+    && cargo install cargo-watch \
+    && cargo install --git https://github.com/xen0n/autojump-rs
 
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
 echo "Your github username?"
