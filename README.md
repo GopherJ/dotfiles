@@ -2,7 +2,6 @@
 
 All config files
 
-
 ## List
 
 - [vim](./vim)
