@@ -287,7 +287,7 @@ nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
 command! JestInit :call CocAction('runCommand', 'jest.init')
 
 " coc-yank(optional)
-nnoremap <silent> <space>y  :<C-u>CocList -A --normal yank<cr>
+nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
 
 " coc-snippets
 imap <C-l> <Plug>(coc-snippets-expand)
