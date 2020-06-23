@@ -516,7 +516,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " asynctasks
 let g:asyncrun_open = 6
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
-let g:asynctasks_term_rows = 15
+let g:asynctasks_term_pos = 'external'
 noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f9> :AsyncTask file-build<cr>
 noremap <silent><f6> :AsyncTask project-run<cr>
