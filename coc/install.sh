@@ -11,3 +11,4 @@
 # :CocInstall coc-emmet
 # :CocInstall coc-jest
 # :CocInstall coc-json
+# :CocInstall coc-tasks

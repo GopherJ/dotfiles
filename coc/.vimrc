@@ -1,6 +1,7 @@
 "let mapleader = "\<Space>"
 let &t_TI = ""
 let &t_TE = ""
+set tags+=./tags
 
 set encoding=utf8
 set hidden
