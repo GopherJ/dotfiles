@@ -517,6 +517,18 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:asyncrun_open = 6
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
 let g:asynctasks_term_pos = 'external'
+let g:asynctasks_template = {}
+let g:asynctasks_template.cargo = [
+			\ "[project-build]",
+			\ "command=cargo build",
+			\ "cwd=<root>",
+			\ "errorformat=%. %#--> %f:%l:%c",
+			\ "",
+			\ "[project-run]",
+			\ "command=cargo run",
+			\ "cwd=<root>",
+			\ "output=terminal",
+			\ ]
 noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f9> :AsyncTask file-build<cr>
 noremap <silent><f6> :AsyncTask project-run<cr>
