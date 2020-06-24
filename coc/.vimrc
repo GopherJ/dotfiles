@@ -133,6 +133,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-expand-region'
 
 Plug 'honza/vim-snippets'
 
