@@ -50,7 +50,7 @@ sudo apt remove \
 if [ ! -f ~/Downloads/vim ]; then
     git clone https://github.com/vim/vim.git ~/Downloads/vim
 fi
-cd vim && ./configure --with-features=huge \
+cd ~/Downloads/vim && ./configure --with-features=huge \
     --enable-multibyte \
     --enable-rubyinterp=yes \
     --enable-python3interp=yes \
