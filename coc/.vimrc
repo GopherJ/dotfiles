@@ -6,6 +6,8 @@ set tags=./tags,tags;$HOME
 set encoding=utf8
 set hidden
 
+set foldmethod=manual
+
 set nu
 set relativenumber
 
