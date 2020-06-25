@@ -46,7 +46,7 @@ set wildmenu
 
 set magic
 
-set lazyredraw
+" set lazyredraw
 
 set noerrorbells
 set novisualbell
@@ -133,6 +133,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'majutsushi/tagbar'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdtree'
+Plug 'terryma/vim-expand-region'
 
 Plug 'honza/vim-snippets'
 
@@ -411,8 +412,8 @@ command! -bang -nargs=* Rg
 "
 " npm install -g git+https://github.com/ramitos/jsctags.git
 " npm install -g git+https://github.com/Perlence/tstags.git
-" nnoremap <F8> :TagbarToggle<CR>
-autocmd FileType * call tagbar#autoopen(0)
+nnoremap <F8> :TagbarToggle<CR>
+" autocmd FileType * call tagbar#autoopen(0)
 let g:tagbar_width=25
 let g:tagbar_ctags_bin='/usr/local/bin/ctags'
 let g:rust_use_custom_ctags_defs = 1
