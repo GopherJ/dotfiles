@@ -25,6 +25,7 @@ sudo add-apt-repository ppa:neovim-ppa/stable \
     && sudo apt update \
     && sudo apt upgrade
 
+# Todo: doesn't work in ubuntu20, linuxmint20 anymore
 echoc "=> Compiling vim from source..."
 sudo apt install -y libncurses5-dev \
     libgnome2-dev \
@@ -123,6 +124,13 @@ echoc "=> Configuring oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc \
     && source ~/.zshrc
+
+echoc "=> Install alacritty..."
+if [ ! -f ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb ]; then
+    curl -fLo ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb https://github.com/alacritty/alacritty/releases/download/v0.4.3/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb --retry-delay 2 --retry 3
+fi
+sudo dpkg -i ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb
+curl -fLo ~/.config/alacritty/alacritty.yml https://raw.githubusercontent.com/eendroroy/alacritty-theme/master/themes/gruvbox_dark.yaml --retry-delay 2 --retry 3
 
 echoc "=> Installing autojump.zsh..."
 if [ ! -f ~/.autojump.zsh ]; then
