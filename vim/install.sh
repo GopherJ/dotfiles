@@ -130,7 +130,7 @@ if [ ! -f ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb ]; then
     curl -fLo ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb https://github.com/alacritty/alacritty/releases/download/v0.4.3/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb --retry-delay 2 --retry 3
 fi
 sudo dpkg -i ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb
-curl -fLo ~/.config/alacritty/alacritty.yml https://raw.githubusercontent.com/eendroroy/alacritty-theme/master/themes/gruvbox_dark.yaml --retry-delay 2 --retry 3
+curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/eendroroy/alacritty-theme/master/themes/gruvbox_dark.yaml --retry-delay 2 --retry 3
 
 echoc "=> Installing autojump.zsh..."
 if [ ! -f ~/.autojump.zsh ]; then
