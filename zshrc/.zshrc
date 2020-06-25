@@ -59,3 +59,7 @@ export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
 export JAVA_HOME="/usr/bin/java"
 export FZF_DEFAULT_COMMAND="fd"
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
