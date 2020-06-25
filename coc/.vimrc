@@ -143,8 +143,11 @@ Plug 'cespare/vim-toml'
 Plug 'Yggdroot/indentLine'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'edkolev/tmuxline.vim'
 
 Plug 'alpertuna/vim-header'
+
+Plug 'posva/vim-vue'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -534,3 +537,12 @@ noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f9> :AsyncTask file-build<cr>
 noremap <silent><f6> :AsyncTask project-run<cr>
 noremap <silent><f7> :AsyncTask project-build<cr>
+
+" vim-vue
+" npm i -g eslint eslint-plugin-vue
+autocmd FileType vue syntax sync fromstart
+let g:vue_pre_processors = ['sass', 'scss']
+
+" tmuxline
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = 'full'
