@@ -1,4 +1,6 @@
 {
+    "diagnostic.displayByAle": true,
+    "rust-analyzer.inlayHints.chainingHints": false,
     "languageserver": {
         "ccls": {
             "command": "ccls",
