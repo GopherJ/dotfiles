@@ -6,6 +6,9 @@ set tags=./tags,tags;$HOME
 set encoding=utf8
 set hidden
 
+set updatetime=300
+set cmdheight=2
+
 set foldmethod=manual
 
 set nu
