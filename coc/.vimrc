@@ -6,6 +6,8 @@ set tags=./tags,tags;$HOME
 set encoding=utf8
 set hidden
 
+set foldmethod=manual
+
 set nu
 set relativenumber
 
@@ -143,8 +145,12 @@ Plug 'cespare/vim-toml'
 Plug 'Yggdroot/indentLine'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'edkolev/tmuxline.vim'
 
 Plug 'alpertuna/vim-header'
+
+Plug 'posva/vim-vue'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -534,3 +540,22 @@ noremap <silent><f5> :AsyncTask file-run<cr>
 noremap <silent><f9> :AsyncTask file-build<cr>
 noremap <silent><f6> :AsyncTask project-run<cr>
 noremap <silent><f7> :AsyncTask project-build<cr>
+
+" vim-vue
+" npm i -g eslint eslint-plugin-vue
+autocmd FileType vue syntax sync fromstart
+let g:vue_pre_processors = ['sass', 'scss']
+
+" tmuxline
+let g:tmuxline_powerline_separators = 0
+let g:tmuxline_preset = 'full'
+
+" vim-tmux-navigator
+if !empty($TMUX)
+    let g:tmux_navigator_no_mappings = 1
+
+    nnoremap <silent> <C-H> :TmuxNavigateLeft<CR>
+    nnoremap <silent> <C-L> :TmuxNavigateRight<CR>
+    nnoremap <silent> <C-J> :TmuxNavigateDown<CR>
+    nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
+endif

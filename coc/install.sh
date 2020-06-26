@@ -12,3 +12,5 @@
 # :CocInstall coc-jest
 # :CocInstall coc-json
 # :CocInstall coc-tasks
+#
+# vim -c 'CocInstall -sync coc-json coc-html|q'
