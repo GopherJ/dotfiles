@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# Todo: write an installation script
+#
 # :CocInstall coc-tsserver
 # :CocInstall coc-pairs
 # :CocInstall coc-rls | coc-rust-analyzer
@@ -12,5 +14,6 @@
 # :CocInstall coc-jest
 # :CocInstall coc-json
 # :CocInstall coc-tasks
+# :CocInstall coc-go
 #
 # vim -c 'CocInstall -sync coc-json coc-html|q'

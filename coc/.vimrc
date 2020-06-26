@@ -130,7 +130,6 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'justinmk/vim-sneak'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rust-lang/rust.vim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
