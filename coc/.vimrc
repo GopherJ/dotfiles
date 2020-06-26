@@ -151,6 +151,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'alpertuna/vim-header'
 
 Plug 'posva/vim-vue'
+Plug 'mattn/emmet-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -211,7 +212,7 @@ function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'h '.expand('<cword>')
     else
-        call CocAction('doHover')
+        call CocActionAsync('doHover')
     endif
 endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -563,3 +564,8 @@ endif
 " indentLine
 let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor = ""
+
+" emmet-vim
+imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let g:user_emmet_install_global = 0
+autocmd FileType html,css,vue EmmetInstall
