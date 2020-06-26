@@ -1,6 +1,7 @@
 alias ta="tmux a"
 alias tk="tmux kill-server"
 alias tl="tmux ls"
+alias ts="tmux source-file ~/.tmux.conf"
 alias x="chmod u+x "
 alias o="xdg-open "
 alias c='xclip -selection c'
