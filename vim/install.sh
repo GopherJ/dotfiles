@@ -101,10 +101,14 @@ curl -fLo ~/.tern-config --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tern/.tern-config --retry-delay 2 --retry 3
 
 echoc "=> Configuring tmux..."
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 curl -fLo ~/.tmux.conf --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3
 curl -fLo ~/.tmuxline_snapshot --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
+tmux source ~/.tmux.conf
 
 echoc "=> Configuring eslint..."
 curl -fLo ~/.eslintrc.js --create-dirs \
