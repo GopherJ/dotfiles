@@ -559,3 +559,7 @@ if !empty($TMUX)
     nnoremap <silent> <C-J> :TmuxNavigateDown<CR>
     nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
 endif
+
+" indentLine
+let g:indentLine_setConceal = 0
+let g:indentLine_concealcursor = ""
