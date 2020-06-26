@@ -148,6 +148,8 @@ Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 
+Plug 'tpope/vim-fugitive'
+
 Plug 'alpertuna/vim-header'
 
 Plug 'posva/vim-vue'
@@ -281,6 +283,16 @@ set noshowmode
 if !has('gui_running')
   set t_Co=256
 endif
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 " coc-prettier(optional)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -569,3 +581,6 @@ let g:indentLine_concealcursor = ""
 imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,vue EmmetInstall
+
+" vim-gutter
+let g:gitgutter_max_signs = 1000
