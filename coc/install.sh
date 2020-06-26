@@ -2,7 +2,7 @@
 
 # :CocInstall coc-tsserver
 # :CocInstall coc-pairs
-# :CocInstall coc-rls
+# :CocInstall coc-rls | coc-rust-analyzer
 # :CocInstall coc-vetur
 # :CocInstall coc-java
 # :CocInstall coc-git
