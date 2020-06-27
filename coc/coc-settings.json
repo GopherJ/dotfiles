@@ -1,25 +1,40 @@
 {
-    "diagnostic.displayByAle": true,
-    "rust-analyzer.inlayHints.chainingHints": false,
-    "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-            "rootPatterns": [".ccls-root", "compile_commands.json"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": ".ccls-cache"
-                },
-                "client": {
-                    "snippetSupport": true
-                }
-            }
-        },
-        "go": {
-            "command": "gopls",
-            "rootPatterns": ["go.mod"],
-            "trace.server": "verbose",
-            "filetypes": ["go"]
-        }
-    }
+	"diagnostic.displayByAle": true,
+	"languageserver": {
+		"ccls": {
+			"command": "ccls",
+			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+			"rootPatterns": [".ccls-root", "compile_commands.json"],
+			"initializationOptions": {
+				"cache": {
+					"directory": ".ccls-cache"
+				},
+				"client": {
+					"snippetSupport": true
+				}
+			}
+		},
+		"go": {
+			"command": "gopls",
+			"rootPatterns": ["go.mod"],
+			"trace.server": "verbose",
+			"filetypes": ["go"]
+		}
+	},
+	"coc.preferences.formatOnSaveFiletypes": [
+		"json",
+		"javascript",
+		"typescript"
+	],
+	"vetur.format.defaultFormatter.html": "prettier",
+	"vetur.format.options.tabSize": 4,
+	"rust-analyzer.inlayHints.chainingHints": false,
+	"prettier.singleQuote": false,
+	"prettier.trailingComma": "es5",
+	"prettier.tabWidth": 4,
+	"prettier.semi": true,
+	"prettier.useTabs": true,
+	"prettier.bracketSpacing": true,
+	"prettier.disableLanguages": ["vue"],
+	"prettier.eslintIntegration": true
 }

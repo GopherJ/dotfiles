@@ -180,6 +180,8 @@ autocmd vimenter * colorscheme gruvbox
 "--------------------------------------------------------------------------------
 " Coc.Nvim configuration
 "--------------------------------------------------------------------------------
+let $NVIM_COC_LOG_LEVEL = 'info'
+
 if has("patch-8.1.1564")
     set signcolumn=number
 else
@@ -299,7 +301,7 @@ let g:lightline = {
 " coc-prettier(optional)
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-xmap <leader>f  <Plug>(coc-format-selected)
+vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " coc-jest(optional)
