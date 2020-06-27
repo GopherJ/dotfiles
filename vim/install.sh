@@ -66,12 +66,19 @@ sudo make install
 sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
 sudo update-alternatives --set vi /usr/local/bin/vim
 
-echoc "=> Installing sdkman and koltlin compiler..."
+echoc "=> Installing sdkman, koltlin compiler, kotlin language server..."
 command -v sdk > /dev/null || {
     curl -s "https://get.sdkman.io" | bash \
         && source "$HOME/.sdkman/bin/sdkman-init.sh" \
         && sdk install kotlin
 }
+if [ ! -f ~/Downloads/kotlin-language-server.zip ]; then
+    curl -fLo ~/Downloads/kotlin-language-server.zip  https://github.com/fwcd/kotlin-language-server/releases/download/0.6.0/server.zip
+fi
+if [ ! -d ~/kotlin-language-server ]; then
+    mkdir ~/kotlin-language-server
+fi
+sudo unzip ~/Downloads/kotlin-language-server.zip -d ~/kotlin-language-server
 
 echoc "=> Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

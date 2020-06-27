@@ -77,6 +77,8 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
+autocmd BufReadPost *.kt setlocal filetype=kotlin
+
 syntax enable
 
 nnoremap <silent>  n nzz
@@ -153,6 +155,8 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'tpope/vim-fugitive'
 
 Plug 'alpertuna/vim-header'
+
+Plug 'udalov/kotlin-vim'
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
