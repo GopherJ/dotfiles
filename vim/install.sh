@@ -66,6 +66,13 @@ sudo make install
 sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
 sudo update-alternatives --set vi /usr/local/bin/vim
 
+echoc "=> Installing sdkman and koltlin compiler..."
+command -v sdk > /dev/null || {
+    curl -s "https://get.sdkman.io" | bash \
+        && source "$HOME/.sdkman/bin/sdkman-init.sh" \
+        && sdk install kotlin
+}
+
 echoc "=> Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3
