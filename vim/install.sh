@@ -135,7 +135,7 @@ curl -fLo ~/.tmux.conf --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3
 curl -fLo ~/.tmuxline_snapshot --create-dirs \
     https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
-tmux source ~/.tmux.conf
+tmux source-file ~/.tmux.conf
 
 echoc "=> Configuring eslint..."
 curl -fLo ~/.eslintrc.js --create-dirs \
@@ -226,6 +226,17 @@ curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimr
     && python3 install.py --rust-completer --ts-completer --clangd-completer --js-completer --go-completer --java-completer \
     && cd ~/.vim/plugged/tern_for_vim \
     && npm install
+
+echoc "=> Installing vimspector..."
+if [ ! -d ~/.vim/pack ]; then
+    mkdir ~/.vim/pack
+fi
+if [ ! -f ~/Downloads/vimspector.tgz ]; then
+    curl -fLo ~/Downloads/vimspector.tgz https://github.com/puremourning/vimspector/releases/download/1565/linux-d1f2df36cc8e124e35b83c2ecb5fbf463fa3ceb0.tar.gz
+fi
+if [ ! -d ~/.vim/pack/vimspector ]; then
+    tar -zxf ~/Downloads/vimspector.tgz -C ~/.vim/pack
+fi
 
 echoc "=> Configuring neovim..."
 if [ ! -d ~/.config/nvim ]; then

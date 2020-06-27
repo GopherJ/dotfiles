@@ -407,7 +407,7 @@ let g:ale_fixers = {
 let g:ale_fix_on_save = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_enter = 1
-nnoremap <F4> :ALEDisable<CR>
+" nnoremap <F4> :ALEDisable<CR>
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
@@ -557,10 +557,10 @@ let g:asynctasks_template.cargo = [
 			\ "cwd=<root>",
 			\ "output=terminal",
 			\ ]
-noremap <silent><f5> :AsyncTask file-run<cr>
-noremap <silent><f9> :AsyncTask file-build<cr>
-noremap <silent><f6> :AsyncTask project-run<cr>
-noremap <silent><f7> :AsyncTask project-build<cr>
+noremap <silent><F1> :AsyncTask file-run<cr>
+noremap <silent><F2> :AsyncTask file-build<cr>
+noremap <silent><F3> :AsyncTask project-run<cr>
+noremap <silent><F4> :AsyncTask project-build<cr>
 
 " vim-vue
 " npm i -g eslint eslint-plugin-vue
@@ -592,3 +592,9 @@ autocmd FileType html,css,vue EmmetInstall
 
 " vim-gutter
 let g:gitgutter_max_signs = 1000
+
+" vimspector
+" let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+packadd! vimspector
+nnoremap <F8> :VimspectorReset<CR>
