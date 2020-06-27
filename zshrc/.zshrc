@@ -55,8 +55,9 @@ export GOPATH="$HOME/go"
 export CARGO_HOME="$HOME/.cargo"
 export DENO_INSTALL="$HOME/.deno"
 export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
+export DART_HOME="/usr/lib/dart"
 export FLUTTER_HOME="$HOME/flutter"
-export PATH="$CARGO_HOME/bin:$GOPATH/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:/usr/local/go/bin:$PATH"
+export PATH="$CARGO_HOME/bin:$GOPATH/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:/usr/local/go/bin:$PATH"
 export TERM=xterm-256color
 export EDITOR=vim
 export GITHUB_API_TOKEN=""
