@@ -53,12 +53,14 @@ export NVM_DIR="$HOME/.nvm"
 
 export GOPATH="$HOME/go"
 export CARGO_HOME="$HOME/.cargo"
-export PATH="$CARGO_HOME/bin:$GOPATH/bin:/usr/local/go/bin:$PATH"
+export DENO_INSTALL="$HOME/.deno"
+export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
+export FLUTTER_HOME="$HOME/flutter"
+export PATH="$CARGO_HOME/bin:$GOPATH/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:/usr/local/go/bin:$PATH"
 export TERM=xterm-256color
 export EDITOR=vim
 export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
-export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
 export FZF_DEFAULT_COMMAND="fd"
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then

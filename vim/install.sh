@@ -80,6 +80,12 @@ if [ ! -d ~/kotlin-language-server ]; then
 fi
 sudo unzip ~/Downloads/kotlin-language-server.zip -d ~/kotlin-language-server
 
+echoc "=> Installing flutter..."
+if [ ! -f ~/Downloads/flutter_linux_1.17.4-stable.tar.xz ]; then
+    curl -fLo ~/Downloads/flutter_linux_1.17.4-stable.tar.xz https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.17.4-stable.tar.xz
+fi
+xz -d ~/Downloads/flutter_linux_1.17.3-stable.tar.xz && tar -xf ~/Downloads/flutter_linux_1.17.3-stable.tar -C ~
+
 echoc "=> Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3
