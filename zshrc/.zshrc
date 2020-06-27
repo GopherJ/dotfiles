@@ -58,7 +58,7 @@ export TERM=xterm-256color
 export EDITOR=vim
 export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
-export JAVA_HOME="/usr/bin/java"
+export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
 export FZF_DEFAULT_COMMAND="fd"
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
