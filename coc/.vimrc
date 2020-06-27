@@ -51,7 +51,7 @@ set wildmenu
 
 set magic
 
-" set lazyredraw
+set lazyredraw
 
 set noerrorbells
 set novisualbell
