@@ -13,7 +13,7 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-11-jdk" "ccls" "unrar" "gitk")
+deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-11-jdk" "ccls" "unrar" "gitk" "apt-transport-https")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -85,6 +85,13 @@ if [ ! -f ~/Downloads/flutter_linux_1.17.4-stable.tar.xz ]; then
     curl -fLo ~/Downloads/flutter_linux_1.17.4-stable.tar.xz https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.17.4-stable.tar.xz
 fi
 xz -d ~/Downloads/flutter_linux_1.17.3-stable.tar.xz && tar -xf ~/Downloads/flutter_linux_1.17.3-stable.tar -C ~
+
+echoc "=> Installing dart..."
+sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' \
+    && sudo sh -c 'curl https://storage.googleapis.com/download.dartlang.org/linux/debian/dart_stable.list > /etc/apt/sources.list.d/dart_stable.list' \
+    && sudo apt update \
+    && sudo apt install dart \
+    && pub global activate stagehand
 
 echoc "=> Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \

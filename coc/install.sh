@@ -17,6 +17,7 @@
 # :CocInstall coc-go
 # :CocInstall coc-prettier
 # :CocInstall coc-cmake
+# :CocInstall coc-flutter
 #
 # vim -c 'CocInstall -sync coc-json coc-html|q'
 
