@@ -15,7 +15,7 @@
 # :CocInstall coc-json
 # :CocInstall coc-tasks
 # :CocInstall coc-go
-# :CocInstall coc-prettier
+# :CocInstall coc-prettier@1.1.12
 # :CocInstall coc-cmake
 # :CocInstall coc-flutter
 # :CocInstall coc-vimlsp
