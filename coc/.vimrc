@@ -119,6 +119,8 @@ nnoremap p{        vi{p
 nnoremap p(        vi(p
 nnoremap p'        vi'p
 nnoremap p"        vi"p
+nnoremap pp        vipp
+nnoremap ps        visp
 
 nnoremap <M-left>    :bp<CR>
 nnoremap <M-right>   :bn<CR>
@@ -135,6 +137,7 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'justinmk/vim-sneak'
+Plug 'rhysd/clever-f.vim'
 
 Plug 'rust-lang/rust.vim'
 
@@ -596,3 +599,11 @@ let g:gitgutter_max_signs = 1000
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 packadd! vimspector
 nnoremap <F8> :VimspectorReset<CR>
+
+" vim-sneak
+let g:sneak#s_next = 1
+let g:sneak#label = 1
+
+" clever-f.vim
+let g:clever_f_ignore_case=1
+let g:clever_f_smart_case=1
