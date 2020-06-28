@@ -1,5 +1,5 @@
 {
-	"diagnostic.displayByAle": true,
+	"diagnostic.displayByAle": false,
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",
@@ -32,7 +32,7 @@
 	],
 	"vetur.format.defaultFormatter.html": "prettier",
 	"vetur.format.options.tabSize": 4,
-	"rust-analyzer.inlayHints.chainingHints": false,
+	"rust-analyzer.inlayHints.chainingHints": true,
 	"prettier.singleQuote": false,
 	"prettier.trailingComma": "es5",
 	"prettier.tabWidth": 4,
