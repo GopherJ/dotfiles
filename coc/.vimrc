@@ -255,9 +255,9 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-command! -nargs=0 Format  : call CocAction('format')
-command! -nargs=? Fold    : call CocAction('fold', <f-args>)
-command! -nargs=0 OR      : call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Format  : call CocActionAsync('format')
+command! -nargs=? Fold    : call CocActionAsync('fold', <f-args>)
+command! -nargs=0 OR      : call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 "--------------------------------------------------------------------------------
 " Plugin configuration
@@ -287,10 +287,10 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " coc-jest
-command! -nargs=0 Jest :call  CocAction('runCommand', 'jest.projectTest')
-command! -nargs=0 JestCurrent :call  CocAction('runCommand', 'jest.fileTest', ['%'])
-nnoremap <leader>te :call CocAction('runCommand', 'jest.singleTest')<CR>
-command! JestInit :call CocAction('runCommand', 'jest.init')
+nnoremap <leader>te            : call CocAction('runCommand', 'jest.singleTest')<CR>
+command! -nargs=0 Jest         : call CocAction('runCommand', 'jest.projectTest')
+command! -nargs=0 JestCurrent  : call CocAction('runCommand', 'jest.fileTest', ['%'])
+command! JestInit              : call CocAction('runCommand', 'jest.init')
 
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
@@ -319,8 +319,8 @@ function! s:GrepArgs(...)
   return join(list, "\n")
 endfunction
 
-nnoremap <silent> <Leader>cf :exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
-nnoremap <silent> <space>w  :exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+nnoremap <silent> <Leader>cf  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 
 " vim-argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
