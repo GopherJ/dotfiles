@@ -96,6 +96,8 @@ nnoremap <C-D>     :qall!<CR>
 if has('nvim')
     nnoremap <M-]>     :vertical res +2<CR>
     nnoremap <M-[>     :vertical res -2<CR>
+
+    nnoremap <space>h  :checkhealth<cr>
 endif
 
 nnoremap <C-L>     <C-W>l
@@ -211,8 +213,8 @@ else
     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
 
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
@@ -279,6 +281,16 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+
+" coc-git
+nmap [g <Plug>(coc-git-prevchunk)
+nmap ]g <Plug>(coc-git-nextchunk)
+nmap gs <Plug>(coc-git-chunkinfo)
+nmap gm <Plug>(coc-git-commit)
+omap ig <Plug>(coc-git-chunk-inner)
+xmap ig <Plug>(coc-git-chunk-inner)
+omap ag <Plug>(coc-git-chunk-outer)
+xmap ag <Plug>(coc-git-chunk-outer)
 
 " coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -517,7 +529,6 @@ let g:tagbar_type_ansible = {
             \ ],
             \ 'sort' : 0
             \ }
-
 
 " NERDTree
 nnoremap <C-N> :NERDTreeToggle<CR>
