@@ -191,6 +191,8 @@ autocmd vimenter * colorscheme gruvbox
 "--------------------------------------------------------------------------------
 " Coc.Nvim configuration
 "--------------------------------------------------------------------------------
+
+" coc.nvim core
 let $NVIM_COC_LOG_LEVEL = 'info'
 
 if has("patch-8.1.1564")
@@ -264,26 +266,9 @@ command! -nargs=0 Format  : call CocActionAsync('format')
 command! -nargs=? Fold    : call CocActionAsync('fold', <f-args>)
 command! -nargs=0 OR      : call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-"--------------------------------------------------------------------------------
-" Plugin configuration
-"--------------------------------------------------------------------------------
-
-" lightline.vim
-set laststatus=2
-set noshowmode
-if !has('gui_running')
-  set t_Co=256
-endif
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+" coc-explorer
+nmap <space>r :CocCommand explorer<CR>
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " coc-actions
 function! s:cocActionsOpenFromSelected(type) abort
@@ -343,6 +328,27 @@ endfunction
 
 nnoremap <silent> <Leader>cf  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
+
+"--------------------------------------------------------------------------------
+" Plugin configuration
+"--------------------------------------------------------------------------------
+
+" lightline.vim
+set laststatus=2
+set noshowmode
+if !has('gui_running')
+  set t_Co=256
+endif
+let g:lightline = {
+      \ 'colorscheme': 'powerline',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
 " vim-argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>

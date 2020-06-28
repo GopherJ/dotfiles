@@ -19,6 +19,7 @@
 # :CocInstall coc-cmake
 # :CocInstall coc-flutter
 # :CocInstall coc-vimlsp
+# :CocInstall coc-explorer
 # :CocInstall coc-actions
 #
 # vim -c 'CocInstall -sync coc-json coc-html|q'
