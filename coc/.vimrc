@@ -283,8 +283,8 @@ let g:lightline = {
       \ }
 
 " coc-git
-nmap [g <Plug>(coc-git-prevchunk)
-nmap ]g <Plug>(coc-git-nextchunk)
+nmap ;k <Plug>(coc-git-prevchunk)
+nmap ;j <Plug>(coc-git-nextchunk)
 nmap gs <Plug>(coc-git-chunkinfo)
 nmap gm <Plug>(coc-git-commit)
 omap ig <Plug>(coc-git-chunk-inner)
