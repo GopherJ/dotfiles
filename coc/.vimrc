@@ -93,8 +93,10 @@ nnoremap vs        <C-W>s
 nnoremap <C-W>     :wq!<CR>
 nnoremap <C-D>     :qall!<CR>
 
-nnoremap <M-]>     :vertical res +2<CR>
-nnoremap <M-[>     :vertical res -2<CR>
+if has('nvim')
+    nnoremap <M-]>     :vertical res +2<CR>
+    nnoremap <M-[>     :vertical res -2<CR>
+endif
 
 nnoremap <C-L>     <C-W>l
 nnoremap <C-K>     <C-W>k
