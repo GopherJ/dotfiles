@@ -158,6 +158,7 @@ Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
+Plug 'skywind3000/vim-terminal-help'
 
 Plug 'tpope/vim-fugitive'
 
