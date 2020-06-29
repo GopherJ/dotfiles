@@ -33,6 +33,7 @@
 	"vetur.format.defaultFormatter.html": "prettier",
 	"vetur.format.options.tabSize": 4,
 	"rust-analyzer.inlayHints.chainingHints": true,
+	"rust-analyzer.updates.channel": "nightly",
 	"prettier.singleQuote": false,
 	"prettier.trailingComma": "es5",
 	"prettier.tabWidth": 4,
