@@ -1,6 +1,6 @@
 {
 	"configurations": {
-		"rust - launch": {
+		"cargo - run": {
 			"adapter": "vscode-cpptools",
 			"configuration": {
 				"name": "LLDB: Launch",
@@ -9,6 +9,19 @@
 				"cwd": "${workspaceRoot}",
 				"args": [],
 				"program": "${workspaceRoot}/target/debug/${TestIdentifier}",
+				"stopAtEntry": true,
+				"externalConsole": true
+			}
+		},
+		"cargo - test": {
+			"adapter": "vscode-cpptools",
+			"configuration": {
+				"name": "LLDB: Launch",
+				"type": "cppdbg",
+				"request": "launch",
+				"cwd": "${workspaceRoot}",
+				"args": [],
+				"program": "${workspaceRoot}/target/debug/deps/${TestIdentifier}",
 				"stopAtEntry": true,
 				"externalConsole": true
 			}
