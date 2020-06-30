@@ -43,5 +43,7 @@
 	"prettier.useTabs": true,
 	"prettier.bracketSpacing": true,
 	"prettier.disableLanguages": ["vue"],
-	"prettier.eslintIntegration": true
+	"prettier.eslintIntegration": true,
+	"explorer.previewAction.onHover": false,
+	"explorer.width": 30
 }
