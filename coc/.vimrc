@@ -1,6 +1,7 @@
 "let mapleader = "\<Space>"
 let &t_TI = ""
 let &t_TE = ""
+
 set tags=./tags,tags;$HOME
 
 set encoding=utf8
@@ -235,7 +236,6 @@ function! s:show_documentation()
         call CocActionAsync('doHover')
     endif
 endfunction
-autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>rn <Plug>(coc-rename)
 
