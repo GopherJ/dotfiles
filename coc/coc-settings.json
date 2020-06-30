@@ -45,5 +45,6 @@
 	"prettier.disableLanguages": ["vue"],
 	"prettier.eslintIntegration": true,
 	"explorer.previewAction.onHover": false,
-	"explorer.width": 30
+	"explorer.width": 30,
+	"explorer.file.showHiddenFiles": true
 }
