@@ -25,6 +25,7 @@ alias cf="cargo fmt"
 alias cb="cargo build --release"
 alias ck="cargo check"
 alias ct="cargo test -- --nocapture"
+alias ctbin="cargo test --no-run --message-format=json | jq -r 'select(.profile.test == true) | .filenames[]'"
 alias cdo="cargo doc --open"
 alias clean="sudo apt clean && sudo apt autoclean && sudo apt autoremove && dpkg -l | grep ^rc | awk '{print \$2}' | sudo xargs -i dpkg -P {}"
 alias doc-std='rustup doc --std'
