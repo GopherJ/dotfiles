@@ -2,7 +2,6 @@
 let &t_TI = ""
 let &t_TE = ""
 
-set tags=./tags,tags;$HOME
 set termguicolors
 
 set encoding=utf8
