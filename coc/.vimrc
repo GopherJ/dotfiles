@@ -363,12 +363,14 @@ let g:lightline = {
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
-      \              [ 'cocstatus', 'currentfunction', 'fileformat', 'fileencoding', 'filetype' ] ]
+      \              [ 'cocstatus', 'currentfunction', 'fileformat', 'fileencoding', 'filetype' ],
+      \              [ 'blame' ] ]
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
       \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
+      \   'currentfunction': 'CocCurrentFunction',
+      \   'blame': 'LightlineGitBlame',
       \ },
       \ }
 
