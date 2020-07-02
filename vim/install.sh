@@ -13,24 +13,18 @@ function echoc() {
     echo -e "$(tput setaf 2; tput bold)$1$(tput sgr0)"
 }
 
-deps=("curl" "git" "neovim" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-11-jdk" "ccls" "unrar" "gitk" "apt-transport-https")
+deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-11-jdk" "ccls" "unrar" "gitk" "apt-transport-https")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
     sudo apt install -y  $dep
 done
 
-echoc "=> Adding neovim PPA..."
-sudo add-apt-repository ppa:neovim-ppa/stable \
-    && sudo apt update \
-    && sudo apt upgrade
-
-# Todo: doesn't work in ubuntu20, linuxmint20 anymore
-
 echoc "=> Installing vim from PPA..."
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 sudo apt install vim-gtk3
+# Todo: doesn't work in ubuntu20, linuxmint20 anymore
 # echoc "=> Compiling vim from source..."
 # sudo apt install -y libncurses5-dev \
 #     libgnome2-dev \
@@ -70,6 +64,11 @@ sudo apt install vim-gtk3
 # sudo make install
 # sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
 # sudo update-alternatives --set vi /usr/local/bin/vim
+
+echoc "=> Installing neovim from PPA..."
+sudo add-apt-repository ppa:neovim-ppa/unstable \
+    && sudo apt update \
+    && sudo apt install neovim
 
 echoc "=> Installing sdkman, koltlin compiler, kotlin language server..."
 command -v sdk > /dev/null || {
