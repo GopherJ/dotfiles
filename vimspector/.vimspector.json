@@ -25,6 +25,15 @@
 				"stopAtEntry": true,
 				"externalConsole": true
 			}
+		},
+		"go - run": {
+			"adapter": "vscode-go",
+			"configuration": {
+				"request": "launch",
+				"program": "${fileDirname}",
+				"mode": "debug",
+				"dlvToolPath": "$GOPATH/bin/dlv"
+			}
 		}
 	}
 }
