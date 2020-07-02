@@ -26,45 +26,50 @@ sudo add-apt-repository ppa:neovim-ppa/stable \
     && sudo apt upgrade
 
 # Todo: doesn't work in ubuntu20, linuxmint20 anymore
-echoc "=> Compiling vim from source..."
-sudo apt install -y libncurses5-dev \
-    libgnome2-dev \
-    libgnomeui-dev \
-    libgtk2.0-dev \
-    libatk1.0-dev \
-    libbonoboui2-dev \
-    libcairo2-dev \
-    libx11-dev \
-    libxpm-dev \
-    libxt-dev \
-    python-dev \
-    python3-dev \
-    ruby-dev \
-    lua5.1 \
-    liblua5.1-dev \
-    libperl-dev \
-    git
-sudo apt remove \
-    vim \
-    vim-runtime \
-    gvim
-if [ ! -f ~/Downloads/vim ]; then
-    git clone https://github.com/vim/vim.git ~/Downloads/vim
-fi
-cd ~/Downloads/vim && ./configure --with-features=huge \
-    --enable-multibyte \
-    --enable-rubyinterp=yes \
-    --enable-python3interp=yes \
-    --with-python3-config-dir=$(python3-config --configdir) \
-    --enable-perlinterp=yes \
-    --enable-luainterp=yes \
-    --enable-gui=gtk2 \
-    --enable-cscope \
-    --prefix=/usr/local
-make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
-sudo make install
-sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
-sudo update-alternatives --set vi /usr/local/bin/vim
+
+echoc "=> Installing vim from PPA..."
+sudo add-apt-repository ppa:jonathonf/vim
+sudo apt update
+sudo apt install vim-gtk3
+# echoc "=> Compiling vim from source..."
+# sudo apt install -y libncurses5-dev \
+#     libgnome2-dev \
+#     libgnomeui-dev \
+#     libgtk2.0-dev \
+#     libatk1.0-dev \
+#     libbonoboui2-dev \
+#     libcairo2-dev \
+#     libx11-dev \
+#     libxpm-dev \
+#     libxt-dev \
+#     python-dev \
+#     python3-dev \
+#     ruby-dev \
+#     lua5.1 \
+#     liblua5.1-dev \
+#     libperl-dev \
+#     git
+# sudo apt remove \
+#     vim \
+#     vim-runtime \
+#     gvim
+# if [ ! -f ~/Downloads/vim ]; then
+#     git clone https://github.com/vim/vim.git ~/Downloads/vim
+# fi
+# cd ~/Downloads/vim && ./configure --with-features=huge \
+#     --enable-multibyte \
+#     --enable-rubyinterp=yes \
+#     --enable-python3interp=yes \
+#     --with-python3-config-dir=$(python3-config --configdir) \
+#     --enable-perlinterp=yes \
+#     --enable-luainterp=yes \
+#     --enable-gui=gtk2 \
+#     --enable-cscope \
+#     --prefix=/usr/local
+# make VIMRUNTIMEDIR=/usr/local/share/vim/vim82
+# sudo make install
+# sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
+# sudo update-alternatives --set vi /usr/local/bin/vim
 
 echoc "=> Installing sdkman, koltlin compiler, kotlin language server..."
 command -v sdk > /dev/null || {
