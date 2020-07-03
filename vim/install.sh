@@ -241,10 +241,11 @@ fi
 if [ ! -d ~/.vim/pack/vimspector ]; then
     tar -zxf ~/Downloads/vimspector.tgz -C ~/.vim/pack
 fi
-cd ~/.vim/pack/vimspector \
+cd ~/.vim/pack/vimspector/opt/vimspector \
     && ./install_gadget.py \
         --enable-c \
         --enable-go \
+        --enable-python \
         --force-enable-node \
         --force-enable-java \
     && go get -u github.com/go-delve/delve/cmd/dlv \
