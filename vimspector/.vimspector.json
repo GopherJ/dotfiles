@@ -1,6 +1,6 @@
 {
 	"configurations": {
-		"cargo - run": {
+		"cpptools - run": {
 			"adapter": "vscode-cpptools",
 			"configuration": {
 				"name": "LLDB: Launch",
@@ -13,7 +13,7 @@
 				"externalConsole": true
 			}
 		},
-		"cargo - test": {
+		"cpptools - test": {
 			"adapter": "vscode-cpptools",
 			"configuration": {
 				"name": "LLDB: Launch",
@@ -26,13 +26,66 @@
 				"externalConsole": true
 			}
 		},
-		"go - run": {
-			"adapter": "vscode-go",
+		"codelldb - run": {
+			"adapter": {
+				"variables": {
+					"CodeLLDB": "$HOME/.vscode/extensions/vadimcn.vscode-lldb-1.5.3"
+				},
+				"command": [
+					"${CodeLLDB}/adapter/codelldb",
+					"--liblldb",
+					"${CodeLLDB}/lldb/lib/liblldb.so",
+					"--libpython",
+					"/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6.so",
+					"--port",
+					"${port}"
+				],
+				"port": "${port}",
+				"configuration": {
+					"type": "lldb",
+					"name": "lldb",
+					"cargo": {}
+				}
+			},
 			"configuration": {
 				"request": "launch",
-				"program": "${fileDirname}",
-				"mode": "debug",
-				"dlvToolPath": "$GOPATH/bin/dlv"
+				"program": "${workspaceRoot}/target/debug/${TestIdentifier}",
+				"args": [],
+				"cwd": "${workspaceRoot}",
+				"env": {},
+				"terminal": "integrated",
+				"stopOnEntry": false
+			}
+		},
+		"codelldb - test": {
+			"adapter": {
+				"variables": {
+					"CodeLLDB": "$HOME/.vscode/extensions/vadimcn.vscode-lldb-1.5.3"
+				},
+				"command": [
+					"${CodeLLDB}/adapter/codelldb",
+					"--liblldb",
+					"${CodeLLDB}/lldb/lib/liblldb.so",
+					"--libpython",
+					"/usr/lib/python3.6/config-3.6m-x86_64-linux-gnu/libpython3.6.so",
+					"--port",
+					"${port}"
+				],
+				"port": "${port}",
+				"configuration": {
+					"type": "lldb",
+					"name": "lldb",
+					"cargo": {}
+				}
+			},
+			"configuration": {
+				"request": "launch",
+				"program": "${workspaceRoot}/target/debug/deps/${TestIdentifier}",
+				"args": [],
+				"cwd": "${workspaceRoot}",
+				"env": {},
+				"terminal": "integrated",
+				"stopOnEntry": false
 			}
 		}
 	}

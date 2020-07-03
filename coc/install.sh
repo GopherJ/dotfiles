@@ -21,6 +21,7 @@
 # :CocInstall coc-vimlsp
 # :CocInstall coc-explorer
 # :CocInstall coc-actions
+# :CocInstall coc-calc
 #
 # vim -c 'CocInstall -sync coc-json coc-html|q'
 
