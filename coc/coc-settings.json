@@ -47,6 +47,6 @@
 	"explorer.previewAction.onHover": false,
 	"explorer.width": 30,
 	"explorer.file.showHiddenFiles": true,
-	"git.addGBlameToVirtualText": true,
-	"git.addGBlameToBufferVar": true
+	"git.addGBlameToVirtualText": false,
+	"git.addGBlameToBufferVar": false
 }

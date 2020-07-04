@@ -160,6 +160,11 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'scrooloose/nerdtree'
 Plug 'terryma/vim-expand-region'
 
+Plug 'heavenshell/vim-jsdoc', {
+            \ 'for': ['javascript', 'javascript.jsx','typescript'],
+            \ 'do': 'make install'
+            \}
+
 Plug 'honza/vim-snippets'
 
 Plug 'dense-analysis/ale'
@@ -644,3 +649,7 @@ let g:sneak#label = 1
 " clever-f.vim
 let g:clever_f_ignore_case=1
 let g:clever_f_smart_case=1
+
+" vim-jsdoc
+let g:jsdoc_enable_es6 = 1
+let g:jsdoc_input_description = 1
