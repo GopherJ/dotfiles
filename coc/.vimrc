@@ -155,6 +155,7 @@ Plug 'justinmk/vim-sneak'
 Plug 'rhysd/clever-f.vim'
 
 Plug 'rust-lang/rust.vim'
+Plug 'govim/govim'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
