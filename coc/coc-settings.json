@@ -26,7 +26,7 @@
 		"dart"
 	],
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
-	"coc.preferences.colorSupport": false,
+	"coc.preferences.colorSupport": true,
 	"vetur.format.defaultFormatter.html": "prettier",
 	"vetur.format.options.tabSize": 4,
 	"rust-analyzer.inlayHints.chainingHints": true,
