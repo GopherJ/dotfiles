@@ -186,6 +186,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'alpertuna/vim-header'
 
 Plug 'udalov/kotlin-vim'
+Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
