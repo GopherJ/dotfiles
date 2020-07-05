@@ -1,5 +1,4 @@
 {
-	"diagnostic.displayByAle": false,
 	"languageserver": {
 		"ccls": {
 			"command": "ccls",

@@ -169,8 +169,6 @@ Plug 'heavenshell/vim-jsdoc', {
 
 Plug 'honza/vim-snippets'
 
-Plug 'dense-analysis/ale'
-
 Plug 'cespare/vim-toml'
 Plug 'Yggdroot/indentLine'
 Plug 'morhetz/gruvbox'
@@ -414,56 +412,6 @@ let g:mkdp_preview_options = {
             \ 'hide_yaml_meta': 1,
             \ 'sequence_diagrams': {}
             \ }
-
-" ale
-augroup FiletypeGroup
-    autocmd!
-    au BufNewFile,BufRead *.jsx set filetype=javascript.jsx
-augroup END
-
-let g:ale_lint_delay=200
-
-let g:ale_completion_enabled = 0
-set omnifunc=ale#completion#OmniFunc
-let g:ale_completion_tsserver_autoimport = 1
-
-let g:ale_sign_column_always = 1
-let g:ale_warn_about_trailing_whitespace = 1
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
-let g:ale_list_window_size = 5
-
-let g:ale_pattern_options = {
-            \ '\.min\.js$': {'ale_linters': [], 'ale_fixers': []},
-            \ '\.min\.css$': {'ale_linters': [], 'ale_fixers': []},
-            \ }
-let g:ale_linter_aliases = {
-            \ 'jsx': ['css', 'javascript'],
-            \ 'vue': ['vue', 'javascript'],
-            \ }
-let g:ale_linters = {
-            \ 'jsx': ['eslint', 'stylelint'],
-            \ 'javascript': ['eslint'],
-            \ 'typescript': ['tsserver'],
-            \ 'vue': ['vls', 'eslint'],
-            \ 'cpp': ['cppcheck'],
-            \ 'python': ['flake8', 'pylint'],
-            \ }
-let g:ale_fixers = {
-            \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-            \ 'python': ['yapf'],
-            \ 'javascript': ['eslint', 'prettier'],
-            \ 'typescript': ['eslint', 'prettier'],
-            \ 'markdown': ['remark-cli'],
-            \ 'vue': ['prettier'],
-            \ }
-
-let g:ale_fix_on_save = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_enter = 1
-" nnoremap <F4> :ALEDisable<CR>
-" nmap <silent> <leader>k <Plug>(ale_previous_wrap)
-" nmap <silent> <leader>j <Plug>(ale_next_wrap)
 
 " vim-fzf
 let g:fzf_layout    = { 'down': '~20%' }
