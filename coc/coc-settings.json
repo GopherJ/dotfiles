@@ -34,6 +34,7 @@
 	"go.goplsOptions": {
 		"completeUnimported": true
 	},
+	"clangd.enabled": false,
 	"prettier.singleQuote": false,
 	"prettier.trailingComma": "es5",
 	"prettier.tabWidth": 4,

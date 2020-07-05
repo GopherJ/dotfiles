@@ -67,6 +67,10 @@ sudo apt install vim-gtk3
 # sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
 # sudo update-alternatives --set vi /usr/local/bin/vim
 
+echoc "=> Installing clangd-9"
+sudo apt install clangd-9 \
+    && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
+
 echoc "=> Installing neovim from PPA..."
 sudo add-apt-repository ppa:neovim-ppa/unstable \
     && sudo apt update \
