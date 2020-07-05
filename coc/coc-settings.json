@@ -23,7 +23,8 @@
 		"json",
 		"javascript",
 		"typescript",
-		"dart"
+		"dart",
+		"go"
 	],
 	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
 	"coc.preferences.colorSupport": true,
