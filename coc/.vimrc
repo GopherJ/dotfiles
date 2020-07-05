@@ -195,6 +195,7 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-rooter'
+Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
@@ -662,3 +663,8 @@ let g:clever_f_smart_case=1
 " vim-jsdoc
 let g:jsdoc_enable_es6 = 1
 let g:jsdoc_input_description = 1
+
+" vim-better-whitespace
+let g:better_whitespace_enabled=1
+let g:strip_whitespace_on_save=1
+let g:strip_whitespace_confirm=0
