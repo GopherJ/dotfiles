@@ -26,6 +26,14 @@ echoc "=> Installing vim from PPA..."
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
 sudo apt install vim-gtk3
+
+echoc "=> Installing qemu-kvm..."
+sudo apt install qemu-kvm \
+    && sudo adduser $USER kvm
+
+# newgrp kvm
+# su - $USER
+
 # Todo: doesn't work in ubuntu20, linuxmint20 anymore
 # echoc "=> Compiling vim from source..."
 # sudo apt install -y libncurses5-dev \
