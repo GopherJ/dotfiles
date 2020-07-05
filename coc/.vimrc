@@ -7,7 +7,7 @@ set termguicolors
 set encoding=utf8
 set hidden
 
-set updatetime=300
+set updatetime=100
 set cmdheight=2
 
 set foldmethod=manual
@@ -331,6 +331,11 @@ vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+
+" coc-go
+autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
+autocmd FileType go nmap gty :CocCommand go.tags.add yaml<cr>
+autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 
 " coc-lists
 nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
