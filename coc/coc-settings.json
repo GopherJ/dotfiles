@@ -14,12 +14,6 @@
 				}
 			}
 		},
-		"go": {
-			"command": "gopls",
-			"rootPatterns": ["go.mod"],
-			"trace.server": "verbose",
-			"filetypes": ["go"]
-		},
 		"kotlin": {
 			"command": "~/kotlin-language-server/server/bin/kotlin-language-server",
 			"filetypes": ["kotlin"]
