@@ -288,6 +288,7 @@ command! -nargs=0 Format        : call CocActionAsync('format')
 command! -nargs=? Fold          : call CocActionAsync('fold', <f-args>)
 command! -nargs=0 GitChunkUndo  : call CocActionAsync('runCommand', 'git.chunkUndo')
 command! -nargs=0 GitChunkStage : call CocActionAsync('runCommand', 'git.chunkStage')
+command! -nargs=0 GitShowCommit : call CocAction('runCommand', 'git.showCommit')
 command! -nargs=0 OR            : call CocActionAsync('runCommand', 'editor.action.organizeImport')
 autocmd BufWritePre *.go        : call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
