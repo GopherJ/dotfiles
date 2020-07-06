@@ -206,6 +206,9 @@ call plug#end()
 "--------------------------------------------------------------------------------
 set background=dark
 autocmd vimenter * colorscheme gruvbox
+if !has('nvim')
+    autocmd vimenter * :hi clear IncSearch
+endif
 
 
 "--------------------------------------------------------------------------------
