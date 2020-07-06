@@ -290,7 +290,8 @@ echoc "=> Configuring rust..." \
     && cargo install --git https://github.com/xen0n/autojump-rs \
     && cargo install deno \
     && cargo install --git https://github.com/sharkdp/fd \
-    && cargo install du-dust
+    && cargo install du-dust \
+    && cargo install watchexec
 
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
 echo "Your github username?"
