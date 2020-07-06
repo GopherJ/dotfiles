@@ -47,5 +47,6 @@
 	"explorer.width": 30,
 	"explorer.file.showHiddenFiles": true,
 	"git.addGBlameToVirtualText": false,
-	"git.addGBlameToBufferVar": false
+	"git.addGBlameToBufferVar": false,
+	"coc.preferences.maxFileSize": "102400"
 }
