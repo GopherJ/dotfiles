@@ -48,5 +48,10 @@
 	"explorer.file.showHiddenFiles": true,
 	"git.addGBlameToVirtualText": false,
 	"git.addGBlameToBufferVar": false,
+	"git.addedSign.hlGroup": "GitGutterAdd",
+	"git.changedSign.hlGroup": "GitGutterChange",
+	"git.removedSign.hlGroup": "GitGutterDelete",
+	"git.topRemovedSign.hlGroup": "GitGutterDelete",
+	"git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
 	"coc.preferences.maxFileSize": "102400"
 }
