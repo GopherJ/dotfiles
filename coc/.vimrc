@@ -283,9 +283,10 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 command! -nargs=0 Format        : call CocActionAsync('format')
 command! -nargs=? Fold          : call CocActionAsync('fold', <f-args>)
-command! -nargs=0 GitChunkUndo  : call CocAction('runCommand', 'git.chunkUndo')
+command! -nargs=0 GitChunkUndo  : call CocActionAsync('runCommand', 'git.chunkUndo')
+command! -nargs=0 GitChunkStage : call CocActionAsync('runCommand', 'git.chunkStage')
 command! -nargs=0 OR            : call CocActionAsync('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go        : call CocActionAsync('runCommand', 'editor.action.organizeImport')
 
 " coc-explorer
 nmap <space>r :CocCommand explorer<CR>
