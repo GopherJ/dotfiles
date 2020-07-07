@@ -10,6 +10,7 @@
 # :CocInstall coc-git
 # :CocInstall coc-lists
 # :CocInstall coc-snippets
+# :CocInstall coc-eslint
 # :CocInstall coc-emmet
 # :CocInstall coc-jest
 # :CocInstall coc-json
