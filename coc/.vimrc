@@ -269,7 +269,8 @@ augroup end
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
 
-nmap <leader>ac  <Plug>(coc-codeaction)
+nmap <leader>ca  <Plug>(coc-codeaction)
+nmap <leader>la  <Plug>(coc-codelens-action)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 xmap if <Plug>(coc-funcobj-i)
@@ -421,9 +422,9 @@ let g:mkdp_preview_options = {
 
 " vim-fzf
 let g:fzf_layout    = { 'down': '~20%' }
-nnoremap <C-P>  : Files<CR>
-nnoremap <C-B>  : Buffers<CR>
-nnoremap <C-F>  : Rg<CR>
+nnoremap <C-F>  : Files<CR>
+" nnoremap <C-B>  : Buffers<CR>
+nnoremap <C-P>  : Rg<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
