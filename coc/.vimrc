@@ -393,6 +393,7 @@ let g:lightline = {
       \   'blame': 'LightlineGitBlame',
       \ },
       \ }
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " vim-argwrap
 nnoremap <silent> <leader>a :ArgWrap<CR>
