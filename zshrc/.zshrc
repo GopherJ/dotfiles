@@ -66,6 +66,7 @@ export EDITOR=vim
 export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
 export FZF_DEFAULT_COMMAND="fd"
+export FZF_CTRL_T_COMMAND="fd"
 export GO111MODULE=on
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
