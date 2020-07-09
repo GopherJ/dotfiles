@@ -1,60 +1,60 @@
 {
-	"languageserver": {
-		"ccls": {
-			"command": "ccls",
-			"filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-			"rootPatterns": [".ccls-root", "compile_commands.json"],
-			"initializationOptions": {
-				"cache": {
-					"directory": ".ccls-cache"
-				},
-				"client": {
-					"snippetSupport": true
-				}
-			}
-		},
-		"kotlin": {
-			"command": "~/kotlin-language-server/server/bin/kotlin-language-server",
-			"filetypes": ["kotlin"]
-		}
-	},
-	"coc.preferences.formatOnSaveFiletypes": [
-		"json",
-		"javascript",
-		"typescript",
-		"dart",
-		"go"
-	],
-	"coc.preferences.currentFunctionSymbolAutoUpdate": true,
-	"coc.preferences.colorSupport": true,
-	"coc.preferences.maxFileSize": "102400",
-	"vetur.format.defaultFormatter.html": "prettier",
-	"vetur.format.options.tabSize": 4,
-	"rust-analyzer.inlayHints.chainingHints": true,
-	"rust-analyzer.updates.channel": "nightly",
-	"rust-analyzer.procMacro.enable": true,
-	"rust-analyzer.inlayHints.refreshOnInsertMode": true,
-	"go.goplsOptions": {
-		"completeUnimported": true
-	},
-	"clangd.enabled": false,
-	"prettier.singleQuote": false,
-	"prettier.trailingComma": "es5",
-	"prettier.tabWidth": 4,
-	"prettier.semi": true,
-	"prettier.useTabs": true,
-	"prettier.bracketSpacing": true,
-	"prettier.disableLanguages": ["vue"],
-	"prettier.eslintIntegration": true,
-	"explorer.previewAction.onHover": false,
-	"explorer.width": 30,
-	"explorer.file.showHiddenFiles": true,
-	"git.addGBlameToVirtualText": false,
-	"git.addGBlameToBufferVar": false,
-	"git.addedSign.hlGroup": "GitGutterAdd",
-	"git.changedSign.hlGroup": "GitGutterChange",
-	"git.removedSign.hlGroup": "GitGutterDelete",
-	"git.topRemovedSign.hlGroup": "GitGutterDelete",
-	"git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-	"eslint.autoFixOnSave": true
+    "languageserver": {
+        "ccls": {
+            "command": "ccls",
+            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+            "rootPatterns": [".ccls-root", "compile_commands.json"],
+            "initializationOptions": {
+                "cache": {
+                    "directory": ".ccls-cache"
+                },
+                "client": {
+                    "snippetSupport": true
+                }
+            }
+        },
+        "kotlin": {
+            "command": "~/kotlin-language-server/server/bin/kotlin-language-server",
+            "filetypes": ["kotlin"]
+        }
+    },
+    "coc.preferences.formatOnSaveFiletypes": [
+        "json",
+        "javascript",
+        "typescript",
+        "dart",
+        "go"
+    ],
+    "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+    "coc.preferences.colorSupport": true,
+    "coc.preferences.maxFileSize": "102400",
+    "vetur.format.defaultFormatter.html": "prettier",
+    "vetur.format.options.tabSize": 4,
+    "diagnostic.messageTarget": "echo",
+    "rust-analyzer.inlayHints.chainingHints": true,
+    "rust-analyzer.updates.channel": "nightly",
+    "rust-analyzer.procMacro.enable": true,
+    "rust-analyzer.inlayHints.refreshOnInsertMode": true,
+    "go.goplsOptions": {
+        "completeUnimported": true
+    },
+    "clangd.enabled": false,
+    "prettier.singleQuote": false,
+    "prettier.trailingComma": "es5",
+    "prettier.tabWidth": 4,
+    "prettier.semi": true,
+    "prettier.useTabs": true,
+    "prettier.bracketSpacing": true,
+    "prettier.disableLanguages": ["vue"],
+    "prettier.eslintIntegration": true,
+    "explorer.previewAction.onHover": false,
+    "explorer.width": 30,
+    "explorer.file.showHiddenFiles": true,
+    "git.addGBlameToVirtualText": false,
+    "git.addGBlameToBufferVar": false,
+    "git.addedSign.hlGroup": "GitGutterAdd",
+    "git.changedSign.hlGroup": "GitGutterChange",
+    "git.removedSign.hlGroup": "GitGutterDelete",
+    "git.topRemovedSign.hlGroup": "GitGutterDelete",
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
 }
