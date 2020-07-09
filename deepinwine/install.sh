@@ -22,16 +22,19 @@ done
 
 
 echoc "=> Cloning deepin-wine-ubuntu AND install deepin-wine environment..."
-git clone https://github.com/wszqkzqk/deepin-wine-ubuntu \
-    && ./install.sh
+if [ ! -d ~/Downloads/deepin-wine-ubuntu ]; then
+    git clone https://github.com/wszqkzqk/deepin-wine-ubuntu ~/Downloads/deepin-wine-ubuntu
+fi
+cd ~/Downloads/deepin-wine-ubuntu && ./install_2.8.22.sh && cd -
 
 echoc "=> Installing and configuring wechat..."
 if [ ! -f  ~/Downloads/$WECHAT_DEB ]; then
     curl -fLo  ~/Downloads/$WECHAT_DEB https://mirrors.aliyun.com/deepin/pool/non-free/d/deepin.com.wechat/$WECHAT_DEB --retry-delay 2 --retry 3
 fi
 sudo dpkg -i ~/Downloads/$WECHAT_DEB
+sudo apt install -f -y
 if [ ! -f ~/Downloads/msyh_consola.ttf ]; then
-    curl -fLo ~/Downloads/msyh_consola.ttf https://github.com/GopherJ/Fonts/GopherJ/Fonts/raw/master/msyh_consola.ttf --retry-delay 2 --retry 3
+    curl -fLo ~/Downloads/msyh_consola.ttf https://github.com/GopherJ/Fonts/raw/master/msyh_consola.ttf --retry-delay 2 --retry 3
 fi
 if [ ! -f ~/Downloads/msyh_consola_config.reg ]; then
     curl -fLo ~/Downloads/msyh_consola_config.reg https://github.com/GopherJ/cfg/blob/master/deepinwine/msyh_consola_config.reg --retry-delay 2 --retry 3
