@@ -40,11 +40,16 @@ if [ ! -f ~/Downloads/msyh_consola_config.reg ]; then
     curl -fLo ~/Downloads/msyh_consola_config.reg https://github.com/GopherJ/cfg/blob/master/deepinwine/msyh_consola_config.reg --retry-delay 2 --retry 3
 fi
 
+# The following line must be run after starting at least once wechat
+
 cp ~/Downloads/msyh_consola.ttf ~/.deepinwine/Deepin-WeChat/drive_c/windows/Fonts \
     && cp ~/Downloads/msyh_consola_config.reg ~/.deepinwine/Deepin-WeChat \
     && sed -i 's/"MS Shell Dlg"=".*"/"MS Shell Dlg"="msyh_consola"/g' ~/.deepinwine/Deepin-WeChat/system.reg \
     && sed -i 's/"MS Shell Dlg 2"=".*"/"MS Shell Dlg 2"="msyh_consola"/g' ~/.deepinwine/Deepin-WeChat/system.reg \
     && cd ~/.deepinwine/Deepin-WeChat && WINEPREFIX=~/.deepinwine/Deepin-WeChat deepin-wine regedit msyh_consola_config.reg
+
+echoc "=> Configuring DPI if it's too small...'"
+WINEPREFIX=~/.deepinwine/Deepin-WeChat  /usr/bin/deepin-wine  winecfg
 
 echoc "=> Download other softwares if you need..."
 xdg-open https://mirrors.aliyun.com/deepin/pool/non-free/d
