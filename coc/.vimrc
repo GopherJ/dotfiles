@@ -260,7 +260,7 @@ endfunction
 
 nmap <leader>rn <Plug>(coc-rename)
 
-augroup mygroup
+augroup CocCustomGroup
   autocmd!
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
@@ -271,7 +271,7 @@ nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 nmap <leader>ca  <Plug>(coc-codeaction)
 nmap <leader>la  <Plug>(coc-codelens-action)
-nmap <leader>qf  <Plug>(coc-fix-current)
+nmap <leader>fc  <Plug>(coc-fix-current)
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
@@ -607,6 +607,8 @@ let g:sneak#label = 1
 " clever-f.vim
 let g:clever_f_ignore_case=1
 let g:clever_f_smart_case=1
+map ; <Plug>(clever-f-repeat-forward)
+map , <Plug>(clever-f-repeat-back)
 
 " vim-jsdoc
 let g:jsdoc_enable_es6 = 1
