@@ -22,6 +22,8 @@ do
     sudo apt install -y  $dep
 done
 
+sudo update-alternatives --config java
+
 echoc "=> Installing vim from PPA..."
 sudo add-apt-repository ppa:jonathonf/vim
 sudo apt update
@@ -103,6 +105,7 @@ if [ ! -f ~/Downloads/flutter_linux_1.17.4-stable.tar.xz ]; then
     curl -fLo ~/Downloads/flutter_linux_1.17.4-stable.tar.xz https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.17.4-stable.tar.xz
 fi
 xz -d ~/Downloads/flutter_linux_1.17.3-stable.tar.xz && tar -xf ~/Downloads/flutter_linux_1.17.3-stable.tar -C ~
+flutter doctor --android-licenses
 
 echoc "=> Installing dart..."
 sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' \
