@@ -3,7 +3,7 @@
 set -e
 
 DISTRO="$(lsb_release -is)"
-NODE_VERSION="v10.15.3"
+NODE_VERSION="v12.18.2"
 
 if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ] && [ $DISTRO != "Linuxmint" ] && [ $DISTRO != "LinuxMint" ]; then
     echo "Error: distribution is not one of (deepin, ubuntu, linuxmint)" && exit 1
@@ -240,7 +240,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
 
 echoc "=> Configuring vim and building YCM..."
 curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimrc --retry-delay 2 --retry 3 \
-    && sed -i "s/v10.15.3/$NODE_VERSION/g" ~/.vimrc \
+    && sed -i "s/v12.18.2/$NODE_VERSION/g" ~/.vimrc \
     && vim +PlugInstall \
     && vim +GoInstallBinaries \
     && cd ~/.vim/plugged/YouCompleteMe \

@@ -260,9 +260,9 @@ set updatetime=300
 " npm i -g javascript-typescript-langserver
 let g:LanguageClient_serverCommands = {
             \ 'rust': ['~/.cargo/bin/rustup', 'run', 'nightly', 'rls'],
-            \ 'javascript': ['~/.nvm/versions/node/v10.15.3/bin/javascript-typescript-stdio'],
-            \ 'typescript': ['~/.nvm/versions/node/v10.15.3/bin/tsserver'],
-            \ 'vue': ['~/.nvm/versions/node/v10.15.3/bin/vls'],
+            \ 'javascript': ['~/.nvm/versions/node/v12.18.2/bin/javascript-typescript-stdio'],
+            \ 'typescript': ['~/.nvm/versions/node/v12.18.2/bin/tsserver'],
+            \ 'vue': ['~/.nvm/versions/node/v12.18.2/bin/vls'],
             \ }
 nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
