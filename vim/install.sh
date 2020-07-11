@@ -77,6 +77,13 @@ sudo apt install qemu-kvm \
 # sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
 # sudo update-alternatives --set vi /usr/local/bin/vim
 
+echoc "=> Installing tauri's dependencies..."
+sudo apt update && sudo apt install libwebkit2gtk-4.0-dev \
+    build-essential \
+    curl \
+    libssl-dev \
+    appmenu-gtk3-module
+
 echoc "=> Installing clangd-9"
 sudo apt install clangd-9 \
     && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
@@ -294,7 +301,8 @@ echoc "=> Configuring rust..." \
     && cargo install deno \
     && cargo install --git https://github.com/sharkdp/fd \
     && cargo install du-dust \
-    && cargo install watchexec
+    && cargo install watchexec \
+    && cargo install tauri-bundler
 
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
 echo "Your github username?"
