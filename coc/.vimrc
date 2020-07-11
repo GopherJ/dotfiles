@@ -397,7 +397,7 @@ let g:lightline = {
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " vim-argwrap
-nnoremap <silent> <leader>a :ArgWrap<CR>
+" nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " vim-header
 let g:header_field_author = 'Cheng JIANG'
