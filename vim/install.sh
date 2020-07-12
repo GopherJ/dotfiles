@@ -15,7 +15,7 @@ function echoc() {
 
 # if java jdk isn't 8, we need to do
 # sudo update-alternatives --config java
-deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6")
+deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -259,12 +259,14 @@ echoc "=> Installing vimspector..."
 if [ ! -d ~/.vim/pack ]; then
     mkdir ~/.vim/pack
 fi
-if [ ! -f ~/Downloads/vimspector.tgz ]; then
-    curl -fLo ~/Downloads/vimspector.tgz https://github.com/puremourning/vimspector/releases/download/1565/linux-d1f2df36cc8e124e35b83c2ecb5fbf463fa3ceb0.tar.gz
-fi
-if [ ! -d ~/.vim/pack/vimspector ]; then
-    tar -zxf ~/Downloads/vimspector.tgz -C ~/.vim/pack
-fi
+# if [ ! -f ~/Downloads/vimspector.tgz ]; then
+#     curl -fLo ~/Downloads/vimspector.tgz https://github.com/puremourning/vimspector/releases/download/1565/linux-d1f2df36cc8e124e35b83c2ecb5fbf463fa3ceb0.tar.gz
+# fi
+# if [ ! -d ~/.vim/pack/vimspector ]; then
+#     tar -zxf ~/Downloads/vimspector.tgz -C ~/.vim/pack
+# fi
+
+git clone https://github.com/puremourning/vimspector ~/.vim/pack/vimspector/opt/vimspector
 cd ~/.vim/pack/vimspector/opt/vimspector \
     && ./install_gadget.py \
         --enable-c \
