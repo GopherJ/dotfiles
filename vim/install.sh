@@ -3,7 +3,7 @@
 set -e
 
 DISTRO="$(lsb_release -is)"
-NODE_VERSION="v10.15.3"
+NODE_VERSION="v12.18.2"
 
 if [ $DISTRO != "Deepin" ] && [ $DISTRO != "Ubuntu" ] && [ $DISTRO != "Linuxmint" ] && [ $DISTRO != "LinuxMint" ]; then
     echo "Error: distribution is not one of (deepin, ubuntu, linuxmint)" && exit 1
@@ -21,6 +21,8 @@ for dep in "${deps[@]}"
 do
     sudo apt install -y  $dep
 done
+
+sudo update-alternatives --config java
 
 echoc "=> Installing vim from PPA..."
 sudo add-apt-repository ppa:jonathonf/vim
@@ -75,6 +77,13 @@ sudo apt install qemu-kvm \
 # sudo update-alternatives --install /usr/bin/vi vi /usr/local/bin/vim 1
 # sudo update-alternatives --set vi /usr/local/bin/vim
 
+echoc "=> Installing tauri's dependencies..."
+sudo apt update && sudo apt install libwebkit2gtk-4.0-dev \
+    build-essential \
+    curl \
+    libssl-dev \
+    appmenu-gtk3-module
+
 echoc "=> Installing clangd-9"
 sudo apt install clangd-9 \
     && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
@@ -103,6 +112,7 @@ if [ ! -f ~/Downloads/flutter_linux_1.17.4-stable.tar.xz ]; then
     curl -fLo ~/Downloads/flutter_linux_1.17.4-stable.tar.xz https://storage.googleapis.com/flutter_infra/releases/stable/linux/flutter_linux_1.17.4-stable.tar.xz
 fi
 xz -d ~/Downloads/flutter_linux_1.17.3-stable.tar.xz && tar -xf ~/Downloads/flutter_linux_1.17.3-stable.tar -C ~
+flutter doctor --android-licenses
 
 echoc "=> Installing dart..."
 sudo sh -c 'curl https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -' \
@@ -237,7 +247,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
 
 echoc "=> Configuring vim and building YCM..."
 curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimrc --retry-delay 2 --retry 3 \
-    && sed -i "s/v10.15.3/$NODE_VERSION/g" ~/.vimrc \
+    && sed -i "s/v12.18.2/$NODE_VERSION/g" ~/.vimrc \
     && vim +PlugInstall \
     && vim +GoInstallBinaries \
     && cd ~/.vim/plugged/YouCompleteMe \
@@ -291,7 +301,8 @@ echoc "=> Configuring rust..." \
     && cargo install deno \
     && cargo install --git https://github.com/sharkdp/fd \
     && cargo install du-dust \
-    && cargo install watchexec
+    && cargo install watchexec \
+    && cargo install tauri-bundler
 
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
 echo "Your github username?"
