@@ -293,7 +293,7 @@ command! -nargs=0 GitShowCommit : call CocActionAsync('runCommand', 'git.showCom
 command! -nargs=0 GitDiffCached : call CocActionAsync('runCommand', 'git.diffCached')
 command! -nargs=0 OR            : call CocActionAsync('runCommand', 'editor.action.organizeImport')
 autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
 " coc-explorer
 nmap <space>r :CocCommand explorer<CR>
