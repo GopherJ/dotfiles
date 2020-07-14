@@ -227,6 +227,14 @@ else
     set signcolumn=yes
 endif
 
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+call SetupCommandAbbrs('C', 'CocConfig')
+
 let g:coc_global_extensions = [
       \'coc-tsserver',
       \'coc-pairs',
@@ -286,13 +294,13 @@ function! s:show_documentation()
     endif
 endfunction
 
-nmap <leader>rn <Plug>(coc-rename)
-
 augroup CocCustomGroup
   autocmd!
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+nmap <leader>rn <Plug>(coc-rename)
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
