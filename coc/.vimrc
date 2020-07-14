@@ -224,6 +224,30 @@ else
     set signcolumn=yes
 endif
 
+let g:coc_global_extensions = [
+      \'coc-tsserver',
+      \'coc-pairs',
+      \'coc-rust-analyzer',
+      \'coc-vetur',
+      \'coc-java',
+      \'coc-git',
+      \'coc-lists',
+      \'coc-snippets',
+      \'coc-eslint',
+      \'coc-emmet',
+      \'coc-jest',
+      \'coc-json',
+      \'coc-tasks',
+      \'coc-go',
+      \'coc-prettier@1.1.12',
+      \'coc-cmake',
+      \'coc-flutter',
+      \'coc-vimlsp',
+      \'coc-explorer',
+      \'coc-actions',
+      \'coc-calc'
+      \]
+
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
             \ <SID>check_back_space() ? "\<TAB>" :
