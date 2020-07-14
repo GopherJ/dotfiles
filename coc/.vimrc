@@ -239,7 +239,7 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-tasks',
       \'coc-go',
-      \'coc-prettier@1.1.12',
+      \'coc-prettier',
       \'coc-cmake',
       \'coc-flutter',
       \'coc-vimlsp',
