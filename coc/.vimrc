@@ -218,6 +218,8 @@ endif
 " coc.nvim core
 let $NVIM_COC_LOG_LEVEL = 'info'
 
+set tagfunc=CocTagFunc
+
 if has("patch-8.1.1564")
     set signcolumn=number
 else
