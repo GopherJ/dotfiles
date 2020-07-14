@@ -273,6 +273,7 @@ cd ~/.vim/pack/vimspector/opt/vimspector \
         --enable-go \
         --enable-python \
         --force-enable-node \
+        --force-enable-rust \
         --force-enable-java \
     && go get -u github.com/go-delve/delve/cmd/dlv \
     && cd -

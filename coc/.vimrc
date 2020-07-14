@@ -237,6 +237,8 @@ let g:coc_global_extensions = [
       \'coc-snippets',
       \'coc-eslint',
       \'coc-emmet',
+      \'coc-html',
+      \'coc-css',
       \'coc-jest',
       \'coc-json',
       \'coc-tasks',
@@ -259,7 +261,6 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
 
 if exists('*complete_info')
     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
