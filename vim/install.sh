@@ -31,7 +31,13 @@ sudo apt install vim-gtk3
 
 echoc "=> Installing qemu-kvm..."
 sudo apt install qemu-kvm \
-    && sudo adduser $USER kvm
+    && sudo adduser $USER kvm \
+    && newgrp
+
+echoc "=> Installing brew"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
+    && echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.zshrc \
+    && brew install watchman
 
 # newgrp kvm
 # su - $USER
