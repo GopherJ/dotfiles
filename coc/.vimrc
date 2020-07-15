@@ -183,6 +183,7 @@ Plug 'alpertuna/vim-header'
 
 Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'kevinoid/vim-jsonc'
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
@@ -218,11 +219,47 @@ endif
 " coc.nvim core
 let $NVIM_COC_LOG_LEVEL = 'info'
 
+set tagfunc=CocTagFunc
+
 if has("patch-8.1.1564")
     set signcolumn=number
 else
     set signcolumn=yes
 endif
+
+function! SetupCommandAbbrs(from, to)
+  exec 'cnoreabbrev <expr> '.a:from
+        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+endfunction
+
+call SetupCommandAbbrs('C', 'CocConfig')
+
+let g:coc_global_extensions = [
+      \'coc-tsserver',
+      \'coc-pairs',
+      \'coc-rust-analyzer',
+      \'coc-vetur',
+      \'coc-java',
+      \'coc-git',
+      \'coc-lists',
+      \'coc-snippets',
+      \'coc-eslint',
+      \'coc-emmet',
+      \'coc-html',
+      \'coc-css',
+      \'coc-jest',
+      \'coc-json',
+      \'coc-tasks',
+      \'coc-go',
+      \'coc-prettier',
+      \'coc-cmake',
+      \'coc-flutter',
+      \'coc-vimlsp',
+      \'coc-explorer',
+      \'coc-actions',
+      \'coc-calc'
+      \]
 
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
@@ -233,7 +270,6 @@ function! s:check_back_space() abort
     let col = col('.') - 1
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
 
 if exists('*complete_info')
     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -258,13 +294,13 @@ function! s:show_documentation()
     endif
 endfunction
 
-nmap <leader>rn <Plug>(coc-rename)
-
 augroup CocCustomGroup
   autocmd!
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+nmap <leader>rn <Plug>(coc-rename)
 
 xmap <leader>a  <Plug>(coc-codeaction-selected)
 nmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -292,7 +328,7 @@ command! -nargs=0 GitChunkStage : call CocActionAsync('runCommand', 'git.chunkSt
 command! -nargs=0 GitShowCommit : call CocActionAsync('runCommand', 'git.showCommit')
 command! -nargs=0 GitDiffCached : call CocActionAsync('runCommand', 'git.diffCached')
 command! -nargs=0 OR            : call CocActionAsync('runCommand', 'editor.action.organizeImport')
-" autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
 " coc-explorer

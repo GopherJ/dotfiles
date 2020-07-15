@@ -31,10 +31,18 @@
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.options.tabSize": 4,
     "diagnostic.messageTarget": "echo",
+    "codeLens.enable": true,
+    "codeLens.separator": " ",
+    "codeLens.subseparator": " | ",
     "rust-analyzer.inlayHints.chainingHints": true,
     "rust-analyzer.updates.channel": "nightly",
     "rust-analyzer.procMacro.enable": true,
-    "rust-analyzer.inlayHints.refreshOnInsertMode": true,
+    "rust-analyzer.inlayHints.refreshOnInsertMode": false,
+    "rust-analyzer.checkOnSave.enable": true,
+    "rust-analyzer.lens.enable": true,
+    "rust-analyzer.lens.run": true,
+    "rust-analyzer.lens.implementations": true,
+    "rust-analyzer.completion.postfix.enable": true,
     "go.goplsOptions": {
         "completeUnimported": true
     },
@@ -45,7 +53,7 @@
     "prettier.semi": true,
     "prettier.useTabs": true,
     "prettier.bracketSpacing": true,
-    "prettier.disableLanguages": ["vue"],
+    "prettier.disableLanguages": [],
     "prettier.eslintIntegration": true,
     "explorer.previewAction.onHover": false,
     "explorer.width": 30,
@@ -56,5 +64,7 @@
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
-    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
+    "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+    "eslint.run": "onSave",
+    "eslint.filetypes": ["javascript", "typescript", "vue"]
 }
