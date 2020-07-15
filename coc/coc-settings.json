@@ -46,6 +46,9 @@
     "go.goplsOptions": {
         "completeUnimported": true
     },
+    "go.disable": {
+        "workspaceFolders": false
+    },
     "clangd.enabled": false,
     "prettier.singleQuote": false,
     "prettier.trailingComma": "es5",
