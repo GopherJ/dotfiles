@@ -39,7 +39,7 @@ echoc "=> Installing brew"
     && echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.zshrc \
     && brew install watchman \
     && sudo sysctl -w fs.inotify.max_user_watches=12288 \
-    && sysctl -p
+    && sudo sysctl -p
 
 # newgrp kvm
 # su - $USER
