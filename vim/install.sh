@@ -210,6 +210,7 @@ if [ ! -f ~/Downloads/go1.14.4.linux-amd64.tar.gz ]; then
     curl -fLo ~/Downloads/go1.14.4.linux-amd64.tar.gz https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz --retry-delay 2 --retry 3 \
         && sudo tar -C /usr/local -xzf ~/Downloads/go1.14.4.linux-amd64.tar.gz
 fi
+go get github.com/tj/go-search
 
 if [ ! -d ~/.vim/markdown2ctags ]; then
     echoc "=> Install markdown2ctags..."
