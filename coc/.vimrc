@@ -152,7 +152,7 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'justinmk/vim-sneak'
-Plug 'rhysd/clever-f.vim'
+" Plug 'rhysd/clever-f.vim'
 
 Plug 'rust-lang/rust.vim'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -219,7 +219,9 @@ endif
 " coc.nvim core
 let $NVIM_COC_LOG_LEVEL = 'info'
 
-set tagfunc=CocTagFunc
+if !has("nvim")
+    set tagfunc=CocTagFunc
+endif
 
 if has("patch-8.1.1564")
     set signcolumn=number
@@ -641,10 +643,10 @@ let g:sneak#s_next = 1
 let g:sneak#label = 1
 
 " clever-f.vim
-let g:clever_f_ignore_case=1
-let g:clever_f_smart_case=1
-map ; <Plug>(clever-f-repeat-forward)
-map , <Plug>(clever-f-repeat-back)
+" let g:clever_f_ignore_case=1
+" let g:clever_f_smart_case=1
+" map ; <Plug>(clever-f-repeat-forward)
+" map , <Plug>(clever-f-repeat-back)
 
 " vim-jsdoc
 let g:jsdoc_enable_es6 = 1
