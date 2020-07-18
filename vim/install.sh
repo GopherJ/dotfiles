@@ -245,6 +245,7 @@ nvm install $NODE_VERSION \
 echoc "=> Installing yarn, vue, js language server, eslint, markdown render, beautify tools..." \
     && npm i -g yarn \
     && npm i -g @vue/cli \
+    && npm i -g md-to-pdf \
     && npm i -g javascript-typescript-langserver vue-language-server vti typescript \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g js-beautify typescript-formatter remark-cli prettier \
@@ -304,7 +305,10 @@ echoc "=> Configuring rust..." \
     && source $HOME/.cargo/env \
     && rustup default nightly \
     && rustup component add rls rust-analysis rust-src clippy \
+    && rustup component add --toolchain nightly rust-analyzer-preview \
     && cargo +nightly install racer \
+    && cargo install mdbook \
+    && cargo install basic-http-server \
     && cargo install cargo-edit \
     && cargo install cargo-benchcmp \
     && cargo install exa \
