@@ -307,6 +307,7 @@ echoc "=> Configuring rust..." \
     && cargo +nightly install racer \
     && cargo install cargo-edit \
     && cargo install cargo-benchcmp \
+    && cargo install exa \
     && cargo install cargo-tree \
     && cargo install cargo-fix \
     && cargo install cargo-watch \
