@@ -1,4 +1,6 @@
 "let mapleader = "\<Space>"
+set shell=/usr/bin/zsh
+
 let &t_TI = ""
 let &t_TE = ""
 
@@ -7,6 +9,7 @@ set termguicolors
 set encoding=utf8
 set hidden
 
+set timeoutlen=100
 set updatetime=100
 set cmdheight=2
 
@@ -52,6 +55,7 @@ set cindent
 set autoread
 set so=7
 set wildmenu
+set wildignore=.git,.svn,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o
 
 set magic
 
@@ -82,6 +86,9 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
 autocmd BufReadPost *.kt setlocal filetype=kotlin
+autocmd BufReadPost *.md setlocal filetype=markdown
+
+autocmd InsertLeave * set nopaste
 
 syntax enable
 
@@ -153,11 +160,13 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
-Plug 'justinmk/vim-sneak'
-" Plug 'rhysd/clever-f.vim'
 
 Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'stephpy/vim-yaml'
+Plug 'plasticboy/vim-markdown'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'rhysd/vim-clang-format'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
@@ -171,7 +180,6 @@ Plug 'heavenshell/vim-jsdoc', {
 
 Plug 'honza/vim-snippets'
 
-Plug 'cespare/vim-toml'
 Plug 'Yggdroot/indentLine'
 Plug 'morhetz/gruvbox'
 Plug 'itchyny/lightline.vim'
@@ -303,6 +311,8 @@ augroup CocCustomGroup
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
+
+autocmd CursorHold * silent call CocActionAsync('highlight')
 
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -639,16 +649,6 @@ let g:gitgutter_max_signs = 1000
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 packadd! vimspector
 nnoremap <F8> :VimspectorReset<CR>
-
-" vim-sneak
-let g:sneak#s_next = 1
-let g:sneak#label = 1
-
-" clever-f.vim
-" let g:clever_f_ignore_case=1
-" let g:clever_f_smart_case=1
-" map ; <Plug>(clever-f-repeat-forward)
-" map , <Plug>(clever-f-repeat-back)
 
 " vim-jsdoc
 let g:jsdoc_enable_es6 = 1
