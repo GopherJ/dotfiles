@@ -1,4 +1,6 @@
+alias l="exa -la"
 alias ls="exa -la"
+alias la="exa -la"
 alias ta="tmux a"
 alias tk="tmux kill-server"
 alias tl="tmux ls"
