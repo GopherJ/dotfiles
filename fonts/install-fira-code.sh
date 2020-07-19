@@ -21,5 +21,7 @@ for type in Bold Light Medium Regular Retina; do
     fi;
 done
 
+curl -fLo ~/.config/fontconfig/fonts.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/fonts/fonts.conf
+
 echo "fc-cache -f"
 fc-cache -f
