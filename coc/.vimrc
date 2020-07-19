@@ -445,6 +445,8 @@ let g:lightline = {
       \   'currentfunction': 'CocCurrentFunction',
       \   'blame': 'LightlineGitBlame',
       \ },
+      \ 'separator': { 'left': '', 'right': '' },
+      \ 'subseparator': { 'left': '', 'right': '' }
       \ }
 autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
