@@ -55,7 +55,7 @@ set cindent
 set autoread
 set so=7
 set wildmenu
-set wildignore=.git,.svn,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o
+set wildignore=.git,.svn,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,*.deb,*.tar,*.tgz,*.rar,*.zip,*.so
 
 set magic
 
