@@ -61,6 +61,8 @@
     "explorer.previewAction.onHover": false,
     "explorer.width": 30,
     "explorer.file.showHiddenFiles": true,
+    "explorer.icon.enableNerdfont": true,
+    "explorer.icon.enableVimDevicons": true,
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": false,
     "git.addedSign.hlGroup": "GitGutterAdd",
