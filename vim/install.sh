@@ -246,6 +246,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g yarn \
     && npm i -g @vue/cli \
     && npm i -g md-to-pdf \
+    && npm install -g nativefier \
     && npm i -g javascript-typescript-langserver vue-language-server vti typescript \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g js-beautify typescript-formatter remark-cli prettier \
