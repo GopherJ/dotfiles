@@ -623,7 +623,7 @@ autocmd FileType vue syntax sync fromstart
 let g:vue_pre_processors = ['sass', 'scss']
 
 " tmuxline
-let g:tmuxline_powerline_separators = 0
+let g:tmuxline_powerline_separators = 1
 let g:tmuxline_preset = 'full'
 
 " vim-tmux-navigator
