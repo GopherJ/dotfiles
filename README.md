@@ -23,4 +23,5 @@ All config files
 - [fcitx](./fcitx)
 - [tmux](./tmux)
 - [tern](./tern)
+- [fonts](./fonts)
 

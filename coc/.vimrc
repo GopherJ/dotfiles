@@ -1,12 +1,13 @@
 "let mapleader = "\<Space>"
 set shell=/usr/bin/zsh
 
+set encoding=UTF-8
+
 let &t_TI = ""
 let &t_TE = ""
 
 set termguicolors
 
-set encoding=utf8
 set hidden
 
 set timeoutlen=100
@@ -160,6 +161,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
+Plug 'ryanoasis/vim-devicons'
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
