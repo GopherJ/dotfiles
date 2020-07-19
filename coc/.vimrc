@@ -348,7 +348,7 @@ autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.or
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
 " coc-explorer
-nmap <space>r :CocCommand explorer<CR>
+nmap <space>e :CocCommand explorer<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
 " coc-actions
@@ -398,7 +398,7 @@ autocmd FileType go nmap gtx :CocCommand go.tags.clear<cr>
 
 " coc-lists
 nnoremap <silent><nowait> <space>d  :<C-u>CocList diagnostics<cr>
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+nnoremap <silent><nowait> <space>l  :<C-u>CocList extensions<cr>
 nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
 nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
 nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
