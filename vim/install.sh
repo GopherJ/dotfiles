@@ -309,6 +309,7 @@ echoc "=> Configuring rust..." \
     && rustup component add --toolchain nightly rust-analyzer-preview \
     && cargo +nightly install racer \
     && cargo install mdbook \
+    && cargo install cargo-outdated \
     && cargo install basic-http-server \
     && cargo install cargo-edit \
     && cargo install cargo-benchcmp \

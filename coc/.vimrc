@@ -129,6 +129,8 @@ nnoremap ps        visp
 nnoremap <M-left>    :bp<CR>
 nnoremap <M-right>   :bn<CR>
 
+nnoremap <space><space> <c-^>
+
 function! s:VSetSearch()
   let temp = @@
   norm! gvy
