@@ -162,7 +162,6 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
-Plug 'voldikss/vim-floaterm'
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
@@ -273,8 +272,7 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-explorer',
       \'coc-actions',
-      \'coc-calc',
-      \'coc-floaterm'
+      \'coc-calc'
       \]
 
 inoremap <silent><expr> <TAB>
@@ -417,9 +415,6 @@ endfunction
 
 nnoremap <silent> <Leader>cf  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
-
-" coc-floaterm
-nnoremap <space>f :CocCommand floaterm.new<cr>
 
 
 "--------------------------------------------------------------------------------
