@@ -1,3 +1,4 @@
+alias vim="nvim"
 alias l="exa -la"
 alias ls="exa -la"
 alias la="exa -la"
@@ -66,7 +67,7 @@ export FLUTTER_HOME="$HOME/flutter"
 export PUB_HOME="$HOME/.pub-cache"
 export PATH="$CARGO_HOME/bin:$GOPATH/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:/usr/local/go/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$PATH"
 export TERM=xterm-256color
-export EDITOR=vim
+export EDITOR=nvim
 export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
 export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude target --follow --hidden"
