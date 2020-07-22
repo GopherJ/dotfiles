@@ -162,6 +162,7 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
+Plug 'ap/vim-buftabline'
 
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
