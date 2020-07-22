@@ -351,6 +351,12 @@ autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.or
 nmap <space>e :CocCommand explorer --preset default<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
 
+let g:coc_explorer_global_presets = {
+    \   'default': {
+    \     'file-child-template': '[indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
+    \   }
+    \ }
+
 " coc-actions
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
@@ -663,10 +669,3 @@ let g:jsdoc_input_description = 1
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
-
-"
-let g:coc_explorer_global_presets = {
-    \   'default': {
-    \     'file-child-template': '[indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
-    \   }
-    \ }
