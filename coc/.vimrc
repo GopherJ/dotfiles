@@ -196,7 +196,6 @@ Plug 'alpertuna/vim-header'
 
 Plug 'udalov/kotlin-vim'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'kevinoid/vim-jsonc'
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
