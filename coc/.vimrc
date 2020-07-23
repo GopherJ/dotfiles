@@ -419,7 +419,7 @@ function! s:GrepArgs(...)
   return join(list, "\n")
 endfunction
 
-nnoremap <silent> <Leader>cf  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <space>q  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 
 
