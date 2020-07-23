@@ -325,7 +325,8 @@ echoc "=> Configuring rust..." \
     && cargo install du-dust \
     && cargo install watchexec \
     && cargo install tauri-bundler \
-    && cargo install cargo-whatfeatures --no-default-features --features "rustls"
+    && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
+    && cargo install --git https://github.com/jonhoo/buzz
 
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
 echo "Your github username?"

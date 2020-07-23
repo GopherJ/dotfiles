@@ -167,7 +167,6 @@ Plug 'ap/vim-buftabline'
 Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
-Plug 'plasticboy/vim-markdown'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'rhysd/vim-clang-format'
 

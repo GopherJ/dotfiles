@@ -24,4 +24,5 @@ All config files
 - [tmux](./tmux)
 - [tern](./tern)
 - [fonts](./fonts)
+- [buzz](./buzz)
 
