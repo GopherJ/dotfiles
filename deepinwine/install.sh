@@ -51,5 +51,6 @@ cp ~/Downloads/msyh_consola.ttf ~/.deepinwine/Deepin-WeChat/drive_c/windows/Font
 echoc "=> Configuring DPI if it's too small...'"
 WINEPREFIX=~/.deepinwine/Deepin-WeChat  /usr/bin/deepin-wine  winecfg
 
+sudo chown -R $USER:$(id -gn) /opt/deepinwine
 echoc "=> Download other softwares if you need..."
 xdg-open https://mirrors.aliyun.com/deepin/pool/non-free/d
