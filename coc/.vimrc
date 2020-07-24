@@ -271,7 +271,8 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-explorer',
       \'coc-actions',
-      \'coc-calc'
+      \'coc-calc',
+      \'coc-tabnine'
       \]
 
 inoremap <silent><expr> <TAB>
