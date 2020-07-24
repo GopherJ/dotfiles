@@ -5,4 +5,3 @@ username = "alex_cj96@foxmail.com"
 # sudo apt install libsecret-tools
 # secret-tool store --label='Password for alex_cj96@foxmail.com' email foxmail
 pwcmd = "secret-tool lookup email foxmail"
-notificationcmd = "notify-send 'New Email'"
