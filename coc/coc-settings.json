@@ -28,6 +28,7 @@
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,
     "coc.preferences.maxFileSize": "102400",
+    "suggest.noselect": false,
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.options.tabSize": 4,
     "diagnostic.messageTarget": "echo",
