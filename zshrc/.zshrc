@@ -72,7 +72,7 @@ export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
 export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude third-party --exclude vendor --exclude target --exclude Cargo.lock --exclude yarn.lock --exclude package-lock.json --follow --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-export GO111MODULE=on
+export GO111MODULE=auto
 export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then

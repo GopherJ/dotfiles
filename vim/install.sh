@@ -238,6 +238,21 @@ if [ ! -d ~/.vim/ctags ]; then
         && sudo make install
 fi
 
+echoc "=> Installing grpcurl, boomrpc..."
+go get github.com/fullstorydev/grpcurl/... \
+    && go install github.com/fullstorydev/grpcurl/cmd/grpcurl \
+
+if [ ! -d ~/Downloads/bloomrpc ]; then
+    git clone https://github.com/uw-labs/bloomrpc.git ~/Downloads/bloomrpc \
+        && cd ~/Downloads/bloomrpc \
+        && yarn install \
+        && ./node_modules/.bin/electron-rebuild \
+        && npm run package \
+        && cd release \
+        && sudo dpkg -i bloomrpc_*.deb \
+        && sudo apt install -f
+fi
+
 command -v nvm > /dev/null || {
 echoc "=> Installing nvm..." \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh --retry-delay 2 --retry 3 | bash \
