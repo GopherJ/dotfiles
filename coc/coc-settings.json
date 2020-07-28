@@ -34,6 +34,7 @@
     "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": false,
     "diagnostic.messageDelay": 100,
+    "diagnostic.checkCurrentLine": true,
     "codeLens.enable": true,
     "codeLens.separator": " ",
     "codeLens.subseparator": " | ",
