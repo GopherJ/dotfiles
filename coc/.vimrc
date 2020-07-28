@@ -134,6 +134,8 @@ nnoremap p"        vi"p
 nnoremap pp        vipp
 nnoremap ps        visp
 
+nnoremap D         dd
+
 nnoremap <M-left>    :bp<CR>
 nnoremap <M-right>   :bn<CR>
 
