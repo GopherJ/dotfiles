@@ -16,7 +16,7 @@ set hidden
 
 set timeoutlen=100
 set updatetime=100
-set cmdheight=2
+set cmdheight=1
 
 set foldmethod=manual
 
