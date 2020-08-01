@@ -59,6 +59,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export GOPATH="$HOME/go"
+export GOROOT="/usr/local/go"
+export GOENV_ROOT="$HOME/.goenv"
 export CARGO_HOME="$HOME/.cargo"
 export DENO_INSTALL="$HOME/.deno"
 export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
@@ -66,7 +68,7 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 export DART_HOME="/usr/lib/dart"
 export FLUTTER_HOME="$HOME/flutter"
 export PUB_HOME="$HOME/.pub-cache"
-export PATH="$CARGO_HOME/bin:$GOPATH/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:/usr/local/go/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$PATH"
+export PATH="$CARGO_HOME/bin:$GOPATH/bin:$GOROOT/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:/usr/local/go/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$PATH"
 export TERM=xterm-256color
 export EDITOR=nvim
 export GITHUB_API_TOKEN=""
