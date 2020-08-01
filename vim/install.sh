@@ -222,6 +222,7 @@ if [ ! -f ~/Downloads/go1.14.4.linux-amd64.tar.gz ]; then
         && sudo tar -C /usr/local -xzf ~/Downloads/go1.14.4.linux-amd64.tar.gz
 fi
 go get github.com/tj/go-search
+go get  github.com/golang/protobuf/protoc-gen-go
 
 if [ ! -d ~/.vim/markdown2ctags ]; then
     echoc "=> Install markdown2ctags..."
