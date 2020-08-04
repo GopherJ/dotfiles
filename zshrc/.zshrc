@@ -33,7 +33,6 @@ alias ct="cargo test -- --nocapture"
 alias ctbin="cargo test --no-run --message-format=json | jq -r 'select(.profile.test == true) | .filenames[]'"
 alias cdo="cargo doc --open"
 alias clean="sudo apt clean && sudo apt autoclean && sudo apt autoremove && dpkg -l | grep ^rc | awk '{print \$2}' | sudo xargs -i dpkg -P {}"
-alias gos=go-search
 alias doc-std='rustup doc --std'
 alias doc-macro='rustup doc --proc_macro'
 alias doc-example='rustup doc --rust-by-exmple'
@@ -41,7 +40,9 @@ alias doc-book='rustup doc --book'
 alias doc-ref='rustup doc --reference'
 alias clean-container='docker container ls -q | xargs -i docker stop {} | xargs -i docker rm {}'
 function doc-crate {
-    cargo doc -p $1 --open
+    if [ ! -z "$1" ]; then
+        cargo doc -p $1 --open
+    fi
 }
 function ra {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
@@ -53,10 +54,11 @@ function ge {
         git fetch origin +refs/pull/$1/merge
     fi
 }
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+function show-cert {
+    if [ ! -z "$1" ]; then
+        openssl x509 -in $1 –text
+    fi
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
@@ -81,3 +83,16 @@ export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
+
+eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval "$(goenv init -)"
+
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
