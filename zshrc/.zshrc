@@ -56,7 +56,7 @@ function ge {
 }
 function show-cert {
     if [ ! -z "$1" ]; then
-        openssl x509 -in $1 –text
+        openssl x509 -in $1 -noout –text
     fi
 }
 
