@@ -54,11 +54,6 @@ function ge {
         git fetch origin +refs/pull/$1/merge
     fi
 }
-function show-cert {
-    if [ ! -z "$1" ]; then
-        openssl x509 -in $1 -noout –text
-    fi
-}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
