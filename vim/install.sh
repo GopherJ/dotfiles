@@ -102,6 +102,13 @@ sudo apt update && sudo apt install libwebkit2gtk-4.0-dev \
     libssl-dev \
     appmenu-gtk3-module
 
+echoc "=> Installing MQTTX..."
+if [ ! -f ~/Downloads/MQTTX-1.3.2.AppImage ]; then
+    curl -fLo ~/Downloads/MQTTX-1.3.2.AppImage https://github.com/emqx/MQTTX/releases/download/v1.3.2/MQTTX-1.3.2.AppImage
+fi
+sudo chmod u+x ~/Downloads/MQTTX-1.3.2.AppImage
+sudo mv ~/Downloads/MQTTX-1.3.2.AppImage /usr/local/bin/mqttx
+
 echoc "=> Installing clangd-9"
 sudo apt install clangd-9 \
     && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
