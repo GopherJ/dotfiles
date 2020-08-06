@@ -43,6 +43,14 @@ sudo apt update \
   && sudo usermod -aG docker $USER \
   && newgrp docker
 
+echoc "=> Installing upx..."
+if [ ! -f ~/Downloads/upx-3.94-amd64_linux.tar.xz ]; then
+curl -fLo ~/Downloads/upx-3.94-amd64_linux.tar.xz https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar.xz \
+    && cd ~/Downloads \
+    && sudo tar -xJf upx-3.94-amd64_linux.tar.xz \
+    && sudo chmod u+x upx-3.94-amd64_linux/upx \
+    && sudo mv upx-3.94-amd64_linux/upx /usr/local/bin
+
 echoc "=> Installing brew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
     && echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.zshrc \
