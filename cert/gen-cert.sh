@@ -20,7 +20,7 @@ openssl req \
     -new \
     -nodes \
     -key root-ca.key \
-    -config ../openssl.cnf \
+    -config ../openssl-ca.cnf \
     -sha256 \
     -days 3650 \
     -out root-ca.pem
@@ -35,13 +35,13 @@ openssl genrsa -out server.key 2048
 openssl req \
     -new \
     -key server.key \
-    -config ../openssl.cnf \
+    -config ../openssl-server.cnf \
     -out server.csr
 
 # server.pem
 openssl x509 \
     -req \
-    -extfile ../openssl.cnf \
+    -extfile ../openssl-server.cnf \
     -extensions v3_req \
     -in ./server.csr \
     -CA root-ca.pem \
@@ -63,13 +63,13 @@ openssl genrsa -out client.key 2048
 openssl req \
     -new \
     -key ./client.key \
-    -config ../openssl.cnf \
+    -config ../openssl-client.cnf \
     -out client.csr
 
 # client.pem
 openssl x509 \
     -req \
-    -extfile ../openssl.cnf \
+    -extfile ../openssl-client.cnf \
     -extensions v3_req \
     -in ./client.csr \
     -CA root-ca.pem \
@@ -83,3 +83,5 @@ openssl x509 \
 
 chmod 755 client.pem
 chmod 644 client.key
+
+openssl verify -CAfile root-ca.pem client.pem server.pem
