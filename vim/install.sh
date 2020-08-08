@@ -275,7 +275,9 @@ echoc "=> Installing nvm..." \
     && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh --retry-delay 2 --retry 3 | bash \
     && export NVM_DIR="$HOME/.nvm" \
     && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" \
-    && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+    && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" \
+    && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
+    && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
 }
 
 echoc "=> Installing node${NODE_VERSION}..."
