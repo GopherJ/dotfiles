@@ -266,6 +266,7 @@ function! SetupCommandAbbrs(from, to)
 endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
+call SetupCommandAbbrs('E', ':e ~/.vimrc')
 
 let g:coc_global_extensions = [
       \'coc-tsserver',
@@ -356,13 +357,14 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
-command! -nargs=0 Format        : call CocActionAsync('format')
+command! -nargs=0 Format        : call CocAction('format')
 command! -nargs=? Fold          : call CocActionAsync('fold', <f-args>)
 command! -nargs=0 GitChunkUndo  : call CocActionAsync('runCommand', 'git.chunkUndo')
 command! -nargs=0 GitChunkStage : call CocActionAsync('runCommand', 'git.chunkStage')
 command! -nargs=0 GitShowCommit : call CocActionAsync('runCommand', 'git.showCommit')
 command! -nargs=0 GitDiffCached : call CocActionAsync('runCommand', 'git.diffCached')
 command! -nargs=0 OR            : call CocActionAsync('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 VSCode        execute ":!code -g %:p\:" . line('.') . ":" . col('.')
 autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
