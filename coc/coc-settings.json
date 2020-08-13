@@ -1,18 +1,18 @@
 {
     "languageserver": {
-        "ccls": {
-            "command": "ccls",
-            "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-            "rootPatterns": [".ccls-root", "compile_commands.json"],
-            "initializationOptions": {
-                "cache": {
-                    "directory": ".ccls-cache"
-                },
-                "client": {
-                    "snippetSupport": true
-                }
-            }
-        },
+        // "ccls": {
+        //     "command": "ccls",
+        //     "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
+        //     "rootPatterns": [".ccls-root", "compile_commands.json"],
+        //     "initializationOptions": {
+        //         "cache": {
+        //             "directory": ".ccls-cache"
+        //         },
+        //         "client": {
+        //             "snippetSupport": true
+        //         }
+        //     }
+        // },
         "kotlin": {
             "command": "~/kotlin-language-server/server/bin/kotlin-language-server",
             "filetypes": ["kotlin"]
@@ -53,7 +53,7 @@
     "go.disable": {
         "workspaceFolders": false
     },
-    "clangd.enabled": false,
+    "clangd.enabled": true,
     "prettier.singleQuote": false,
     "prettier.trailingComma": "es5",
     "prettier.tabWidth": 4,
