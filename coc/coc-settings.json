@@ -23,7 +23,9 @@
         "javascript",
         "typescript",
         "dart",
-        "go"
+        "go",
+        "cpp",
+        "rust"
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,

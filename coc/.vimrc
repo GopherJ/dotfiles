@@ -177,7 +177,7 @@ Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-buftabline'
 
-Plug 'rust-lang/rust.vim'
+" Plug 'rust-lang/rust.vim'
 Plug 'kevinoid/vim-jsonc'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
@@ -480,7 +480,7 @@ let g:header_field_author_email = 'jiang.cheng@vip.163.com'
 let g:header_auto_add_header = 0
 
 " rust-vim
-let g:rustfmt_autosave = 1
+" let g:rustfmt_autosave = 1
 
 " markdown-preview.nvim
 let g:mkdp_auto_start = 1
