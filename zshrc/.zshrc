@@ -39,8 +39,9 @@ alias doc-example='rustup doc --rust-by-exmple'
 alias doc-book='rustup doc --book'
 alias doc-ref='rustup doc --reference'
 alias clean-container='docker container ls -q | xargs -i docker stop {} | xargs -i docker rm {}'
-alias uxz='tar -Jxvf'
-alias ujz='tar -zxvf'
+alias xz='tar -Jxvf'
+alias jz='tar -zxvf'
+alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
@@ -54,20 +55,6 @@ function ra {
 function ge {
     if [ ! -z "$1" ]; then
         git fetch origin +refs/pull/$1/merge
-    fi
-}
-function show-cert {
-    if [ ! -z "$1" ]; then
-        openssl x509 -in $1 -noout -text
-    fi
-}
-function cert-match-key {
-    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        if [ "$(openssl x509 -noout -modulus -in $1 | openssl md5)" != "$(openssl rsa -noout -modulus -in $2 | openssl md5)" ]; then
-            echo "cert doesn't match key"
-        else
-            echo "cert matches key"
-        fi
     fi
 }
 
