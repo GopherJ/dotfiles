@@ -184,6 +184,7 @@ Plug 'ap/vim-buftabline'
 
 " Plug 'rust-lang/rust.vim'
 Plug 'kevinoid/vim-jsonc'
+Plug 'jackguo380/vim-lsp-cxx-highlight'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
