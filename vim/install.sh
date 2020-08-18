@@ -369,8 +369,9 @@ echoc "=> Configuring rust..." \
     && cargo install watchexec \
     && cargo install tauri-bundler \
     && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
-    && cargo install so \
+    && cargo install miniserve \
     && cargo install --git https://github.com/extrawurst/gitui
+    # && cargo install so \
     # && cargo install --git https://github.com/jonhoo/buzz
 
 echoc "=> Configuring vim-github-dashboard, gist-vim, figutive..."
