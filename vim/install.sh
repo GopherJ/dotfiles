@@ -15,7 +15,7 @@ function echoc() {
 
 # if java jdk isn't 8, we need to do
 # sudo update-alternatives --config java
-deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "protobuf-compiler")
+deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "protobuf-compiler" "zlib1g-dev")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -42,6 +42,24 @@ sudo apt update \
   && sudo apt -y  install docker-ce docker-compose \
   && sudo usermod -aG docker $USER \
   && newgrp docker
+
+echoc "=> Install wrk, wrk2..."
+if [ ! -d ~/Downloads/wrk ]; then
+    git clone https://github.com/wg/wrk ~/Downloads/wrk
+fi
+if [ ! -d ~/Downloads/wrk2 ]; then
+    git clone https://github.com/giltene/wrk2 ~/Downloads/wrk2
+fi
+if [ ! -x /usr/local/bin/wrk ]; then
+    cd ~/Downloads/wrk \
+        && make \
+        && sudo cp wrk /usr/local/bin
+fi
+if [ ! -x /usr/local/bin/wrk2 ]; then
+    cd ~/Downloads/wrk2 \
+        && make \
+        && sudo cp wrk /usr/local/bin/wrk2
+fi
 
 echoc "=> Installing upx..."
 if [ ! -f ~/Downloads/upx-3.94-amd64_linux.tar.xz ]; then

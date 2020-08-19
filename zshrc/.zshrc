@@ -42,6 +42,7 @@ alias clean-container='docker container ls -q | xargs -i docker stop {} | xargs 
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
+alias wrk='wrk -t8 -d30s -c1000'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
