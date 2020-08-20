@@ -16,6 +16,8 @@ let &t_TE = ""
 
 set termguicolors
 
+set undofile
+
 set hidden
 
 set timeoutlen=100
@@ -118,6 +120,8 @@ if has('nvim')
     nnoremap <M-[>     :vertical res -2<CR>
 
     nnoremap <space>h  :checkhealth<cr>
+
+    tnoremap <Esc> <C-\><C-n>
 endif
 
 nnoremap <C-L>     <C-W>l
