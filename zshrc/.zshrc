@@ -1,4 +1,4 @@
-alias vim="nvim"
+alias vim="nvim -p"
 alias l="exa -la"
 alias ls="exa -la"
 alias la="exa -la"
@@ -44,6 +44,7 @@ alias jz='tar -zxvf'
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
+alias n='nnn'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
