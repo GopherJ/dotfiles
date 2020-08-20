@@ -43,6 +43,7 @@ alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias wrk='wrk -t8 -d30s -c1000'
+alias visudo='sudo EDITOR=vim visudo'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
