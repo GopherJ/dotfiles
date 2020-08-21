@@ -120,8 +120,6 @@ if has('nvim')
     nnoremap <M-[>     :vertical res -2<CR>
 
     nnoremap <space>h  :checkhealth<cr>
-
-    tnoremap <Esc> <C-\><C-n>
 endif
 
 nnoremap <C-L>     <C-W>l
