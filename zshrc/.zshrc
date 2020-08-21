@@ -60,6 +60,16 @@ function ge {
         git fetch origin +refs/pull/$1/merge
     fi
 }
+function words {
+    if [ ! -z "$1" ]; then
+        cat $1 | tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -u
+    fi
+}
+function top-words {
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+        cat $1 | tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | awk '{print $2}' | head -n $2
+    fi
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
@@ -71,7 +81,8 @@ export ANDROID_HOME="$HOME/Android/Sdk"
 export DART_HOME="/usr/lib/dart"
 export FLUTTER_HOME="$HOME/flutter"
 export PUB_HOME="$HOME/.pub-cache"
-export PATH="$CARGO_HOME/bin:$GOPATH/bin:$GOROOT/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:/usr/local/go/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$PATH"
+export SCRIPT_HOME="$HOME/.bin"
+export PATH="$CARGO_HOME/bin:$GOPATH/bin:$GOROOT/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:/usr/local/go/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PATH"
 export TERM=xterm-256color
 export EDITOR=nvim
 export GITHUB_API_TOKEN=""
