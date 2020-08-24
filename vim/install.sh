@@ -389,7 +389,8 @@ echoc "=> Configuring rust..." \
     && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install miniserve \
     && cargo install -f --git https://github.com/jez/as-tree \
-    && cargo install --git https://github.com/extrawurst/gitui
+    && cargo install --git https://github.com/extrawurst/gitui \
+    && cargo install cargo-bloat
     # && cargo install so \
     # && cargo install --git https://github.com/jonhoo/buzz
 
