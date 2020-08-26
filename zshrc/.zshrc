@@ -45,6 +45,7 @@ alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
 alias n='nnn'
+alias sccache-clean-restart='sccache -z && sccache --stop-server && sccache --start-server'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
@@ -91,6 +92,7 @@ export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=on
 export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
+export RUST_BACKTRACE=1
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
