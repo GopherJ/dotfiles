@@ -263,6 +263,10 @@ if [ ! -d ~/.vim/markdown2ctags ]; then
     git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
 fi
 
+
+echoc "=> Installing benchstat..."
+go get golang.org/x/perf/cmd/benchstat
+
 if [ ! -d ~/.vim/ctags ]; then
     echoc "=> Configuring universal ctags..."
     git clone https://github.com/universal-ctags/ctags ~/.vim/ctags \
