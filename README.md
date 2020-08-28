@@ -25,4 +25,9 @@ All config files
 - [tern](./tern)
 - [fonts](./fonts)
 - [buzz](./buzz)
-
+- [cert](./cert)
+- [clangformat](./clangformat)
+- [gtk2](./gtk2)
+- [gtk3](./gtk3)
+- [rustfmt](./rustfmt)
+- [ssh](./ssh)
