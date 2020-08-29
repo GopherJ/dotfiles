@@ -321,6 +321,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g @typescript-eslint/parser \
     && npm i -g @typescript-eslint/eslint-plugin \
     && npm i -g eslint-plugin-prettier eslint-config-prettier \
+    && npm i -g gh-search-cli \
     && npm i -g stylelint stylelint-processor-styled-components stylelint-config-styled-components stylelint-config-recommended
 
 echoc "=> Configuring vim and building YCM..."
