@@ -46,6 +46,9 @@ alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
 alias n='nnn'
 alias sccache-clean-restart='sccache -z && sccache --stop-server && sccache --start-server'
+alias repo='ghs repo'
+alias issues='ghs issues'
+alias commits='ghs commits'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
