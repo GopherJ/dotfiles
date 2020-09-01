@@ -49,6 +49,7 @@ alias sccache-clean-restart='sccache -z && sccache --stop-server && sccache --st
 alias repo='ghs repo'
 alias issues='ghs issues'
 alias commits='ghs commits'
+alias features='cargo whatfeatures -p'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
