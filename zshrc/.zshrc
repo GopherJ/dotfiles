@@ -76,6 +76,15 @@ function top-words {
         cat $1 | tr -cs A-Za-z '\n' | tr A-Z a-z | sort | uniq -c | sort -rn | awk '{print $2}' | head -n $2
     fi
 }
+function changelog {
+    if [ ! -f "changelog.md" ]; then
+        clog -r https://github.com/clog-tool/clog-cli --outfile changelog.md
+    else
+        clog -r https://github.com/clog-tool/clog-cli --infile changelog.md --outfile tmp.md
+        rm changelog.md
+        mv tmp.md changelog.md
+    fi
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
