@@ -382,6 +382,7 @@ echoc "=> Configuring rust..." \
     && cargo install cargo-outdated \
     && cargo install basic-http-server \
     && cargo install cargo-edit \
+    && cargo install --git https://github.com/XAMPPRocky/tokei.git \
     && cargo install cargo-benchcmp \
     && cargo install exa \
     && cargo install cargo-tree \
