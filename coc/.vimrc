@@ -361,6 +361,9 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
+command! -nargs=0 Todo            CocList -A --normal grep -e TODO|FIXME
+command! -nargs=0 Status          CocList -A --normal gstatus
+
 command! -nargs=0 Format        : call CocAction('format')
 command! -nargs=? Fold          : call CocActionAsync('fold', <f-args>)
 command! -nargs=0 GitChunkUndo  : call CocActionAsync('runCommand', 'git.chunkUndo')
