@@ -233,7 +233,9 @@ curl -fLo ~/.ctags.d/ansible.ctags --create-dirs \
 echoc "=> Configuring oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc \
-    && source ~/.zshrc
+    && source ~/.zshrc \
+    && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
+    && git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
 
 echoc "=> Install alacritty..."
 if [ ! -f ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb ]; then
@@ -312,6 +314,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g yarn \
     && npm i -g @vue/cli \
     && npm i -g md-to-pdf \
+    && npm i -g diff-so-fancy \
     && npm install -g nativefier \
     && npm i -g javascript-typescript-langserver vue-language-server vti typescript \
     && npm i -g eslint eslint-plugin-vue \
@@ -377,6 +380,7 @@ echoc "=> Configuring rust..." \
     && cargo +nightly install racer \
     && cargo install mdbook \
     && cargo install sccache \
+    && cargo install mdcat \
     && cargo install clog-ci \
     && cargo install --git  https://github.com/zesterer/tao \
     && cargo install cargo-outdated \

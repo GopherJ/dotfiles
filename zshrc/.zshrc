@@ -1,3 +1,5 @@
+plugins=(git zsh-autosuggestions zsh-completions)
+
 alias vim="nvim -p"
 alias l="exa -la"
 alias ls="exa -la"
