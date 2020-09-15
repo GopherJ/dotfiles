@@ -260,6 +260,9 @@ go get  github.com/golang/protobuf/protoc-gen-go
 git clone https://github.com/syndbg/goenv.git ~/.goenv
 echo 'eval "$(goenv init -)"' >> ~/.zshrc
 
+echoc "=> Installing fync-cross..."
+go get github.com/lucor/fyne-cross/v2/cmd/fyne-cross
+
 if [ ! -d ~/.vim/markdown2ctags ]; then
     echoc "=> Install markdown2ctags..."
     git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
