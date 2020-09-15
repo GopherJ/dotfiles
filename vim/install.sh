@@ -263,6 +263,9 @@ echo 'eval "$(goenv init -)"' >> ~/.zshrc
 echoc "=> Installing fync-cross..."
 go get github.com/lucor/fyne-cross/v2/cmd/fyne-cross
 
+echoc "=> Installing go-bindata..."
+go get -u github.com/go-bindata/go-bindata/...
+
 if [ ! -d ~/.vim/markdown2ctags ]; then
     echoc "=> Install markdown2ctags..."
     git clone https://github.com/jszakmeister/markdown2ctags ~/.vim/markdown2ctags
