@@ -87,6 +87,9 @@ function changelog {
         mv tmp.md changelog.md
     fi
 }
+function details {
+    printf "<details>\n\t<summary>Details</summary>\n\tSomething small enough to escape casual notice.\n</details>"
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
