@@ -388,6 +388,7 @@ echoc "=> Configuring rust..." \
     && cargo install sccache \
     && cargo install mdcat \
     && cargo install clog-ci \
+    && cargo install --git https://github.com/ClementTsang/bottom \
     && cargo install --git https://github.com/brson/basic-http-server \
     && cargo install --git  https://github.com/zesterer/tao \
     && cargo install cargo-outdated \
