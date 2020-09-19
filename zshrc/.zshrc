@@ -112,6 +112,7 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=on
 export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
 export RUST_BACKTRACE=1
+export PKG_CONFIG_ALLOW_CROSS=1
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
