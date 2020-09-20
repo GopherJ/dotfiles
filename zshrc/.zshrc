@@ -1,5 +1,3 @@
-plugins=(git zsh-autosuggestions zsh-completions)
-
 alias vim="nvim -p"
 alias l="exa -la"
 alias ls="exa -la"
@@ -53,6 +51,10 @@ alias repo='ghs repo'
 alias issues='ghs issues'
 alias commits='ghs commits'
 alias features='cargo whatfeatures -p'
+alias start='sudo systemctl start'
+alias stop='sudo systemctl stop'
+alias restart='sudo systemctl restart'
+alias logf='sudo journal -f -u'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
