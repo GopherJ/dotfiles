@@ -25,3 +25,6 @@ ar = "x86_64-apple-darwin14-ar"
 [target.mips-unknown-linux-musl]
 ar = "mips-openwrt-linux-musl-ar"
 linker = "mips-openwrt-linux-musl-gcc"
+
+[term]
+verbose = true
