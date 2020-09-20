@@ -9,6 +9,7 @@ sudo apt install \
     libmpfr-dev \
     libgmp-dev
 
+rustup toolchain install stable-x86_64-apple-darwin
 rustup target add x86_64-apple-darwin
 
 git clone https://github.com/tpoechtrager/osxcross

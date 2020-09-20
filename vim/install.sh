@@ -388,11 +388,9 @@ echoc "=> Configuring rust..." \
     && cargo install sccache \
     && cargo install mdcat \
     && cargo install clog-ci \
+    && cargo install wasm-bindgen-cli \
     && cargo install --git https://github.com/ClementTsang/bottom \
-    && cargo install --git https://github.com/brson/basic-http-server \
-    && cargo install --git  https://github.com/zesterer/tao \
     && cargo install cargo-outdated \
-    && cargo install basic-http-server \
     && cargo install cargo-edit \
     && cargo install --git https://github.com/XAMPPRocky/tokei.git \
     && cargo install cargo-benchcmp \
