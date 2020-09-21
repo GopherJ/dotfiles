@@ -55,6 +55,7 @@ alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias logf='sudo journal -f -u'
+alias gofmt='gofmt -s -w .'
 alias triple-list='rustc --print target-list | pr -tw100 --columns 3'
 function doc-crate {
     if [ ! -z "$1" ]; then
