@@ -183,6 +183,7 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-buftabline'
+Plug 'wfxr/minimap.vim'
 
 " Plug 'rust-lang/rust.vim'
 Plug 'kevinoid/vim-jsonc'
@@ -707,3 +708,6 @@ let g:anyfold_fold_comments=1
 let g:anyfold_fold_toplevel=1
 set foldlevel=1
 hi Folded term=NONE cterm=NONE
+
+" code-minimap
+let g:minimap_auto_start=1

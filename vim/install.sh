@@ -388,6 +388,8 @@ echoc "=> Configuring rust..." \
     && cargo install sccache \
     && cargo install mdcat \
     && cargo install clog-ci \
+    && cargo install code-minimap \
+    && cargo install csview \
     && cargo install --git https://github.com/vi/websocat --features=ssl \
     && cargo install --git https://github.com/RustScan/RustScan \
     && cargo install wasm-bindgen-cli \
