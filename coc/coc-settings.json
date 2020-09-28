@@ -71,6 +71,17 @@
     "explorer.file.showHiddenFiles": true,
     "explorer.icon.enableNerdfont": true,
     "explorer.icon.enableVimDevicons": true,
+    "explorer.openAction.select.filter": {
+        "buftypes": [
+            "terminal"
+        ],
+        "filetypes": [
+            "vista_kind",
+            "qf",
+            "minimap"
+        ],
+        "floatingWindows": true
+    },
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": false,
     "git.addedSign.hlGroup": "GitGutterAdd",

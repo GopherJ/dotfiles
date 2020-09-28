@@ -710,4 +710,4 @@ set foldlevel=1
 hi Folded term=NONE cterm=NONE
 
 " code-minimap
-let g:minimap_auto_start=1
+let g:minimap_auto_start=0
