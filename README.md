@@ -4,7 +4,8 @@ All config files
 
 ## List
 
-- [vim](./vim)
+- [vim.deprecated](./vim)
+  > replaced by coc/.vimrc
 - [alacritty](./alacritty)
 - [git](./git)
 - [babel](./babel)
