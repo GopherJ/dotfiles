@@ -7,7 +7,7 @@ if has("gui_running")
     set guifont=Fira\ Code
 endif
 
-set shell=/usr/bin/zsh
+" set shell=/usr/bin/zsh
 
 set encoding=UTF-8
 
