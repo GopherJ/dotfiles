@@ -1,6 +1,3 @@
 Host *
     StrictHostKeyChecking no
-
-Host 192.168.*
-  StrictHostKeyChecking no
-  UserKnownHostsFile /dev/null
+    UserKnownHostsFile /dev/null
