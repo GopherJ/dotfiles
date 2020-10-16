@@ -1,1 +1,37 @@
+BasedOnStyle: LLVM
+
 BreakBeforeBraces: Stroustrup
+
+PointerAlignment: Left
+
+MaxEmptyLinesToKeep: 1
+
+AllowShortFunctionsOnASingleLine: false
+AllowShortIfStatementsOnASingleLine: false
+AllowShortCaseLabelsOnASingleLine: false
+AllowShortLoopsOnASingleLine: false
+AllowAllParametersOfDeclarationOnNextLine: true
+
+AlignTrailingComments: true
+AlignConsecutiveDeclarations: true
+AlignConsecutiveAssignments: true
+AlignAfterOpenBracket: AlwaysBreak
+
+SpacesInSquareBrackets: false
+SpacesInParentheses : false
+SpacesInContainerLiterals: true
+
+SpaceBeforeAssignmentOperators: true
+SpacesInContainerLiterals: true
+
+BreakConstructorInitializersBeforeComma: true
+
+IndentCaseLabels: true
+
+SortIncludes: true
+SortUsingDeclarations: true
+
+IndentWidth: 4
+TabWidth: 4
+ColumnLimit: 120
+UseTab: Always
