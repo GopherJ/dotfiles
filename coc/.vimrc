@@ -211,6 +211,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'justinmk/vim-gtfo'
+Plug 'ilyachur/cmake4vim'
 
 Plug 'tpope/vim-fugitive'
 
@@ -232,6 +233,7 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
+Plug 'skywind3000/vim-terminal-help'
 
 call plug#end()
 
