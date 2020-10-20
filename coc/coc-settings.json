@@ -25,6 +25,7 @@
         "dart",
         "go",
         "cpp",
+        "c",
         "rust"
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
