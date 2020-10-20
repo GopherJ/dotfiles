@@ -20,6 +20,7 @@ AlignAfterOpenBracket: AlwaysBreak
 SpacesInSquareBrackets: false
 SpacesInParentheses : false
 SpacesInContainerLiterals: true
+SpaceBeforeParens: ControlStatements
 
 SpaceBeforeAssignmentOperators: true
 SpacesInContainerLiterals: true

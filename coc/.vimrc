@@ -188,6 +188,7 @@ Plug 'wfxr/minimap.vim'
 " Plug 'rust-lang/rust.vim'
 Plug 'kevinoid/vim-jsonc'
 " Plug 'jackguo380/vim-lsp-cxx-highlight'
+" Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -713,3 +714,13 @@ let g:strip_whitespace_confirm=0
 
 " code-minimap
 let g:minimap_auto_start=0
+
+" vim-cpp-enhanced-highlight
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
+" let g:cpp_posix_standard = 1
+" let g:cpp_experimental_simple_template_highlight = 1
+" let g:cpp_experimental_template_highlight = 1
+" let g:cpp_concepts_highlight = 1
+" let g:cpp_no_function_highlight = 1
