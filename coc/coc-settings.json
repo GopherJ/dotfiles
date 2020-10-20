@@ -1,17 +1,46 @@
 {
     "languageserver": {
-        // "ccls": {
-        //     "command": "ccls",
-        //     "filetypes": ["c", "cpp", "cuda", "objc", "objcpp"],
-        //     "rootPatterns": [".ccls-root", "compile_commands.json"],
+        // "dls": {
+        //     "enable": true,
+        //     "command": "diagnostic-languageserver",
+        //     "args": ["--stdio", "--log-level", "2"],
+        //     "filetypes": ["c"],
         //     "initializationOptions": {
-        //         "cache": {
-        //             "directory": ".ccls-cache"
+        //         "linters": {
+        //             "cppcheck": {
+        //                 "command": "cppcheck",
+        //                 "args": [
+        //                     "--enable=performance,warning,portability,information",
+        //                     "--language=c",
+        //                     "%file"
+        //                 ],
+        //                 "sourceName": "cppcheck",
+        //                 "debounce": 100,
+        //                 "isStderr": true,
+        //                 "isStdout": false,
+        //                 "offsetLine": 0,
+        //                 "offsetColumn": 0,
+        //                 "formatPattern": [
+        //                     "^[^ ]+:(\\d*):(\\d+):\\s+([^:]+):\\s+(.+)$",
+        //                     {
+        //                         "line": 1,
+        //                         "message": 4,
+        //                         "security": 3
+        //                     }
+        //                 ],
+        //                 "securities": {
+        //                     "note": "info",
+        //                     "warning": "error"
+        //                 }
+        //             }
         //         },
-        //         "client": {
-        //             "snippetSupport": true
-        //         }
-        //     }
+        //         "filetypes": {
+        //             "c": ["cppcheck"]
+        //         },
+        //         "formatters": {},
+        //         "formatFiletypes": {}
+        //     },
+        //     "trace.server": "verbose"
         // },
         "kotlin": {
             "command": "~/kotlin-language-server/server/bin/kotlin-language-server",
@@ -73,14 +102,8 @@
     "explorer.icon.enableNerdfont": true,
     "explorer.icon.enableVimDevicons": true,
     "explorer.openAction.select.filter": {
-        "buftypes": [
-            "terminal"
-        ],
-        "filetypes": [
-            "vista_kind",
-            "qf",
-            "minimap"
-        ],
+        "buftypes": ["terminal"],
+        "filetypes": ["vista_kind", "qf", "minimap"],
         "floatingWindows": true
     },
     "git.addGBlameToVirtualText": false,
