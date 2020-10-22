@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # https://github.com/angelcam/arrow-client/wiki/Compilation-for-OpenWrt
-rustup target add mips-unknown-linux-musl
+# rustup target add mips-unknown-linux-musl
 
 mkdir -p libs
 cd libs
