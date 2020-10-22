@@ -139,6 +139,10 @@ echoc "=> Installing clangd-9"
 sudo apt install clangd-9 \
     && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
 
+eccho "=> Installing clang-9"
+sudo apt install clang-9 \
+    && sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-9
+
 echoc "=> Installing neovim from PPA..."
 sudo add-apt-repository ppa:neovim-ppa/unstable \
     && sudo apt update \
