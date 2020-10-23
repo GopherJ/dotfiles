@@ -382,6 +382,7 @@ autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.or
 " coc-explorer
 nmap <space>e :CocCommand explorer --preset default<CR>
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | q | endif
+let g:indentLine_fileTypeExclude = ['coc-explorer']
 
 let g:coc_explorer_global_presets = {
     \   'default': {
@@ -714,6 +715,7 @@ let g:strip_whitespace_confirm=0
 
 " code-minimap
 let g:minimap_auto_start=0
+let g:minimap_block_filetypes=['fugitive', 'nerdtree', 'coc-explorer']
 
 " vim-cpp-enhanced-highlight
 " let g:cpp_class_scope_highlight = 1

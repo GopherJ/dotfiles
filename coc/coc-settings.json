@@ -107,6 +107,8 @@
     "rust-analyzer.cargo.loadOutDirsFromCheck": true,
     "rust-analyzer.lens.enable": true,
     "rust-analyzer.lens.run": true,
+    "rust-analyzer.lens.methodReferences": true,
+    "rust-analyzer.hoverActions.linksInHover": true,
     "rust-analyzer.lens.implementations": true,
     "rust-analyzer.completion.postfix.enable": true,
     "go.goplsOptions": {
