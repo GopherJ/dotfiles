@@ -61,6 +61,7 @@ alias triple-list='rustc --print target-list | pr -tw100 --columns 3'
 alias scan='rustscan'
 alias groups='id -Gn'
 alias revert='git revert HEAD'
+alias weather='curl wttr.in'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
