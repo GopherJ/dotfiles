@@ -62,6 +62,7 @@ alias scan='rustscan'
 alias groups='id -Gn'
 alias revert='git revert HEAD'
 alias weather='curl wttr.in'
+alias sockstat="netstat -an |awk '/tcp/ {++S[\$NF]}END {for (a in S) print a , S[a]}'"
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
@@ -98,6 +99,11 @@ function changelog {
 }
 function details {
     printf "<details>\n\t<summary>Details</summary>\n\tSomething small enough to escape casual notice.\n</details>"
+}
+function reverse-tunnel {
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+        ssh -y -N -T -R ${2}:localhost:22 ${1}
+    fi
 }
 
 export GOPATH="$HOME/go"
