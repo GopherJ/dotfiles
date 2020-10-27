@@ -390,6 +390,7 @@ echoc "=> Configuring rust..." \
     && cargo +nightly install racer \
     && cargo install mdbook \
     && cargo install sccache \
+    && cargo install pueue \
     && cargo install mdcat \
     && cargo install clog-ci \
     && cargo install code-minimap \
