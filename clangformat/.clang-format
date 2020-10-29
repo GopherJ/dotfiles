@@ -2,7 +2,7 @@ BasedOnStyle: LLVM
 
 BreakBeforeBraces: Stroustrup
 
-PointerAlignment: Left
+PointerAlignment: Right
 
 MaxEmptyLinesToKeep: 1
 
