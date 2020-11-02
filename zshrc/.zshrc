@@ -108,6 +108,9 @@ function reverse-tunnel {
         ssh -y -N -T -R ${2}:localhost:22 ${1}
     fi
 }
+function cxxformat {
+    find . -iname '*.h' -o -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.c' | xargs -i clang-format -i -style=LLVM {}
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
