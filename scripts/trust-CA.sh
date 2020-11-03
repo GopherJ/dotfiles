@@ -16,8 +16,10 @@ fi
 
 sudo cp $CA_CERT_PATH /usr/share/ca-certificates/selfsigned
 
+# /etc/ssl/certs
 sudo dpkg-reconfigure ca-certificates
 
+# Chrome
 certutil -d sql:$HOME/.pki/nssdb \
     -A \
     -t "C,," \
