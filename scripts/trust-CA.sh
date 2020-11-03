@@ -16,14 +16,16 @@ fi
 
 sudo cp $CA_CERT_PATH /usr/share/ca-certificates/selfsigned
 
-# /etc/ssl/certs
+# Add certificates to System-wide trusted certificate store: /etc/ssl/certs
 sudo dpkg-reconfigure ca-certificates
+sudo update-ca-certificates
 
-# Chrome
+# Add certificates to Chrome: ~/.pki/nssdb
 certutil -d sql:$HOME/.pki/nssdb \
     -A \
     -t "C,," \
     -n "My Homemade CA" \
     -i /usr/share/ca-certificates/selfsigned/$CA_CERT
 
-sudo update-ca-certificates
+# Add certificates to Firefox => View Certificates => Import => Trust for websites
+firefox about:preferences#privacy
