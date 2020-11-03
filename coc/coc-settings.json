@@ -100,6 +100,7 @@
     "codeLens.separator": " ",
     "codeLens.subseparator": " | ",
     "rust-analyzer.inlayHints.chainingHints": true,
+    "rust-analyzer.diagnostics.disabled": ["inactive-code"],
     "rust-analyzer.updates.channel": "nightly",
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.inlayHints.refreshOnInsertMode": false,
