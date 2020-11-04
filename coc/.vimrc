@@ -300,7 +300,7 @@ let g:coc_global_extensions = [
       \'coc-explorer',
       \'coc-actions',
       \'coc-calc',
-      \'coc-tabnine'
+      \'coc-tabnine',
       \'coc-toml',
       \]
 
