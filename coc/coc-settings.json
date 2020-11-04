@@ -84,7 +84,8 @@
         "go",
         "cpp",
         "c",
-        "rust"
+        "rust",
+        "toml"
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,
