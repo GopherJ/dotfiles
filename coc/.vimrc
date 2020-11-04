@@ -1,3 +1,7 @@
+" File              : .vimrc
+" Date              : 04.11.2020
+" Last Modified Date: 04.11.2020
+"
 "let mapleader = "\<Space>"
 
 " au VimEnter * !xmodmap -e 'clear Lock' -e 'keycode 0x42 = Escape'
@@ -234,7 +238,7 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
-Plug 'skywind3000/vim-terminal-help'
+" Plug 'skywind3000/vim-terminal-help'
 
 call plug#end()
 
@@ -351,7 +355,10 @@ nmap <leader>rn  <Plug>(coc-rename)
 xmap <leader>a   <Plug>(coc-codeaction-selected)
 nmap <leader>a   <Plug>(coc-codeaction-selected)
 
-nmap <leader>ca  <Plug>(coc-codeaction)
+if !has('nvim')
+    nmap <leader>ca  <Plug>(coc-codeaction)
+endif
+
 nmap <leader>la  <Plug>(coc-codelens-action)
 nmap <leader>fc  <Plug>(coc-fix-current)
 
@@ -395,8 +402,11 @@ let g:coc_explorer_global_presets = {
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-xmap <silent> <space>a :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>
-nmap <silent> <space>a :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@
+
+if has('nvim')
+    xmap <silent> <leader>ca :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>j
+    nmap <silent> <leader>ca :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@j
+endif
 
 " coc-git
 nmap ;k <Plug>(coc-git-prevchunk)
