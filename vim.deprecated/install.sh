@@ -15,7 +15,7 @@ function echoc() {
 
 # if java jdk isn't 8, we need to do
 # sudo update-alternatives --config java
-deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "protobuf-compiler" "zlib1g-dev" "nnn" "cppcheck" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind")
+deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "protobuf-compiler" "zlib1g-dev" "nnn" "cppcheck" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind" "ca-certificates" "libnss3-tools")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -381,6 +381,12 @@ command -v rustup > /dev/null || {
 echoc "=> Installing rustup toolchain..." \
     && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs --retry-delay 2 --retry 3 | sh
 }
+
+echoc "=> Installing virtual box..."
+if [ ! -f ~/Downloads/virtualbox-6.1_6.1.16-140961~Ubuntu~eoan_amd64.deb ]; then
+    curl -fLo ~/Downloads/virtualbox-6.1_6.1.16-140961~Ubuntu~eoan_amd64.deb https://download.virtualbox.org/virtualbox/6.1.16/virtualbox-6.1_6.1.16-140961~Ubuntu~eoan_amd64.deb
+    sudo dpkg -i ~/Downloads/virtualbox-6.1_6.1.16-140961~Ubuntu~eoan_amd64.deb
+fi
 
 echoc "=> Configuring rust..." \
     && source $HOME/.cargo/env \
