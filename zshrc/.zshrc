@@ -66,6 +66,7 @@ alias sockstat="netstat -an |awk '/tcp/ {++S[\$NF]}END {for (a in S) print a , S
 alias cronlogs='sudo grep CRON /var/log/syslog'
 alias cppcheck='cppcheck --enable=warning,performance --project=compile_commands.json'
 alias fetch-submodules='git submodule update --init --recursive'
+alias discover-hosts='nmap -sP 192.168.1.0/24'
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
