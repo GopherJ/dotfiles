@@ -113,6 +113,26 @@ function reverse-tunnel {
 function cxxformat {
     find . -iname '*.h' -o -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.c' | xargs -i clang-format -i -style=LLVM {}
 }
+function asciiToHex {
+    if [ ! -z "$1" ]; then
+        echo "$1" | tr -d '\n' | xxd -ps
+    fi
+}
+function hexToAscii {
+    if [ ! -z "$1" ]; then
+        echo "$1" | tr -d '\n' | xxd -r -p
+    fi
+}
+function decimalToHex {
+    if [ ! -z "$1" ]; then
+        printf '%x\n' "$1"
+    fi
+}
+function hexToDecimal {
+    if [ ! -z "$1" ]; then
+        printf '%d\n' "0x$1"
+    fi
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
