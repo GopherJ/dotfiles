@@ -12,8 +12,7 @@ alias o="xdg-open "
 alias c='xclip -selection c'
 alias rg="rg --ignore-case --hidden --iglob '!**/package-lock.json' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/yarn.lock' --iglob '!**/*.min.js' --iglob '!**/*.min.css'"
 alias h="history -n"
-alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder:nightly-2019-04-17'
-alias rust-musl-builder-stable='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
+alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src -v cargo-git:/home/rust/.cargo/git -v cargo-registry:/home/rust/.cargo/registry -v target:/home/rust/src/target ekidd/rust-musl-builder'
 alias afs="sudo apt-file search "
 alias ss="sed -i 's/ *$//g'"
 alias uu="sudo apt update --fix-missing && sudo apt upgrade"
@@ -113,12 +112,12 @@ function reverse-tunnel {
 function cxxformat {
     find . -iname '*.h' -o -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.c' | xargs -i clang-format -i -style=LLVM {}
 }
-function asciiToHex {
+function utf8ToHex {
     if [ ! -z "$1" ]; then
         echo "$1" | tr -d '\n' | xxd -ps
     fi
 }
-function hexToAscii {
+function hexToUtf8 {
     if [ ! -z "$1" ]; then
         echo "$1" | tr -d '\n' | xxd -r -p
     fi
