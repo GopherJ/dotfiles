@@ -425,7 +425,8 @@ echoc "=> Configuring rust..." \
     && cargo install -f --git https://github.com/jez/as-tree \
     && cargo install --git https://github.com/extrawurst/gitui \
     && cargo install skim \
-    && cargo install cargo-bloat --features regex-filter
+    && cargo install cargo-bloat --features regex-filter \
+    && cargo install cargo-release
     # && cargo install so \
     # && cargo install --git https://github.com/jonhoo/buzz
 
