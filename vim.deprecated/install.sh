@@ -313,6 +313,11 @@ echoc "=> Installing nvm..." \
     && [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+    && pip install wheel \
+    && pip3 install wheel \
+    && pip install --user pynvim \
+    && pip3 install --user pynvim
+
 }
 
 echoc "=> Installing node${NODE_VERSION}..."
@@ -330,8 +335,9 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g javascript-typescript-langserver vue-language-server vti typescript \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g js-beautify typescript-formatter remark-cli prettier \
-    && npm i -g git+https://github.com/ramitos/jsctags.git \
-    && npm i -g git+https://github.com/Perlence/tstags.git \
+    # && npm i -g git+https://github.com/ramitos/jsctags.git \
+    # && npm i -g git+https://github.com/Perlence/tstags.git \
+    && npm install -g neovim \
     && npm i -g @typescript-eslint/parser \
     && npm i -g @typescript-eslint/eslint-plugin \
     && npm i -g eslint-plugin-prettier eslint-config-prettier \
