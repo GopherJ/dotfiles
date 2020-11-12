@@ -783,3 +783,10 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | q | endif
 "   return printf('+%d ~%d -%d', a, m, r)
 " endfunction
 " set statusline+=%{GitStatus()}
+"
+if has('nvim')
+    let g:neoterm_autoscroll = 1
+    autocmd TermOpen term://* startinsert
+    tnoremap <Esc> <C-\><C-n>:q!<CR>
+    noremap <c-g> :tabe<CR>:-tabmove<CR>:term gitui<CR>
+endif
