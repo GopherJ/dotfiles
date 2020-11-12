@@ -190,6 +190,7 @@ Plug 'ap/vim-buftabline'
 Plug 'wfxr/minimap.vim'
 Plug 'liuchengxu/eleline.vim'
 Plug 'liuchengxu/vista.vim'
+Plug 'vhdirk/vim-cmake'
 
 " Plug 'rust-lang/rust.vim'
 Plug 'kevinoid/vim-jsonc'
@@ -218,7 +219,6 @@ Plug 'morhetz/gruvbox'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'justinmk/vim-gtfo'
-Plug 'ilyachur/cmake4vim'
 
 Plug 'tpope/vim-fugitive'
 
