@@ -788,5 +788,6 @@ if has('nvim')
     let g:neoterm_autoscroll = 1
     autocmd TermOpen term://* startinsert
     tnoremap <Esc> <C-\><C-n>:q!<CR>
-    noremap <c-g> :tabe<CR>:-tabmove<CR>:term gitui<CR>
+    noremap <C-G> :tabe<CR>:-tabmove<CR>:term gitui<CR>
+    noremap <C-Y> :tabe<CR>:-tabmove<CR>:term<CR>
 endif
