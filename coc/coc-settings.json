@@ -121,7 +121,7 @@
         "workspaceFolders": false
     },
     "clangd.enabled": true,
-    // "clangd.semanticHighlighting": true,
+    "clangd.semanticHighlighting": false,
     "prettier.singleQuote": false,
     "prettier.trailingComma": "es5",
     "prettier.tabWidth": 4,
@@ -142,6 +142,7 @@
     },
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": false,
+    "git.showCommitInFloating": true,
     "git.addedSign.hlGroup": "GitGutterAdd",
     "git.changedSign.hlGroup": "GitGutterChange",
     "git.removedSign.hlGroup": "GitGutterDelete",

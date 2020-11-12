@@ -116,7 +116,7 @@ nnoremap <silent>  g* g*zz
 nnoremap hs        <C-W>v
 nnoremap vs        <C-W>s
 
-nnoremap <C-W>     :wq!<CR>
+nnoremap <C-W>     :close<CR>
 nnoremap <C-D>     :qall!<CR>
 
 if has('nvim')
@@ -221,6 +221,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'justinmk/vim-gtfo'
 
 Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
 
 Plug 'alpertuna/vim-header'
 
@@ -363,6 +364,7 @@ augroup CocCustomGroup
 augroup end
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * :CocCommand git.refresh
 
 nmap <leader>rn  <Plug>(coc-rename)
 
@@ -400,6 +402,16 @@ command! -nargs=0 GitDiffCached : call CocActionAsync('runCommand', 'git.diffCac
 command! -nargs=0 OR            : call CocActionAsync('runCommand', 'editor.action.organizeImport')
 autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
+
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+
+if has('nvim')
+  vnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#nvim_scroll(1, 1) : "\<C-f>"
+  vnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#nvim_scroll(0, 1) : "\<C-b>"
+endif
 
 " coc-explorer
 nmap <space>e :CocCommand explorer --preset default<CR>
@@ -542,9 +554,9 @@ let g:mkdp_preview_options = {
 
 " vim-fzf
 let g:fzf_layout    = { 'down': '~20%' }
-nnoremap <C-F>  : Files<CR>
+" nnoremap <C-F>  : Files<CR>
 " nnoremap <C-B>  : Buffers<CR>
-nnoremap <C-P>  : Rg<CR>
+" nnoremap <C-P>  : Rg<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
@@ -763,3 +775,10 @@ endfunction
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | q | endif
+
+" vim-gitgutter
+" function! GitStatus()
+"   let [a,m,r] = GitGutterGetHunkSummary()
+"   return printf('+%d ~%d -%d', a, m, r)
+" endfunction
+" set statusline+=%{GitStatus()}
