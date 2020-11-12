@@ -25,7 +25,7 @@ set undofile
 set hidden
 
 set timeoutlen=100
-set updatetime=100
+set updatetime=300
 set cmdheight=1
 
 set foldmethod=manual
@@ -320,11 +320,21 @@ function! s:check_back_space() abort
     return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
-if exists('*complete_info')
-    inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" Use <c-space> to trigger completion.
+if has('nvim')
+  inoremap <silent><expr> <c-space> coc#refresh()
 else
-    inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+  inoremap <silent><expr> <c-@> coc#refresh()
 endif
+
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
+" if exists('*complete_info')
+"     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+" else
+"     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" endif
 
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev)
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next)
@@ -339,8 +349,10 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'silent! h '.expand('<cword>')
-    else
+    elseif (coc#rpc#ready())
         call CocActionAsync('doHover')
+    else
+        execute 'silent!' . &keywordprg . " " . expand('<cword>')
     endif
 endfunction
 
@@ -404,7 +416,6 @@ let g:coc_explorer_global_presets = {
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
 endfunction
-
 if has('nvim')
     xmap <silent> <leader>ca :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>j
     nmap <silent> <leader>ca :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@j
@@ -741,4 +752,5 @@ let g:minimap_block_filetypes=['fugitive', 'nerdtree', 'coc-explorer']
 " let g:cpp_no_function_highlight = 1
 "
 " eleline.vim
-let g:airline_powerline_fonts = 1
+set laststatus=2
+let g:eleline_powerline_fonts = 1
