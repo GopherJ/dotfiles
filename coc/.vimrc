@@ -701,6 +701,7 @@ if !empty($TMUX)
 endif
 
 " indentLine
+let g:indentLine_enabled = 0
 let g:indentLine_setConceal = 0
 let g:indentLine_concealcursor = ""
 
@@ -739,7 +740,7 @@ let g:strip_whitespace_confirm=0
 
 " code-minimap
 let g:minimap_auto_start=0
-let g:minimap_block_filetypes=['fugitive', 'nerdtree', 'coc-explorer']
+let g:minimap_block_filetypes=['fugitive', 'nerdtree', 'coc-explorer', 'vista']
 
 " vim-cpp-enhanced-highlight
 " let g:cpp_class_scope_highlight = 1
@@ -761,3 +762,4 @@ function! NearestMethodOrFunction() abort
 endfunction
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | q | endif
