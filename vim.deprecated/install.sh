@@ -281,6 +281,7 @@ go get golang.org/x/perf/cmd/benchstat
 
 if [ ! -d ~/.vim/ctags ]; then
     echoc "=> Configuring universal ctags..."
+    sudo apt install libjansson-dev
     git clone https://github.com/universal-ctags/ctags ~/.vim/ctags \
         && cd ~/.vim/ctags \
         && ./autogen.sh \
