@@ -188,6 +188,8 @@ Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-buftabline'
 Plug 'wfxr/minimap.vim'
+Plug 'liuchengxu/eleline.vim'
+Plug 'liuchengxu/vista.vim'
 
 " Plug 'rust-lang/rust.vim'
 Plug 'kevinoid/vim-jsonc'
@@ -200,7 +202,7 @@ Plug 'stephpy/vim-yaml'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'terryma/vim-expand-region'
 
 Plug 'heavenshell/vim-jsdoc', {
@@ -212,7 +214,7 @@ Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
 Plug 'morhetz/gruvbox'
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'justinmk/vim-gtfo'
@@ -472,34 +474,34 @@ nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cwor
 "--------------------------------------------------------------------------------
 
 " lightline.vim
-set laststatus=2
-set noshowmode
-if !has('gui_running')
-  set t_Co=256
-endif
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
-let g:lightline = {
-      \ 'colorscheme': 'powerline',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'cocstatus', 'currentfunction', 'fileformat', 'fileencoding', 'filetype' ],
-      \              [ 'blame' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction',
-      \   'blame': 'LightlineGitBlame',
-      \ },
-      \ 'separator': { 'left': '', 'right': '' },
-      \ 'subseparator': { 'left': '', 'right': '' }
-      \ }
-autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+" set laststatus=2
+" set noshowmode
+" if !has('gui_running')
+"   set t_Co=256
+" endif
+" function! CocCurrentFunction()
+"     return get(b:, 'coc_current_function', '')
+" endfunction
+" let g:lightline = {
+"       \ 'colorscheme': 'powerline',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+"       \   'right': [ [ 'lineinfo' ],
+"       \              [ 'percent' ],
+"       \              [ 'cocstatus', 'currentfunction', 'fileformat', 'fileencoding', 'filetype' ],
+"       \              [ 'blame' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'gitbranch': 'FugitiveHead',
+"       \   'cocstatus': 'coc#status',
+"       \   'currentfunction': 'CocCurrentFunction',
+"       \   'blame': 'LightlineGitBlame',
+"       \ },
+"       \ 'separator': { 'left': '', 'right': '' },
+"       \ 'subseparator': { 'left': '', 'right': '' }
+"       \ }
+" autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " vim-argwrap
 " nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -557,95 +559,95 @@ command! -bang -nargs=* Rg
 " npm install -g git+https://github.com/Perlence/tstags.git
 " nnoremap <F8> :TagbarToggle<CR>
 " autocmd FileType * call tagbar#autoopen(0)
-let g:tagbar_width=25
-let g:tagbar_ctags_bin='/usr/local/bin/ctags'
-let g:rust_use_custom_ctags_defs = 1
-let g:tagbar_type_rust = {
-            \ 'ctagsbin' : '/usr/local/bin/ctags',
-            \ 'ctagstype' : 'rust',
-            \ 'kinds' : [
-            \ 'n:modules',
-            \ 's:structures:1',
-            \ 'i:interfaces',
-            \ 'c:implementations',
-            \ 'f:functions:1',
-            \ 'g:enumerations:1',
-            \ 't:type aliases:1:0',
-            \ 'v:constants:1:0',
-            \ 'M:macros:1',
-            \ 'm:fields:1:0',
-            \ 'e:enum variants:1:0',
-            \ 'P:methods:1',
-            \ ],
-            \ 'sro': '::',
-            \ 'kind2scope' : {
-            \ 'n': 'module',
-            \ 's': 'struct',
-            \ 'i': 'interface',
-            \ 'c': 'implementation',
-            \ 'f': 'function',
-            \ 'g': 'enum',
-            \ 't': 'typedef',
-            \ 'v': 'variable',
-            \ 'M': 'macro',
-            \ 'm': 'field',
-            \ 'e': 'enumerator',
-            \ 'P': 'method',
-            \ }
-            \ }
-let g:tagbar_type_css = {
-            \ 'ctagstype' : 'Css',
-            \ 'kinds'     : [
-            \ 'c:classes',
-            \ 's:selectors',
-            \ 'i:identities'
-            \ ]
-            \ }
-let g:tagbar_type_typescript = {
-            \ 'ctagsbin' : 'tstags',
-            \ 'ctagsargs' : '-f-',
-            \ 'kinds': [
-            \ 'e:enums:0:1',
-            \ 'f:function:0:1',
-            \ 't:typealias:0:1',
-            \ 'M:Module:0:1',
-            \ 'I:import:0:1',
-            \ 'i:interface:0:1',
-            \ 'C:class:0:1',
-            \ 'm:method:0:1',
-            \ 'p:property:0:1',
-            \ 'v:variable:0:1',
-            \ 'c:const:0:1',
-            \ ],
-            \ 'sort' : 0
-            \ }
-let g:tagbar_type_markdown = {
-            \ 'ctagstype': 'markdown',
-            \ 'ctagsbin' : '~/.vim/markdown2ctags/markdown2ctags.py',
-            \ 'ctagsargs' : '-f - --sort=yes --sro=»',
-            \ 'kinds' : [
-            \ 's:sections',
-            \ 'i:images'
-            \ ],
-            \ 'sro' : '»',
-            \ 'kind2scope' : {
-            \ 's' : 'section',
-            \ },
-            \ 'sort': 0,
-            \ }
-let g:tagbar_type_make = {
-            \ 'kinds':[
-            \ 'm:macros',
-            \ 't:targets'
-            \ ]
-            \ }
-let g:tagbar_type_ansible = {
-            \ 'ctagstype' : 'ansible',
-            \ 'kinds' : [
-            \ 't:tasks'
-            \ ],
-            \ 'sort' : 0
-            \ }
+" let g:tagbar_width=25
+" let g:tagbar_ctags_bin='/usr/local/bin/ctags'
+" let g:rust_use_custom_ctags_defs = 1
+" let g:tagbar_type_rust = {
+"             \ 'ctagsbin' : '/usr/local/bin/ctags',
+"             \ 'ctagstype' : 'rust',
+"             \ 'kinds' : [
+"             \ 'n:modules',
+"             \ 's:structures:1',
+"             \ 'i:interfaces',
+"             \ 'c:implementations',
+"             \ 'f:functions:1',
+"             \ 'g:enumerations:1',
+"             \ 't:type aliases:1:0',
+"             \ 'v:constants:1:0',
+"             \ 'M:macros:1',
+"             \ 'm:fields:1:0',
+"             \ 'e:enum variants:1:0',
+"             \ 'P:methods:1',
+"             \ ],
+"             \ 'sro': '::',
+"             \ 'kind2scope' : {
+"             \ 'n': 'module',
+"             \ 's': 'struct',
+"             \ 'i': 'interface',
+"             \ 'c': 'implementation',
+"             \ 'f': 'function',
+"             \ 'g': 'enum',
+"             \ 't': 'typedef',
+"             \ 'v': 'variable',
+"             \ 'M': 'macro',
+"             \ 'm': 'field',
+"             \ 'e': 'enumerator',
+"             \ 'P': 'method',
+"             \ }
+"             \ }
+" let g:tagbar_type_css = {
+"             \ 'ctagstype' : 'Css',
+"             \ 'kinds'     : [
+"             \ 'c:classes',
+"             \ 's:selectors',
+"             \ 'i:identities'
+"             \ ]
+"             \ }
+" let g:tagbar_type_typescript = {
+"             \ 'ctagsbin' : 'tstags',
+"             \ 'ctagsargs' : '-f-',
+"             \ 'kinds': [
+"             \ 'e:enums:0:1',
+"             \ 'f:function:0:1',
+"             \ 't:typealias:0:1',
+"             \ 'M:Module:0:1',
+"             \ 'I:import:0:1',
+"             \ 'i:interface:0:1',
+"             \ 'C:class:0:1',
+"             \ 'm:method:0:1',
+"             \ 'p:property:0:1',
+"             \ 'v:variable:0:1',
+"             \ 'c:const:0:1',
+"             \ ],
+"             \ 'sort' : 0
+"             \ }
+" let g:tagbar_type_markdown = {
+"             \ 'ctagstype': 'markdown',
+"             \ 'ctagsbin' : '~/.vim/markdown2ctags/markdown2ctags.py',
+"             \ 'ctagsargs' : '-f - --sort=yes --sro=»',
+"             \ 'kinds' : [
+"             \ 's:sections',
+"             \ 'i:images'
+"             \ ],
+"             \ 'sro' : '»',
+"             \ 'kind2scope' : {
+"             \ 's' : 'section',
+"             \ },
+"             \ 'sort': 0,
+"             \ }
+" let g:tagbar_type_make = {
+"             \ 'kinds':[
+"             \ 'm:macros',
+"             \ 't:targets'
+"             \ ]
+"             \ }
+" let g:tagbar_type_ansible = {
+"             \ 'ctagstype' : 'ansible',
+"             \ 'kinds' : [
+"             \ 't:tasks'
+"             \ ],
+"             \ 'sort' : 0
+"             \ }
 
 " asynctasks
 let g:asyncrun_open = 6
@@ -737,3 +739,6 @@ let g:minimap_block_filetypes=['fugitive', 'nerdtree', 'coc-explorer']
 " let g:cpp_experimental_template_highlight = 1
 " let g:cpp_concepts_highlight = 1
 " let g:cpp_no_function_highlight = 1
+"
+" eleline.vim
+let g:airline_powerline_fonts = 1
