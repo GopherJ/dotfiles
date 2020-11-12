@@ -191,6 +191,7 @@ Plug 'wfxr/minimap.vim'
 Plug 'liuchengxu/eleline.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'vhdirk/vim-cmake'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Plug 'rust-lang/rust.vim'
 Plug 'kevinoid/vim-jsonc'
