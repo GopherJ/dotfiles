@@ -370,9 +370,11 @@ cd ~/.vim/pack/vimspector/opt/vimspector \
     && ./install_gadget.py \
         --enable-c \
         --enable-go \
-        --enable-python \
         --force-enable-node \
         --force-enable-rust \
+        --force-enable-csharp \
+        --enable-python \
+        --force-enable-python.legacy \
         --force-enable-java \
     && go get -u github.com/go-delve/delve/cmd/dlv \
     && cd -
