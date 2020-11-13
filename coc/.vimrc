@@ -775,7 +775,7 @@ function! NearestMethodOrFunction() abort
 endfunction
 set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | q | endif
+autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | qall! | endif
 
 " vim-gitgutter
 " function! GitStatus()
