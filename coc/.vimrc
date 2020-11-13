@@ -786,8 +786,9 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | q | endif
 "
 if has('nvim')
     let g:neoterm_autoscroll = 1
-    autocmd TermOpen term://* startinsert
+    autocmd TermOpen term://*:gitui startinsert
+    autocmd TermOpen term://*:zsh startinsert
     tnoremap <Esc> <C-\><C-n>:q!<CR>
     noremap <C-G> :tabe<CR>:-tabmove<CR>:term gitui<CR>
-    noremap <C-Y> :tabe<CR>:-tabmove<CR>:term<CR>
+    noremap <C-Y> :tabe<CR>:-tabmove<CR>:term zsh<CR>
 endif
