@@ -310,7 +310,8 @@ let g:coc_global_extensions = [
       \'coc-actions',
       \'coc-tabnine',
       \'coc-toml',
-      \'coc-yaml'
+      \'coc-yaml',
+      \'coc-translator'
       \]
 
 inoremap <silent><expr> <TAB>
@@ -495,6 +496,9 @@ endfunction
 nnoremap <silent> <space>q  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 
+" coc-translator
+nmap <leader>t <Plug>(coc-translator-p)
+vmap <leader>t <Plug>(coc-translator-pv)
 
 "--------------------------------------------------------------------------------
 " Plugin configuration
