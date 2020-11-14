@@ -102,6 +102,7 @@ set guioptions-=L  "remove left-hand scroll bar
 
 autocmd BufReadPost *.kt setlocal filetype=kotlin
 autocmd BufReadPost *.md setlocal filetype=markdown
+autocmd BufReadPost *.json setlocal filetype=jsonc
 
 autocmd InsertLeave * set nopaste
 
@@ -194,7 +195,7 @@ Plug 'vhdirk/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 
 " Plug 'rust-lang/rust.vim'
-Plug 'kevinoid/vim-jsonc'
+Plug 'neoclide/jsonc.vim'
 " Plug 'jackguo380/vim-lsp-cxx-highlight'
 " Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'cespare/vim-toml'
@@ -307,7 +308,6 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-explorer',
       \'coc-actions',
-      \'coc-calc',
       \'coc-tabnine',
       \'coc-toml',
       \'coc-yaml'
