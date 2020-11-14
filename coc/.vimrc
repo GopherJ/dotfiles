@@ -310,6 +310,7 @@ let g:coc_global_extensions = [
       \'coc-calc',
       \'coc-tabnine',
       \'coc-toml',
+      \'coc-yaml'
       \]
 
 inoremap <silent><expr> <TAB>
