@@ -562,9 +562,9 @@ let g:mkdp_preview_options = {
 
 " vim-fzf
 let g:fzf_layout    = { 'down': '~20%' }
-" nnoremap <C-F>  : Files<CR>
-" nnoremap <C-B>  : Buffers<CR>
-" nnoremap <C-P>  : Rg<CR>
+nnoremap ;;  : Files<CR>
+nnoremap ;b  : Buffers<CR>
+nnoremap ;f  : Rg<CR>
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
