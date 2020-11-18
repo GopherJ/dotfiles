@@ -156,6 +156,8 @@ nnoremap L         $
 nnoremap <M-left>    :bp<CR>
 nnoremap <M-right>   :bn<CR>
 
+nnoremap <space>f  /
+
 nnoremap <space><space> <c-^>
 
 function! s:VSetSearch()
