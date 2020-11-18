@@ -442,7 +442,7 @@ let g:indentLine_fileTypeExclude = ['coc-explorer']
 
 let g:coc_explorer_global_presets = {
     \   'default': {
-    \     'file-child-template': '[indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
+    \     'file-child-template': '[git | 2] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
     \   }
     \ }
 
