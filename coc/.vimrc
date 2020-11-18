@@ -342,20 +342,20 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 "     inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 " endif
 "
-let g:user_emmet_leader_key = '<C-e>'
-let g:user_emmet_expandabbr_key = '<C-x><C-e>'
-imap <silent><expr> <Tab> <SID>expand()
-
-function! s:expand()
-    if pumvisible()
-      return "\<C-y>"
-    endif
-    let col = col('.') - 1
-    if !col || getline('.')[col - 1]  =~# '\s'
-      return "\<Tab>"
-    endif
-    return "\<C-x>\<C-e>"
-endfunction
+" let g:user_emmet_leader_key = '<C-e>'
+" let g:user_emmet_expandabbr_key = '<C-x><C-e>'
+" imap <silent><expr> <Tab> <SID>expand()
+"
+" function! s:expand()
+"     if pumvisible()
+"       return "\<C-y>"
+"     endif
+"     let col = col('.') - 1
+"     if !col || getline('.')[col - 1]  =~# '\s'
+"       return "\<Tab>"
+"     endif
+"     return "\<C-x>\<C-e>"
+" endfunction
 
 nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
 nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
