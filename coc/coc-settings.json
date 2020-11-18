@@ -71,6 +71,13 @@
         "filetypes": ["vista_kind", "qf", "minimap"],
         "floatingWindows": true
     },
+    "explorer.keyMappings.global": {
+        "<leader>k": "diagnosticPrev",
+        "<leader>j": "diagnosticNext",
+
+        ";k": "gitPrev",
+        ";j": "gitNext"
+    },
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": true,
     "git.showCommitInFloating": true,
