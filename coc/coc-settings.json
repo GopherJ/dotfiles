@@ -72,11 +72,11 @@
         "floatingWindows": true
     },
     "explorer.keyMappings.global": {
-        "<leader>k": "diagnosticPrev",
-        "<leader>j": "diagnosticNext",
+        "<leader>k": "indexPrev:diagnosticError",
+        "<leader>j": "indexNext:diagnosticError",
 
-        ";k": "gitPrev",
-        ";j": "gitNext"
+        ";k": "indexPrev:git",
+        ";j": "indexNext:git"
     },
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": true,
