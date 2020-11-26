@@ -30,7 +30,7 @@ fi
 
 sudo cp ./pki/ca.crt $HOME/openvpn-client-$1
 sudo cp ./pki/issued/$1.crt $HOME/openvpn-client-$1
-sudo cp ./pki/private/$1.crt $HOME/openvpn-client-$1
+sudo cp ./pki/private/$1.key $HOME/openvpn-client-$1
 
 sudo chown -R $USER:$USER $HOME/openvpn-client-$1
 
@@ -52,4 +52,4 @@ EOF
 
 echo "Profiles generated in $HOME/openvpn-client-$1"
 echo "You can connect your server by running:"
-echo "\t cd $HOME/openvpn-client-$1 && openvpn --config client.conf"
+echo "\tcd $HOME/openvpn-client-$1 && openvpn --config client.conf"

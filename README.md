@@ -32,3 +32,4 @@ All config files
 - [gtk3](./gtk3)
 - [rustfmt](./rustfmt)
 - [ssh](./ssh)
+- [openvpn](./openvpn)
