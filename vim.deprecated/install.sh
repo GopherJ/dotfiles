@@ -15,7 +15,7 @@ function echoc() {
 
 # if java jdk isn't 8, we need to do
 # sudo update-alternatives --config java
-deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "protobuf-compiler" "zlib1g-dev" "nnn" "cppcheck" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind" "ca-certificates" "libnss3-tools" "nmap" "net-tools" "xz-utils")
+deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "zlib1g-dev" "nnn" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind" "ca-certificates" "libnss3-tools" "nmap" "net-tools" "xz-utils")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -85,7 +85,7 @@ curl -fLo ~/Downloads/upx-3.94-amd64_linux.tar.xz https://github.com/upx/upx/rel
 echoc "=> Installing brew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
     && echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.zshrc \
-    && brew install watchman \
+    && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
     && echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
     # && sudo sysctl -w fs.inotify.max_user_watches=12288 \
     # && sudo sysctl -p
@@ -151,8 +151,7 @@ sudo mv ~/Downloads/MQTTX-1.3.2.AppImage /usr/local/bin/mqttx
 echoc "=> Installing clangd-9"
 sudo apt install clangd-9 \
     && sudo update-alternatives --install /usr/bin/clangd clangd /usr/bin/clangd-9 100
-
-eccho "=> Installing clang-9"
+echoc "=> Installing clang-9"
 sudo apt install clang-9 \
     && sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-9
 
@@ -193,21 +192,21 @@ echoc "=> Installing vim-plug..."
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3
 
-echoc "=> Installing onedark.vim..."
-curl -fLo ~/.vim/autoload/onedark.vim --create-dirs \
-    https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/onedark.vim --retry-delay 2 --retry 3
-curl -fLo ~/.vim/colors/onedark.vim --create-dirs \
-    https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim --retry-delay 2 --retry 3
-
-echoc "=> Installing monokai.vim..."
-curl -fLo ~/.vim/colors/monokai.vim --create-dirs \
-    https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim --retry-delay 2 --retry 3
-
-echoc "=> Installing one.vim..."
-curl -fLo ~/.vim/colors/one.vim --create-dirs \
-    https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim --retry-delay 2 --retry 3
-curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs \
-    https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim --retry-delay 2 --retry 3
+# echoc "=> Installing onedark.vim..."
+# curl -fLo ~/.vim/autoload/onedark.vim --create-dirs \
+#     https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/onedark.vim --retry-delay 2 --retry 3
+# curl -fLo ~/.vim/colors/onedark.vim --create-dirs \
+#     https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim --retry-delay 2 --retry 3
+#
+# echoc "=> Installing monokai.vim..."
+# curl -fLo ~/.vim/colors/monokai.vim --create-dirs \
+#     https://raw.githubusercontent.com/sickill/vim-monokai/master/colors/monokai.vim --retry-delay 2 --retry 3
+#
+# echoc "=> Installing one.vim..."
+# curl -fLo ~/.vim/colors/one.vim --create-dirs \
+#     https://raw.githubusercontent.com/rakr/vim-one/master/colors/one.vim --retry-delay 2 --retry 3
+# curl -fLo ~/.vim/autoload/airline/themes/one.vim --create-dirs \
+#     https://raw.githubusercontent.com/rakr/vim-one/master/autoload/airline/themes/one.vim --retry-delay 2 --retry 3
 
 echoc "=> Installing sass-convert (scss formatter)..."
 sudo gem install sass
@@ -273,7 +272,7 @@ if [ ! -f ~/Downloads/go1.14.4.linux-amd64.tar.gz ]; then
     curl -fLo ~/Downloads/go1.14.4.linux-amd64.tar.gz https://dl.google.com/go/go1.14.4.linux-amd64.tar.gz --retry-delay 2 --retry 3 \
         && sudo tar -C /usr/local -xzf ~/Downloads/go1.14.4.linux-amd64.tar.gz
 fi
-go get  github.com/golang/protobuf/protoc-gen-go
+go get github.com/golang/protobuf/protoc-gen-go
 git clone https://github.com/syndbg/goenv.git ~/.goenv
 echo 'eval "$(goenv init -)"' >> ~/.zshrc
 
@@ -330,7 +329,6 @@ echoc "=> Installing nvm..." \
     && pip3 install wheel \
     && pip install --user pynvim \
     && pip3 install --user pynvim
-
 }
 
 echoc "=> Installing node${NODE_VERSION}..."
@@ -343,8 +341,8 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g yarn \
     && npm i -g @vue/cli \
     && npm i -g md-to-pdf \
-    && npm i -g diff-so-fancy \
-    && npm install -g nativefier \
+    # && npm i -g diff-so-fancy \
+    # && npm install -g nativefier \
     && npm i -g javascript-typescript-langserver vue-language-server vti typescript \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g js-beautify typescript-formatter remark-cli prettier \
@@ -354,7 +352,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g @typescript-eslint/parser \
     && npm i -g @typescript-eslint/eslint-plugin \
     && npm i -g eslint-plugin-prettier eslint-config-prettier \
-    && npm i -g gh-search-cli \
+    # && npm i -g gh-search-cli \
     && npm i -g stylelint stylelint-processor-styled-components stylelint-config-styled-components stylelint-config-recommended
 
 echoc "=> Configuring vim and building YCM..."
