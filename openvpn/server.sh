@@ -22,11 +22,11 @@ sudo ./easyrsa build-ca nopass
 sudo ./easyrsa gen-dh
 sudo ./easyrsa build-server-full server nopass
 
-if [ ! -f server ]; then
+if [ ! -d server ]; then
     sudo mkdir /etc/openvpn/server
 fi
 
-if [ ! -f client ]; then
+if [ ! -d client ]; then
     sudo mkdir /etc/openvpn/client
 fi
 
@@ -68,4 +68,4 @@ EOF
 
 sudo chmod u+x ./server/up.sh
 
-sudo openvpn --config /etc/openvpn/server/server.conf
+sudo openvpn --config /etc/openvpn/server/server.conf --daemon

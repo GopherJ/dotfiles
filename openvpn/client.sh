@@ -17,7 +17,7 @@ fi
 
 cd /etc/openvpn
 
-if [ ! -f ./easyesa ]; then
+if [ ! -x ./easyesa ]; then
     echo "No easyesa found" && exit 1
 fi
 
@@ -32,7 +32,7 @@ sudo cp ./pki/ca.crt $HOME/openvpn-client-$1
 sudo cp ./pki/issued/$1.crt $HOME/openvpn-client-$1
 sudo cp ./pki/private/$1.key $HOME/openvpn-client-$1
 
-sudo chown -R $USER:$USER $HOME/openvpn-client-$1
+sudo chown -R $(id -un):$(id -gn) $HOME/openvpn-client-$1
 
 cat > $HOME/openvpn-client-$1/client.conf <<-EOF
 dev tap
