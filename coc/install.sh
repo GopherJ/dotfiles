@@ -448,7 +448,7 @@ echoc "=> Configuring rust..." \
     && cargo install tauri-bundler \
     && cargo install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install miniserve \
-    && cargo install -f --git https://github.com/jez/as-tree \
+    # && cargo install -f --git https://github.com/jez/as-tree \
     && cargo install --git https://github.com/extrawurst/gitui \
     && cargo install skim \
     && cargo install cargo-bloat --features regex-filter \
@@ -486,9 +486,9 @@ fi
 
 echoc "=> Installing ripgrep..."
 command -v rg > /dev/null || {
-    if [ ! -f  ~/Downloads/ripgrep_11.0.2_amd64.deb ]; then
-        curl -fLo ~/Downloads/ripgrep_11.0.2_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/11.0.2/ripgrep_11.0.2_amd64.deb --retry-delay 2 --retry 3 \
-            && sudo dpkg -i ~/Downloads/ripgrep_11.0.2_amd64.deb
+    if [ ! -f  ~/Downloads/ripgrep_12.1.1_amd64.deb ]; then
+        curl -fLo ~/Downloads/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
+            && sudo dpkg -i ~/Downloads/ripgrep_12.1.1_amd64.deb
     fi
 }
 
