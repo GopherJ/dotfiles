@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
 
-ARG APP_USER=ubudu
+ARG APP_USER=alex_cj96
 
 ENV DEBIAN_FRONTEND noninteractive
 
