@@ -342,7 +342,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g md-to-pdf \
     # && npm i -g diff-so-fancy \
     # && npm install -g nativefier \
-    && npm i -g javascript-typescript-langserver vue-language-server vti typescript \
+    && npm i -g vue-language-server vti typescript \
     && npm i -g eslint eslint-plugin-vue \
     && npm i -g js-beautify typescript-formatter remark-cli prettier \
     # && npm i -g git+https://github.com/ramitos/jsctags.git \
@@ -366,9 +366,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
 
 echoc "=> Configuring vim..."
 curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
-    && vim +PlugInstall \
-    && vim +GoInstallBinaries \
-    && python3 install.py --rust-completer --ts-completer --clangd-completer --js-completer --go-completer --java-completer
+    && vim +PlugInstall
 
 echoc "=> Installing vimspector..."
 if [ ! -d ~/.vim/pack ]; then
