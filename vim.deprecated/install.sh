@@ -34,6 +34,19 @@ sudo apt install qemu-kvm \
     && sudo adduser $USER kvm \
     && newgrp
 
+echoc "=> Installing imagemagick..."
+if [ ! -f ~/Downloads/ImageMagick.tar.gz ]; then
+    curl -fLo ~/Downloads/ImageMagick.tar.gz  https://www.imagemagick.org/download/ImageMagick.tar.gz
+fi
+cd ~/Downloads \
+    && tar xvzf ImageMagick.tar.gz \
+    && cd ImageMagick-7.0.8-26/ \
+    && ./configure \
+    && make \
+    && sudo make install \
+    && sudo ldconfig /usr/local/lib \
+    && cd -
+
 echoc "=> Installing docker..."
 sudo apt update \
   && sudo apt -y install apt-transport-https ca-certificates curl software-properties-common \
