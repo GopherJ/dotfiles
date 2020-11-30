@@ -22,6 +22,7 @@ RUN apt update --fix-missing \
         gawk \
         unzip \
         zlib1g-dev \
+        pkg-config \
         sudo \
         ninja-build \
         autoconf \

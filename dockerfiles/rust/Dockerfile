@@ -17,6 +17,7 @@ RUN apt update --fix-missing -y && \
         curl \
         build-essential \
         xz-utils \
+        pkg-config \
         cmake \
         unzip \
         sudo \
