@@ -70,6 +70,11 @@ alias discover-macs='sudo arp-scan -I wlp0s20f3 -l'
 alias tcpdump='sudo tcpdump -i any -nnn -X -vvv -e -tttt'
 alias immutable-file='chattr +i'
 alias mutable-file='chattr -i'
+function ecat {
+    if [ ! -z "$1" ]; then
+        cat $1 | sed ':a;N;$!ba;s/\n/\\n/g'
+    fi
+}
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
@@ -172,6 +177,3 @@ export NVM_DIR="$HOME/.nvm"
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(goenv init -)"
-
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"

@@ -7,6 +7,9 @@ ARG NODE_VERSION=v12.19.0
 ARG RUST_TOOLCHAIN=stable-2020-04-23
 
 ENV DEBIAN_FRONTEND noninteractive
+ENV TZ=Europe/Paris
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN useradd ${APP_USER} --user-group --create-home --shell /bin/bash --groups sudo
 
@@ -33,6 +36,7 @@ RUN apt update --fix-missing \
         libtool \
         python3-dev \
         python3-pip \
+        python-pip \
         tmux \
         clang-format \
         cppcheck \
@@ -48,6 +52,7 @@ RUN apt update --fix-missing \
         protobuf-compiler \
         software-properties-common \
         ca-certificates \
+        pkg-config \
         clangd-9 \
         clang-9 \
         libjansson-dev \
@@ -67,22 +72,23 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
 
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
-    && echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.zshrc \
-    && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
-    && echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+    && /home/linuxbrew/.linuxbrew/bin/brew install watchman
 
 RUN sudo add-apt-repository ppa:jonathonf/vim \
     && sudo add-apt-repository ppa:neovim-ppa/unstable \
     && sudo apt update \
-    && sudo apt install -y vim-gtk3 neovim \
+    && sudo apt install -y vim neovim \
     && pip install wheel \
     && pip3 install wheel \
     && pip install --user pynvim \
     && pip3 install --user pynvim \
     && curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
+    && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
+    && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3 \
+    && if [ ! -d ~/.config ]; then mkdir ~/.config; fi \
     && ln -s ~/.vim ~/.config/nvim \
     && ln -s ~/.vimrc ~/.config/nvim/init.vim \
-    && vim +PlugInstall
+    && vim +PlugInstall > /dev/null 2>&1
 
 RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
     && tar -xzvf cmake-3.18.4.tar.gz \
@@ -91,13 +97,9 @@ RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
     && make -j4 \
     && sudo make install
 
-RUN curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3
-
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
-    && curl -fLo ~/.tmuxline_snapshot --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3 \
-    && tmux source-file ~/.tmux.conf
+    && curl -fLo ~/.tmuxline_snapshot --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 
 RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
     && cd ~/ctags \
@@ -121,8 +123,7 @@ ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOROOT/bin:
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
-    && goenv install $GO_VERSION \
-    && echo 'eval "$(goenv init -)"' >> ~/.zshrc
+    && goenv install $GO_VERSION
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
@@ -131,9 +132,7 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | b
     && nvm use $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm install-latest-npm \
-    && npm install -g yarn @vue/cli vue-language-server typescript eslint eslint-plugin-vue prettier neovim \
-    && echo '[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm' >> ~/.zshrc \
-    && echo '[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" # This loads nvm bash_completion' >> ~/.zshrc
+    && npm install -g yarn @vue/cli vue-language-server typescript eslint eslint-plugin-vue prettier neovim
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} \
@@ -143,7 +142,6 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install --git https://github.com/xen0n/autojump-rs \
     && curl -fLo ~/.autojump.zsh https://raw.githubusercontent.com/wting/autojump/master/bin/autojump.zsh --retry-delay 2 --retry 3 \
-    && echo "[ -f ~/.autojump.zsh ] && source ~/.autojump.zsh" >> ~/.zshrc \
     && cargo install --git https://github.com/sharkdp/fd \
     && cargo install --git https://github.com/extrawurst/gitui
 

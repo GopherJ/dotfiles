@@ -15,7 +15,7 @@ function echoc() {
 
 # if java jdk isn't 8, we need to do
 # sudo update-alternatives --config java
-deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "zlib1g-dev" "nnn" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind" "ca-certificates" "libnss3-tools" "nmap" "net-tools" "xz-utils")
+deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "python-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "zlib1g-dev" "nnn" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind" "ca-certificates" "libnss3-tools" "nmap" "net-tools" "xz-utils" "pkg-config")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
@@ -164,7 +164,9 @@ echoc "=> Installing sdkman, koltlin compiler, kotlin language server..."
 command -v sdk > /dev/null || {
     curl -s "https://get.sdkman.io" | bash \
         && source "$HOME/.sdkman/bin/sdkman-init.sh" \
-        && sdk install kotlin
+        && sdk install kotlin \
+        && echo 'export SDKMAN_DIR="$HOME/.sdkman"' >> ~/.zshrc \
+        && echo '[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"' >> ~/.zshrc
 }
 if [ ! -f ~/Downloads/kotlin-language-server.zip ]; then
     curl -fLo ~/Downloads/kotlin-language-server.zip  https://github.com/fwcd/kotlin-language-server/releases/download/0.6.0/server.zip
@@ -366,6 +368,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
 
 echoc "=> Configuring vim..."
 curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
+    && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
     && vim +PlugInstall
 
 echoc "=> Installing vimspector..."
