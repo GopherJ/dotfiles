@@ -96,7 +96,8 @@ ENV PATH=$CARGO_HOME/bin:$NVM_DIR/versions/node/${NODE_VERSION}/bin:$GOROOT/bin:
 
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
-    && goenv install $GO_VERSION
+    && goenv install $GO_VERSION \
+    && go get -u github.com/go-delve/delve/cmd/dlv
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
     && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
@@ -153,7 +154,6 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
         --enable-python \
         --force-enable-python.legacy \
         --force-enable-java \
-    && go get -u github.com/go-delve/delve/cmd/dlv \
     && cd -
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
@@ -162,4 +162,4 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
 
 WORKDIR /home/${APP_USER}/src
 
-CMD ["/usr/bin/bash"]
+CMD ["/usr/bin/zsh"]

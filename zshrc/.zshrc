@@ -145,6 +145,11 @@ function minigrep {
         find "$1" -type f -print0 | xargs -0 grep "$2"
     fi
 }
+function retag {
+    if [ ! -z "$1" ]; then
+        git tag -d $1 && git push origin --delete $1 && git tag $1 && git push origin $1
+    fi
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"
