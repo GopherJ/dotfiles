@@ -140,6 +140,11 @@ function hexToDecimal {
         printf '%d\n' "0x$1"
     fi
 }
+function minigrep {
+    if [ ! -z "$1" ] && [ -d "$1" ] && [ ! -z "$2" ]; then
+        find "$1" -type f -print0 | xargs -0 grep "$2"
+    fi
+}
 
 export GOPATH="$HOME/go"
 export GOROOT="/usr/local/go"

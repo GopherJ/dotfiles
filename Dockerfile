@@ -4,7 +4,7 @@ MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
 ARG APP_USER=alex_cj96
 ARG GO_VERSION=1.14.4
 ARG NODE_VERSION=v12.19.0
-ARG RUST_TOOLCHAIN=stable-2020-04-23
+ARG RUST_TOOLCHAIN=nightly-2020-04-23
 
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Europe/Paris
@@ -67,44 +67,18 @@ USER ${APP_USER}
 WORKDIR /home/${APP_USER}
 RUN mkdir -p /home/${APP_USER}/src
 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-    && sudo chsh -s $(which zsh) \
-    && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
-
-RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
-    && /home/linuxbrew/.linuxbrew/bin/brew install watchman
-
-RUN sudo add-apt-repository ppa:jonathonf/vim \
-    && sudo add-apt-repository ppa:neovim-ppa/unstable \
-    && sudo apt update \
-    && sudo apt install -y vim neovim \
-    && pip install wheel \
-    && pip3 install wheel \
-    && pip install --user pynvim \
-    && pip3 install --user pynvim \
-    && curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
-    && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
-    && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3 \
-    && if [ ! -d ~/.config ]; then mkdir ~/.config; fi \
-    && ln -s ~/.vim ~/.config/nvim \
-    && ln -s ~/.vimrc ~/.config/nvim/init.vim
+RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
+    && cd ~/ctags \
+    && ./autogen.sh \
+    && ./configure \
+    && make \
+    && sudo make install
 
 RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
     && tar -xzvf cmake-3.18.4.tar.gz \
     && cd cmake-3.18.4 \
     && ./bootstrap \
     && make -j4 \
-    && sudo make install
-
-RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
-    && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
-    && curl -fLo ~/.tmuxline_snapshot --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
-
-RUN git clone https://github.com/universal-ctags/ctags ~/ctags \
-    && cd ~/ctags \
-    && ./autogen.sh \
-    && ./configure \
-    && make \
     && sudo make install
 
 RUN curl -fLo ~/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb https://github.com/alacritty/alacritty/releases/download/v0.4.3/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb --retry-delay 2 --retry 3 \
@@ -137,13 +111,55 @@ RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | b
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} \
+    && rustup component add rust-analysis rust-src \
     && cargo install cargo-edit \
     && cargo install exa \
     && cargo install code-minimap \
     && cargo install install cargo-whatfeatures --no-default-features --features "rustls" \
     && cargo install --git https://github.com/xen0n/autojump-rs \
     && curl -fLo ~/.autojump.zsh https://raw.githubusercontent.com/wting/autojump/master/bin/autojump.zsh --retry-delay 2 --retry 3 \
-    && cargo install --git https://github.com/sharkdp/fd \
-    && cargo install --git https://github.com/extrawurst/gitui
+    && cargo install --git https://github.com/sharkdp/fd
+
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
+    && sudo chsh -s $(which zsh) \
+    && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
+
+RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
+    && /home/linuxbrew/.linuxbrew/bin/brew install watchman
+
+RUN sudo add-apt-repository ppa:jonathonf/vim \
+    && sudo add-apt-repository ppa:neovim-ppa/unstable \
+    && sudo apt update \
+    && sudo apt install -y vim neovim \
+    && pip install wheel \
+    && pip3 install wheel \
+    && pip install --user pynvim \
+    && pip3 install --user pynvim \
+    && curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
+    && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
+    && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3 \
+    && if [ ! -d ~/.config ]; then mkdir ~/.config; fi \
+    && ln -s ~/.vim ~/.config/nvim \
+    && ln -s ~/.vimrc ~/.config/nvim/init.vim \
+    && if [ ! -d ~/.vim/pack ]; then mkdir ~/.vim/pack; fi \
+    && git clone https://github.com/puremourning/vimspector ~/.vim/pack/vimspector/opt/vimspector \
+    && cd ~/.vim/pack/vimspector/opt/vimspector \
+    && ./install_gadget.py \
+        --enable-c \
+        --enable-go \
+        --force-enable-node \
+        --enable-rust \
+        --force-enable-csharp \
+        --enable-python \
+        --force-enable-python.legacy \
+        --force-enable-java \
+    && go get -u github.com/go-delve/delve/cmd/dlv \
+    && cd -
+
+RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
+    && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
+    && curl -fLo ~/.tmuxline_snapshot --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 
 WORKDIR /home/${APP_USER}/src
+
+CMD ["/usr/bin/bash"]
