@@ -125,13 +125,15 @@ RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && goenv install $GO_VERSION
 
 RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.2/install.sh | bash \
+    && [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" \
+    && [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm" \
     && nvm install $NODE_VERSION \
     && nvm use $NODE_VERSION \
     && nvm alias default $NODE_VERSION \
     && nvm install-latest-npm \
-    && npm install -g yarn @vue/cli vue-language-server typescript eslint eslint-plugin-vue prettier neovim
+    && npm install -g yarn @vue/cli vls typescript eslint eslint-plugin-vue prettier neovim
 
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     sh -s -- -y --default-toolchain ${RUST_TOOLCHAIN} \
