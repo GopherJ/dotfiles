@@ -150,11 +150,9 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
         --enable-go \
         --force-enable-node \
         --enable-rust \
-        --force-enable-csharp \
-        --enable-python \
-        --force-enable-python.legacy \
         --force-enable-java \
-    && cd -
+    && cd - \
+    && nvim --headless +PlugInstall +qall
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
