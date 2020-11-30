@@ -87,8 +87,7 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
     && curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim --retry-delay 2 --retry 3 \
     && if [ ! -d ~/.config ]; then mkdir ~/.config; fi \
     && ln -s ~/.vim ~/.config/nvim \
-    && ln -s ~/.vimrc ~/.config/nvim/init.vim \
-    && vim +PlugInstall > /dev/null 2>&1
+    && ln -s ~/.vimrc ~/.config/nvim/init.vim
 
 RUN wget https://cmake.org/files/v3.18/cmake-3.18.4.tar.gz \
     && tar -xzvf cmake-3.18.4.tar.gz \
@@ -112,8 +111,8 @@ RUN curl -fLo ~/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb https://github.com/alacr
     && sudo dpkg -i ~/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb \
     && curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3
 
-RUN curl -fLo ~/Downloads/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
-    && sudo dpkg -i ~/Downloads/ripgrep_12.1.1_amd64.deb
+RUN curl -fLo ~/ripgrep_12.1.1_amd64.deb https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb --retry-delay 2 --retry 3 \
+    && sudo dpkg -i ~/ripgrep_12.1.1_amd64.deb
 
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 ENV NVM_DIR=/home/${APP_USER}/.nvm
