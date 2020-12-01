@@ -70,6 +70,7 @@ alias discover-macs='sudo arp-scan -I wlp0s20f3 -l'
 alias tcpdump='sudo tcpdump -i any -nnn -X -vvv -e -tttt'
 alias immutable-file='chattr +i'
 alias mutable-file='chattr -i'
+alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); exit}'"
 function ecat {
     if [ ! -z "$1" ]; then
         cat $1 | sed ':a;N;$!ba;s/\n/\\n/g'
@@ -151,8 +152,8 @@ function retag {
     fi
 }
 
-export GOPATH="$HOME/go"
-export GOROOT="/usr/local/go"
+# export GOPATH="$HOME/go"
+# export GOROOT="/usr/local/go"
 export GOENV_ROOT="$HOME/.goenv"
 export CARGO_HOME="$HOME/.cargo"
 export DENO_INSTALL="$HOME/.deno"
@@ -162,7 +163,7 @@ export DART_HOME="/usr/lib/dart"
 export FLUTTER_HOME="$HOME/flutter"
 export PUB_HOME="$HOME/.pub-cache"
 export SCRIPT_HOME="$HOME/.bin"
-export PATH="$CARGO_HOME/bin:$GOPATH/bin:$GOROOT/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:/usr/local/go/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PATH"
+export PATH="$CARGO_HOME/bin:$GOENV_ROOT/bin:$GOPATH/bin:$GOROOT/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PATH"
 export TERM=xterm-256color
 export EDITOR=nvim
 export GITHUB_API_TOKEN=""
