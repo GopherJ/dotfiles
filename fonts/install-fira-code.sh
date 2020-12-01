@@ -1,5 +1,3 @@
-#!/usr/bin/env sh
-
 #!/usr/bin/env bash
 
 fonts_dir="${HOME}/.local/share/fonts"

@@ -159,6 +159,8 @@ RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \
     && curl -fLo ~/.tmuxline_snapshot --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 
+RUN curl https://raw.githubusercontent.com/GopherJ/cfg/master/fonts/install-fira-code.sh | bash
+
 WORKDIR /home/${APP_USER}/src
 
 CMD ["/usr/bin/zsh"]
