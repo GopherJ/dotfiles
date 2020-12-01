@@ -61,7 +61,8 @@ RUN apt update --fix-missing \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN echo '%sudo   ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN echo '%sudo   ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers \
+    && sed -i 's/required/sufficient/1' /etc/pam.d/chsh
 
 USER ${APP_USER}
 WORKDIR /home/${APP_USER}
