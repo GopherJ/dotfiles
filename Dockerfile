@@ -122,8 +122,7 @@ RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | \
     && curl -fLo ~/.autojump.zsh https://raw.githubusercontent.com/wting/autojump/master/bin/autojump.zsh --retry-delay 2 --retry 3 \
     && cargo install --git https://github.com/sharkdp/fd
 
-RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-    && sudo chsh -s $(which zsh) \
+RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- -t robbyrussell \
     && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc
 
 RUN bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
@@ -153,7 +152,11 @@ RUN sudo add-apt-repository ppa:jonathonf/vim \
         --enable-rust \
         --force-enable-java \
     && cd - \
-    && nvim --headless +PlugInstall +qall
+    && nvim --headless +PlugInstall +qall \
+    && if [ ! -d ~/.config/coc/extensions ]; then mkdir -p ~/.config/coc/extensions; fi \
+    && curl -fo ~/.config/coc/extensions/package.json https://raw.githubusercontent.com/GopherJ/cfg/master/coc/package.json --retry-delay 2 --retry 3 \
+    && cd ~/.config/coc/extensions \
+    && npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
 
 RUN git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm \
     && curl -fLo ~/.tmux.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3 \

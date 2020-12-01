@@ -296,7 +296,6 @@ let g:coc_global_extensions = [
       \'coc-pairs',
       \'coc-rust-analyzer',
       \'coc-vetur',
-      \'coc-java',
       \'coc-git',
       \'coc-lists',
       \'coc-snippets',
