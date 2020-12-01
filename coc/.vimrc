@@ -198,7 +198,7 @@ Plug 'gopherj/eleline.vim'
 Plug 'liuchengxu/vista.vim'
 Plug 'vhdirk/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-Plug 'chrisbra/csv.vim'
+" Plug 'chrisbra/csv.vim'
 
 " Plug 'rust-lang/rust.vim'
 Plug 'neoclide/jsonc.vim'
@@ -566,8 +566,8 @@ let g:header_auto_add_header = 0
 " let g:rustfmt_autosave = 1
 
 " markdown-preview.nvim
-let g:mkdp_auto_start = 1
-let g:mkdp_auto_close = 1
+let g:mkdp_auto_start = 0
+let g:mkdp_auto_close = 0
 let g:mkdp_open_to_the_world = 1
 let g:mkdp_preview_options = {
             \ 'mkit': {},

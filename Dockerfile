@@ -9,7 +9,7 @@ ARG RUST_TOOLCHAIN=nightly-2020-07-08
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Europe/Paris
 
-RUN useradd ${APP_USER} --user-group --create-home --shell /bin/bash --groups sudo
+RUN useradd ${APP_USER} --user-group --create-home --shell /usr/bin/zsh --groups sudo
 
 RUN apt update --fix-missing \
     && apt upgrade -y \
