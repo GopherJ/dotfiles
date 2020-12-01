@@ -9,13 +9,12 @@ ARG RUST_TOOLCHAIN=nightly-2020-07-08
 ENV DEBIAN_FRONTEND noninteractive
 ENV TZ=Europe/Paris
 
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 RUN useradd ${APP_USER} --user-group --create-home --shell /bin/bash --groups sudo
 
 RUN apt update --fix-missing \
     && apt upgrade -y \
     && apt install -y \
+        tzdata \
         libssl-dev \
         git \
         wget \
@@ -60,6 +59,8 @@ RUN apt update --fix-missing \
     && update-alternatives --install /usr/bin/clang clang /usr/bin/clang-9 1 --slave /usr/bin/clang++ clang++ /usr/bin/clang++-9 \
     && apt clean \
     && rm -rf /var/lib/apt/lists/*
+
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 RUN echo '%sudo   ALL=(ALL:ALL) NOPASSWD:ALL' >> /etc/sudoers \
     && sed -i 's/required/sufficient/1' /etc/pam.d/chsh
