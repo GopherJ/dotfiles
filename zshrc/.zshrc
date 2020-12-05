@@ -12,7 +12,7 @@ alias o="xdg-open "
 alias c='xclip -selection c'
 alias rg="rg --ignore-case --hidden --iglob '!**/package-lock.json' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/yarn.lock' --iglob '!**/*.min.js' --iglob '!**/*.min.css'"
 alias h="history -n"
-alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src -v cargo-git:/home/rust/.cargo/git -v cargo-registry:/home/rust/.cargo/registry -v target:/home/rust/src/target ekidd/rust-musl-builder'
+alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
 alias afs="sudo apt-file search "
 alias ss="sed -i 's/ *$//g'"
 alias uu="sudo apt update --fix-missing && sudo apt upgrade"
@@ -71,6 +71,7 @@ alias tcpdump='sudo tcpdump -i any -nnn -X -vvv -e -tttt'
 alias immutable-file='chattr +i'
 alias mutable-file='chattr -i'
 alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); exit}'"
+alias vimdocker='docker run --rm -it -v ~/.ssh:/home/alex_cj96/.ssh -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest'
 function ecat {
     if [ ! -z "$1" ]; then
         cat $1 | sed ':a;N;$!ba;s/\n/\\n/g'
