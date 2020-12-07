@@ -398,7 +398,7 @@ xmap <leader>a   <Plug>(coc-codeaction-selected)
 nmap <leader>a   <Plug>(coc-codeaction-selected)
 
 if !has('nvim')
-    nmap <leader>ca  <Plug>(coc-codeaction)
+    nmap <leader>ca  <Plug>(coc-codeaction-line)
 endif
 
 nmap <leader>la  <Plug>(coc-codelens-action)
