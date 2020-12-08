@@ -312,9 +312,7 @@ let g:coc_global_extensions = [
       \'coc-flutter',
       \'coc-vimlsp',
       \'coc-explorer',
-      \'coc-actions',
       \'coc-tabnine',
-      \'coc-toml',
       \'coc-yaml',
       \'coc-translator',
       \'coc-highlight'
@@ -397,9 +395,7 @@ nmap <leader>rn  <Plug>(coc-rename)
 xmap <leader>a   <Plug>(coc-codeaction-selected)
 nmap <leader>a   <Plug>(coc-codeaction-selected)
 
-if !has('nvim')
-    nmap <leader>ca  <Plug>(coc-codeaction-line)
-endif
+nmap <leader>ca  <Plug>(coc-codeaction-line)
 
 nmap <leader>la  <Plug>(coc-codelens-action)
 nmap <leader>fc  <Plug>(coc-fix-current)
@@ -450,15 +446,6 @@ let g:coc_explorer_global_presets = {
     \     'file-child-template': '[git | 2] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
     \   }
     \ }
-
-" coc-actions
-function! s:cocActionsOpenFromSelected(type) abort
-  execute 'CocCommand actions.open ' . a:type
-endfunction
-if has('nvim')
-    xmap <silent> <leader>ca :<C-u>execute 'CocCommand actions.open ' . visualmode()<CR>j
-    nmap <silent> <leader>ca :<C-u>set operatorfunc=<SID>cocActionsOpenFromSelected<CR>g@j
-endif
 
 " coc-git
 nmap ;k <Plug>(coc-git-prevchunk)

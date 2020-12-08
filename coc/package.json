@@ -1,6 +1,5 @@
 {
     "dependencies": {
-        "coc-actions": ">=1.4.3",
         "coc-calc": ">=2.0.2",
         "coc-clangd": ">=0.6.0",
         "coc-cmake": ">=0.0.2",
