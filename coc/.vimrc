@@ -747,11 +747,9 @@ let g:gitgutter_max_signs = 1000
 
 " vimspector
 " let g:vimspector_enable_mappings = 'HUMAN'
-if !has('nvim')
-    let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-    packadd! vimspector
-    nnoremap <F8> :VimspectorReset<CR>
-endif
+let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+packadd! vimspector
+nnoremap <F8> :VimspectorReset<CR>
 
 " vim-jsdoc
 let g:jsdoc_enable_es6 = 1

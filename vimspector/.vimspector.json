@@ -1,83 +1,11 @@
 {
     "configurations": {
-        "cpptools - run": {
-            "adapter": "vscode-cpptools",
+        "codelldb - launch": {
+            "adapter": "CodeLLDB",
             "configuration": {
-                "name": "LLDB: Launch",
-                "type": "cppdbg",
+                "type": "lldb",
                 "request": "launch",
-                "cwd": "${workspaceRoot}",
-                "args": [],
-                "program": "${workspaceRoot}/target/debug/${TestIdentifier}",
-                "stopAtEntry": true,
-                "externalConsole": true
-            }
-        },
-        "cpptools - test": {
-            "adapter": "vscode-cpptools",
-            "configuration": {
-                "name": "LLDB: Launch",
-                "type": "cppdbg",
-                "request": "launch",
-                "cwd": "${workspaceRoot}",
-                "args": [],
-                "program": "${workspaceRoot}/target/debug/deps/${TestIdentifier}",
-                "stopAtEntry": true,
-                "externalConsole": true
-            }
-        },
-        "codelldb - run": {
-            "adapter": {
-                "variables": {
-                    "CodeLLDB": "$HOME/.vscode/extensions/vadimcn.vscode-lldb-1.5.3"
-                },
-                "command": [
-                    "${CodeLLDB}/adapter/codelldb",
-                    "--port",
-                    "${port}"
-                ],
-                "port": "${port}",
-                "configuration": {
-                    "type": "lldb",
-                    "name": "lldb",
-                    "cargo": {}
-                }
-            },
-            "configuration": {
-                "request": "launch",
-                "program": "${workspaceRoot}/target/debug/${TestIdentifier}",
-                "args": [],
-                "cwd": "${workspaceRoot}",
-                "env": {},
-                "terminal": "integrated",
-                "stopOnEntry": false
-            }
-        },
-        "codelldb - test": {
-            "adapter": {
-                "variables": {
-                    "CodeLLDB": "$HOME/.vscode/extensions/vadimcn.vscode-lldb-1.5.3"
-                },
-                "command": [
-                    "${CodeLLDB}/adapter/codelldb",
-                    "--port",
-                    "${port}"
-                ],
-                "port": "${port}",
-                "configuration": {
-                    "type": "lldb",
-                    "name": "lldb",
-                    "cargo": {}
-                }
-            },
-            "configuration": {
-                "request": "launch",
-                "program": "${workspaceRoot}/target/debug/deps/${TestIdentifier}",
-                "args": [],
-                "cwd": "${workspaceRoot}",
-                "env": {},
-                "terminal": "integrated",
-                "stopOnEntry": false
+                "program": "${Executable}"
             }
         }
     }
