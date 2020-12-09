@@ -269,6 +269,10 @@ endif
 "--------------------------------------------------------------------------------
 
 " coc.nvim core
+autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
+				\ let b:coc_enabled=0 |
+				\ ndif
+
 let $NVIM_COC_LOG_LEVEL = 'info'
 
 if !has("nvim")
