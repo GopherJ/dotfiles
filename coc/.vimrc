@@ -120,7 +120,7 @@ nnoremap <silent>  g* g*zz
 nnoremap hs        <C-W>v
 nnoremap vs        <C-W>s
 
-nnoremap <C-W>     :close<CR>
+nnoremap <C-W>     :cclose<CR>
 nnoremap <C-D>     :qall!<CR>
 
 if has('nvim')
