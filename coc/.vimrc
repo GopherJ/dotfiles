@@ -302,6 +302,7 @@ let g:coc_global_extensions = [
       \'coc-pairs',
       \'coc-rust-analyzer',
       \'coc-vetur',
+      \'coc-fzf-preview',
       \'coc-git',
       \'coc-lists',
       \'coc-snippets',
