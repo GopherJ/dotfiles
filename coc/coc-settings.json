@@ -17,6 +17,7 @@
         "rust",
         "toml"
     ],
+    "workspace.progressTarget": "statusline",
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,
     "coc.preferences.maxFileSize": "102400",
