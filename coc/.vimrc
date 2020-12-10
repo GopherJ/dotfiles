@@ -454,8 +454,8 @@ let g:coc_explorer_global_presets = {
 " coc-git
 nmap ;k <Plug>(coc-git-prevchunk)
 nmap ;j <Plug>(coc-git-nextchunk)
-nmap 'k <Plug>(coc-git-prevconflict)
-nmap 'j <Plug>(coc-git-nextconflict)
+nmap ;h <Plug>(coc-git-prevconflict)
+nmap ;l <Plug>(coc-git-nextconflict)
 nmap gs <Plug>(coc-git-chunkinfo)
 nmap gm <Plug>(coc-git-commit)
 omap ig <Plug>(coc-git-chunk-inner)
