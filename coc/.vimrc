@@ -152,6 +152,8 @@ nnoremap p"        vi"p
 nnoremap pp        vipp
 nnoremap ps        visp
 
+nnoremap ''        }}
+
 nnoremap D         dd
 nnoremap H         ^
 nnoremap L         $
