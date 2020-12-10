@@ -152,8 +152,6 @@ nnoremap p"        vi"p
 nnoremap pp        vipp
 nnoremap ps        visp
 
-nnoremap ''        }}
-
 nnoremap D         dd
 nnoremap H         ^
 nnoremap L         $
@@ -738,14 +736,14 @@ if !empty($TMUX)
 endif
 
 " indentLine
-let g:indentLine_enabled = 0
-let g:indentLine_setConceal = 0
-let g:indentLine_concealcursor = ""
+let g:indentLine_enabled = 1
+" let g:indentLine_setConceal = 0
+" let g:indentLine_concealcursor = ""
 
 " emmet-vim
 imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,vue EmmetInstall
+autocmd FileType html,css,sass,scss,vue EmmetInstall
 
 " vim-gutter
 let g:gitgutter_max_signs = 1000
