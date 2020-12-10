@@ -28,12 +28,14 @@ RUN mkdir -p /home/${APP_USER}/src
 
 ENV GOENV_ROOT=/home/${APP_USER}/.goenv
 
-ENV PATH=$GOROOT/bin:$GOPATH/bin:$GOENV_ROOT/bin:$GOENV_ROOT/versions/$GO_VERSION/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=$GOENV_ROOT/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 # Install goenv
 RUN git clone https://github.com/syndbg/goenv.git ~/.goenv \
     && eval "$(goenv init -)" \
-    && goenv install $GO_VERSION
+    && goenv install $GO_VERSION \
+    && goenv global $GO_VERSION \
+    && goenv rehash
 
 # Install upx
 RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux.tar.xz \
@@ -44,5 +46,3 @@ RUN wget https://github.com/upx/upx/releases/download/v3.94/upx-3.94-amd64_linux
 RUN echo 'eval "$(goenv init -)"' >> "$HOME/.bashrc"
 
 WORKDIR /home/${APP_USER}/src
-
-ENTRYPOINT ["/bin/bash", "-c"]
