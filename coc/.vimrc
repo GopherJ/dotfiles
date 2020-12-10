@@ -789,10 +789,6 @@ set laststatus=2
 let g:eleline_powerline_fonts = 1
 
 " vista.vim
-function! NearestMethodOrFunction() abort
-  return get(b:, 'vista_nearest_method_or_function', '')
-endfunction
-set statusline+=%{NearestMethodOrFunction()}
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | qall! | endif
 
