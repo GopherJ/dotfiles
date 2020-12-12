@@ -73,7 +73,8 @@ alias tcpdump='sudo tcpdump -i any -nnn -X -vvv -e -tttt'
 alias immutable-file='chattr +i'
 alias mutable-file='chattr -i'
 alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); exit}'"
-alias vimdocker='docker run --rm -it -v ~/.ssh:/home/alex_cj96/.ssh -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
+alias vimdocker='docker run --rm -it -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
+alias vimdockerd='docker run --rm -p 9999:9999 alexcj96/vim-docker-env:latest'
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 function ecat {
     if [ ! -z "$1" ]; then
