@@ -189,7 +189,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-[ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
+# [ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
 
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(goenv init -)"
+eval "$(zoxide init zsh)"

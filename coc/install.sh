@@ -422,6 +422,7 @@ echoc "=> Configuring rust..." \
     && cargo +nightly install racer \
     && cargo install mdbook \
     && cargo install sccache \
+    && cargo install zoxide \
     # && cargo install --git https://github.com/ogham/dog \
     && cargo install pueue \
     && cargo install mdcat \
