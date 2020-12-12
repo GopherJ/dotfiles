@@ -1,4 +1,5 @@
 alias vim="nvim -p"
+alias j="z"
 alias l="exa -la"
 alias ls="exa -la"
 alias la="exa -la"
