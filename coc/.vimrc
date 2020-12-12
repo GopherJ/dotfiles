@@ -275,9 +275,7 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
 
 let $NVIM_COC_LOG_LEVEL = 'info'
 
-if !has("nvim")
-    set tagfunc=CocTagFunc
-endif
+set tagfunc=CocTagFunc
 
 if has("patch-8.1.1564")
     set signcolumn=number
