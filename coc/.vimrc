@@ -21,7 +21,9 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set encoding=UTF-8
 
-set termguicolors
+if has("termguicolors")
+  set termguicolors
+endif
 
 set undofile
 
@@ -258,10 +260,10 @@ call plug#end()
 " Theme configuration
 "--------------------------------------------------------------------------------
 set background=dark
-autocmd vimenter * colorscheme gruvbox
-if !has('nvim')
-    autocmd vimenter * :hi clear IncSearch
-endif
+colorscheme gruvbox
+" if !has('nvim')
+"     autocmd vimenter * :hi clear IncSearch
+" endif
 
 
 "--------------------------------------------------------------------------------
@@ -274,6 +276,9 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
 				\ ndif
 
 let $NVIM_COC_LOG_LEVEL = 'info'
+
+hi clear CocErrorHighlight
+hi default CocErrorHighlight guifg=NONE guibg= ctermbg= gui=NONE term=NONE cterm=NONE
 
 set tagfunc=CocTagFunc
 

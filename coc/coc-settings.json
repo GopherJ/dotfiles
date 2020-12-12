@@ -49,6 +49,7 @@
     "rust-analyzer.hoverActions.linksInHover": true,
     "rust-analyzer.lens.implementations": true,
     "rust-analyzer.completion.postfix.enable": true,
+    "rust-analyzer.trace.server": "off",
     "rust-analyzer.debug.runtime": "vimspector",
     "rust-analyzer.debug.vimspector.configuration.name": "codelldb - launch",
     "go.goplsOptions": {
