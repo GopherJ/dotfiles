@@ -33,8 +33,6 @@ set timeoutlen=100
 set updatetime=300
 set cmdheight=1
 
-set foldmethod=manual
-
 set nu
 set relativenumber
 
@@ -231,6 +229,7 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'justinmk/vim-gtfo'
 
 Plug 'tpope/vim-fugitive'
+Plug 'junegunn/gv.vim'
 " Plug 'airblade/vim-gitgutter'
 
 Plug 'alpertuna/vim-header'
@@ -392,6 +391,7 @@ endfunction
 augroup CocCustomGroup
   autocmd!
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  autocmd FileType git setlocal nofoldenable
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
