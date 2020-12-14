@@ -7,6 +7,12 @@
                 "request": "launch",
                 "program": "${Executable}",
                 "args": ["*${Args}"]
+            },
+            "breakpoints": {
+                "exception": {
+                    "cpp_throw": "Y",
+                    "cpp_catch": "N"
+                }
             }
         }
     }
