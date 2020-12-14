@@ -224,8 +224,8 @@ Plug 'heavenshell/vim-jsdoc', {
 Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
-" Plug 'morhetz/gruvbox'
-Plug 'chriskempson/base16-vim'
+Plug 'morhetz/gruvbox'
+" Plug 'chriskempson/base16-vim'
 " Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
@@ -262,7 +262,8 @@ call plug#end()
 " Theme configuration
 "--------------------------------------------------------------------------------
 " set background=dark
-colorscheme base16-default-dark
+colorscheme gruvbox
+" colorscheme base16-default-dark
 " if !has('nvim')
 "     autocmd vimenter * :hi clear IncSearch
 " endif
