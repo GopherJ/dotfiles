@@ -29,7 +29,6 @@
     "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": false,
     "diagnostic.messageDelay": 200,
-    "diagnostic.level": "error",
     "diagnostic.checkCurrentLine": true,
     "codeLens.enable": true,
     "codeLens.separator": " ",
