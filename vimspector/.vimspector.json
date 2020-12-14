@@ -5,7 +5,8 @@
             "configuration": {
                 "type": "lldb",
                 "request": "launch",
-                "program": "${Executable}"
+                "program": "${Executable}",
+                "args": ["*${Args}"]
             }
         }
     }
