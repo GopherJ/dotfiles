@@ -261,7 +261,7 @@ call plug#end()
 "--------------------------------------------------------------------------------
 " Theme configuration
 "--------------------------------------------------------------------------------
-" set background=dark
+set background=dark
 colorscheme gruvbox
 " colorscheme base16-default-dark
 " if !has('nvim')
@@ -280,8 +280,10 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
 
 let $NVIM_COC_LOG_LEVEL = 'info'
 
-hi clear CocErrorHighlight
-hi CocErrorHighlight guibg= ctermbg=
+if has("nvim")
+    hi clear CocErrorHighlight
+    hi CocErrorHighlight guibg= ctermbg=
+endif
 
 set tagfunc=CocTagFunc
 
