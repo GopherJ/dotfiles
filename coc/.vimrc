@@ -1,6 +1,8 @@
 " File              : .vimrc
-" Date              : 04.11.2020
-" Last Modified Date: 04.11.2020
+" Author            : Cheng JIANG <alex_cj96@foxmail.com>
+" Date              : 14.12.2020
+" Last Modified Date: 14.12.2020
+" Last Modified By  : Cheng JIANG <alex_cj96@foxmail.com>
 "
 "let mapleader = "\<Space>"
 
@@ -557,8 +559,9 @@ vmap <leader>t <Plug>(coc-translator-pv)
 " nnoremap <silent> <leader>a :ArgWrap<CR>
 
 " vim-header
+let g:header_auto_add_header = 0
 let g:header_field_author = 'Cheng JIANG'
-let g:header_field_author_email = 'jiang.cheng@vip.163.com'
+let g:header_field_author_email = 'alex_cj96@foxmail.com'
 let g:header_auto_add_header = 0
 
 " rust-vim
