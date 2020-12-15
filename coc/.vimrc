@@ -477,6 +477,7 @@ xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
 nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
+nnoremap <silent> <space>b  :<C-u>CocList --normal branches<CR>
 
 " coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
