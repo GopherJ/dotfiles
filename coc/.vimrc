@@ -283,6 +283,10 @@ let $NVIM_COC_LOG_LEVEL = 'info'
 if has("nvim")
     hi clear CocErrorHighlight
     hi CocErrorHighlight guibg= ctermbg=
+    hi clear CocWarningHighlight
+    hi CocWarningHighlight guibg= ctermbg=
+    hi clear CocHintHighlight
+    hi CocHintHighlight guibg= ctermbg=
 endif
 
 set tagfunc=CocTagFunc
@@ -326,6 +330,7 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-explorer',
       \'coc-tabnine',
+      \'coc-toml',
       \'coc-yaml',
       \'coc-translator',
       \'coc-highlight'
