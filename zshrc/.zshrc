@@ -48,7 +48,7 @@ alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1'
 alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
 alias n='nnn'
-alias sccache-clean-restart='sccache -z && sccache --stop-server && sccache --start-server'
+# alias sccache-clean-restart='sccache -z && sccache --stop-server && sccache --start-server'
 alias repo='ghs repo'
 alias issues='ghs issues'
 alias commits='ghs commits'
@@ -179,7 +179,7 @@ export GITLAB_PRIVATE_TOKEN=""
 export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude third-party --exclude vendor --exclude target --exclude Cargo.lock --exclude yarn.lock --exclude package-lock.json --follow --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=on
-export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
+# export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
 export RUST_BACKTRACE=1
 export PKG_CONFIG_ALLOW_CROSS=1
 
