@@ -26,6 +26,7 @@
         "coc-tailwindcss": ">=0.7.0",
         "coc-tasks": ">=0.1.0",
         "coc-terminal": ">=0.4.0",
+        "coc-toml": ">=1.0.1",
         "coc-translator": ">=1.5.5",
         "coc-tsserver": ">=1.6.5",
         "coc-vetur": ">=1.2.3",
@@ -34,3 +35,4 @@
         "coc-yank": ">=1.1.11"
     }
 }
+
