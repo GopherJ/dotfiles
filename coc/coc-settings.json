@@ -50,6 +50,7 @@
     "rust-analyzer.trace.server": "off",
     "rust-analyzer.debug.runtime": "vimspector",
     "rust-analyzer.debug.vimspector.configuration.name": "rust - launch",
+    "rust-analyzer.terminal.startinsert": true,
     "go.goplsOptions": {
         "completeUnimported": true
     },
