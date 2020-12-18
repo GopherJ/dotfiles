@@ -81,11 +81,17 @@
         "floatingWindows": true
     },
     "explorer.keyMappings.global": {
-        "<leader>k": "indexPrev:diagnosticError",
-        "<leader>j": "indexNext:diagnosticError",
+        "<leader>k": ["wait", "markPrev:diagnosticError"],
+        "<leader>j": ["wait", "markNext:diagnosticError"],
 
-        ";k": "indexPrev:git",
-        ";j": "indexNext:git"
+        "f": "searchRecursive",
+        "F": "searchRecursive",
+
+        "d": "delete",
+        "D": "deleteForever",
+
+        ";k": ["wait", "markPrev:git"],
+        ";j": ["wait", "markNext:git"]
     },
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": true,
