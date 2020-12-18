@@ -49,7 +49,7 @@
     "rust-analyzer.completion.postfix.enable": true,
     "rust-analyzer.trace.server": "off",
     "rust-analyzer.debug.runtime": "vimspector",
-    "rust-analyzer.debug.vimspector.configuration.name": "codelldb - launch",
+    "rust-analyzer.debug.vimspector.configuration.name": "rust - launch",
     "go.goplsOptions": {
         "completeUnimported": true
     },
@@ -92,7 +92,5 @@
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "eslint.run": "onSave",
-    "eslint.filetypes": ["javascript", "typescript", "vue"],
-    "coc-toml.formatter.alignEntries": true,
-    "coc-toml.formatter.reorderKeys": true
+    "eslint.filetypes": ["javascript", "typescript", "vue"]
 }

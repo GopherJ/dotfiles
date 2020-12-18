@@ -1,18 +1,61 @@
 {
     "configurations": {
-        "codelldb - launch": {
+        "rust - launch": {
             "adapter": "CodeLLDB",
             "configuration": {
                 "type": "lldb",
                 "request": "launch",
                 "program": "${Executable}",
-                "args": ["*${Args}"]
+                "args": ["*${Args}"],
+                "sourceLanguages": ["rust"]
             },
             "breakpoints": {
                 "exception": {
                     "cpp_throw": "Y",
                     "cpp_catch": "N"
                 }
+            }
+        },
+        "node - launch": {
+            "adapter": "vscode-node",
+            "configuration": {
+                "request": "launch",
+                "protocol": "auto",
+                "stopOnEntry": false,
+                "console": "integratedTerminal",
+                "program": "${file}",
+                "cwd": "${workspaceRoot}"
+            },
+            "breakpoints": {
+                "exception": {
+                    "all": "Y",
+                    "uncaught": "N"
+                }
+            }
+        },
+        "c/c++ - launch": {
+            "adapter": "CodeLLDB",
+            "configuration": {
+                "request": "launch",
+                "program": "${workspaceRoot}/${fileBasenameNoExtension}",
+                "stopAtEntry": false
+            },
+            "breakpoints": {
+                "exception": {
+                    "cpp_throw": "Y",
+                    "cpp_catch": "N"
+                }
+            }
+        },
+        "go - launch": {
+            "adapter": "vscode-go",
+            "configuration": {
+                "request": "launch",
+                "program": "${file}",
+                "mode": "debug",
+                "dlvToolPath": "/$HOME/.goenv/shims/dlv",
+                "trace": true,
+                "env": { "GO111MODULE": "off" }
             }
         }
     }

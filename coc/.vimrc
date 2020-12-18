@@ -332,6 +332,7 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-explorer',
       \'coc-tabnine',
+      \'coc-terminal',
       \'coc-toml',
       \'coc-yaml',
       \'coc-translator',
@@ -771,6 +772,10 @@ let g:gitgutter_max_signs = 1000
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 packadd! vimspector
 nnoremap <F8> :VimspectorReset<CR>
+let g:vimspector_sign_priority = {
+  \    'vimspectorBP':         15,
+  \ }
+let g:vimspector_bottombar_height = 5
 
 " vim-jsdoc
 let g:jsdoc_enable_es6 = 1
@@ -825,4 +830,6 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>:bd!<CR>
     noremap <C-G> :tabe<CR>:-tabmove<CR>:term gitui<CR>
     noremap <C-Y> :tabe<CR>:-tabmove<CR>:term zsh<CR>
+    nmap <M-=> <Plug>(coc-terminal-toggle)
+    tnoremap <M-=> <C-\><C-n>:q<CR>
 endif
