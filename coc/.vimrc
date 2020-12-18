@@ -45,8 +45,8 @@ if !has('nvim')
 endif
 set mouse=a
 
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
 set autochdir
 
