@@ -163,6 +163,9 @@ nnoremap ps        visp
 nnoremap D         dd
 nnoremap H         ^
 nnoremap L         $
+nnoremap w         W
+nnoremap b         B
+nnoremap e         E
 
 nnoremap <M-left>    :bp<CR>
 nnoremap <M-right>   :bn<CR>
