@@ -36,23 +36,24 @@ set updatetime=300
 set cmdheight=1
 
 set nu
-set relativenumber
+" set relativenumber
 
-set nocompatible
+if !has("nvim")
+    set nocompatible
+endif
 
 if !has('nvim')
     set ttymouse=xterm2
 endif
 set mouse=a
 
-set cursorline
-set cursorcolumn
+" set cursorline
+" set cursorcolumn
 
 set autochdir
 
-set ruler
-
-set showcmd
+set noruler
+set noshowcmd
 set showmode
 
 set tabstop=4
@@ -79,11 +80,16 @@ set wildignore=.git,.svn,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,*.deb,*.tar,*.tgz,
 
 set magic
 
+if !has("nvim")
+    set ttyfast
+endif
 set lazyredraw
 
 set noerrorbells
 set novisualbell
-set t_vb=
+if !has("nvim")
+    set t_vb=
+endif
 set tm=500
 
 set viminfo=
@@ -123,7 +129,7 @@ nnoremap hs        <C-W>v
 nnoremap vs        <C-W>s
 
 nnoremap <C-W>     :cclose<CR>
-nnoremap <C-D>     :qall!<CR>
+" nnoremap <C-D>     :qall!<CR>
 
 if has('nvim')
     nnoremap <M-]>     :vertical res +2<CR>
