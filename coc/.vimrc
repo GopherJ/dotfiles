@@ -36,7 +36,7 @@ set updatetime=300
 set cmdheight=1
 
 set nu
-" set relativenumber
+set relativenumber
 
 if !has("nvim")
     set nocompatible
@@ -125,7 +125,7 @@ nnoremap <silent>  * *zz
 nnoremap <silent>  # #zz
 nnoremap <silent>  g* g*zz
 
-nnoremap hs        <C-W>v
+" nnoremap hs        <C-W>v
 nnoremap vs        <C-W>s
 
 nnoremap <C-W>     :cclose<CR>
