@@ -90,8 +90,8 @@
         "d": "delete",
         "D": "deleteForever",
 
-        ";k": ["wait", "markPrev:git"],
-        ";j": ["wait", "markNext:git"]
+        ";k": ["wait", "markPrev:gitUnstaged"],
+        ";j": ["wait", "markNext:gitUnstaged"]
     },
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": true,
