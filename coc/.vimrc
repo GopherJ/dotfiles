@@ -111,9 +111,12 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
-autocmd BufReadPost *.kt setlocal filetype=kotlin
-autocmd BufReadPost *.md setlocal filetype=markdown
-autocmd BufReadPost *.json setlocal filetype=jsonc
+augroup FiletypeConfig
+  autocmd!
+  autocmd BufNewFile,BufReadPost *.kt setlocal filetype=kotlin
+  autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
+  autocmd BufNewFile,BufReadPost *.json setlocal filetype=jsonc
+augroup END
 
 autocmd InsertLeave * set nopaste
 
@@ -125,8 +128,8 @@ nnoremap <silent>  * *zz
 nnoremap <silent>  # #zz
 nnoremap <silent>  g* g*zz
 
-" nnoremap hs        <C-W>v
-nnoremap vs        <C-W>s
+nnoremap <leader>s        <C-W>v
+nnoremap <leader>S        <C-W>s
 
 nnoremap <C-W>     :cclose<CR>
 " nnoremap <C-D>     :qall!<CR>
@@ -289,14 +292,12 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
 
 let $NVIM_COC_LOG_LEVEL = 'info'
 
-if has("nvim")
-    hi clear CocErrorHighlight
-    hi CocErrorHighlight guibg= ctermbg=
-    hi clear CocWarningHighlight
-    hi CocWarningHighlight guibg= ctermbg=
-    hi clear CocHintHighlight
-    hi CocHintHighlight guibg= ctermbg=
-endif
+hi clear CocErrorHighlight
+hi link CocErrorHighlight Normal
+hi clear CocWarningHighlight
+hi link CocWarningHighlight Normal
+hi clear CocHintHighlight
+hi link CocHintHighlight Normal
 
 set tagfunc=CocTagFunc
 
@@ -791,6 +792,8 @@ let g:jsdoc_enable_es6 = 1
 let g:jsdoc_input_description = 1
 
 " vim-better-whitespace
+hi clear ExtraWhitespace
+hi link ExtraWhitespace Normal
 let g:better_whitespace_enabled=1
 let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
