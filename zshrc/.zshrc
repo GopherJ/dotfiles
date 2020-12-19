@@ -80,7 +80,7 @@ alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias create-vimspector-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
 alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
 function create-eslint-config {
-    if [ "$1" == "browser" ] || [ "$1" == "node" ]; then
+    if [[ "$1" == "browser" ]] || [[ "$1" == "node" ]]; then
         curl -sSo .eslintrc.json https://raw.githubusercontent.com/GopherJ/cfg/master/eslint/$1.eslintrc.json
     fi
 }
