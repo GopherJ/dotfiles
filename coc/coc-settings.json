@@ -103,7 +103,7 @@
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "eslint.run": "onSave",
     "eslint.filetypes": ["javascript", "typescript", "vue"],
-    "eslint.options": { "configFile": ".eslintrc.js" },
+    "eslint.options": { "configFile": ".eslintrc.json" },
     "toml.formatter.reorderKeys": true,
     "toml.formatter.alignEntries": true
 }
