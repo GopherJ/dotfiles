@@ -293,11 +293,23 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
 let $NVIM_COC_LOG_LEVEL = 'info'
 
 hi clear CocErrorHighlight
-hi link CocErrorHighlight Normal
 hi clear CocWarningHighlight
-hi link CocWarningHighlight Normal
 hi clear CocHintHighlight
-hi link CocHintHighlight Normal
+if has("nvim")
+    hi CocErrorHighlight guibg= ctermbg=
+else
+    hi link CocErrorHighlight Normal
+endif
+if has("nvim")
+    hi CocWarningHighlight guibg= ctermbg=
+else
+    hi link CocWarningHighlight Normal
+endif
+if has("nvim")
+    hi CocHintHighlight guibg= ctermbg=
+else
+    hi link CocHintHighlight Normal
+endif
 
 set tagfunc=CocTagFunc
 
