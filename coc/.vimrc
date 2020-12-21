@@ -342,7 +342,6 @@ let g:coc_global_extensions = [
       \'coc-emmet',
       \'coc-html',
       \'coc-css',
-      \'coc-tailwindcss',
       \'coc-jest',
       \'coc-json',
       \'coc-tasks',
@@ -354,7 +353,6 @@ let g:coc_global_extensions = [
       \'coc-vimlsp',
       \'coc-explorer',
       \'coc-tabnine',
-      \'coc-terminal',
       \'coc-toml',
       \'coc-yaml',
       \'coc-translator',
@@ -855,6 +853,4 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>:bd!<CR>
     noremap <C-G> :tabe<CR>:-tabmove<CR>:term gitui<CR>
     noremap <C-Y> :tabe<CR>:-tabmove<CR>:term zsh<CR>
-    nmap <M-=> <Plug>(coc-terminal-toggle)
-    tnoremap <M-=> <C-\><C-n>:q<CR>
 endif
