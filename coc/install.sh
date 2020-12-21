@@ -419,9 +419,10 @@ echoc "=> Configuring rust..." \
     && rustup default nightly \
     && rustup component add rls rust-analysis rust-src clippy \
     && rustup component add --toolchain nightly rust-analyzer-preview \
-    && cargo +nightly install racer \
+    # && cargo +nightly install racer \
     && cargo install mdbook \
-    && cargo install sccache \
+    # && cargo install sccache \
+    && cargo install bindgen \
     && cargo install zoxide \
     # && cargo install --git https://github.com/ogham/dog \
     && cargo install pueue \
