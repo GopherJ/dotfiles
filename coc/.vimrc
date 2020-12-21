@@ -737,8 +737,8 @@ command! -bang -nargs=* Rg
 
 " asynctasks
 let g:asyncrun_open = 6
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg']
-let g:asynctasks_term_pos = 'external'
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod']
+let g:asynctasks_term_pos = 'quickfix'
 let g:asynctasks_template = {}
 let g:asynctasks_template.cargo = [
 			\ "[project-build]",
