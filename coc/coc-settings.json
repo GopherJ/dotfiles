@@ -62,6 +62,7 @@
     },
     "clangd.enabled": true,
     "clangd.semanticHighlighting": false,
+    "yank.highlight.enable": false,
     "prettier.singleQuote": false,
     "prettier.trailingComma": "es5",
     "prettier.tabWidth": 4,
