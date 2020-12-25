@@ -853,4 +853,8 @@ if has('nvim')
     tnoremap <Esc> <C-\><C-n>:bd!<CR>
     noremap <C-G> :tabe<CR>:-tabmove<CR>:term gitui<CR>
     noremap <C-Y> :tabe<CR>:-tabmove<CR>:term zsh<CR>
+else
+    tnoremap <leader>q <C-\><C-n>:bd!<CR>
+    noremap <C-G> :exe "term ++rows=" . winheight(0) . "gitui"<CR>
+    noremap <C-Y> :exe "term ++rows=" . winheight(0) . "zsh"<CR>
 endif
