@@ -38,6 +38,7 @@
     "codeLens.subseparator": " | ",
     "tsserver.trace.server":"off",
     "rust-analyzer.inlayHints.chainingHints": true,
+    "rust-analyzer.assist.importPrefix": "by_crate",
     "rust-analyzer.diagnostics.disabled": ["inactive-code"],
     "rust-analyzer.diagnostics.enableExperimental": false,
     "rust-analyzer.updates.channel": "nightly",
