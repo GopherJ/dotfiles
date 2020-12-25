@@ -346,6 +346,7 @@ let g:coc_global_extensions = [
       \'coc-json',
       \'coc-tasks',
       \'coc-go',
+      \'coc-java',
       \'coc-prettier',
       \'coc-cmake',
       \'coc-calc',
