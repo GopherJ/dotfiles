@@ -36,6 +36,7 @@
     "codeLens.enable": true,
     "codeLens.separator": " ",
     "codeLens.subseparator": " | ",
+    "tsserver.trace.server":"off",
     "rust-analyzer.inlayHints.chainingHints": true,
     "rust-analyzer.diagnostics.disabled": ["inactive-code"],
     "rust-analyzer.diagnostics.enableExperimental": false,
@@ -61,6 +62,7 @@
     "go.disable": {
         "workspaceFolders": false
     },
+    "go.trace.server": "off",
     "clangd.enabled": true,
     "clangd.semanticHighlighting": false,
     "yank.highlight.enable": false,
