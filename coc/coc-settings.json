@@ -25,6 +25,7 @@
     "suggest.noselect": false,
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.options.tabSize": 4,
+    "vetur.trace.server": "off",
     "diagnostic.enableMessage": "always",
     "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": false,
@@ -103,7 +104,7 @@
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "eslint.run": "onSave",
-    "eslint.quiet": false,
+    "eslint.quiet": true,
     "eslint.filetypes": ["javascript", "typescript", "vue"],
     "toml.formatter.reorderKeys": true,
     "toml.formatter.alignEntries": true
