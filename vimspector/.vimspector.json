@@ -37,8 +37,9 @@
             "adapter": "CodeLLDB",
             "configuration": {
                 "request": "launch",
-                "program": "${workspaceRoot}/${fileBasenameNoExtension}",
-                "stopAtEntry": false
+                "program": "${fileBasenameNoExtension}",
+                "stopAtEntry": false,
+                "cwd": "${workspaceRoot}"
             },
             "breakpoints": {
                 "exception": {
@@ -51,11 +52,12 @@
             "adapter": "vscode-go",
             "configuration": {
                 "request": "launch",
-                "program": "${file}",
-                "mode": "debug",
+                "program": "${workspaceFolder}",
+                "mode": "test",
                 "dlvToolPath": "/$HOME/.goenv/shims/dlv",
                 "trace": true,
-                "env": { "GO111MODULE": "off" }
+                "env": { "GO111MODULE": "on" },
+                "args": ["-test.run", "${TestIdentifier}"]
             }
         }
     }
