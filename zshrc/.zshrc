@@ -81,6 +81,11 @@ alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias create-vimspector-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
 alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
 
+function fetch-pr-to-branch {
+    if [[ ! -z "$1" ]] && [[ ! -z "$2" ]]; then
+        git fetch origin pull/$1/head:$2
+    fi
+}
 function npm-pkg-version {
     if [ ! -z "$1" ]; then
         npm view  $1 versions --json
