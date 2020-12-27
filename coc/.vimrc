@@ -427,6 +427,7 @@ augroup CocCustomGroup
   autocmd!
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   autocmd FileType git setlocal nofoldenable
+  autocmd FileType scss setl iskeyword+=@-@
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 

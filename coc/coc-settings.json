@@ -98,7 +98,10 @@
         "D": "deleteForever",
 
         ";k": ["wait", "markPrev:gitUnstaged"],
-        ";j": ["wait", "markNext:gitUnstaged"]
+        ";j": ["wait", "markNext:gitUnstaged"],
+
+        ">>": "gitStage",
+        "<<": "gitUnstage"
     },
     "git.addGBlameToVirtualText": false,
     "git.addGBlameToBufferVar": true,
