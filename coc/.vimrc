@@ -207,9 +207,9 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'ap/vim-buftabline'
-Plug 'wfxr/minimap.vim'
+" Plug 'wfxr/minimap.vim'
 Plug 'gopherj/eleline.vim'
-Plug 'liuchengxu/vista.vim'
+" Plug 'liuchengxu/vista.vim'
 Plug 'vhdirk/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 " Plug 'chrisbra/csv.vim'
@@ -819,8 +819,8 @@ let g:strip_whitespace_confirm=0
 " hi Folded term=NONE cterm=NONE
 
 " code-minimap
-let g:minimap_auto_start=0
-let g:minimap_block_filetypes=['fugitive', 'nerdtree', 'coc-explorer', 'vista']
+" let g:minimap_auto_start=0
+" let g:minimap_block_filetypes=['fugitive', 'nerdtree', 'coc-explorer', 'vista']
 
 " vim-cpp-enhanced-highlight
 " let g:cpp_class_scope_highlight = 1
@@ -837,8 +837,8 @@ set laststatus=2
 let g:eleline_powerline_fonts = 1
 
 " vista.vim
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | qall! | endif
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | qall! | endif
 
 " vim-gitgutter
 " function! GitStatus()
