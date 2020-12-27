@@ -15,7 +15,8 @@
         "cpp",
         "c",
         "rust",
-        "toml"
+        "toml",
+        "yaml"
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,
@@ -67,6 +68,7 @@
     "clangd.enabled": true,
     "clangd.semanticHighlighting": false,
     "yank.highlight.enable": false,
+    "snippets.enableStatusItem": true,
     "prettier.singleQuote": true,
     "prettier.trailingComma": "es5",
     "prettier.tabWidth": 4,
@@ -110,5 +112,6 @@
     "eslint.quiet": true,
     "eslint.filetypes": ["javascript", "typescript", "vue"],
     "toml.formatter.reorderKeys": true,
-    "toml.formatter.alignEntries": true
+    "toml.formatter.alignEntries": true,
+    "yaml.schemaStore.enable": true
 }

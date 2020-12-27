@@ -525,6 +525,7 @@ vmap <C-j> <Plug>(coc-snippets-select)
 let g:coc_snippet_next = '<c-j>'
 let g:coc_snippet_prev = '<c-k>'
 imap <C-j> <Plug>(coc-snippets-expand-jump)
+xmap <leader>x  <Plug>(coc-convert-snippet)
 
 " coc-go
 autocmd FileType go nmap gtj :CocCommand go.tags.add json<cr>
