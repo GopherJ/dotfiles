@@ -27,6 +27,10 @@ if has("termguicolors")
   set termguicolors
 endif
 
+if !has("nvim") && !isdirectory("~/.vim/undo")
+    silent !mkdir ~/.vim/undo > /dev/null 2>&1
+    set undodir=$HOME/.vim/undo
+endif
 set undofile
 
 set hidden
