@@ -116,5 +116,6 @@
     "eslint.filetypes": ["javascript", "typescript", "vue"],
     "toml.formatter.reorderKeys": true,
     "toml.formatter.alignEntries": true,
-    "yaml.schemaStore.enable": true
+    "yaml.schemaStore.enable": true,
+    "tabnine.priority": 80
 }
