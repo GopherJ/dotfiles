@@ -136,7 +136,7 @@ function changelog {
     fi
 }
 function details {
-    printf "<details>\n\t<summary>Details</summary>\n\tSomething small enough to escape casual notice.\n</details>"
+    printf "<details>\n\t<summary>Details</summary>\n\nSomething small enough to escape casual notice.\n</details>"
 }
 function reverse-tunnel {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
