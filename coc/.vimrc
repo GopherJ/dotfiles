@@ -23,8 +23,8 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set encoding=UTF-8
 
-set foldlevelstart=99
-set foldmethod=indent
+" set foldlevelstart=99
+" set foldmethod=indent
 
 if has("termguicolors")
     set termguicolors
