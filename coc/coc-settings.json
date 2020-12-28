@@ -68,7 +68,7 @@
     "clangd.enabled": true,
     "clangd.semanticHighlighting": false,
     "yank.highlight.enable": false,
-    "snippets.enableStatusItem": true,
+    "snippets.enableStatusItem": false,
     "prettier.singleQuote": true,
     "prettier.trailingComma": "es5",
     "prettier.tabWidth": 4,
