@@ -23,13 +23,15 @@ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 
 set encoding=UTF-8
 
+set foldmethod=indent
+
 if has("termguicolors")
-  set termguicolors
+    set termguicolors
 endif
 
 if !has("nvim") && !isdirectory("~/.vim/undo")
     silent !mkdir ~/.vim/undo > /dev/null 2>&1
-    set undodir=$HOME/.vim/undo
+    set undodir=~/.vim/undo
 endif
 set undofile
 
@@ -116,10 +118,10 @@ set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=L  "remove left-hand scroll bar
 
 augroup FiletypeConfig
-  autocmd!
-  autocmd BufNewFile,BufReadPost *.kt setlocal filetype=kotlin
-  autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
-  autocmd BufNewFile,BufReadPost *.json setlocal filetype=jsonc
+    autocmd!
+    autocmd BufNewFile,BufReadPost *.kt setlocal filetype=kotlin
+    autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
+    autocmd BufNewFile,BufReadPost *.json setlocal filetype=jsonc
 augroup END
 
 autocmd InsertLeave * set nopaste
@@ -182,11 +184,11 @@ nnoremap <space>f  /
 nnoremap <space><space> <c-^>
 
 function! s:VSetSearch()
-  let temp = @@
-  norm! gvy
-  let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
-  call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
-  let @@ = temp
+    let temp = @@
+    norm! gvy
+    let @/ = '\V' . substitute(escape(@@, '\'), '\n', '\\n', 'g')
+    call histadd('/', substitute(@/, '[?/]', '\="\\%d".char2nr(submatch(0))', 'g'))
+    let @@ = temp
 endfunction
 
 vnoremap * :<C-u>call <SID>VSetSearch()<CR>/<CR>
@@ -291,8 +293,8 @@ colorscheme gruvbox
 
 " coc.nvim core
 autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
-				\ let b:coc_enabled=0 |
-				\ ndif
+            \ let b:coc_enabled=0 |
+            \ ndif
 
 let $NVIM_COC_LOG_LEVEL = 'info'
 
@@ -324,9 +326,9 @@ else
 endif
 
 function! SetupCommandAbbrs(from, to)
-  exec 'cnoreabbrev <expr> '.a:from
-        \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
-        \ .'? ("'.a:to.'") : ("'.a:from.'"))'
+    exec 'cnoreabbrev <expr> '.a:from
+                \ .' ((getcmdtype() ==# ":" && getcmdline() ==# "'.a:from.'")'
+                \ .'? ("'.a:to.'") : ("'.a:from.'"))'
 endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
@@ -334,35 +336,35 @@ call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('W', ':w !sudo tee > /dev/null')
 
 let g:coc_global_extensions = [
-      \'coc-tsserver',
-      \'coc-pairs',
-      \'coc-rust-analyzer',
-      \'coc-vetur',
-      \'coc-fzf-preview',
-      \'coc-git',
-      \'coc-lists',
-      \'coc-snippets',
-      \'coc-eslint',
-      \'coc-emmet',
-      \'coc-html',
-      \'coc-css',
-      \'coc-jest',
-      \'coc-json',
-      \'coc-tasks',
-      \'coc-go',
-      \'coc-java',
-      \'coc-prettier',
-      \'coc-cmake',
-      \'coc-calc',
-      \'coc-flutter',
-      \'coc-vimlsp',
-      \'coc-explorer',
-      \'coc-tabnine',
-      \'coc-toml',
-      \'coc-yaml',
-      \'coc-translator',
-      \'coc-highlight'
-      \]
+            \'coc-tsserver',
+            \'coc-pairs',
+            \'coc-rust-analyzer',
+            \'coc-vetur',
+            \'coc-fzf-preview',
+            \'coc-git',
+            \'coc-lists',
+            \'coc-snippets',
+            \'coc-eslint',
+            \'coc-emmet',
+            \'coc-html',
+            \'coc-css',
+            \'coc-jest',
+            \'coc-json',
+            \'coc-tasks',
+            \'coc-go',
+            \'coc-java',
+            \'coc-prettier',
+            \'coc-cmake',
+            \'coc-calc',
+            \'coc-flutter',
+            \'coc-vimlsp',
+            \'coc-explorer',
+            \'coc-tabnine',
+            \'coc-toml',
+            \'coc-yaml',
+            \'coc-translator',
+            \'coc-highlight'
+            \]
 
 inoremap <silent><expr> <TAB>
             \ pumvisible() ? "\<C-n>" :
@@ -376,13 +378,13 @@ endfunction
 
 " Use <c-space> to trigger completion.
 if has('nvim')
-  inoremap <silent><expr> <c-space> coc#refresh()
+    inoremap <silent><expr> <c-space> coc#refresh()
 else
-  inoremap <silent><expr> <c-@> coc#refresh()
+    inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+            \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " if exists('*complete_info')
 "     inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
@@ -428,11 +430,11 @@ function! s:show_documentation()
 endfunction
 
 augroup CocCustomGroup
-  autocmd!
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  autocmd FileType git setlocal nofoldenable
-  autocmd FileType scss setl iskeyword+=@-@
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd!
+    autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+    autocmd FileType git setlocal nofoldenable
+    autocmd FileType scss setl iskeyword+=@-@
+    autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -475,12 +477,12 @@ autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.or
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+    inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+    inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+    vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+    vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " coc-explorer
@@ -489,10 +491,10 @@ autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | qall! |
 let g:indentLine_fileTypeExclude = ['coc-explorer']
 
 let g:coc_explorer_global_presets = {
-    \   'default': {
-    \     'file-child-template': '[git | 2] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
-    \   }
-    \ }
+            \   'default': {
+            \     'file-child-template': '[git | 2] [indent][icon | 1] [diagnosticError & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
+            \   }
+            \ }
 
 " coc-git
 nmap ;k <Plug>(coc-git-prevchunk)
@@ -550,9 +552,9 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
 command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
 function! s:GrepArgs(...)
-  let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
-        \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
-  return join(list, "\n")
+    let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
+                \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
+    return join(list, "\n")
 endfunction
 
 nnoremap <silent> <space>q  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
@@ -629,7 +631,7 @@ nnoremap ;;  : Files<CR>
 nnoremap ;b  : Buffers<CR>
 nnoremap ;f  : Rg<CR>
 command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
+            \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
             \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/package-lock.json' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
@@ -749,16 +751,16 @@ let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.t
 let g:asynctasks_term_pos = 'quickfix'
 let g:asynctasks_template = {}
 let g:asynctasks_template.cargo = [
-			\ "[project-build]",
-			\ "command=cargo build",
-			\ "cwd=<root>",
-			\ "errorformat=%. %#--> %f:%l:%c",
-			\ "",
-			\ "[project-run]",
-			\ "command=cargo run",
-			\ "cwd=<root>",
-			\ "output=terminal",
-			\ ]
+            \ "[project-build]",
+            \ "command=cargo build",
+            \ "cwd=<root>",
+            \ "errorformat=%. %#--> %f:%l:%c",
+            \ "",
+            \ "[project-run]",
+            \ "command=cargo run",
+            \ "cwd=<root>",
+            \ "output=terminal",
+            \ ]
 noremap <silent><F1> :AsyncTask file-run<cr>
 noremap <silent><F2> :AsyncTask file-build<cr>
 noremap <silent><F3> :AsyncTask project-run<cr>
@@ -802,8 +804,8 @@ let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 packadd! vimspector
 nnoremap <F8> :VimspectorReset<CR>
 let g:vimspector_sign_priority = {
-  \    'vimspectorBP':         15,
-  \ }
+            \    'vimspectorBP':         15,
+            \ }
 let g:vimspector_bottombar_height = 5
 
 " vim-jsdoc
