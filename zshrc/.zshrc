@@ -81,6 +81,11 @@ alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias create-vimspector-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
 alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
 
+function lsp-strace {
+    if [ ! -z "$1" ]; then
+        sudo strace -s 2048 -etrace=%file,%process,%desc -fp $1
+    fi
+}
 function fetch-pr-to-branch {
     if [[ ! -z "$1" ]] && [[ ! -z "$2" ]]; then
         git fetch origin pull/$1/head:$2
