@@ -202,6 +202,7 @@ export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=on
 # export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
+# export RA_LOG=info
 export RUST_BACKTRACE=1
 export PKG_CONFIG_ALLOW_CROSS=1
 
