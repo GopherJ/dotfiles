@@ -158,6 +158,10 @@ nnoremap <C-C>     :wqall!<CR>
 nnoremap <C-Left>  :tabp<CR>
 nnoremap <C-Right> :tabn<CR>
 
+if has('nvim')
+    nmap <silent> <Esc> :call coc#float#close_all()<CR>
+endif
+
 nnoremap <C-A>     ggVG$
 
 nnoremap c         "_c
