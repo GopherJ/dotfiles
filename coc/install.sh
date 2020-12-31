@@ -91,7 +91,9 @@ echoc "=> Installing brew"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)" \
     && echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.zshrc \
     && /home/linuxbrew/.linuxbrew/bin/brew install watchman \
-    && echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
+    && echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p \
+    && /home/linuxbrew/.linuxbrew/bin/brew install gh
+
     # && sudo sysctl -w fs.inotify.max_user_watches=12288 \
     # && sudo sysctl -p
 
