@@ -204,6 +204,11 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 noremap <leader>p :read !xsel --clipboard --output<cr>
 noremap <leader>y :w !xsel -ib<cr><cr>
 
+" inoremap <C-a> <Home>
+" inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
+
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
 "--------------------------------------------------------------------------------
 " Plugin List
 "--------------------------------------------------------------------------------
@@ -299,7 +304,7 @@ colorscheme gruvbox
 " coc.nvim core
 autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
             \ let b:coc_enabled=0 |
-            \ ndif
+            \ endif
 
 let $NVIM_COC_LOG_LEVEL = 'info'
 
@@ -323,6 +328,7 @@ else
 endif
 
 set tagfunc=CocTagFunc
+set formatexpr=CocActionAsync('formatSelected')
 
 if has("patch-8.1.1564")
     set signcolumn=number
@@ -440,10 +446,8 @@ augroup CocCustomGroup
     autocmd FileType git setlocal nofoldenable
     autocmd FileType scss setl iskeyword+=@-@
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+    autocmd CursorHold * silent call CocActionAsync('highlight')
 augroup end
-
-autocmd CursorHold * silent call CocActionAsync('highlight')
-" autocmd CursorHold * :CocCommand git.refresh
 
 nmap <leader>rn  <Plug>(coc-rename)
 
@@ -467,18 +471,20 @@ omap ac <Plug>(coc-classobj-a)
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
+command! -nargs=0 R               CocRestart
+
 command! -nargs=0 Todo            CocList -A --normal grep -e TODO|FIXME
 command! -nargs=0 Status          CocList -A --normal gstatus
 command! -nargs=0 Tasks           CocList -A --normal tasks
 
-command! -nargs=0 Format        : call CocAction('format')
-command! -nargs=? Fold          : call CocActionAsync('fold', <f-args>)
-command! -nargs=0 GitChunkUndo  : call CocActionAsync('runCommand', 'git.chunkUndo')
-command! -nargs=0 GitChunkStage : call CocActionAsync('runCommand', 'git.chunkStage')
-command! -nargs=0 GitShowCommit : call CocActionAsync('runCommand', 'git.showCommit')
-command! -nargs=0 GitDiffCached : call CocActionAsync('runCommand', 'git.diffCached')
-command! -nargs=0 OR            : call CocActionAsync('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 Format        call CocAction('format')
+command! -nargs=0 Fold          call CocAction('fold')
+command! -nargs=0 GitChunkUndo  call CocAction('runCommand', 'git.chunkUndo')
+command! -nargs=0 GitChunkStage call CocAction('runCommand', 'git.chunkStage')
+command! -nargs=0 GitShowCommit call CocAction('runCommand', 'git.showCommit')
+command! -nargs=0 GitDiffCached call CocAction('runCommand', 'git.diffCached')
+command! -nargs=0 OR            call CocAction('runCommand', 'editor.action.organizeImport')
+autocmd BufWritePre *.go        call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
@@ -515,6 +521,7 @@ xmap ag <Plug>(coc-git-chunk-outer)
 nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
 nnoremap <silent> <space>b  :<C-u>CocList --normal branches<CR>
 nnoremap <silent> <space>m  :<C-u>CocList --normal bcommits<CR>
+" autocmd CursorHold * :CocCommand git.refresh
 
 " coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
