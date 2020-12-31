@@ -29,6 +29,7 @@
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.options.tabSize": 4,
     "vetur.trace.server": "off",
+    "diagnostic.enableHighlightLineNumber": false,
     "diagnostic.enableMessage": "always",
     "diagnostic.messageTarget": "float",
     "diagnostic.virtualText": false,
