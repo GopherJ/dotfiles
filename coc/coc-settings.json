@@ -124,5 +124,13 @@
     "toml.formatter.reorderKeys": true,
     "toml.formatter.alignEntries": true,
     "yaml.schemaStore.enable": true,
-    "tabnine.priority": 80
+    "tabnine.priority": 80,
+    "tabnine.disable_filetypes": [
+        "html",
+        "markdown",
+        "vim",
+        "jsonc",
+        "toml",
+        "yaml"
+    ]
 }
