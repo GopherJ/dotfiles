@@ -223,6 +223,7 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gopherj/vim-buftabline'
+" Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
 Plug 'gopherj/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
@@ -880,17 +881,3 @@ else
     noremap <C-G> :exe "term ++rows=" . winheight(0) . "gitui"<CR>
     noremap <C-Y> :exe "term ++rows=" . winheight(0) . "zsh"<CR>
 endif
-
-function! QuickFix_toggle()
-    for i in range(1, winnr('$'))
-        let bnum = winbufnr(i)
-        if getbufvar(bnum, '&buftype') == 'quickfix'
-            cclose
-            return
-        endif
-    endfor
-
-    copen
-endfunction
-
-nnoremap <silent> <leader>q :call QuickFix_toggle()<cr>
