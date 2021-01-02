@@ -498,7 +498,7 @@ endif
 
 " coc-explorer
 nmap <space>e :CocCommand explorer --preset default<CR>
-autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | qall! | endif
+" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | qall! | endif
 let g:indentLine_fileTypeExclude = ['coc-explorer']
 
 let g:coc_explorer_global_presets = {

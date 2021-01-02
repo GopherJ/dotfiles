@@ -95,6 +95,9 @@
         "<leader>k": ["wait", "markPrev:diagnosticError"],
         "<leader>j": ["wait", "markNext:diagnosticError"],
 
+        "<leader>K": ["wait", "markPrev:diagnosticWarning"],
+        "<leader>J": ["wait", "markNext:diagnosticWarning"],
+
         "f": "searchRecursive",
         "F": "searchRecursive",
 
