@@ -562,7 +562,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 
-command! -nargs=+ -complete=custom,s:GrepArgs Rg exe 'CocList grep '.<q-args>
+command! -nargs=+ -complete=custom,s:GrepArgs Grep exe 'CocList grep '.<q-args>
 function! s:GrepArgs(...)
     let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
                 \ '-e', '-regex', '-u', '-skip-vcs-ignores', '-t', '-extension']
