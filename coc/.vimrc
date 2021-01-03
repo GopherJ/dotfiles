@@ -880,3 +880,5 @@ else
     noremap <C-G> :exe "term ++rows=" . winheight(0) . "gitui"<CR>
     noremap <C-Y> :exe "term ++rows=" . winheight(0) . "zsh"<CR>
 endif
+
+let g:matchup_matchparen_offscreen = {'method': 'popup'}
