@@ -119,8 +119,6 @@
     "git.topRemovedSign.hlGroup": "GitGutterDelete",
     "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
     "eslint.run": "onSave",
-    "eslint.quiet": true,
-    "eslint.filetypes": ["javascript", "typescript", "vue"],
     "toml.formatter.reorderKeys": true,
     "toml.formatter.alignEntries": true,
     "yaml.schemaStore.enable": true,
