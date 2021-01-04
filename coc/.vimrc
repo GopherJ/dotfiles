@@ -229,6 +229,7 @@ Plug 'gopherj/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
 Plug 'vhdirk/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'chrisbra/csv.vim'
 
 " Plug 'rust-lang/rust.vim'
