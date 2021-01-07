@@ -498,7 +498,7 @@ if has('nvim-0.4.0') || has('patch-8.2.0750')
 endif
 
 " coc-explorer
-nmap <space>e :CocCommand explorer --preset default<CR>
+nmap <silent> <space>e :CocCommand explorer --preset default<CR>
 " autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | qall! | endif
 let g:indentLine_fileTypeExclude = ['coc-explorer']
 
