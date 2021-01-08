@@ -369,6 +369,7 @@ let g:coc_global_extensions = [
             \'coc-prettier',
             \'coc-cmake',
             \'coc-calc',
+            \'coc-gist',
             \'coc-flutter',
             \'coc-explorer',
             \'coc-tabnine',
