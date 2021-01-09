@@ -21,7 +21,6 @@
         "coc-pairs": ">=1.2.21",
         "coc-prettier": ">=1.1.20",
         "coc-pyright": ">=1.1.98",
-        "coc-python": ">=1.2.13",
         "coc-rust-analyzer": ">=0.27.0",
         "coc-snippets": ">=2.3.1",
         "coc-tabnine": ">=1.2.3",

@@ -366,6 +366,7 @@ let g:coc_global_extensions = [
             \'coc-tasks',
             \'coc-go',
             \'coc-java',
+            \'coc-pyright',
             \'coc-prettier',
             \'coc-cmake',
             \'coc-calc',
