@@ -330,6 +330,7 @@ echoc "=> Installing nvm..." \
     && sudo ln -s "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
     && pip install wheel \
     && pip3 install wheel \
+    && pip3 install -U jedi \
     && pip install --user pynvim \
     && pip3 install --user pynvim
 }
