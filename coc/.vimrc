@@ -254,7 +254,8 @@ Plug 'heavenshell/vim-jsdoc', {
 Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 " Plug 'chriskempson/base16-vim'
 " Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -292,7 +293,7 @@ call plug#end()
 " Theme configuration
 "--------------------------------------------------------------------------------
 set background=dark
-colorscheme gruvbox
+colorscheme gruvbox8_hard
 " colorscheme base16-default-dark
 " if !has('nvim')
 "     autocmd vimenter * :hi clear IncSearch
@@ -887,3 +888,17 @@ else
 endif
 
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
+
+" function! QuickFix_toggle()
+"     for i in range(1, winnr('$'))
+"         let bnum = winbufnr(i)
+"         if getbufvar(bnum, '&buftype') == 'quickfix'
+"             cclose
+"             return
+"         endif
+"     endfor
+"
+"     copen
+" endfunction
+"
+" nnoremap <silent> <leader><leader> :call QuickFix_toggle()<cr>
