@@ -764,7 +764,7 @@ command! -bang -nargs=* Rg
 
 " asynctasks
 let g:asyncrun_open = 6
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod']
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod', 'CMakeLists.txt', 'Makefile']
 let g:asynctasks_term_pos = 'quickfix'
 let g:asynctasks_template = {}
 let g:asynctasks_template.cargo = [
@@ -778,10 +778,21 @@ let g:asynctasks_template.cargo = [
             \ "cwd=<root>",
             \ "output=terminal",
             \ ]
-noremap <silent><F1> :AsyncTask file-run<cr>
-noremap <silent><F2> :AsyncTask file-build<cr>
-noremap <silent><F3> :AsyncTask project-run<cr>
-noremap <silent><F4> :AsyncTask project-build<cr>
+let g:asynctasks_template.cmake = [
+            \ "[project-build]",
+            \ "command=make",
+            \ "cwd=<root>/build",
+            \ "",
+            \ "[project-run]",
+            \ "command=make run",
+            \ "cwd=<root>/build",
+            \ "output=terminal",
+            \ ]
+noremap  <silent><F1>        : AsyncTask file-build<cr>
+noremap  <silent><F2>        : AsyncTask file-run<cr>
+noremap  <silent><F3>        : AsyncTask project-build<cr>
+noremap  <silent><F4>        : AsyncTask project-run<cr>
+nnoremap <silent> <space>t   : <C-u>CocList --normal tasks<CR>
 
 " vim-vue
 " npm i -g eslint eslint-plugin-vue
