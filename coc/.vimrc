@@ -888,11 +888,11 @@ if has('nvim')
     let g:neoterm_autoscroll = 1
     autocmd TermOpen term://*:gitui startinsert
     autocmd TermOpen term://*:zsh startinsert
-    tnoremap <Esc> <C-\><C-n>:bd!<CR>
+    tnoremap <Esc> <C-\><C-n>:bw!<CR>
     noremap <C-G> :tabe<CR>:-tabmove<CR>:term gitui<CR>
     noremap <C-Y> :tabe<CR>:-tabmove<CR>:term zsh<CR>
 else
-    tnoremap <leader>q <C-\><C-n>:bd!<CR>
+    tnoremap <leader>q <C-\><C-n>:bw!<CR>
     noremap <C-G> :exe "term ++rows=" . winheight(0) . "gitui"<CR>
     noremap <C-Y> :exe "term ++rows=" . winheight(0) . "zsh"<CR>
 endif
