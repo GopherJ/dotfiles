@@ -8,7 +8,7 @@
         "coc-eslint": ">=1.4.4",
         "coc-explorer": ">=0.14.0",
         "coc-flutter": ">=1.7.1",
-        "coc-fzf-preview": ">=2.0.3",
+        "coc-fzf-preview": ">=2.0.4",
         "coc-gist": ">=0.1.4",
         "coc-git": ">=2.2.0",
         "coc-go": ">=0.13.2",
