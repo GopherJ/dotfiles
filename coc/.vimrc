@@ -454,8 +454,8 @@ augroup end
 
 nmap <leader>rn  <Plug>(coc-rename)
 
-xmap <leader>a   <Plug>(coc-codeaction-selected)
-nmap <leader>a   <Plug>(coc-codeaction-selected)
+xmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
+nmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
 
 nmap <leader>ca  <Plug>(coc-codeaction)
 
