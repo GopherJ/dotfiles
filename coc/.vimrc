@@ -69,7 +69,7 @@ set expandtab
 set smarttab
 set softtabstop=4
 
-set clipboard+=unnamed
+set clipboard=unnamedplus
 
 set nowrap
 set nobackup
@@ -231,6 +231,7 @@ Plug 'vhdirk/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'chrisbra/csv.vim'
+Plug 'machakann/vim-highlightedyank'
 
 " Plug 'rust-lang/rust.vim'
 Plug 'neoclide/jsonc.vim'
