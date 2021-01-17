@@ -224,8 +224,8 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
-" Plug 'gopherj/vim-buftabline'
-Plug 'bagrat/vim-buffet'
+Plug 'gopherj/vim-buftabline'
+" Plug 'bagrat/vim-buffet'
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
 Plug 'gopherj/eleline.vim'
@@ -904,25 +904,25 @@ endif
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
 
 " vim-buffet
-nmap <leader>1 <Plug>BuffetSwitch(1)
-nmap <leader>2 <Plug>BuffetSwitch(2)
-nmap <leader>3 <Plug>BuffetSwitch(3)
-nmap <leader>4 <Plug>BuffetSwitch(4)
-nmap <leader>5 <Plug>BuffetSwitch(5)
-nmap <leader>6 <Plug>BuffetSwitch(6)
-nmap <leader>7 <Plug>BuffetSwitch(7)
-nmap <leader>8 <Plug>BuffetSwitch(8)
-nmap <leader>9 <Plug>BuffetSwitch(9)
-nmap <leader>0 <Plug>BuffetSwitch(10)
-
-let g:buffet_powerline_separators = 1
-let g:buffet_tab_icon = "\uf00a"
-let g:buffet_left_trunc_icon = "\uf0a8"
-let g:buffet_right_trunc_icon = "\uf0a9"
-let g:buffet_hidden_buffers = ["terminal", "quickfix", "coc-explorer"]
-
-function! g:BuffetSetCustomColors()
-  hi! BuffetCurrentBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
-  hi! BuffetTab cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
-  hi! BuffetActiveBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
-endfunction
+" nmap <leader>1 <Plug>BuffetSwitch(1)
+" nmap <leader>2 <Plug>BuffetSwitch(2)
+" nmap <leader>3 <Plug>BuffetSwitch(3)
+" nmap <leader>4 <Plug>BuffetSwitch(4)
+" nmap <leader>5 <Plug>BuffetSwitch(5)
+" nmap <leader>6 <Plug>BuffetSwitch(6)
+" nmap <leader>7 <Plug>BuffetSwitch(7)
+" nmap <leader>8 <Plug>BuffetSwitch(8)
+" nmap <leader>9 <Plug>BuffetSwitch(9)
+" nmap <leader>0 <Plug>BuffetSwitch(10)
+"
+" let g:buffet_powerline_separators = 1
+" let g:buffet_tab_icon = "\uf00a"
+" let g:buffet_left_trunc_icon = "\uf0a8"
+" let g:buffet_right_trunc_icon = "\uf0a9"
+" let g:buffet_hidden_buffers = ["terminal", "quickfix", "coc-explorer"]
+"
+" function! g:BuffetSetCustomColors()
+"   hi! BuffetCurrentBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
+"   hi! BuffetTab cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
+"   hi! BuffetActiveBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
+" endfunction
