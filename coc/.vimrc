@@ -854,7 +854,7 @@ let g:strip_whitespace_confirm=0
 
 " vim-anyfold
 filetype plugin indent on
-autocmd Filetype rust,go,c,cpp,py,javascript,typescript,vim AnyFoldActivate
+autocmd Filetype dockerfile,scss,sass,css,vue,markdown,sh,toml,yaml,jsonc,rust,go,c,cpp,py,javascript,typescript,vim AnyFoldActivate
 set foldlevel=99
 hi Folded term=NONE cterm=NONE
 
