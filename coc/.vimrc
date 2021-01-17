@@ -219,7 +219,7 @@ call plug#begin()
 
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
-" Plug 'pseewald/vim-anyfold'
+Plug 'pseewald/vim-anyfold'
 Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
@@ -852,12 +852,12 @@ let g:strip_whitespace_on_save=1
 let g:strip_whitespace_confirm=0
 
 " vim-anyfold
-" filetype plugin indent on
-" autocmd Filetype rust,go,javascript,typescript AnyFoldActivate
-" let g:anyfold_fold_comments=1
-" let g:anyfold_fold_toplevel=1
-" set foldlevel=1
-" hi Folded term=NONE cterm=NONE
+filetype plugin indent on
+autocmd Filetype rust,go,c,cpp,py,javascript,typescript AnyFoldActivate
+let g:anyfold_fold_comments=1
+let g:anyfold_fold_toplevel=1
+set foldlevel=99
+hi Folded term=NONE cterm=NONE
 
 " code-minimap
 " let g:minimap_auto_start=0
