@@ -225,6 +225,7 @@ Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 Plug 'gopherj/vim-buftabline'
+Plug 'arecarn/vim-fold-cycle'
 " Plug 'bagrat/vim-buffet'
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
@@ -853,9 +854,7 @@ let g:strip_whitespace_confirm=0
 
 " vim-anyfold
 filetype plugin indent on
-autocmd Filetype rust,go,c,cpp,py,javascript,typescript AnyFoldActivate
-let g:anyfold_fold_comments=1
-let g:anyfold_fold_toplevel=1
+autocmd Filetype rust,go,c,cpp,py,javascript,typescript,vim AnyFoldActivate
 set foldlevel=99
 hi Folded term=NONE cterm=NONE
 
@@ -926,3 +925,7 @@ let g:matchup_matchparen_offscreen = {'method': 'popup'}
 "   hi! BuffetTab cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
 "   hi! BuffetActiveBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
 " endfunction
+
+" vim-fold-cycle
+let g:fold_cycle_default_mapping = 0
+nmap <CR> <Plug>(fold-cycle-toggle-all)
