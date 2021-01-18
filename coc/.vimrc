@@ -224,9 +224,9 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
-Plug 'gopherj/vim-buftabline'
+" Plug 'gopherj/vim-buftabline'
 Plug 'arecarn/vim-fold-cycle'
-" Plug 'bagrat/vim-buffet'
+Plug 'bagrat/vim-buffet'
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
 Plug 'gopherj/eleline.vim'
@@ -516,10 +516,8 @@ let g:coc_explorer_global_presets = {
             \ }
 
 " coc-git
-nmap ;k <Plug>(coc-git-prevchunk)
-nmap ;j <Plug>(coc-git-nextchunk)
-nmap [c <Plug>(coc-git-prevconflict)
-nmap ]c <Plug>(coc-git-nextconflict)
+nmap <expr> ;k empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-prevconflict)" : "<Plug>(coc-git-prevchunk)"
+nmap <expr> ;j empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-nextconflict)" : "<Plug>(coc-git-nextchunk)"
 nmap <silent> -- :call CocAction('runCommand', 'git.chunkUndo')<CR>
 nmap <silent> ++ :call CocAction('runCommand', 'git.chunkStage')<CR>
 nmap gs <Plug>(coc-git-chunkinfo)
@@ -903,28 +901,28 @@ endif
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
 
 " vim-buffet
-" nmap <leader>1 <Plug>BuffetSwitch(1)
-" nmap <leader>2 <Plug>BuffetSwitch(2)
-" nmap <leader>3 <Plug>BuffetSwitch(3)
-" nmap <leader>4 <Plug>BuffetSwitch(4)
-" nmap <leader>5 <Plug>BuffetSwitch(5)
-" nmap <leader>6 <Plug>BuffetSwitch(6)
-" nmap <leader>7 <Plug>BuffetSwitch(7)
-" nmap <leader>8 <Plug>BuffetSwitch(8)
-" nmap <leader>9 <Plug>BuffetSwitch(9)
-" nmap <leader>0 <Plug>BuffetSwitch(10)
-"
-" let g:buffet_powerline_separators = 1
-" let g:buffet_tab_icon = "\uf00a"
-" let g:buffet_left_trunc_icon = "\uf0a8"
-" let g:buffet_right_trunc_icon = "\uf0a9"
-" let g:buffet_hidden_buffers = ["terminal", "quickfix", "coc-explorer"]
-"
-" function! g:BuffetSetCustomColors()
-"   hi! BuffetCurrentBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
-"   hi! BuffetTab cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
-"   hi! BuffetActiveBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#d35fd3
-" endfunction
+nmap <leader>1 <Plug>BuffetSwitch(1)
+nmap <leader>2 <Plug>BuffetSwitch(2)
+nmap <leader>3 <Plug>BuffetSwitch(3)
+nmap <leader>4 <Plug>BuffetSwitch(4)
+nmap <leader>5 <Plug>BuffetSwitch(5)
+nmap <leader>6 <Plug>BuffetSwitch(6)
+nmap <leader>7 <Plug>BuffetSwitch(7)
+nmap <leader>8 <Plug>BuffetSwitch(8)
+nmap <leader>9 <Plug>BuffetSwitch(9)
+nmap <leader>0 <Plug>BuffetSwitch(10)
+
+let g:buffet_powerline_separators = 1
+let g:buffet_tab_icon = "\uf00a"
+let g:buffet_left_trunc_icon = "\uf0a8"
+let g:buffet_right_trunc_icon = "\uf0a9"
+let g:buffet_hidden_buffers = ["terminal", "quickfix", "coc-explorer"]
+
+function! g:BuffetSetCustomColors()
+  hi! BuffetCurrentBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#000000
+  hi! BuffetTab cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#000000
+  hi! BuffetActiveBuffer cterm=NONE ctermbg=4 ctermfg=8 guibg=#ffbb7d guifg=#000000
+endfunction
 
 " vim-fold-cycle
 let g:fold_cycle_default_mapping = 0
