@@ -903,16 +903,29 @@ endif
 let g:matchup_matchparen_offscreen = {'method': 'popup'}
 
 " vim-buffet
-nmap <M-1> <Plug>BuffetSwitch(1)
-nmap <M-2> <Plug>BuffetSwitch(2)
-nmap <M-3> <Plug>BuffetSwitch(3)
-nmap <M-4> <Plug>BuffetSwitch(4)
-nmap <M-5> <Plug>BuffetSwitch(5)
-nmap <M-6> <Plug>BuffetSwitch(6)
-nmap <M-7> <Plug>BuffetSwitch(7)
-nmap <M-8> <Plug>BuffetSwitch(8)
-nmap <M-9> <Plug>BuffetSwitch(9)
-nmap <M-0> <Plug>BuffetSwitch(10)
+if has("nvim")
+    nmap <M-1> <Plug>BuffetSwitch(1)
+    nmap <M-2> <Plug>BuffetSwitch(2)
+    nmap <M-3> <Plug>BuffetSwitch(3)
+    nmap <M-4> <Plug>BuffetSwitch(4)
+    nmap <M-5> <Plug>BuffetSwitch(5)
+    nmap <M-6> <Plug>BuffetSwitch(6)
+    nmap <M-7> <Plug>BuffetSwitch(7)
+    nmap <M-8> <Plug>BuffetSwitch(8)
+    nmap <M-9> <Plug>BuffetSwitch(9)
+    nmap <M-0> <Plug>BuffetSwitch(10)
+else
+    nmap <leader>1 <Plug>BuffetSwitch(1)
+    nmap <leader>2 <Plug>BuffetSwitch(2)
+    nmap <leader>3 <Plug>BuffetSwitch(3)
+    nmap <leader>4 <Plug>BuffetSwitch(4)
+    nmap <leader>5 <Plug>BuffetSwitch(5)
+    nmap <leader>6 <Plug>BuffetSwitch(6)
+    nmap <leader>7 <Plug>BuffetSwitch(7)
+    nmap <leader>8 <Plug>BuffetSwitch(8)
+    nmap <leader>9 <Plug>BuffetSwitch(9)
+    nmap <leader>0 <Plug>BuffetSwitch(10)
+endif
 
 let g:buffet_powerline_separators = 1
 let g:buffet_tab_icon = "\uf00a"
