@@ -570,7 +570,7 @@ nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
 " nnoremap <silent><nowait> <space>s  :<C-u>CocList snippets<cr>
 nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <space>r  :<C-u>CocListResume<CR>
 
 command! -nargs=+ -complete=custom,s:GrepArgs Grep exe 'CocList grep '.<q-args>
 function! s:GrepArgs(...)
