@@ -210,7 +210,7 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 
-nmap <silent> <expr> <BS> &filetype == "qf" ? ":cclose<CR>" : (len(win_findbuf(bufnr('%'))) > 1 ? ":q<CR>" : ":bw<CR>")
+" nmap <silent> <expr> <BS> &filetype == "qf" ? ":cclose<CR>" : (len(win_findbuf(bufnr('%'))) > 1 ? ":q<CR>" : ":bw<CR>")
 
 " vnoremap Y "+y
 "--------------------------------------------------------------------------------
