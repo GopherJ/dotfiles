@@ -184,7 +184,7 @@ nnoremap e         E
 nnoremap <silent> <M-left>    :bp<CR>
 nnoremap <silent> <M-right>   :bn<CR>
 
-nnoremap <space>f  /
+nnoremap <expr> <space>f  ":Grep "
 
 nnoremap <silent> <space><space> <c-^>
 
