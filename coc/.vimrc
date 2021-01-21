@@ -251,7 +251,7 @@ Plug 'stephpy/vim-yaml'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 " Plug 'majutsushi/tagbar'
-Plug 'terryma/vim-expand-region'
+" Plug 'terryma/vim-expand-region'
 
 Plug 'heavenshell/vim-jsdoc', {
             \ 'for': ['javascript', 'javascript.jsx','typescript'],
@@ -377,7 +377,6 @@ let g:coc_global_extensions = [
             \'coc-prettier',
             \'coc-cmake',
             \'coc-calc',
-            \'coc-gist',
             \'coc-flutter',
             \'coc-explorer',
             \'coc-tabnine',
@@ -532,7 +531,7 @@ nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
 nnoremap <silent> <space>b  :<C-u>CocList --normal branches<CR>
 nnoremap <silent> <space>m  :<C-u>CocList bcommits<CR>
 nnoremap <silent> <space>M  :<C-u>CocList commits<CR>
-" autocmd CursorHold * :CocCommand git.refresh
+" autocmd CursorHold *      :CocCommand git.refresh
 
 " coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
