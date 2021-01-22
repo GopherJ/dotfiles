@@ -233,7 +233,7 @@ Plug 'bagrat/vim-buffet'
 " Plug 'wfxr/minimap.vim'
 Plug 'gopherj/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
-Plug 'vhdirk/vim-cmake'
+Plug 'cdelledonne/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'AndrewRadev/splitjoin.vim'
 " Plug 'chrisbra/csv.vim'
