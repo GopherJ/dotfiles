@@ -1,10 +1,4 @@
 {
-    "languageserver": {
-        "kotlin": {
-            "command": "~/kotlin-language-server/server/bin/kotlin-language-server",
-            "filetypes": ["kotlin"]
-        }
-    },
     "coc.preferences.formatOnSaveFiletypes": [
         "json",
         "jsonc",
@@ -17,7 +11,8 @@
         "c",
         "rust",
         "toml",
-        "yaml"
+        "yaml",
+        "kotlin"
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,
