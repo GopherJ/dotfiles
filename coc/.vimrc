@@ -154,7 +154,7 @@ nnoremap <C-J>     <C-W>j
 nnoremap <C-H>     <C-W>h
 
 nnoremap <C-T>     :tabnew<CR>
-nnoremap <C-C>     :wqall!<CR>
+nnoremap <C-C>     :qall!<CR>
 nnoremap <C-Left>  :tabp<CR>
 nnoremap <C-Right> :tabn<CR>
 
