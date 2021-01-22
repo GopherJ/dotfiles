@@ -786,11 +786,11 @@ let g:asynctasks_template.cargo = [
 let g:asynctasks_template.cmake = [
             \ "[project-build]",
             \ "command=make",
-            \ "cwd=<root>/build",
+            \ "cwd=<root>/Debug",
             \ "",
             \ "[project-run]",
             \ "command=make run",
-            \ "cwd=<root>/build",
+            \ "cwd=<root>/Debug",
             \ "output=terminal",
             \ ]
 noremap  <silent><F1>        : AsyncTask file-build<cr>
@@ -945,3 +945,6 @@ nmap <CR> <Plug>(fold-cycle-toggle-all)
 
 " asyncrun.vim
 nnoremap <F12> :call asyncrun#quickfix_toggle(6)<CR>
+
+" vim-cmake
+let g:cmake_link_compile_commands=1
