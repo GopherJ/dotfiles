@@ -77,7 +77,7 @@ alias immutable-file='chattr +i'
 alias mutable-file='chattr -i'
 alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); exit}'"
 alias vimdocker='docker run --rm -it -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
-alias vimdockerd='docker run --rm -p 9999:9999 alexcj96/vim-docker-env:latest'
+alias vimdockerd='docker run --rm -v "$(pwd)":/home/alex_cj96/src -p 9999:9999 alexcj96/vim-docker-env:latest'
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias create-vimspector-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
 alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
