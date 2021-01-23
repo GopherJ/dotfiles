@@ -82,7 +82,13 @@ alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias create-vimspector-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
 alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
+alias list-npm-packages="npm list -g --depth 0"
 
+function nvm-reinstall-packages {
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+        nvm install $1 --reinstall-packages-from=$2
+    fi
+}
 function lsp-strace {
     if [ ! -z "$1" ]; then
         sudo strace -s 2048 -etrace=%file,%process,%desc -fp $1
