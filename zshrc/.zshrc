@@ -82,11 +82,15 @@ alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias create-vimspector-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
 alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
-alias list-npm-packages="npm list -g --depth 0"
+alias list-global-node-packages="npm list -g --depth 0"
 
-function nvm-reinstall-packages {
+function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        nvm install $1 --reinstall-packages-from=$2
+        nvm install $2 --reinstall-packages-from=$1 \
+            && nvm use $2 \
+            && nvm alias default $2 \
+            && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
+            && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
     fi
 }
 function lsp-strace {
