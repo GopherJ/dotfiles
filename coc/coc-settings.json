@@ -17,7 +17,8 @@
         "c",
         "rust",
         "toml",
-        "yaml"
+        "yaml",
+        "cmake"
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,
