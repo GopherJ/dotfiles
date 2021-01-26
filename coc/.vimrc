@@ -299,7 +299,7 @@ call plug#end()
 " Theme configuration
 "--------------------------------------------------------------------------------
 set background=dark
-colorscheme gruvbox
+silent! colorscheme gruvbox
 " colorscheme base16-default-dark
 " if !has('nvim')
 "     autocmd vimenter * :hi clear IncSearch
