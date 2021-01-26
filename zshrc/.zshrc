@@ -233,6 +233,7 @@ export GO111MODULE=on
 # export RA_LOG=info
 export RUST_BACKTRACE=1
 export PKG_CONFIG_ALLOW_CROSS=1
+export VCPKG_DISABLE_METRICS=1
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
