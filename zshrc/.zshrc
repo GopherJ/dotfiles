@@ -84,6 +84,7 @@ alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/Go
 alias create-cmakelists-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/cmake/CMakeLists.txt'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
+alias give-me-certificates="certbot certonly --standalone -d"
 
 function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
