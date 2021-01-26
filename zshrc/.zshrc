@@ -86,6 +86,20 @@ alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
 
+function osxcross {
+    RUSTFLAGS="-C linker=x86_64-apple-darwin14-clang -C ar=x86_64-apple-darwin14-ar" \
+    CC=o64-clang \
+    CXX=o64-clang++ \
+    LIBZ_SYS_STATIC=1 \
+    PKG_CONFIG_ALLOW_CROSS=1 \
+    cargo $@ \
+    --target=x86_64-apple-darwin
+}
+function wincross {
+    RUSTFLAGS="-C linker=x86_64-w64-mingw32-gcc -C ar=x86_64-w64-mingw32-gcc-ar" \
+    cargo $@ \
+    --target=x86_64-pc-windows-gnu
+}
 function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         nvm install $2 --reinstall-packages-from=$1 \
