@@ -19,6 +19,12 @@ if(NOT CMAKE_BUILD_TYPE)
   set(CMAKE_BUILD_TYPE "Debug")
 endif()
 
+execute_process(
+  COMMAND git log -1 --format=%h
+  WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+  OUTPUT_VARIABLE GIT_COMMIT_HASH
+  OUTPUT_STRIP_TRAILING_WHITESPACE)
+
 project(Name)
 
 if(EXISTS ${PROJECT_SOURCE_DIR}/include)
