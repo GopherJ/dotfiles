@@ -275,6 +275,7 @@ Plug 'junegunn/gv.vim'
 Plug 'alpertuna/vim-header'
 
 Plug 'udalov/kotlin-vim'
+Plug 'tomlion/vim-solidity'
 Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'posva/vim-vue'
