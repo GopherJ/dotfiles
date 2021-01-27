@@ -36,7 +36,7 @@ add_definitions(-DBUILD_VERSION="${APP_BUILD_VERSION}")
 add_definitions(-DBUILD_ID="${GIT_COMMIT_HASH}")
 add_definitions(-DBUILD_ARCH="${CMAKE_HOST_SYSTEM_PROCESSOR}")
 
-aux_source_directory(. SRC_FILES)
+aux_source_directory(src SRC_FILES)
 
 if(EXISTS src/main.cpp)
   add_executable(${PROJECT_NAME} ${SRC_FILES})
