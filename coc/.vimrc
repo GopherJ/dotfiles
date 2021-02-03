@@ -224,7 +224,7 @@ Plug 'tpope/vim-repeat'
 Plug 'pseewald/vim-anyfold'
 Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
-Plug 'andymass/vim-matchup'
+" Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
 " Plug 'gopherj/vim-buftabline'
 Plug 'arecarn/vim-fold-cycle'
@@ -901,7 +901,7 @@ else
     noremap <C-Y> :exe "term ++rows=" . winheight(0) . "zsh"<CR>
 endif
 
-let g:matchup_matchparen_offscreen = {'method': 'popup'}
+" let g:matchup_matchparen_offscreen = {'method': 'popup'}
 
 " vim-buffet
 if has("nvim")
