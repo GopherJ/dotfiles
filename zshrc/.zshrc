@@ -85,6 +85,7 @@ alias create-cmakelists-config='curl -sSO https://raw.githubusercontent.com/Goph
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
+alias dedup="sort -u | uniq"
 
 function osxcross {
     RUSTFLAGS="-C linker=x86_64-apple-darwin14-clang -C ar=x86_64-apple-darwin14-ar" \
