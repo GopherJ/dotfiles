@@ -87,6 +87,10 @@ alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
 alias dedup="sort -u | uniq"
 alias iptablesReset="iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X"
+alias showIp="curl ip.gs"
+alias checkIfSocks5="curl cip.cc"
+alias setproxy="export ALL_PROXY=socks5://127.0.0.1:10086"
+alias unsetproxy="unset ALL_PROXY"
 
 function osxcross {
     RUSTFLAGS="-C linker=x86_64-apple-darwin14-clang -C ar=x86_64-apple-darwin14-ar" \
