@@ -86,6 +86,7 @@ alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
 alias dedup="sort -u | uniq"
+alias iptablesReset="iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X"
 
 function osxcross {
     RUSTFLAGS="-C linker=x86_64-apple-darwin14-clang -C ar=x86_64-apple-darwin14-ar" \
