@@ -79,9 +79,9 @@ alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); e
 alias vimdocker='docker run --rm -it -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
 alias vimdockerd='docker run --rm -v "$(pwd)":/home/alex_cj96/src -p 9999:9999 alexcj96/vim-docker-env:latest'
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
-alias create-vimspector-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
-alias create-clang-format-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
-alias create-cmakelists-config='curl -sSO https://raw.githubusercontent.com/GopherJ/cfg/master/cmake/CMakeLists.txt'
+alias create-vimspector-config='curl -sSO http://raw.githubusercontent.com/GopherJ/cfg/master/vimspector/.vimspector.json'
+alias create-clang-format-config='curl -sSO http://raw.githubusercontent.com/GopherJ/cfg/master/clangformat/.clang-format'
+alias create-cmakelists-config='curl -sSO http://raw.githubusercontent.com/GopherJ/cfg/master/cmake/CMakeLists.txt'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
@@ -132,7 +132,7 @@ function npm-pkg-version {
 }
 function create-eslint-config {
     if [[ "$1" == "browser" ]] || [[ "$1" == "node" ]]; then
-        curl -sSo .eslintrc.json https://raw.githubusercontent.com/GopherJ/cfg/master/eslint/$1.eslintrc.json
+        curl -sSo .eslintrc.json http://raw.githubusercontent.com/GopherJ/cfg/master/eslint/$1.eslintrc.json
     fi
 }
 function ecat {
