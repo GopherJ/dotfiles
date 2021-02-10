@@ -91,6 +91,10 @@ alias showIp="curl ip.gs"
 alias checkIfSocks5="curl cip.cc"
 alias setproxy="export ALL_PROXY=socks5://127.0.0.1:10086"
 alias unsetproxy="unset ALL_PROXY"
+alias cnpm="npm --registry=https://registry.npm.taobao.org \
+--cache=$HOME/.npm/.cache/cnpm \
+--disturl=https://npm.taobao.org/dist \
+--userconfig=$HOME/.cnpmrc"
 
 function osxcross {
     RUSTFLAGS="-C linker=x86_64-apple-darwin14-clang -C ar=x86_64-apple-darwin14-ar" \
@@ -266,6 +270,7 @@ export RUST_BACKTRACE=1
 export PKG_CONFIG_ALLOW_CROSS=1
 export VCPKG_DISABLE_METRICS=1
 export LC_ALL="en_US.UTF-8"
+export GOPROXY="https://goproxy.cn"
 
 if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
   exec tmux
