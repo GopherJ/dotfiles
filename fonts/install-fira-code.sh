@@ -22,4 +22,4 @@ done
 curl -fLo ~/.config/fontconfig/fonts.conf --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/fonts/fonts.conf
 
 echo "fc-cache -f"
-fc-cache -f
+sudo fc-cache -vf
