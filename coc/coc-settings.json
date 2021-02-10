@@ -79,7 +79,7 @@
     "prettier.trailingComma": "es5",
     "prettier.tabWidth": 4,
     "prettier.semi": false,
-    "prettier.useTabs": true,
+    "prettier.useTabs": false,
     "prettier.bracketSpacing": true,
     "prettier.disableLanguages": [],
     "prettier.eslintIntegration": true,

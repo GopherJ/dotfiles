@@ -261,7 +261,7 @@ Plug 'heavenshell/vim-jsdoc', {
 Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 Plug 'lifepillar/vim-gruvbox8'
 " Plug 'chriskempson/base16-vim'
 " Plug 'itchyny/lightline.vim'
