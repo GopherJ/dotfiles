@@ -475,6 +475,7 @@ if [ ! -z "$GITHUB_USERNAME" ] && [ ! -z "$GITHUB_ACCESS_TOKEN" ]; then
     git config --global github.user $GITHUB_USERNAME
     git config --global user.name "$GIT_CFG_NAME"
     git config --global user.email "$GIT_CFG_EMAIL"
+    git config --global url.ssh://git@github.com/.insteadOf https://github.com/
     sed -i "s/GITHUB_USERNAME/$GITHUB_USERNAME/g"  ~/.vimrc
     sed -i "s/GITHUB_ACCESS_TOKEN/$GITHUB_ACCESS_TOKEN/g" ~/.vimrc
     echo "machine api.github.com login $GITHUB_USERNAME password $GITHUB_ACCESS_TOKEN" > ~/.netrc
