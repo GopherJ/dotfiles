@@ -10,7 +10,7 @@ fi
 
 for type in Bold Light Medium Regular Retina; do
     file_path="${HOME}/.local/share/fonts/FiraCode-${type}.ttf"
-    file_url="https://cdn.jsdelivr.net/gh/tonsky/FiraCode/distr/ttf/FiraCode-${type}.ttf"
+    file_url="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/ttf/FiraCode-${type}.ttf"
     if [ ! -e "${file_path}" ]; then
         echo "wget -O ${file_path} $file_url"
         wget -O "${file_path}" "${file_url}"
