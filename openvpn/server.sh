@@ -1,12 +1,13 @@
 #!/bin/bash
 
+set -ex
 
 command -v openvpn > /dev/null || {
     sudo apt install -y openvpn
 }
 
 if [ ! -f ~/Downloads/v3.0.6.tar.gz ]; then
-    curl -fLo ~/Downloads/v3.0.6.tar.gz https://github.com/OpenVPN/easy-rsa/archive/v3.0.6.tar.gz
+    curl -fLo ~/Downloads/v3.0.6.tar.gz --create-dirs https://github.com/OpenVPN/easy-rsa/archive/v3.0.6.tar.gz
 fi
 
 cd ~/Downloads

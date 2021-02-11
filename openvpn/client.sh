@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 command -v openvpn > /dev/null || {
     sudo apt install -y openvpn
 }

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 DISTRO="$(lsb_release -is)"
 NODE_VERSION="v12.19.0"
