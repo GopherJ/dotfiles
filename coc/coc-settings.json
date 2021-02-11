@@ -73,6 +73,7 @@
     "go.trace.server": "off",
     "clangd.enabled": true,
     "clangd.semanticHighlighting": false,
+    "clangd.arguments": ["--header-insertion=never"],
     "yank.highlight.enable": false,
     "snippets.enableStatusItem": false,
     "prettier.singleQuote": true,
