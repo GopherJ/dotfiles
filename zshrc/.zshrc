@@ -119,7 +119,7 @@ function nvm-change-from-to {
             && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
     fi
 }
-function lsp-strace {
+function strace {
     if [ ! -z "$1" ]; then
         sudo strace -s 2048 -etrace=%file,%process,%desc -fp $1
     fi
