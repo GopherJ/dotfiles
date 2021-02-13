@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.18)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules")
 set(APP_BUILD_VERSION "0.0.1")
 set(CMAKE_CXX_STANDARD 11)
+# set(CMAKE_CXX_COMPILER "clang++") set(CMAKE_C_COMPILER "clang")
 
 if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
   set(CMAKE_TOOLCHAIN_FILE
@@ -46,12 +47,9 @@ add_definitions(-DBUILD_ARCH="${CMAKE_HOST_SYSTEM_PROCESSOR}")
 
 aux_source_directory(src SRC_FILES)
 
-if(EXISTS src/main.cpp)
-  add_executable(${PROJECT_NAME} ${SRC_FILES})
-  if(OPENSSL_FOUND)
-    target_link_libraries(${PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
-  endif()
-  target_link_libraries(${PROJECT_NAME} Threads::Threads)
-else()
-  add_library(${PROJECT_NAME} ${SRC_FILES})
+add_executable(${PROJECT_NAME} ${SRC_FILES})
+
+target_link_libraries(${PROJECT_NAME} Threads::Threads)
+if(OPENSSL_FOUND)
+  target_link_libraries(${PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
 endif()
