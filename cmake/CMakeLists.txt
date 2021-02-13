@@ -40,9 +40,6 @@ project(Name)
 if(EXISTS ${PROJECT_SOURCE_DIR}/include)
   include_directories(${PROJECT_SOURCE_DIR}/include)
 endif()
-if(EXISTS ${PROJECT_SOURCE_DIR}/include/third_party)
-  include_directories(${PROJECT_SOURCE_DIR}/include/third_party)
-endif()
 
 set(OPENSSL_USE_STATIC_LIBS ON)
 find_package(Threads)
@@ -60,6 +57,24 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
 else()
   add_library(${PROJECT_NAME} ${SRC_FILES})
 endif()
+
+macro(SUBDIRLIST result curdir)
+  file(
+    GLOB children
+    RELATIVE ${curdir}
+    ${curdir}/*)
+  set(dirlist "")
+  foreach(child ${children})
+    if(IS_DIRECTORY ${curdir}/${child})
+      list(APPEND dirlist ${child})
+    endif()
+  endforeach()
+  set(${result} ${dirlist})
+endmacro()
+subdirlist(SUB_DIRS ${CMAKE_SOURCE_DIR}/third_party)
+foreach(SUB_DIR ${SUB_DIRS})
+  add_subdirectory(${SUB_DIR})
+endforeach()
 
 target_link_libraries(${PROJECT_NAME} Threads::Threads)
 if(OPENSSL_FOUND)
