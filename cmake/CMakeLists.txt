@@ -1,9 +1,16 @@
 cmake_minimum_required(VERSION 3.18)
 
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules")
 set(APP_BUILD_VERSION "0.0.1")
+
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules")
 set(CMAKE_CXX_STANDARD 11)
-# set(CMAKE_CXX_COMPILER "clang++") set(CMAKE_C_COMPILER "clang")
+set(CMAKE_C_STANDARD 99)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+
+set(CMAKE_CXX_COMPILER "clang++")
+set(CMAKE_C_COMPILER "clang")
+
+set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS ON)
 
 if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
   set(CMAKE_TOOLCHAIN_FILE
@@ -45,9 +52,14 @@ add_definitions(-DBUILD_VERSION="${APP_BUILD_VERSION}")
 add_definitions(-DBUILD_ID="${GIT_COMMIT_HASH}")
 add_definitions(-DBUILD_ARCH="${CMAKE_HOST_SYSTEM_PROCESSOR}")
 
-aux_source_directory(src SRC_FILES)
+file(GLOB_RECURSE SRC_FILES "src/*.cpp" "src/*.c" "src/*.h")
 
-add_executable(${PROJECT_NAME} ${SRC_FILES})
+if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
+   OR EXISTS "${PROJECT_SOURCE_DIR}/src/main.c")
+  add_executable(${PROJECT_NAME} ${SRC_FILES})
+else()
+  add_library(${PROJECT_NAME} ${SRC_FILES})
+endif()
 
 target_link_libraries(${PROJECT_NAME} Threads::Threads)
 if(OPENSSL_FOUND)
