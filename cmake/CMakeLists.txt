@@ -79,7 +79,7 @@ endforeach()
 if(EXISTS "${CMAKE_SOURCE_DIR}/tests")
   add_subdirectory(tests)
   enable_testing()
-  add_test(test_all tests)
+  add_test(test_all tests/run_tests)
 endif()
 
 target_link_libraries(${PROJECT_NAME} Threads::Threads)
