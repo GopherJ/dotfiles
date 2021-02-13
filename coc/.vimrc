@@ -287,7 +287,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 Plug 'tomtom/tcomment_vim'
-Plug 'airblade/vim-rooter'
+" Plug 'airblade/vim-rooter'
 Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'skywind3000/asyncrun.vim'
@@ -951,3 +951,5 @@ nnoremap <F12> :call asyncrun#quickfix_toggle(6)<CR>
 
 " vim-cmake
 let g:cmake_link_compile_commands=1
+let g:cmake_jump=1
+let g:cmake_root_markers=['CMakeLists.txt']
