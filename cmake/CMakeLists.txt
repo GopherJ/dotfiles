@@ -14,6 +14,7 @@ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS ON)
 
 set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
 set(BUILD_SHARED_LIBS OFF)
+set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -pedantic -Wextra")
 
@@ -73,6 +74,12 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
 else()
   add_library(${PROJECT_NAME} ${SRC_FILES})
   target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src)
+
+  if(EXISTS "${CMAKE_SOURCE_DIR}/tests")
+    add_subdirectory(tests)
+    enable_testing()
+    add_test(test_all tests/run_tests)
+  endif()
 endif()
 
 macro(SUBDIRLIST result curdir)
@@ -92,12 +99,6 @@ subdirlist(SUB_DIRS ${CMAKE_SOURCE_DIR}/third_party)
 foreach(SUB_DIR ${SUB_DIRS})
   add_subdirectory(${SUB_DIR})
 endforeach()
-
-if(EXISTS "${CMAKE_SOURCE_DIR}/tests")
-  add_subdirectory(tests)
-  enable_testing()
-  add_test(test_all tests/run_tests)
-endif()
 
 target_link_libraries(${PROJECT_NAME} Threads::Threads)
 if(OPENSSL_FOUND)
