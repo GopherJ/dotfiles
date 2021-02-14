@@ -23,7 +23,6 @@ add_subdirectory(googletest)
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 file(GLOB SRC_FILES "*.cpp" "*.c")
-message(${SRC_FILES})
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
 target_link_libraries(${PROJECT_NAME} gtest gtest_main)
