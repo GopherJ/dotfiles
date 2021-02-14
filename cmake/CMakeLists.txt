@@ -72,6 +72,7 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
   add_executable(${PROJECT_NAME} ${SRC_FILES})
 else()
   add_library(${PROJECT_NAME} ${SRC_FILES})
+  target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src)
 endif()
 
 macro(SUBDIRLIST result curdir)

@@ -25,4 +25,4 @@ include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 file(GLOB SRC_FILES "*.cpp" "*.c")
 
 add_executable(${PROJECT_NAME} ${SRC_FILES})
-target_link_libraries(${PROJECT_NAME} gtest gtest_main)
+target_link_libraries(${PROJECT_NAME} gtest gtest_main Name)
