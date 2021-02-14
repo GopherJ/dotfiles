@@ -15,7 +15,7 @@ function echoc() {
 
 # if java jdk isn't 8, we need to do
 # sudo update-alternatives --config java
-deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "python-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "zlib1g-dev" "nnn" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind" "ca-certificates" "libnss3-tools" "nmap" "net-tools" "xz-utils" "pkg-config")
+deps=("curl" "git" "build-essential" "cmake" "python3-dev" "python3-pip" "python-pip" "tmux" "clang-format" "autoconf" "automake" "cppcheck" "flake8" "pylint" "ruby" "ruby-dev" "rust-lldb" "lldb" "apt-file" "openssh-server" "jq" "zsh" "yapf3" "libssl-dev" "openjdk-8-jdk" "ccls" "unrar" "gitk" "apt-transport-https" "libpython3.6" "libpython3.8" "xdotool" "mosquitto" "mosquitto-clients" "zlib1g-dev" "nnn" "libprotobuf-dev" "protobuf-compiler" "libboost-all-dev" "shellcheck" "valgrind" "ca-certificates" "libnss3-tools" "nmap" "net-tools" "xz-utils" "pkg-config" "zfsutils-linux")
 echoc "=> Installing dependencies..."
 for dep in "${deps[@]}"
 do
