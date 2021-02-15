@@ -14,7 +14,6 @@ set_property(GLOBAL PROPERTY FIND_LIBRARY_USE_LIB64_PATHS ON)
 
 set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
 set(BUILD_SHARED_LIBS OFF)
-set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -std=c++11 -pedantic -Wextra")
 
@@ -70,6 +69,7 @@ file(GLOB_RECURSE SRC_FILES "src/*.cpp" "src/*.c" "src/*.h")
 
 if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
    OR EXISTS "${PROJECT_SOURCE_DIR}/src/main.c")
+  set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
   add_executable(${PROJECT_NAME} ${SRC_FILES})
 else()
   add_library(${PROJECT_NAME} ${SRC_FILES})
