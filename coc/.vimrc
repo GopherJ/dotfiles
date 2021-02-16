@@ -496,7 +496,7 @@ command! -nargs=0 GitChunkStage call CocAction('runCommand', 'git.chunkStage')
 command! -nargs=0 GitShowCommit call CocAction('runCommand', 'git.showCommit')
 command! -nargs=0 GitDiffCached call CocAction('runCommand', 'git.diffCached')
 command! -nargs=0 OR            call CocAction('runCommand', 'editor.action.organizeImport')
-autocmd BufWritePre *.go        call CocAction('runCommand', 'editor.action.organizeImport')
+" autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
