@@ -29,7 +29,7 @@ SSH_KEY_PRIV_PATH=~/.ssh/id_rsa
 
 echo -e "${BOLD}=> Creating container ${NAME}...${NORMAL}"
 # lxc launch ubuntu:bionic $NAME
-lxc launch ubuntu:xenial $NAME
+lxc launch ubuntu:focal $NAME
 
 echo -e "${BOLD}=> Making container privileged...${NORMAL}"
 lxc config set $NAME security.privileged true
