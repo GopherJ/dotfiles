@@ -59,6 +59,8 @@ alias start='sudo systemctl start'
 alias stop='sudo systemctl stop'
 alias restart='sudo systemctl restart'
 alias status='sudo systemctl status'
+alias enable='sudo systemctl enable'
+alias disable='sudo systemctl disable'
 alias logf='sudo journal -f -u'
 alias gofmt='gofmt -s -w .'
 alias triple-list='rustc --print target-list | pr -tw100 --columns 3'
@@ -286,3 +288,8 @@ export NVM_DIR="$HOME/.nvm"
 eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(goenv init -)"
 eval "$(zoxide init zsh)"
+
+_systemctl_unit_state() {
+  typeset -gA _sys_unit_state
+  _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') )
+}
