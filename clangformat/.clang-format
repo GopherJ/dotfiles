@@ -1,4 +1,4 @@
-BasedOnStyle: LLVM
+BasedOnStyle: Google
 
 BreakBeforeBraces: Stroustrup
 
@@ -12,10 +12,12 @@ AllowShortCaseLabelsOnASingleLine: false
 AllowShortLoopsOnASingleLine: false
 AllowAllParametersOfDeclarationOnNextLine: true
 
+AlignOperands: true
 AlignTrailingComments: true
 AlignConsecutiveDeclarations: true
 AlignConsecutiveAssignments: true
 AlignAfterOpenBracket: AlwaysBreak
+AlignEscapedNewlines: Right
 
 SpacesInSquareBrackets: false
 SpacesInParentheses : false
@@ -35,4 +37,17 @@ SortUsingDeclarations: true
 IndentWidth: 4
 TabWidth: 4
 ColumnLimit: 120
-UseTab: Always
+UseTab: Never
+BinPackParameters:  true
+
+BraceWrapping:
+    AfterClass: true
+    AfterControlStatement: true
+    AfterEnum: true
+    AfterFunction: true
+    AfterNamespace: true
+    AfterStruct: true
+    AfterUnion: true
+    BeforeElse: true
+    BeforeCatch: true
+    IndentBraces: true
