@@ -103,7 +103,7 @@ macro(SUBDIRLIST result curdir)
 endmacro()
 subdirlist(SUB_DIRS ${CMAKE_SOURCE_DIR}/third_party)
 foreach(SUB_DIR ${SUB_DIRS})
-  add_subdirectory(${SUB_DIR})
+  add_subdirectory(${CMAKE_SOURCE_DIR}/third_party/${SUB_DIR})
 endforeach()
 
 target_link_libraries(${PROJECT_NAME} Threads::Threads)
