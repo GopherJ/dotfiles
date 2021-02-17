@@ -6,6 +6,8 @@ PointerAlignment: Right
 
 MaxEmptyLinesToKeep: 1
 
+ColumnLimit: 80
+
 AllowShortFunctionsOnASingleLine: false
 AllowShortIfStatementsOnASingleLine: false
 AllowShortCaseLabelsOnASingleLine: false
