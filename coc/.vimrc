@@ -174,6 +174,8 @@ nnoremap p"        vi"p
 nnoremap pp        vipp
 nnoremap ps        visp
 
+nnoremap vv        vip
+
 nnoremap D         dd
 nnoremap H         ^
 nnoremap L         $
