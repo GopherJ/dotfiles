@@ -267,6 +267,14 @@ export GO111MODULE=on
 export RUST_BACKTRACE=1
 export PKG_CONFIG_ALLOW_CROSS=1
 export VCPKG_DISABLE_METRICS=1
+# locale-gen en_US.UTF-8
+# dpkg-reconfigure locales
+#
+# /etc/default/locale
+# LANG=en_US.UTF-8
+# LANGUAGE=en_US.UTF-8
+# LC_ALL=en_US.UTF-8
+# LC_CTYPE=en_US.UTF-8
 export LC_ALL="en_US.UTF-8"
 export GOPROXY="https://goproxy.cn,direct"
 
