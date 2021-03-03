@@ -22,7 +22,7 @@ openssl req \
     -key root-ca.key \
     -config ../openssl-ca.cnf \
     -sha256 \
-    -days 3650 \
+    -days 7300 \
     -out root-ca.pem
 
 chmod 755 root-ca.pem
@@ -48,7 +48,7 @@ openssl x509 \
     -CAkey root-ca.key \
     -CAcreateserial \
     -out server.pem \
-    -days 3650 \
+    -days 7300 \
     -sha256
     # uncomment the below line if you are using domain
     # -addtrust clientAuth
@@ -76,7 +76,7 @@ openssl x509 \
     -CAkey root-ca.key \
     -CAcreateserial \
     -out client.pem \
-    -days 3650 \
+    -days 7300 \
     -sha256
     # uncomment the below line if you are using domain
     # -addtrust clientAuth
