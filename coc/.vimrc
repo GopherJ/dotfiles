@@ -946,7 +946,7 @@ endfunction
 
 " vim-fold-cycle
 let g:fold_cycle_default_mapping = 0
-nmap <CR> <Plug>(fold-cycle-toggle-all)
+nmap <TAB> <Plug>(fold-cycle-toggle-all)
 
 " asyncrun.vim
 nnoremap <F12> :call asyncrun#quickfix_toggle(6)<CR>
