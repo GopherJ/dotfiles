@@ -277,6 +277,7 @@ export LC_ALL=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 # export LC_ALL="en_US.UTF-8"
 export GOPROXY="https://goproxy.cn,direct"
+export CARGO_BUILD_JOBS="$(($(nproc --all)-1))"
 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #   exec tmux
