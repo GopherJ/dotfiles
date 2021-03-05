@@ -271,11 +271,11 @@ export VCPKG_DISABLE_METRICS=1
 # dpkg-reconfigure locales
 #
 # /etc/default/locale
-# LANG=en_US.UTF-8
-# LANGUAGE=en_US.UTF-8
-# LC_ALL=en_US.UTF-8
-# LC_CTYPE=en_US.UTF-8
-export LC_ALL="en_US.UTF-8"
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
+# export LC_ALL="en_US.UTF-8"
 export GOPROXY="https://goproxy.cn,direct"
 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
