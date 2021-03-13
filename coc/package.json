@@ -7,7 +7,7 @@
         "coc-emmet": ">=1.1.6",
         "coc-eslint": ">=1.4.5",
         "coc-explorer": ">=0.15.7",
-        "coc-flutter": ">=1.8.2",
+        "coc-flutter": ">=1.9.0",
         "coc-fzf-preview": ">=2.0.15",
         "coc-git": ">=2.3.1",
         "coc-go": ">=0.13.3",
