@@ -524,8 +524,8 @@ let g:coc_explorer_global_presets = {
 " coc-git
 nmap <expr> ;k empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-prevconflict)" : "<Plug>(coc-git-prevchunk)"
 nmap <expr> ;j empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-nextconflict)" : "<Plug>(coc-git-nextchunk)"
-nmap <silent> <expr> <<< empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-keepcurrent)"   : ":call CocAction('runCommand', 'git.chunkUndo')<CR>"
-nmap <silent> <expr> >>> empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-keepincoming)"  : ":call CocAction('runCommand', 'git.chunkStage')<CR>"
+nmap <silent> <expr> __ empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-keepcurrent)"   : ":call CocAction('runCommand', 'git.chunkUndo')<CR>"
+nmap <silent> <expr> ++ empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-keepincoming)"  : ":call CocAction('runCommand', 'git.chunkStage')<CR>"
 nmap gs <Plug>(coc-git-chunkinfo)
 nmap gm <Plug>(coc-git-commit)
 omap ig <Plug>(coc-git-chunk-inner)
