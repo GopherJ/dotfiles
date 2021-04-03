@@ -29,3 +29,6 @@ linker = "mips-openwrt-linux-musl-gcc"
 
 [term]
 verbose = true
+
+[build]
+jobs = 8
