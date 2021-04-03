@@ -221,31 +221,34 @@ function retag {
         git tag -d $1 && git push origin --delete $1 && git tag $1 && git push origin $1
     fi
 }
+function gpo {
+    git push origin `git branch --show-current`
+}
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
-function PortForwardInterface() {
-    local IN_IF=$1
-    local IN_PORT=$2
-    local OUT_IP=$3
-    local OUT_PORT=$4
-    local IPTBL="/sbin/iptables"
-    echo "1" > /proc/sys/net/ipv4/ip_forward
-    $IPTBL -A PREROUTING -t nat -i $IN_IF -p tcp --dport $IN_PORT -j DNAT --to-destination ${OUT_IP}:${OUT_PORT}
-    $IPTBL -A FORWARD -p tcp -d $OUT_IP --dport $OUT_PORT -j ACCEPT
-    $IPTBL -A POSTROUTING -t nat -j MASQUERADE
-}
+# function PortForwardInterface() {
+#     local IN_IF=$1
+#     local IN_PORT=$2
+#     local OUT_IP=$3
+#     local OUT_PORT=$4
+#     local IPTBL="/sbin/iptables"
+#     echo "1" > /proc/sys/net/ipv4/ip_forward
+#     $IPTBL -A PREROUTING -t nat -i $IN_IF -p tcp --dport $IN_PORT -j DNAT --to-destination ${OUT_IP}:${OUT_PORT}
+#     $IPTBL -A FORWARD -p tcp -d $OUT_IP --dport $OUT_PORT -j ACCEPT
+#     $IPTBL -A POSTROUTING -t nat -j MASQUERADE
+# }
 # create forward rule by source ip
 # http://blog.csdn.net/zzhongcy/article/details/42738285
-function ForwardPortIp() {
-    local IN_IP=$1
-    local IN_PORT=$2
-    local OUT_IP=$3
-    local OUT_PORT=$4
-    local IPTBL="/sbin/iptables"
-    echo "1" > /proc/sys/net/ipv4/ip_forward
-    $IPTBL -t nat -A PREROUTING --dst $IN_IP -p tcp --dport $IN_PORT -j DNAT --to-destination ${OUT_IP}:${OUT_PORT}
-    $IPTBL -t nat -A POSTROUTING --dst $OUT_IP -p tcp --dport $OUT_PORT -j SNAT --to-source $IN_IP
-}
+# function ForwardPortIp() {
+#     local IN_IP=$1
+#     local IN_PORT=$2
+#     local OUT_IP=$3
+#     local OUT_PORT=$4
+#     local IPTBL="/sbin/iptables"
+#     echo "1" > /proc/sys/net/ipv4/ip_forward
+#     $IPTBL -t nat -A PREROUTING --dst $IN_IP -p tcp --dport $IN_PORT -j DNAT --to-destination ${OUT_IP}:${OUT_PORT}
+#     $IPTBL -t nat -A POSTROUTING --dst $OUT_IP -p tcp --dport $OUT_PORT -j SNAT --to-source $IN_IP
+# }
 
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
