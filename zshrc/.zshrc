@@ -224,6 +224,9 @@ function retag {
 function gpo {
     git push origin `git branch --show-current`
 }
+function gpl {
+    git rebase origin/`git branch --show-current`
+}
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
 # function PortForwardInterface() {
