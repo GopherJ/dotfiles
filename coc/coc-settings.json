@@ -22,7 +22,7 @@
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
     "coc.preferences.colorSupport": true,
-    "coc.preferences.maxFileSize": "102400",
+    "coc.preferences.maxFileSize": "1MB",
     "coc.preferences.promptWorkspaceEdit": false,
     "coc.preferences.enableMarkdown": true,
     "suggest.noselect": false,
