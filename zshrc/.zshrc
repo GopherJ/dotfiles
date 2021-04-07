@@ -98,6 +98,7 @@ alias setproxy="export ALL_PROXY=socks5://127.0.0.1:10086"
 alias unsetproxy="unset ALL_PROXY"
 alias dot="polkadot-js-api"
 alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
+alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
 
 function osxcross {
     RUSTFLAGS="-C linker=x86_64-apple-darwin14-clang -C ar=x86_64-apple-darwin14-ar" \
