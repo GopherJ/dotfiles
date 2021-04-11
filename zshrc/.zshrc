@@ -99,7 +99,14 @@ alias unsetproxy="unset ALL_PROXY"
 alias dot="polkadot-js-api"
 alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
+alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
 
+function gpgdecrypt {
+    if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
+        FILE_PATH=$(realpath $1 | sed 's/\.gpg//')
+        gpg -o $FILE_PATH -d $1
+    fi
+}
 function osxcross {
     RUSTFLAGS="-C linker=x86_64-apple-darwin14-clang -C ar=x86_64-apple-darwin14-ar" \
     CC=o64-clang \
