@@ -101,6 +101,7 @@ alias dot="polkadot-js-api"
 alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
 alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
+alias squash-last="git rebase --interactive HEAD^^"
 
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
