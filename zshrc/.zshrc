@@ -85,6 +85,7 @@ alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); e
 alias vimdocker='docker run --rm -it -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) -v "$(pwd)":/home/alex_cj96/src alexcj96/vim-docker-env:latest zsh'
 alias vimdockerd='docker run --rm -v "$(pwd)":/home/alex_cj96/src -p 9999:9999 alexcj96/vim-docker-env:latest'
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
+alias sshkeygen-ecdsa='ssh-keygen -f ~/.ssh/id_ecdsa -t ecdsa'
 alias create-vimspector-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/cfg/vimspector/.vimspector.json'
 alias create-clang-format-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/cfg/clangformat/.clang-format'
 alias create-cmakelists-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/cfg/cmake/CMakeLists.txt'
