@@ -106,6 +106,7 @@ alias squash-last="git rebase --interactive HEAD^^"
 # alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')\""
 alias up="docker-compose up -d"
 alias down="docker-compose down --remove-orphans"
+alias rebase-last="git rebase --interactive HEAD^^"
 
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
