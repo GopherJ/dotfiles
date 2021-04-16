@@ -103,7 +103,7 @@ alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail
 alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
 alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
 alias squash-last="git rebase --interactive HEAD^^"
-alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')\""
+# alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')\""
 alias up="docker-compose up -d"
 alias down="docker-compose down --remove-orphans"
 
