@@ -273,7 +273,7 @@ function gsync {
 export GOENV_ROOT="$HOME/.goenv"
 export CARGO_HOME="$HOME/.cargo"
 export DENO_INSTALL="$HOME/.deno"
-export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
+# export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export DART_HOME="/usr/lib/dart"
 export FLUTTER_HOME="$HOME/flutter"
@@ -320,10 +320,10 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(goenv init -)"
 eval "$(zoxide init zsh)"
 
-_systemctl_unit_state() {
-  typeset -gA _sys_unit_state
-  _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') )
-}
+# _systemctl_unit_state() {
+#   typeset -gA _sys_unit_state
+#   _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') )
+# }
 
 # export CGO_CFLAGS="${CGO_CFLAGS} -I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/dqlite/include/"
 # export CGO_LDFLAGS="${CGO_LDFLAGS} -L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
