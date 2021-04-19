@@ -10,8 +10,8 @@ alias tk="tmux kill-server"
 alias tl="tmux ls"
 alias ts="tmux source-file ~/.tmux.conf"
 alias tz="date +'%Z %z'"
-alias x="chmod u+x "
-alias o="xdg-open "
+alias x="chmod u+x"
+alias o="open"
 alias c='xclip -selection c'
 alias rg="rg --ignore-case --hidden --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/.yarn' --iglob '!**/build' --iglob '!**/yarn.lock' --iglob '!**/*.min.js' --iglob '!**/*.min.css'"
 alias h="history -n"
@@ -58,14 +58,14 @@ alias n='nnn'
 # alias repo='ghs repo'
 # alias issues='ghs issues'
 # alias commits='ghs commits'
-alias features='cargo whatfeatures -p'
-alias start='sudo systemctl start'
-alias stop='sudo systemctl stop'
-alias restart='sudo systemctl restart'
-alias status='sudo systemctl status'
-alias enable='sudo systemctl enable'
-alias disable='sudo systemctl disable'
-alias logf='sudo journal -f -u'
+# alias features='cargo whatfeatures -p'
+# alias start='sudo systemctl start'
+# alias stop='sudo systemctl stop'
+# alias restart='sudo systemctl restart'
+# alias status='sudo systemctl status'
+# alias enable='sudo systemctl enable'
+# alias disable='sudo systemctl disable'
+# alias logf='sudo journal -f -u'
 alias gofmt='gofmt -s -w .'
 alias triple-list='rustc --print target-list | pr -tw100 --columns 3'
 alias scan='rustscan'
@@ -273,7 +273,7 @@ function gsync {
 export GOENV_ROOT="$HOME/.goenv"
 export CARGO_HOME="$HOME/.cargo"
 export DENO_INSTALL="$HOME/.deno"
-export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
+# export JAVA_HOME="$(java -XshowSettings:properties -version 2>&1 > /dev/null | grep 'java.home' | awk -F= '{print $2}' | tr -d '[:space:]')"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export DART_HOME="/usr/lib/dart"
 export FLUTTER_HOME="$HOME/flutter"
@@ -316,14 +316,15 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # [ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
 
-[ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(goenv init -)"
 eval "$(zoxide init zsh)"
 
-_systemctl_unit_state() {
-  typeset -gA _sys_unit_state
-  _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') )
-}
+# _systemctl_unit_state() {
+#   typeset -gA _sys_unit_state
+#   _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') )
+# }
 
 # export CGO_CFLAGS="${CGO_CFLAGS} -I${GOPATH}/deps/raft/include/ -I${GOPATH}/deps/dqlite/include/"
 # export CGO_LDFLAGS="${CGO_LDFLAGS} -L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
