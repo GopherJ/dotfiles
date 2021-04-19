@@ -23,6 +23,11 @@ if has("nvim")
     set mmp=500000
 endif
 
+let g:loaded_node_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+let g:loaded_python_provider = 0
+
 " set shell=/usr/bin/zsh
 
 set encoding=UTF-8
