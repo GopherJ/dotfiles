@@ -18,7 +18,7 @@ alias h="history -n"
 alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
 alias afs="sudo apt-file search "
 alias rstrip="sed -i 's/ *$//g'"
-alias uu="sudo apt update --fix-missing && sudo apt upgrade"
+# alias uu="sudo apt update --fix-missing && sudo apt upgrade"
 alias gs="git status"
 alias gf="git diff"
 alias gfc="git diff --cached"
@@ -41,7 +41,7 @@ alias ckwasm="cargo check --target wasm32-unknown-unknown"
 alias ct="cargo test -- --nocapture"
 alias ctbin="cargo test --no-run --message-format=json | jq -r 'select(.profile.test == true) | .filenames[]'"
 alias cdo="cargo doc --open"
-alias clean="sudo apt clean && sudo apt autoclean && sudo apt autoremove && dpkg -l | grep ^rc | awk '{print \$2}' | sudo xargs -i dpkg -P {}"
+# alias clean="sudo apt clean && sudo apt autoclean && sudo apt autoremove && dpkg -l | grep ^rc | awk '{print \$2}' | sudo xargs -i dpkg -P {}"
 alias doc-std='rustup doc --std'
 alias doc-macro='rustup doc --proc_macro'
 alias doc-example='rustup doc --rust-by-exmple'
