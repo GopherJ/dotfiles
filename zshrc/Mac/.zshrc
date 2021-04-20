@@ -169,7 +169,7 @@ function doc-crate {
 }
 function ra {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        rg $1 -l | xargs -i sed -i "s|$1|$2|g" {}
+        rg $1 -l | xargs -I{} sed -i '' "s|$1|$2|g" {}
     fi
 }
 function ge {
