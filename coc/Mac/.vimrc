@@ -351,7 +351,7 @@ else
     hi link CocHintHighlight Normal
 endif
 
-set tagfunc=CocTagFunc
+" set tagfunc=CocTagFunc
 set formatexpr=CocActionAsync('formatSelected')
 
 if has("patch-8.1.1564")
@@ -395,7 +395,6 @@ let g:coc_global_extensions = [
             \'coc-flutter',
             \'coc-explorer',
             \'coc-tabnine',
-            \'coc-toml',
             \'coc-yaml',
             \'coc-yank',
             \'coc-clangd',
