@@ -270,6 +270,7 @@ function gsync {
 
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
+export LLVM_DIR="/opt/homebrew/Cellar/llvm/11.1.0_1"
 export GOENV_ROOT="$HOME/.goenv"
 export CARGO_HOME="$HOME/.cargo"
 export DENO_INSTALL="$HOME/.deno"
@@ -279,7 +280,7 @@ export DART_HOME="/usr/lib/dart"
 export FLUTTER_HOME="$HOME/flutter"
 export PUB_HOME="$HOME/.pub-cache"
 export SCRIPT_HOME="$HOME/.bin"
-export PATH="$CARGO_HOME/bin:$GOENV_ROOT/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PATH"
+export PATH="$CARGO_HOME/bin:$GOENV_ROOT/bin:$LLVM_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PATH"
 # export TERM=tmux-256color
 export EDITOR=nvim
 export GITHUB_API_TOKEN=""
