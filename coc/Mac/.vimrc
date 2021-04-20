@@ -151,9 +151,6 @@ nnoremap <leader>s        <C-W>s
 " nnoremap <C-D>     :qall!<CR>
 
 if has('nvim')
-    " nnoremap <M-]>     :vertical res +2<CR>
-    " nnoremap <M-[>     :vertical res -2<CR>
-
     nnoremap <space>h  :checkhealth<cr>
 endif
 
@@ -966,7 +963,3 @@ nnoremap <F12> :call asyncrun#quickfix_toggle(6)<CR>
 let g:cmake_link_compile_commands=1
 let g:cmake_jump=1
 let g:cmake_root_markers=['CMakeLists.txt']
-
-let g:loaded_python_provider=0
-let g:loaded_ruby_provider=0
-let g:loaded_perl_provider=0
