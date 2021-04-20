@@ -397,6 +397,8 @@ let g:coc_global_extensions = [
             \'coc-tabnine',
             \'coc-toml',
             \'coc-yaml',
+            \'coc-yank',
+            \'coc-clangd',
             \'coc-translator',
             \'coc-highlight'
             \]
