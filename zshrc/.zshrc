@@ -239,8 +239,10 @@ function retag {
 }
 function gsync {
     git fetch origin \
-        && git rebase origin/`git branch --show-current` \
-        && git push origin `git branch --show-current`
+        && git rebase origin/`git branch --show-current`
+}
+function gpush {
+    git push origin `git branch --show-current`
 }
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
