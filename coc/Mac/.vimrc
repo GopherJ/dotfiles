@@ -396,7 +396,8 @@ let g:coc_global_extensions = [
             \'coc-yank',
             \'coc-clangd',
             \'coc-translator',
-            \'coc-highlight'
+            \'coc-highlight',
+            \'coc-toml'
             \]
 
 inoremap <silent><expr> <TAB>
