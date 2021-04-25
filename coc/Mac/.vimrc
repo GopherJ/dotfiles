@@ -392,12 +392,13 @@ let g:coc_global_extensions = [
             \'coc-flutter',
             \'coc-explorer',
             \'coc-tabnine',
+            \'coc-toml',
             \'coc-yaml',
             \'coc-yank',
             \'coc-clangd',
             \'coc-translator',
             \'coc-highlight',
-            \'coc-toml'
+            \'coc-docker'
             \]
 
 inoremap <silent><expr> <TAB>
