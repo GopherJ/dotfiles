@@ -1,5 +1,5 @@
 alias vim="nvim -p"
-alias v="nvim -p"
+alias v='nvim -p $(fzf)'
 alias vf="nvim -d"
 alias j="z"
 alias l="exa -la"
