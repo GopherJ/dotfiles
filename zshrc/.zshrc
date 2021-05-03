@@ -1,7 +1,7 @@
 alias vim="nvim -p"
 alias v='nvim -p $(fzf)'
 alias vf="nvim -d"
-alias cat="bat --paging=never -n --theme=gruvbox-dark"
+alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias j="z"
 alias l="exa -la"
 alias ls="exa -la"
