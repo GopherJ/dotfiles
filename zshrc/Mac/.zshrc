@@ -275,7 +275,7 @@ function gpush {
 
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
-export LLVM_DIR="/opt/homebrew/Cellar/llvm/11.1.0_1"
+export LLVM_DIR="/opt/homebrew/Cellar/llvm/12.0.0"
 export COREUTILS_BIN_DIR="/opt/homebrew/opt/coreutils/libexec/gnubin"
 export GNU_TAR_BIN_DIR="/opt/homebrew/opt/gnu-tar/libexec/gnubin"
 export GOENV_ROOT="$HOME/.goenv"
