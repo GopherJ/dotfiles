@@ -478,6 +478,7 @@ nmap <leader>rn  <Plug>(coc-rename)
 
 xmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
 nmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
+nmap <silent> <leader>c   <Plug>(coc-codeaction-cursor)
 
 nmap <leader>ca  <Plug>(coc-codeaction)
 
