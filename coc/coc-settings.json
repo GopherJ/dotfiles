@@ -48,7 +48,7 @@
     "rust-analyzer.assist.importPrefix": "by_crate",
     "rust-analyzer.diagnostics.disabled": ["inactive-code"],
     "rust-analyzer.diagnostics.enableExperimental": false,
-    "rust-analyzer.updates.channel": "nightly",
+    "rust-analyzer.updates.channel": "stable",
     "rust-analyzer.procMacro.enable": true,
     "rust-analyzer.inlayHints.refreshOnInsertMode": false,
     "rust-analyzer.updates.prompt": false,
