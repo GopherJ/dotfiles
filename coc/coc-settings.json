@@ -57,6 +57,7 @@
     "rust-analyzer.lens.run": true,
     "rust-analyzer.lens.methodReferences": false,
     "rust-analyzer.hoverActions.linksInHover": true,
+    "rust-analyzer.checkOnSave.allTargets": true,
     "rust-analyzer.lens.implementations": true,
     "rust-analyzer.completion.postfix.enable": true,
     "rust-analyzer.trace.server": "off",
