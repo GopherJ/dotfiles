@@ -27,6 +27,7 @@
     "coc.preferences.enableMarkdown": true,
     "suggest.noselect": false,
     "suggest.triggerCompletionWait": 100,
+    "vetur.ignoreProjectWarning": true,
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.options.tabSize": 4,
     "vetur.trace.server": "off",
