@@ -1,5 +1,5 @@
 alias vim="nvim -p"
-alias v='nvim -p $(fzf)'
+# alias v='nvim -p $(fzf)'
 alias vf="nvim -d"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias j="z"
@@ -50,7 +50,7 @@ alias doc-macro='rustup doc --proc_macro'
 alias doc-example='rustup doc --rust-by-exmple'
 alias doc-book='rustup doc --book'
 alias doc-ref='rustup doc --reference'
-alias clean-container='docker container ls -q | xargs -i docker stop {} | xargs -i docker rm {}'
+alias clean-container='docker container ls -q --all | xargs -I{} docker stop {} | xargs -I{} docker rm {}'
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
 alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 CMAKE_BUILD_TYPE=Release'
