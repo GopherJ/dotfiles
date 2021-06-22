@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+    emqx1:
+        image: emqx/emqx:v4.0.0
+        environment:
+            - 'EMQX_NAME=emqx'
+            - 'EMQX_HOST=node1.emqx.io'
+            - 'EMQX_CLUSTER__DISCOVERY=static'
+            - 'EMQX_CLUSTER__STATIC__SEEDS=emqx@node1.emqx.io, emqx@node2.emqx.io'
+        networks:
+            emqx-bridge:
+                aliases:
+                    - node1.emqx.io
+
+    emqx2:
+        image: emqx/emqx:v4.0.0
+        environment:
+            - 'EMQX_NAME=emqx'
+            - 'EMQX_HOST=node2.emqx.io'
+            - 'EMQX_CLUSTER__DISCOVERY=static'
+            - 'EMQX_CLUSTER__STATIC__SEEDS=emqx@node1.emqx.io, emqx@node2.emqx.io'
+        networks:
+            emqx-bridge:
+                aliases:
+                    - node2.emqx.io
+
+networks:
+    emqx-bridge:
+        driver: bridge
