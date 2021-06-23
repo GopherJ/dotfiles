@@ -46,7 +46,7 @@
     "tsserver.disableAutomaticTypeAcquisition": true,
     /* "rust-analyzer.server.path": "~/.cargo/bin/rust-analyzer", */
     "rust-analyzer.inlayHints.chainingHints": true,
-    "rust-analyzer.assist.importPrefix": "by_crate",
+    "rust-analyzer.assist.importPrefix": "crate",
     "rust-analyzer.diagnostics.disabled": ["inactive-code"],
     "rust-analyzer.diagnostics.enableExperimental": false,
     "rust-analyzer.updates.channel": "stable",
