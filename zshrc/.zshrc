@@ -209,7 +209,7 @@ function reverse-tunnel {
 }
 function forward-port-to-local {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        ssh -N -L ${2}:localhost:${2} ${1}
+        ssh -f -N -L ${2}:localhost:${2} ${1}
     fi
 }
 function cxxformat {
