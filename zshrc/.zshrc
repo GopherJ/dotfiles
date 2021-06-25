@@ -207,6 +207,11 @@ function reverse-tunnel {
         ssh -y -N -T -R ${2}:localhost:22 ${1}
     fi
 }
+function forward-port-to-local {
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+        ssh -N -L ${2}:localhost:${2} ${1}
+    fi
+}
 function cxxformat {
     find . -iname '*.h' -o -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.c' | xargs -i clang-format -i -style=LLVM {}
 }
