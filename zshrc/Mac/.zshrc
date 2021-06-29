@@ -110,6 +110,7 @@ alias squash-last="git rebase --interactive HEAD^^"
 alias up="docker-compose up -d"
 alias down="docker-compose down --remove-orphans"
 alias rebase-last="git rebase --interactive HEAD^^"
+alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
@@ -205,6 +206,11 @@ function details {
 function reverse-tunnel {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         ssh -y -N -T -R ${2}:localhost:22 ${1}
+    fi
+}
+function forward-port-to-local {
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+        ssh -f -N -L ${2}:localhost:${2} ${1}
     fi
 }
 function cxxformat {

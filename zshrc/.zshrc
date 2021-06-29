@@ -1,5 +1,5 @@
 alias vim="nvim -p"
-alias v='nvim -p $(fzf)'
+# alias v='nvim -p $(fzf)'
 alias vf="nvim -d"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias j="z"
@@ -13,7 +13,7 @@ alias ts="tmux source-file ~/.tmux.conf"
 alias sz="source ~/.zshrc"
 alias sb="source ~/.bashrc"
 alias tz="date +'%Z %z'"
-alias x="chmod u+x "
+alias x="chmod u+x"
 alias o="xdg-open "
 alias c='xclip -selection c'
 alias rg="rg --ignore-case --hidden --iglob '!**/out' --iglob '!**/.cache' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/.yarn' --iglob '!**/build' --iglob '!**/yarn.lock' --iglob '!**/*.min.js' --iglob '!**/*.min.css'"
@@ -50,7 +50,7 @@ alias doc-macro='rustup doc --proc_macro'
 alias doc-example='rustup doc --rust-by-exmple'
 alias doc-book='rustup doc --book'
 alias doc-ref='rustup doc --reference'
-alias clean-container='docker container ls -q | xargs -i docker stop {} | xargs -i docker rm {}'
+alias clean-container='docker container ls -q --all | xargs -i docker stop {} | xargs -i docker rm {}'
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
 alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 CMAKE_BUILD_TYPE=Release'
@@ -110,6 +110,7 @@ alias squash-last="git rebase --interactive HEAD^^"
 alias up="docker-compose up -d"
 alias down="docker-compose down --remove-orphans"
 alias rebase-last="git rebase --interactive HEAD^^"
+alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
@@ -135,9 +136,9 @@ function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         nvm install $2 --reinstall-packages-from=$1 \
             && nvm use $2 \
-            && nvm alias default $2 \
-            && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
-            && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+            && nvm alias default $2
+            # && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
+            # && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
     fi
 }
 function strace {
@@ -244,12 +245,6 @@ function retag {
     if [ ! -z "$1" ]; then
         git tag -d $1 && git push origin --delete $1 && git tag $1 && git push origin $1
     fi
-}
-function gfetch {
-    git fetch origin
-}
-function gpull {
-    git pull origin/`git branch --show-current`
 }
 function gsync {
     git fetch origin \
