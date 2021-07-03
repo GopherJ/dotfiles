@@ -150,6 +150,7 @@ function strace {
 function fetch-pr-to-branch {
     if [[ ! -z "$1" ]] && [[ ! -z "$2" ]]; then
         git fetch origin pull/$1/head:$2
+        git checkout $2
     fi
 }
 function npm-pkg-version {
