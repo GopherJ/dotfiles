@@ -111,6 +111,7 @@ alias up="docker-compose up -d"
 alias down="docker-compose down --remove-orphans"
 alias rebase-last="git rebase --interactive HEAD^^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
+alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
