@@ -28,6 +28,11 @@
     "coc.preferences.semanticTokensHighlights": false,
     "suggest.noselect": false,
     "suggest.triggerCompletionWait": 100,
+    "list.source.grep.excludePatterns": [
+        "**/*.min.js",
+        "**/*.umd.js",
+        "**/*.common.js"
+    ],
     "vetur.ignoreProjectWarning": true,
     "vetur.format.defaultFormatter.html": "prettier",
     "vetur.format.options.tabSize": 4,
