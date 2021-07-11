@@ -25,6 +25,7 @@
     "coc.preferences.maxFileSize": "1MB",
     "coc.preferences.promptWorkspaceEdit": false,
     "coc.preferences.enableMarkdown": true,
+    "coc.preferences.semanticTokensHighlights": false,
     "suggest.noselect": false,
     "suggest.triggerCompletionWait": 100,
     "vetur.ignoreProjectWarning": true,
