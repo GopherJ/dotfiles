@@ -12,7 +12,6 @@
         "coc-fzf-preview": ">=2.5.0",
         "coc-git": ">=2.4.0",
         "coc-go": ">=0.13.3",
-        "coc-highlight": ">=1.2.8",
         "coc-html": ">=1.4.1",
         "coc-java": ">=1.5.3",
         "coc-jest": ">=1.1.4",
