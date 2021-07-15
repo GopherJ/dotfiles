@@ -972,7 +972,7 @@ let g:cmake_jump=1
 let g:cmake_root_markers=['CMakeLists.txt']
 
 " vim-hexokinase
-let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescriptreact']
+let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescriptreact', 'vim']
 let g:Hexokinase_optInPatterns = [
 \     'full_hex',
 \     'triple_hex',
