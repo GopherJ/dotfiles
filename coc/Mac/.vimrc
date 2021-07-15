@@ -239,6 +239,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'arecarn/vim-fold-cycle'
 Plug 'bagrat/vim-buffet'
 Plug 'mzlogin/vim-markdown-toc'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
 Plug 'gopherj/eleline.vim'
@@ -954,3 +955,15 @@ nnoremap <F12> :call asyncrun#quickfix_toggle(6)<CR>
 let g:cmake_link_compile_commands=1
 let g:cmake_jump=1
 let g:cmake_root_markers=['CMakeLists.txt']
+
+" vim-hexokinase
+let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescriptreact']
+let g:Hexokinase_optInPatterns = [
+\     'full_hex',
+\     'triple_hex',
+\     'rgb',
+\     'rgba',
+\     'hsl',
+\     'hsla',
+\ ]
+let g:Hexokinase_highlighters = ['backgroundfull']
