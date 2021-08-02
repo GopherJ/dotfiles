@@ -132,6 +132,7 @@ augroup FiletypeConfig
     autocmd BufNewFile,BufReadPost *.kt setlocal filetype=kotlin
     autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
     autocmd BufNewFile,BufReadPost *.json setlocal filetype=jsonc
+    autocmd BufNewFile,BufReadPost *Dockerfile* setlocal filetype=dockerfile
 augroup END
 
 autocmd InsertLeave * set nopaste

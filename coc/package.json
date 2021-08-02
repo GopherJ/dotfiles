@@ -19,7 +19,7 @@
         "coc-lists": ">=1.4.2",
         "coc-pairs": ">=1.3.0",
         "coc-prettier": ">=1.1.24",
-        "coc-pyright": ">=1.1.158",
+        "coc-pyright": ">=1.1.159",
         "coc-rust-analyzer": ">=0.47.3",
         "coc-snippets": ">=2.4.3",
         "coc-tabnine": ">=1.3.4",
