@@ -334,6 +334,8 @@ export NVM_DIR="$HOME/.nvm"
 eval "$(goenv init -)"
 eval "$(zoxide init zsh)"
 
+export PATH="$(go env GOPATH)/bin:$PATH"
+
 _systemctl_unit_state() {
   typeset -gA _sys_unit_state
   _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') )
