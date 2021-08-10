@@ -307,6 +307,7 @@ export RUST_BACKTRACE=1
 export PKG_CONFIG_ALLOW_CROSS=1
 export VCPKG_DISABLE_METRICS=1
 export WASM_BUILD_TYPE=release
+export SKIP_WASM_BUILD=1
 # locale-gen en_US.UTF-8
 # dpkg-reconfigure locales
 #

@@ -333,6 +333,7 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
             \ endif
 
 let $NVIM_COC_LOG_LEVEL = 'info'
+let $SKIP_WASM_BUILD = '1'
 
 hi clear CocErrorHighlight
 hi clear CocWarningHighlight
