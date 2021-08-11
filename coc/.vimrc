@@ -267,10 +267,10 @@ Plug 'junegunn/fzf.vim'
 " Plug 'majutsushi/tagbar'
 " Plug 'terryma/vim-expand-region'
 
-Plug 'heavenshell/vim-jsdoc', {
-            \ 'for': ['javascript', 'javascript.jsx','typescript'],
-            \ 'do': 'make install'
-            \}
+" Plug 'heavenshell/vim-jsdoc', {
+"             \ 'for': ['javascript', 'javascript.jsx','typescript'],
+"             \ 'do': 'make install'
+"             \}
 
 Plug 'honza/vim-snippets'
 
@@ -865,8 +865,8 @@ let g:vimspector_sign_priority = {
 let g:vimspector_bottombar_height = 5
 
 " vim-jsdoc
-let g:jsdoc_enable_es6 = 1
-let g:jsdoc_input_description = 1
+" let g:jsdoc_enable_es6 = 1
+" let g:jsdoc_input_description = 1
 
 " vim-better-whitespace
 hi clear ExtraWhitespace
