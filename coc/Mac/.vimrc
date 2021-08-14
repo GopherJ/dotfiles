@@ -72,11 +72,11 @@ set noruler
 set noshowcmd
 set showmode
 
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 set expandtab
 set smarttab
-set softtabstop=4
+set softtabstop=2
 
 set clipboard=unnamedplus
 
@@ -233,6 +233,7 @@ Plug 'tpope/vim-repeat'
 Plug 'pseewald/vim-anyfold'
 " Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
+Plug 'segeljakt/vim-silicon'
 Plug 'wakatime/vim-wakatime'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
@@ -266,10 +267,10 @@ Plug 'junegunn/fzf.vim'
 " Plug 'majutsushi/tagbar'
 " Plug 'terryma/vim-expand-region'
 
-Plug 'heavenshell/vim-jsdoc', {
-            \ 'for': ['javascript', 'javascript.jsx','typescript'],
-            \ 'do': 'make install'
-            \}
+" Plug 'heavenshell/vim-jsdoc', {
+"             \ 'for': ['javascript', 'javascript.jsx','typescript'],
+"             \ 'do': 'make install'
+"             \}
 
 Plug 'honza/vim-snippets'
 
@@ -332,6 +333,7 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
             \ endif
 
 let $NVIM_COC_LOG_LEVEL = 'info'
+let $SKIP_WASM_BUILD = '1'
 
 hi clear CocErrorHighlight
 hi clear CocWarningHighlight
@@ -480,6 +482,7 @@ nmap <leader>rn  <Plug>(coc-rename)
 
 xmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
 nmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
+" nmap <silent> <leader>c   <Plug>(coc-codeaction-cursor)
 
 nmap <leader>ca  <Plug>(coc-codeaction)
 
@@ -862,8 +865,8 @@ let g:vimspector_sign_priority = {
 let g:vimspector_bottombar_height = 5
 
 " vim-jsdoc
-let g:jsdoc_enable_es6 = 1
-let g:jsdoc_input_description = 1
+" let g:jsdoc_enable_es6 = 1
+" let g:jsdoc_input_description = 1
 
 " vim-better-whitespace
 hi clear ExtraWhitespace
