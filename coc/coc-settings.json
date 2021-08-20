@@ -58,6 +58,7 @@
     "rust-analyzer.diagnostics.enableExperimental": false,
     "rust-analyzer.updates.channel": "stable",
     "rust-analyzer.procMacro.enable": false,
+    "rust-analyzer.experimental.procAttrMacros": false,
     "rust-analyzer.inlayHints.refreshOnInsertMode": false,
     "rust-analyzer.updates.prompt": false,
     "rust-analyzer.checkOnSave.enable": false,
