@@ -459,6 +459,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+vnoremap <silent> K <cmd>call CocActionAsync('doHover')<CR>
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'silent! h '.expand('<cword>')
