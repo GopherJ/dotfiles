@@ -21,6 +21,7 @@
         "cmake"
     ],
     "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+    "coc.preferences.enableMessageDialog": false,
     "coc.preferences.colorSupport": true,
     "coc.preferences.maxFileSize": "1MB",
     "coc.preferences.promptWorkspaceEdit": false,
