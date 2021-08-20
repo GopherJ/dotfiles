@@ -31,4 +31,7 @@ linker = 'mips-openwrt-linux-musl-gcc'
 verbose = true
 
 [build]
-jobs = 8
+jobs = 4
+
+[net]
+git-fetch-with-cli = true

@@ -275,8 +275,8 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
-Plug 'morhetz/gruvbox'
-" Plug 'lifepillar/vim-gruvbox8'
+" Plug 'morhetz/gruvbox'
+Plug 'lifepillar/vim-gruvbox8'
 " Plug 'chriskempson/base16-vim'
 " Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
@@ -315,8 +315,8 @@ call plug#end()
 " Theme configuration
 "--------------------------------------------------------------------------------
 set background=dark
-" silent! colorscheme gruvbox8_hard
-silent! colorscheme gruvbox
+silent! colorscheme gruvbox8_hard
+" silent! colorscheme gruvbox
 " colorscheme base16-default-dark
 " if !has('nvim')
 "     autocmd vimenter * :hi clear IncSearch
