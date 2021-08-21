@@ -110,7 +110,7 @@ set tm=500
 
 set viminfo=
 
-set noconfirm
+set confirm
 
 set ignorecase
 set smartcase
