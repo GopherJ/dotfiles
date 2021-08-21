@@ -50,7 +50,7 @@ alias doc-macro='rustup doc --proc_macro'
 alias doc-example='rustup doc --rust-by-exmple'
 alias doc-book='rustup doc --book'
 alias doc-ref='rustup doc --reference'
-alias clean-container='docker container ls -q --all | xargs -I{} docker stop {} | xargs -I{} docker rm {}'
+alias clean-container='docker container ls -q --all | xargs -I{} docker stop {} | xargs -I{} docker rm {}; ; docker network prune -f; docker volume prune -f'
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
 alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 CMAKE_BUILD_TYPE=Release'
@@ -149,6 +149,7 @@ function strace {
 function fetch-pr-to-branch {
     if [[ ! -z "$1" ]] && [[ ! -z "$2" ]]; then
         git fetch origin pull/$1/head:$2
+        git checkout $2
     fi
 }
 function npm-pkg-version {
@@ -281,6 +282,7 @@ function gpush {
 
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
+export CARGO_BUILD_JOBS=4
 export LLVM_DIR="/opt/homebrew/Cellar/llvm/12.0.0"
 export COREUTILS_BIN_DIR="/opt/homebrew/opt/coreutils/libexec/gnubin"
 export GNU_TAR_BIN_DIR="/opt/homebrew/opt/gnu-tar/libexec/gnubin"
@@ -300,16 +302,16 @@ export PATH="$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$LLVM_DIR/bin:$
 export EDITOR=nvim
 export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
-export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude .cache --exclude node_modules --exclude third-party --exclude vendor --exclude target --exclude Cargo.lock --exclude yarn.lock --exclude package-lock.json --follow --hidden"
+export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude .cache --exclude third-party --exclude vendor --exclude target --exclude Cargo.lock --exclude yarn.lock --exclude package-lock.json --follow --hidden"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=on
 # export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
 # export RA_LOG=info
-export CARGO_BUILD_JOBS=4
 export RUST_BACKTRACE=0
 export PKG_CONFIG_ALLOW_CROSS=1
 export VCPKG_DISABLE_METRICS=1
 export WASM_BUILD_TYPE=release
+export SKIP_WASM_BUILD=1
 # locale-gen en_US.UTF-8
 # dpkg-reconfigure locales
 #

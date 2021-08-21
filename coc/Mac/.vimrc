@@ -459,6 +459,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+vnoremap <silent> K <cmd>call CocActionAsync('doHover')<CR>
 function! s:show_documentation()
     if (index(['vim','help'], &filetype) >= 0)
         execute 'silent! h '.expand('<cword>')
@@ -550,10 +551,12 @@ omap ig <Plug>(coc-git-chunk-inner)
 xmap ig <Plug>(coc-git-chunk-inner)
 omap ag <Plug>(coc-git-chunk-outer)
 xmap ag <Plug>(coc-git-chunk-outer)
-nnoremap <silent> <space>g  :<C-u>CocList --normal gstatus<CR>
-nnoremap <silent> <space>b  :<C-u>CocList --normal branches<CR>
+nnoremap <silent> <space>i  :<C-u>CocList issues<CR>
+nnoremap <silent> <space>f  :<C-u>CocList gfiles<CR>
+nnoremap <silent> <space>g  :<C-u>CocList gstatus<CR>
+nnoremap <silent> <space>b  :<C-u>CocList branches<CR>
 nnoremap <silent> <space>m  :<C-u>CocList bcommits<CR>
-nnoremap <silent> <space>M  :<C-u>CocList commits<CR>
+" nnoremap <silent> <space>M  :<C-u>CocList commits<CR>
 " autocmd CursorHold *      :CocCommand git.refresh
 
 " coc-prettier
@@ -679,7 +682,7 @@ command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/vendor' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
+            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/vendor' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \ <bang>0)
