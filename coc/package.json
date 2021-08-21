@@ -26,7 +26,7 @@
         "coc-tasks": ">=0.3.0",
         "coc-toml": ">=1.1.0",
         "coc-translator": ">=1.6.4",
-        "coc-tsserver": ">=1.8.5",
+        "coc-tsserver": ">=1.8.6",
         "coc-vetur": ">=1.2.5",
         "coc-yaml": ">=1.4.2",
         "coc-yank": ">=1.2.0"
