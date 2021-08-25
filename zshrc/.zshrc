@@ -110,6 +110,8 @@ alias squash-last="git rebase --interactive HEAD^^"
 alias up="docker-compose up -d"
 alias down="docker-compose down --remove-orphans"
 alias rebase-last="git rebase --interactive HEAD^^"
+alias reset-last="git reset --hard HEAD^"
+alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
