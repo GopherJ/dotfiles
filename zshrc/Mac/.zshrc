@@ -114,6 +114,17 @@ alias reset-last="git reset --hard HEAD^"
 alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 
+function substrate-p2p-peers {
+  if [ ! -z "$1" ]; then
+    curl -sS \
+      --connect-timeout 5 -m 5 \
+      -H 'Content-Type: application/json' \
+      --data '{"id":1,"jsonrpc":"2.0","method":"system_peers"}' \
+      $1 |\
+      jq -r '.result'
+  fi
+}
+
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
         FILE_PATH=$(realpath $1 | sed 's/\.gpg//')
