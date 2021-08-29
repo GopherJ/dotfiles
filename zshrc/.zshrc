@@ -115,6 +115,12 @@ alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
+function static-libs {
+  if [ ! -z "$1" ]; then
+    pkg-config --libs $1 --static
+  fi
+}
+
 function substrate-p2p-peers {
   if [ ! -z "$1" ]; then
     curl -sS \
