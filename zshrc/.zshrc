@@ -115,7 +115,15 @@ alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
-function static-libs {
+function copy-from-image {
+  if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+      docker create $1
+      docker cp $1:$2 $(basename $2)
+      docker container rm $1
+  fi
+}
+
+function pkg-flags {
   if [ ! -z "$1" ]; then
     pkg-config --cflags --libs $1 --static
   fi
