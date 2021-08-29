@@ -117,7 +117,7 @@ alias rebase-latest='git stash && git fetch origin && git rebase origin/`git bra
 
 function static-libs {
   if [ ! -z "$1" ]; then
-    pkg-config --libs $1 --static
+    pkg-config --cflags --libs $1 --static
   fi
 }
 
