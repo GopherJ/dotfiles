@@ -117,9 +117,9 @@ alias rebase-latest='git stash && git fetch origin && git rebase origin/`git bra
 
 function copy-from-image {
   if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-      docker create $1
-      docker cp $1:$2 $(basename $2)
-      docker container rm $1
+      id=$(docker create $1)
+      docker cp $id:$2 $(basename $2)
+      docker container rm $id
   fi
 }
 
