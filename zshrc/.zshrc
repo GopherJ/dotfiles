@@ -122,13 +122,11 @@ function copy-from-image {
       docker container rm $id
   fi
 }
-
 function pkg-flags {
   if [ ! -z "$1" ]; then
     pkg-config --cflags --libs $1 --static
   fi
 }
-
 function substrate-p2p-peers {
   if [ ! -z "$1" ]; then
     curl -sS \
@@ -139,7 +137,6 @@ function substrate-p2p-peers {
       jq -r '.result'
   fi
 }
-
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
         FILE_PATH=$(realpath $1 | sed 's/\.gpg//')
