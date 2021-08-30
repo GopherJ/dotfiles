@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
+FROM ubuntu:letest
+LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
 ARG RUST_TOOLCHAIN=stable-2020-04-23

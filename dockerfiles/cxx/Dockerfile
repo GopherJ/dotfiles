@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
+FROM ubuntu:latest
+LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
 
@@ -16,6 +16,7 @@ RUN apt update --fix-missing \
         build-essential \
         libncurses5-dev \
         libncursesw5-dev \
+        libblas-dev \
         libopenblas-dev \
         liblapack-dev \
         zlib1g-dev \

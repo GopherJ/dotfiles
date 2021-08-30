@@ -1,5 +1,5 @@
-FROM ubuntu:18.04
-MAINTAINER Cheng JIANG <alex_cj96@foxmail.com>
+FROM ubuntu:latest
+LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
 ARG GO_VERSION=1.14.4
