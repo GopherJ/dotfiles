@@ -137,6 +137,12 @@ function substrate-p2p-peers {
       jq -r '.result'
   fi
 }
+function substrate-local-peer {
+  curl -sS -H "Content-Type: application/json" \
+    -d '{"id":1, "jsonrpc":"2.0", "method": "system_localPeerId", "params":[]}' \
+    http://localhost:9933 |\
+    jq -r '.result'
+}
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
         FILE_PATH=$(realpath $1 | sed 's/\.gpg//')
