@@ -20,7 +20,7 @@
     "coc-pairs": ">=1.3.0",
     "coc-prettier": ">=1.1.24",
     "coc-pyright": ">=1.1.164",
-    "coc-rust-analyzer": ">=0.50.0",
+    "coc-rust-analyzer": ">=0.51.0",
     "coc-snippets": ">=2.4.6",
     "coc-tabnine": ">=1.3.4",
     "coc-tasks": ">=0.3.0",
@@ -28,7 +28,9 @@
     "coc-translator": ">=1.6.4",
     "coc-tsserver": ">=1.8.6",
     "coc-vetur": ">=1.2.5",
+    "coc-webview": ">=0.3.0",
     "coc-yaml": ">=1.4.2",
     "coc-yank": ">=1.2.0"
   }
 }
+
