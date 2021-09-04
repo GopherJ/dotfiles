@@ -518,7 +518,7 @@ command! -nargs=0 OR            call CocAction('runCommand', 'editor.action.orga
 " autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
-autocmd User CocTerminalOpen :resize 20
+" autocmd User CocTerminalOpen :resize 20
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
     nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
