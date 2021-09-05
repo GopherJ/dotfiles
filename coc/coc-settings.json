@@ -113,8 +113,8 @@
     "<leader>K": ["wait", "markPrev:diagnosticWarning"],
     "<leader>J": ["wait", "markNext:diagnosticWarning"],
 
-    "f": "searchRecursive",
-    "F": "searchRecursive",
+    "f": "search",
+    "F": "search:recursive",
 
     "d": "delete",
     "D": "deleteForever",
