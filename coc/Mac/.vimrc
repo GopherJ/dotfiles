@@ -1,7 +1,7 @@
 " File              : .vimrc
 " Author            : Cheng JIANG <alex_cj96@foxmail.com>
 " Date              : 14.12.2020
-" Last Modified Date: 06.02.2021
+" Last Modified Date: 07.09.2021
 " Last Modified By  : Cheng JIANG <alex_cj96@foxmail.com>
 "
 "let mapleader = "\<Space>"
@@ -27,6 +27,8 @@ let g:loaded_node_provider = 0
 let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_python_provider = 0
+
+let g:python3_host_prog = '/usr/bin/python3'
 
 " set shell=/usr/bin/zsh
 

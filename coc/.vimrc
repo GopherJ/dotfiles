@@ -1,7 +1,7 @@
 " File              : .vimrc
 " Author            : Cheng JIANG <alex_cj96@foxmail.com>
 " Date              : 14.12.2020
-" Last Modified Date: 06.02.2021
+" Last Modified Date: 07.09.2021
 " Last Modified By  : Cheng JIANG <alex_cj96@foxmail.com>
 "
 "let mapleader = "\<Space>"
