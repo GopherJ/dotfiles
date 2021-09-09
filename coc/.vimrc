@@ -1,7 +1,7 @@
 " File              : .vimrc
 " Author            : Cheng JIANG <alex_cj96@foxmail.com>
 " Date              : 14.12.2020
-" Last Modified Date: 07.09.2021
+" Last Modified Date: 09.09.2021
 " Last Modified By  : Cheng JIANG <alex_cj96@foxmail.com>
 "
 "let mapleader = "\<Space>"
@@ -861,7 +861,7 @@ let g:gitgutter_max_signs = 1000
 " let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 packadd! vimspector
-nnoremap <F8> :VimspectorReset<CR>
+nnoremap <F8> :call vimspector#Reset()<CR>
 let g:vimspector_sign_priority = {
             \    'vimspectorBP':         15,
             \ }
