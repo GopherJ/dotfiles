@@ -28,7 +28,7 @@ ar = 'mips-openwrt-linux-musl-ar'
 linker = 'mips-openwrt-linux-musl-gcc'
 
 [term]
-verbose = true
+verbose = false
 
 [build]
 jobs = 4
