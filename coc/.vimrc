@@ -235,6 +235,7 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
 Plug 'wakatime/vim-wakatime'
+Plug 'puremourning/vimspector'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
@@ -860,7 +861,15 @@ let g:gitgutter_max_signs = 1000
 " vimspector
 " let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-packadd! vimspector
+" packadd! vimspector
+let g:vimspector_install_gadgets = [
+      \ 'vscode-go',
+      \ 'vscode-node-debug2',
+      \ 'vscode-java-debug',
+      \ 'debugger-for-chrome',
+      \ 'vscode-cpptools',
+      \ 'CodeLLDB'
+      \ ]
 nnoremap <F8> :call vimspector#Reset()<CR>
 let g:vimspector_sign_priority = {
             \    'vimspectorBP':         15,
