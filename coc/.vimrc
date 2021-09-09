@@ -866,6 +866,8 @@ let g:vimspector_sign_priority = {
             \    'vimspectorBP':         15,
             \ }
 let g:vimspector_bottombar_height = 5
+nmap <leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
 
 " vim-jsdoc
 " let g:jsdoc_enable_es6 = 1
