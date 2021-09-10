@@ -1,7 +1,7 @@
 " File              : .vimrc
 " Author            : Cheng JIANG <alex_cj96@foxmail.com>
 " Date              : 14.12.2020
-" Last Modified Date: 07.09.2021
+" Last Modified Date: 11.09.2021
 " Last Modified By  : Cheng JIANG <alex_cj96@foxmail.com>
 "
 "let mapleader = "\<Space>"
@@ -237,6 +237,7 @@ Plug 'pseewald/vim-anyfold'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
 Plug 'wakatime/vim-wakatime'
+Plug 'puremourning/vimspector'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
@@ -520,7 +521,7 @@ command! -nargs=0 OR            call CocAction('runCommand', 'editor.action.orga
 " autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
-autocmd User CocTerminalOpen :resize 20
+" autocmd User CocTerminalOpen :resize 20
 
 if has('nvim-0.4.0') || has('patch-8.2.0750')
     nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
@@ -862,12 +863,22 @@ let g:gitgutter_max_signs = 1000
 " vimspector
 " let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-packadd! vimspector
-nnoremap <F8> :VimspectorReset<CR>
+let g:vimspector_install_gadgets = [
+    \ 'vscode-go',
+    \ 'vscode-node-debug2',
+    \ 'vscode-node-debug2',
+    \ 'vscode-java-debug',
+    \ 'debugger-for-chrome',
+    \ 'vscode-cpptools',
+    \ 'CodeLLDB'
+    \ ]
+nnoremap <F8> :call vimspector#Reset()<CR>
 let g:vimspector_sign_priority = {
             \    'vimspectorBP':         15,
             \ }
 let g:vimspector_bottombar_height = 5
+nmap <leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
 
 " vim-jsdoc
 " let g:jsdoc_enable_es6 = 1
@@ -967,7 +978,7 @@ let g:cmake_jump=1
 let g:cmake_root_markers=['CMakeLists.txt']
 
 " vim-hexokinase
-let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescriptreact', 'vim']
+let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescript', 'typescriptreact', 'vim']
 let g:Hexokinase_optInPatterns = [
 \     'full_hex',
 \     'triple_hex',
