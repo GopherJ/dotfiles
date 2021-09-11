@@ -295,6 +295,7 @@ function gpush {
 
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
+export ES_JAVA_OPTS="-Xms2g -Xmx2g"
 export CARGO_BUILD_JOBS=4
 export LLVM_DIR="/opt/homebrew/Cellar/llvm/12.0.0"
 export COREUTILS_BIN_DIR="/opt/homebrew/opt/coreutils/libexec/gnubin"
