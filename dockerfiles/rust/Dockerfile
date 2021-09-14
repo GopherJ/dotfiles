@@ -2,7 +2,7 @@ FROM ubuntu:letest
 LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
-ARG RUST_TOOLCHAIN=stable-2020-04-23
+ARG RUST_TOOLCHAIN=nightly-2021-06-17
 
 ENV DEBIAN_FRONTEND noninteractive
 

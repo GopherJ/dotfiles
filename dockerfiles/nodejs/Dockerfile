@@ -2,7 +2,7 @@ FROM ubuntu:latest
 LABEL Cheng JIANG <alex_cj96@foxmail.com>
 
 ARG APP_USER=alex_cj96
-ARG NODE_VERSION=v12.19.0
+ARG NODE_VERSION=v14.17.6
 
 ENV DEBIAN_FRONTEND noninteractive
 
