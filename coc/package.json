@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "coc-calc": ">=2.0.2",
-    "coc-clangd": ">=0.14.1",
+    "coc-clangd": ">=0.15.1",
     "coc-cmake": ">=0.1.1",
     "coc-css": ">=1.2.6",
     "coc-docker": ">=0.5.0",
@@ -19,7 +19,7 @@
     "coc-lists": ">=1.4.2",
     "coc-pairs": ">=1.3.0",
     "coc-prettier": ">=1.1.24",
-    "coc-pyright": ">=1.1.166",
+    "coc-pyright": ">=1.1.168",
     "coc-rust-analyzer": ">=0.52.0",
     "coc-snippets": ">=2.4.6",
     "coc-tabnine": ">=1.3.4",
@@ -28,7 +28,7 @@
     "coc-translator": ">=1.6.4",
     "coc-tsserver": ">=1.8.6",
     "coc-vetur": ">=1.2.5",
-    "coc-webview": ">=0.4.0",
+    "coc-webview": ">=0.5.0",
     "coc-yaml": ">=1.4.2",
     "coc-yank": ">=1.2.0"
   }
