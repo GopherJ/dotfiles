@@ -28,7 +28,7 @@
     "coc-translator": ">=1.6.4",
     "coc-tsserver": ">=1.8.6",
     "coc-vetur": ">=1.2.5",
-    "coc-webview": ">=0.5.0",
+    "coc-webview": ">=0.6.0",
     "coc-yaml": ">=1.4.2",
     "coc-yank": ">=1.2.0"
   }
