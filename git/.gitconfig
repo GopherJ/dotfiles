@@ -6,7 +6,7 @@
 [core]
     quotepath = false
 [url "ssh://git@github.com/"]
-        insteadOf = https://github.com/
+    insteadOf = https://github.com/
 # [http]
 # 	proxy = http://127.0.0.1:10086
 # [https]
