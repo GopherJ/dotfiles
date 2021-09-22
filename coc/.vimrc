@@ -866,7 +866,6 @@ let g:vimspector_install_gadgets = [
       \ 'vscode-go',
       \ 'vscode-node-debug2',
       \ 'vscode-java-debug',
-      \ 'debugger-for-chrome',
       \ 'vscode-cpptools',
       \ 'CodeLLDB'
       \ ]

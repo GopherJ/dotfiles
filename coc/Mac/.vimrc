@@ -864,14 +864,12 @@ let g:gitgutter_max_signs = 1000
 " let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 let g:vimspector_install_gadgets = [
-    \ 'vscode-go',
-    \ 'vscode-node-debug2',
-    \ 'vscode-node-debug2',
-    \ 'vscode-java-debug',
-    \ 'debugger-for-chrome',
-    \ 'vscode-cpptools',
-    \ 'CodeLLDB'
-    \ ]
+      \ 'vscode-go',
+      \ 'vscode-node-debug2',
+      \ 'vscode-java-debug',
+      \ 'vscode-cpptools',
+      \ 'CodeLLDB'
+      \ ]
 nnoremap <F8> :call vimspector#Reset()<CR>
 let g:vimspector_sign_priority = {
             \    'vimspectorBP':         15,
