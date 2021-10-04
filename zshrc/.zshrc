@@ -314,6 +314,7 @@ function gpush {
 
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
+export NPM_CONFIG_REGISTRY="https://registry.npmjs.org"
 export ES_JAVA_OPTS="-Xms2g -Xmx2g"
 export CARGO_BUILD_JOBS=4
 export GOENV_ROOT="$HOME/.goenv"
