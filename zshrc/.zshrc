@@ -246,6 +246,12 @@ function forward-port-to-local {
         ssh -f -N -L ${2}:localhost:${2} ${1} &
     fi
 }
+function make-apt-snapshot {
+    sudo apt-get install apt-utils
+    (cd /var/cache/apt/archives/ && sudo apt-ftparchive packages . ) | sudo tee /var/cache/apt/archives/Packages
+    sudo tar cvf $HOME/snapshot.tar -C /var/cache/apt archives/
+    # echo "deb [arch=amd64 trusted=yes] file:$HOME/archives /" | sudo tee -a /etc/apt/sources.list
+}
 function cxxformat {
     find . -iname '*.h' -o -iname '*.cpp' -o -iname '*.hpp' -o -iname '*.c' | xargs -i clang-format -i -style=LLVM {}
 }
