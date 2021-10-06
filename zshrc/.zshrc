@@ -246,6 +246,11 @@ function forward-port-to-local {
         ssh -f -N -L ${2}:localhost:${2} ${1} &
     fi
 }
+function apt-depends {
+    if [ ! -z "$1" ]; then
+      apt-rdepends $1 | grep -v "^ " | sed 's/debconf-2.0/debconf/g'
+    fi
+}
 function make-apt-snapshot {
     sudo apt-get install apt-utils
     (cd /var/cache/apt/archives/ && sudo apt-ftparchive packages . ) | sudo tee /var/cache/apt/archives/Packages
