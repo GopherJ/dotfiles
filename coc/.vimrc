@@ -405,7 +405,8 @@ let g:coc_global_extensions = [
             \'coc-yank',
             \'coc-clangd',
             \'coc-translator',
-            \'coc-docker'
+            \'coc-docker',
+            \'coc-kotlin',
             \]
 
 inoremap <silent><expr> <TAB>

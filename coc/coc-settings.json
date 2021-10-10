@@ -1,10 +1,4 @@
 {
-  "languageserver": {
-    "kotlin": {
-      "command": "~/kotlin-language-server/server/bin/kotlin-language-server",
-      "filetypes": ["kotlin"]
-    }
-  },
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "jsonc",
