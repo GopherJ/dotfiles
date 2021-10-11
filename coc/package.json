@@ -1,25 +1,26 @@
 {
   "dependencies": {
     "coc-calc": ">=2.0.2",
-    "coc-clangd": ">=0.15.1",
+    "coc-clangd": ">=0.16.0",
     "coc-cmake": ">=0.2.0",
     "coc-css": ">=1.2.6",
     "coc-docker": ">=0.5.0",
     "coc-emmet": ">=1.1.6",
     "coc-eslint": ">=1.4.5",
-    "coc-explorer": ">=0.18.17",
+    "coc-explorer": ">=0.19.0",
     "coc-flutter": ">=1.9.6",
-    "coc-fzf-preview": ">=2.7.3",
+    "coc-fzf-preview": ">=2.8.1",
     "coc-git": ">=2.4.3",
     "coc-go": ">=0.13.3",
     "coc-html": ">=1.4.1",
     "coc-java": ">=1.5.4",
     "coc-jest": ">=1.1.4",
     "coc-json": ">=1.3.6",
+    "coc-kotlin": ">=0.0.7",
     "coc-lists": ">=1.4.2",
     "coc-pairs": ">=1.3.0",
     "coc-prettier": ">=1.1.24",
-    "coc-pyright": ">=1.1.168",
+    "coc-pyright": ">=1.1.176",
     "coc-rust-analyzer": ">=0.52.0",
     "coc-snippets": ">=2.4.6",
     "coc-tabnine": ">=1.3.4",
@@ -28,8 +29,8 @@
     "coc-translator": ">=1.6.4",
     "coc-tsserver": ">=1.8.6",
     "coc-vetur": ">=1.2.5",
-    "coc-webview": ">=0.6.0",
     "coc-yaml": ">=1.4.2",
     "coc-yank": ">=1.2.0"
   }
 }
+
