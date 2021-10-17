@@ -237,6 +237,7 @@ Plug 'pseewald/vim-anyfold'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
 " Plug 'wakatime/vim-wakatime'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'puremourning/vimspector'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
@@ -1006,3 +1007,8 @@ let g:silicon = {
       \   'round-corner':          v:true,
       \   'window-controls':       v:true,
       \ }
+
+" antoinemadec/FixCursorHold.nvim
+" in millisecond, used for both CursorHold and CursorHoldI,
+" use updatetime instead if not defined
+let g:cursorhold_updatetime = 100
