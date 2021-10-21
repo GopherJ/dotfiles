@@ -125,7 +125,6 @@ function substrate-p2p-peers {
       jq -r '.result'
   fi
 }
-
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
         FILE_PATH=$(realpath $1 | sed 's/\.gpg//')
@@ -267,6 +266,15 @@ function gsync {
 }
 function gpush {
     git push origin `git branch --show-current`
+}
+function kill-port {
+    if [ ! -z "$1" ]; then
+      pids=$(sudo lsof -i:$1 | grep "$1 (LISTEN)" | awk '{print $2}' | sort -u | uniq)
+      for pid in ${pids[@]}
+      do
+        sudo kill -9 $pid
+      done
+    fi
 }
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
