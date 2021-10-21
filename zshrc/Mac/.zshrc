@@ -224,12 +224,12 @@ function details {
 }
 function reverse-tunnel {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        ssh -y -N -T -R ${2}:localhost:22 ${1} &
+        nohup ssh -y -N -T -R ${2}:localhost:22 ${1} > /dev/null 2>&1 &
     fi
 }
 function forward-port-to-local {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        ssh -f -N -L ${2}:localhost:${2} ${1} &
+        nohup ssh -f -N -L ${2}:localhost:${2} ${1} > /dev/null 2>&1 &
     fi
 }
 function cxxformat {
