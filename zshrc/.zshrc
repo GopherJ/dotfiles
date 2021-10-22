@@ -247,6 +247,11 @@ function reverse-tunnel {
         nohup ssh -y -N -T -R ${2}:localhost:22 ${1} > /dev/null 2>&1 &
     fi
 }
+function forward-port-to-remote {
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+        nohup ssh -y -N -T -R ${2}:localhost:${2} ${1} > /dev/null 2>&1 &
+    fi
+}
 function forward-port-to-local {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         nohup ssh -f -N -L ${2}:localhost:${2} ${1} > /dev/null 2>&1 &
