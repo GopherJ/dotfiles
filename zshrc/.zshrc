@@ -144,6 +144,11 @@ function substrate-p2p-peers {
       jq -r '.result'
   fi
 }
+function substrate-rpc-methods {
+  if [ ! -z "$1" ]; then
+     curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "rpc_methods"}' $1 | jq
+  fi
+}
 function substrate-local-peer {
   curl -sS -H "Content-Type: application/json" \
     -d '{"id":1, "jsonrpc":"2.0", "method": "system_localPeerId", "params":[]}' \
