@@ -9,7 +9,7 @@
     "coc-eslint": ">=1.4.5",
     "coc-explorer": ">=0.20.1",
     "coc-flutter": ">=1.9.6",
-    "coc-fzf-preview": ">=2.11.0",
+    "coc-fzf-preview": ">=2.12.1",
     "coc-git": ">=2.4.3",
     "coc-go": ">=1.0.0",
     "coc-html": ">=1.4.1",
@@ -33,3 +33,4 @@
     "coc-yank": ">=1.2.0"
   }
 }
+
