@@ -260,6 +260,7 @@ Plug 'neoclide/jsonc.vim'
 " Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
+Plug 'jparise/vim-graphql'
 Plug 'hashivim/vim-vagrant'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'rhysd/vim-clang-format'
