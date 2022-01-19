@@ -1,4 +1,13 @@
 {
+  /* "languageserver": { */
+  /*   "solidity": { */
+  /*     "command": "solc", */
+  /*     "args": ["--lsp"], */
+  /*     "trace.server": "verbose", */
+  /*     "rootPatterns": [".git/"], */
+  /*     "filetypes": ["solidity"] */
+  /*   } */
+  /* }, */
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "jsonc",
