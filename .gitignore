@@ -2,3 +2,4 @@
 **/jmsconfig.json
 **/.wakatime.cfg
 ssh/config
+openvpn/configs/*.ovpn
