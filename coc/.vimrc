@@ -235,6 +235,7 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
 " Plug 'wakatime/vim-wakatime'
+Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'puremourning/vimspector'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
@@ -864,7 +865,6 @@ let g:gitgutter_max_signs = 1000
 " vimspector
 " let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-" packadd! vimspector
 let g:vimspector_install_gadgets = [
       \ 'vscode-go',
       \ 'vscode-node-debug2',

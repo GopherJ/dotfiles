@@ -29,6 +29,7 @@ alias afs="sudo apt-file search "
 alias rstrip="sed -i 's/ *$//g'"
 # alias uu="sudo apt update --fix-missing && sudo apt upgrade"
 alias gs="git status"
+alias amend="git commit --amend -m"
 alias gf="git diff"
 alias gfc="git diff --cached"
 alias ga="git add"
@@ -67,7 +68,7 @@ alias n='nnn'
 # alias repo='ghs repo'
 # alias issues='ghs issues'
 # alias commits='ghs commits'
-# alias features='cargo whatfeatures -p'
+alias features='cargo whatfeatures -p'
 # alias start='sudo systemctl start'
 # alias stop='sudo systemctl stop'
 # alias restart='sudo systemctl restart'
@@ -119,7 +120,20 @@ alias rebase-last="git rebase --interactive HEAD^^"
 alias reset-last="git reset --hard HEAD^"
 alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
+# alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
+function copy-from-image {
+  if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+      id=$(docker create $1)
+      docker cp $id:$2 $(basename $2)
+      docker container rm $id
+  fi
+}
+function pkg-flags {
+  if [ ! -z "$1" ]; then
+    pkg-config --cflags --libs $1 --static
+  fi
+}
 function substrate-p2p-peers {
   if [ ! -z "$1" ]; then
     curl -sS \
@@ -134,6 +148,12 @@ function substrate-rpc-methods {
   if [ ! -z "$1" ]; then
      curl -H "Content-Type: application/json" -d '{"id":1, "jsonrpc":"2.0", "method": "rpc_methods"}' $1 | jq
   fi
+}
+function substrate-local-peer {
+  curl -sS -H "Content-Type: application/json" \
+    -d '{"id":1, "jsonrpc":"2.0", "method": "system_localPeerId", "params":[]}' \
+    http://localhost:9933 |\
+    jq -r '.result'
 }
 function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
@@ -363,6 +383,8 @@ export LC_CTYPE=en_US.UTF-8
 # export LC_ALL="en_US.UTF-8"
 export GOPROXY="https://goproxy.cn,direct"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
+export DOCKER_CLIENT_TIMEOUT=120
+export COMPOSE_HTTP_TIMEOUT=120
 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #   exec tmux

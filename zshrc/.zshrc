@@ -259,7 +259,7 @@ function forward-port-to-remote {
 }
 function forward-port-to-local {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
-        nohup ssh -N -L ${3:-$2}:localhost:${2} ${1} > /dev/null 2>&1 &
+        nohup ssh -f -N -L ${3:-$2}:localhost:${2} ${1} > /dev/null 2>&1 &
     fi
 }
 function apt-depends {
