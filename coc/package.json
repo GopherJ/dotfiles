@@ -7,7 +7,7 @@
     "coc-docker": ">=0.5.0",
     "coc-emmet": ">=1.1.6",
     "coc-eslint": ">=1.5.8",
-    "coc-explorer": ">=0.22.7",
+    "coc-explorer": ">=0.22.8",
     "coc-flutter": ">=1.9.7",
     "coc-fzf-preview": ">=2.12.8",
     "coc-git": ">=2.4.9",
@@ -33,4 +33,3 @@
     "coc-yank": ">=1.2.1"
   }
 }
-
