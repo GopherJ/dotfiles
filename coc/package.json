@@ -7,7 +7,7 @@
     "coc-docker": ">=0.5.0",
     "coc-emmet": ">=1.1.6",
     "coc-eslint": ">=1.5.8",
-    "coc-explorer": ">=0.22.8",
+    "coc-explorer": ">=0.22.9",
     "coc-flutter": ">=1.9.7",
     "coc-fzf-preview": ">=2.12.8",
     "coc-git": ">=2.4.9",
@@ -27,7 +27,7 @@
     "coc-tasks": ">=0.3.0",
     "coc-toml": "1.1.0",
     "coc-translator": ">=1.8.1",
-    "coc-tsserver": ">=1.9.14",
+    "coc-tsserver": ">=1.9.15",
     "coc-vetur": ">=1.2.5",
     "coc-yaml": ">=1.7.5",
     "coc-yank": ">=1.2.1"
