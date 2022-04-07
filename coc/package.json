@@ -27,9 +27,10 @@
     "coc-tasks": ">=0.3.0",
     "coc-toml": "1.1.0",
     "coc-translator": ">=1.8.2",
-    "coc-tsserver": ">=1.9.15",
+    "coc-tsserver": ">=1.9.16",
     "coc-vetur": ">=1.2.5",
     "coc-yaml": ">=1.7.5",
     "coc-yank": ">=1.2.1"
   }
 }
+
