@@ -22,7 +22,7 @@
     "coc-prettier": ">=9.2.3",
     "coc-pyright": ">=1.1.235",
     "coc-rust-analyzer": ">=0.61.2",
-    "coc-snippets": ">=3.0.8",
+    "coc-snippets": ">=3.0.9",
     "coc-tabnine": ">=1.3.7",
     "coc-tasks": ">=0.3.0",
     "coc-toml": "1.1.0",
