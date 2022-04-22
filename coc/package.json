@@ -28,6 +28,7 @@
     "coc-toml": "1.1.0",
     "coc-translator": ">=1.8.2",
     "coc-tsserver": ">=1.10.0",
+    "coc-typos": ">=0.0.4",
     "coc-vetur": ">=1.2.5",
     "coc-yaml": ">=1.7.5",
     "coc-yank": ">=1.2.1"
