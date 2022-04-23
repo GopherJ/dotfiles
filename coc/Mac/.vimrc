@@ -689,7 +689,7 @@ command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/vendor' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
+            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/vendor' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \ <bang>0)
