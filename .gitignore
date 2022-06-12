@@ -3,3 +3,5 @@
 **/.wakatime.cfg
 ssh/config
 openvpn/configs/*.ovpn
+switchy-omega/OmegaOptions.bak
+
