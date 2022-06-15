@@ -1,13 +1,13 @@
 {
-  "languageserver": {
-    "solidity": {
-      "command": "solang",
-      "args": ["--language-server", "--target", "ewasm"],
-      "rootPatterns": [".git/"],
-      "trace.server": "verbose",
-      "filetypes": ["solidity"]
-    }
-  },
+  /* "languageserver": { */
+  /*   "solidity": { */
+  /*     "command": "solang", */
+  /*     "args": ["--language-server", "--target", "ewasm"], */
+  /*     "rootPatterns": [".git/"], */
+  /*     "trace.server": "verbose", */
+  /*     "filetypes": ["solidity"] */
+  /*   } */
+  /* }, */
   "coc.preferences.formatOnSaveFiletypes": [
     "json",
     "jsonc",
