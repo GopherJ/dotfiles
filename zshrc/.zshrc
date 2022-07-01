@@ -210,6 +210,11 @@ function ecat {
         cat $1 | sed ':a;N;$!ba;s/\n/\\n/g'
     fi
 }
+function get-container-ip {
+    if [ ! -z "$1" ]; then
+      docker inspect -f '{{range.NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $1
+    fi
+}
 function doc-crate {
     if [ ! -z "$1" ]; then
         cargo doc -p $1 --open
