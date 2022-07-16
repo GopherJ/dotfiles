@@ -1053,6 +1053,7 @@ let g:ale_lint_on_enter = 1
 let g:ale_floating_preview = 1
 let g:ale_virtualtext_cursor = 0
 let g:ale_cursor_detail = 1
+let g:ale_close_preview_on_insert = 1
 let g:ale_echo_cursor = 0
 let g:ale_virtualtext_prefix = '-> '
 
