@@ -28,6 +28,7 @@
   "coc.preferences.enableMessageDialog": false,
   "coc.preferences.maxFileSize": "1MB",
   "coc.preferences.enableMarkdown": true,
+  "diagnostic.displayByAle": true,
   "colors.filetypes": ["*"],
   "semanticTokens.filetypes": ["*"],
   "suggest.noselect": false,

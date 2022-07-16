@@ -301,6 +301,7 @@ Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'dense-analysis/ale'
 
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
@@ -452,10 +453,10 @@ inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
 "     return "\<C-x>\<C-e>"
 " endfunction
 
-nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
-nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
-nmap <silent> <leader>K <Plug>(coc-diagnostic-prev)
-nmap <silent> <leader>J <Plug>(coc-diagnostic-next)
+" nmap <silent> <leader>k <Plug>(coc-diagnostic-prev-error)
+" nmap <silent> <leader>j <Plug>(coc-diagnostic-next-error)
+" nmap <silent> <leader>K <Plug>(coc-diagnostic-prev)
+" nmap <silent> <leader>J <Plug>(coc-diagnostic-next)
 
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gD <Plug>(coc-declaration)
@@ -1020,3 +1021,40 @@ let g:silicon = {
       \   'round-corner':          v:true,
       \   'window-controls':       v:true,
       \ }
+
+" ale
+let g:ale_lint_delay=200
+
+let g:ale_disable_lsp = 1
+let g:ale_completion_enabled = 0
+let g:ale_completion_autoimport = 0
+
+let g:ale_linters_explicit = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '⚠'
+
+let g:ale_warn_about_trailing_whitespace = 0
+let g:ale_set_highlights = 0
+
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+let g:ale_list_window_size = 5
+
+let g:ale_linters = {
+            \ 'solidity': ['solhint'],
+            \ }
+
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+let g:ale_lint_on_enter = 1
+
+let g:ale_floating_preview = 1
+let g:ale_virtualtext_cursor = 0
+let g:ale_cursor_detail = 1
+let g:ale_echo_cursor = 0
+let g:ale_virtualtext_prefix = '-> '
+
+nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+nmap <silent> <leader>j <Plug>(ale_next_wrap)
