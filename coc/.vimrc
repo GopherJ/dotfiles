@@ -294,7 +294,10 @@ Plug 'junegunn/gv.vim'
 Plug 'alpertuna/vim-header'
 
 Plug 'udalov/kotlin-vim'
-Plug 'tomlion/vim-solidity'
+" Plug 'tomlion/vim-solidity'
+" Plug 'TovarishFin/vim-solidity'
+" Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'sheerun/vim-polyglot'
 Plug 'dart-lang/dart-vim-plugin'
 
 Plug 'posva/vim-vue'
