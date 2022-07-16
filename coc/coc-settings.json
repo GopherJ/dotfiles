@@ -21,7 +21,8 @@
     "rust",
     "toml",
     "yaml",
-    "cmake"
+    "cmake",
+    "solidity"
   ],
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.enableMessageDialog": false,
