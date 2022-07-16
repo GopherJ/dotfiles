@@ -5,7 +5,12 @@
       "args": ["--stdio"],
       "rootPatterns": [".git/"],
       "trace.server": "verbose",
-      "filetypes": ["solidity"]
+      "filetypes": ["solidity"],
+      "initializationOptions": {
+        "solidity.linter": true,
+        "solidity.packageDefaultDependenciesContractsDirectory": "contracts",
+        "solidity.packageDefaultDependenciesDirectory": "contracts/dependencies"
+      }
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
