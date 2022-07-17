@@ -1069,7 +1069,7 @@ require'nvim-treesitter.configs'.setup {
   ensure_installed = {"javascript", "typescript", "solidity", "rust", "go", "cpp"},
   highlight = {
     enable = true,
-    disable = { "c" },
+    disable = { "c", "javascript", "typescript", "go", "rust", "cpp" },
     additional_vim_regex_highlighting = false
   },
   indent = {
