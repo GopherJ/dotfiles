@@ -106,7 +106,7 @@
   "explorer.width": 30,
   "explorer.file.showHiddenFiles": true,
   "explorer.icon.enableNerdfont": true,
-  "explorer.icon.source": "nvim-web-devicons",
+  "explorer.icon.source": "vim-devicons",
   "explorer.openAction.select.filter": {
     "buftypes": ["terminal"],
     "filetypes": ["vista_kind", "qf", "minimap"],
