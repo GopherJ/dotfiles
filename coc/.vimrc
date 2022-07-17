@@ -300,6 +300,7 @@ Plug 'udalov/kotlin-vim'
 " Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'sheerun/vim-polyglot'
 Plug 'dart-lang/dart-vim-plugin'
+Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
@@ -1063,3 +1064,13 @@ let g:ale_virtualtext_prefix = '-> '
 
 nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 nmap <silent> <leader>j <Plug>(ale_next_wrap)
+
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {"javascript", "typescript", "solidity", "rust", "go", "cpp"},
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false
+  }
+}
+EOF
