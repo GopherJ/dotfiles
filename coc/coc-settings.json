@@ -5,12 +5,7 @@
       "args": ["--stdio"],
       "rootPatterns": [".git/"],
       "trace.server": "verbose",
-      "filetypes": ["solidity"],
-      "initializationOptions": {
-        "solidity.linter": true,
-        "solidity.packageDefaultDependenciesContractsDirectory": "contracts",
-        "solidity.packageDefaultDependenciesDirectory": "contracts/dependencies"
-      }
+      "filetypes": ["solidity"]
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
@@ -33,7 +28,7 @@
   "coc.preferences.enableMessageDialog": false,
   "coc.preferences.maxFileSize": "1MB",
   "coc.preferences.enableMarkdown": true,
-  "diagnostic.displayByAle": true,
+  "diagnostic.displayByAle": false,
   "colors.filetypes": ["*"],
   "semanticTokens.filetypes": ["*"],
   "suggest.noselect": false,
