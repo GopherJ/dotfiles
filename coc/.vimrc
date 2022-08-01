@@ -68,6 +68,9 @@ set mouse=a
 
 set autochdir
 
+set autoread
+au CursorHold * checktime
+
 set noruler
 set noshowcmd
 set showmode
@@ -89,7 +92,6 @@ set autoindent
 set smartindent
 set cindent
 
-set autoread
 set so=7
 set wildmenu
 set wildignore=.git,.svn,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,*.deb,*.tar,*.tgz,*.rar,*.zip,*.so
