@@ -1,5 +1,6 @@
 alias vim="nvim -p"
 # alias v='nvim -p $(fzf)'
+alias tv="tidy-viewer"
 alias vf="nvim -d"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias rsync="rsync -a --delete --link-dest"
