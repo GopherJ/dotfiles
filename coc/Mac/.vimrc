@@ -70,6 +70,9 @@ set mouse=a
 
 set autochdir
 
+set autoread
+" au CursorHold * checktime
+
 set noruler
 set noshowcmd
 set showmode
@@ -91,7 +94,6 @@ set autoindent
 set smartindent
 set cindent
 
-set autoread
 set so=7
 set wildmenu
 set wildignore=.git,.svn,*.png,*.jpg,*.gif,*.min.js,*.swp,*.o,*.deb,*.tar,*.tgz,*.rar,*.zip,*.so
@@ -168,7 +170,7 @@ nnoremap <C-Left>  :tabp<CR>
 nnoremap <C-Right> :tabn<CR>
 
 if has('nvim')
-    nmap <silent> <Esc> :call coc#float#close_all()<CR>
+    nmap <silent> <Esc> :lua for _, win in ipairs(vim.api.nvim_list_wins()) do local config = vim.api.nvim_win_get_config(win); if config.relative ~= "" then vim.api.nvim_win_close(win, false); end end<CR>
 endif
 
 nnoremap <C-A>     ggVG$
@@ -233,7 +235,7 @@ call plug#begin()
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
 Plug 'pseewald/vim-anyfold'
-" Plug 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
 Plug 'wakatime/vim-wakatime'
@@ -242,6 +244,7 @@ Plug 'puremourning/vimspector'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
+" Plug 'kyazdani42/nvim-web-devicons'
 " Plug 'gopherj/vim-buftabline'
 Plug 'arecarn/vim-fold-cycle'
 Plug 'bagrat/vim-buffet'
@@ -296,15 +299,19 @@ Plug 'junegunn/gv.vim'
 Plug 'alpertuna/vim-header'
 
 Plug 'udalov/kotlin-vim'
-Plug 'tomlion/vim-solidity'
+" Plug 'tomlion/vim-solidity'
+" Plug 'TovarishFin/vim-solidity'
+Plug 'sheerun/vim-polyglot'
 Plug 'dart-lang/dart-vim-plugin'
+" Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'dense-analysis/ale'
 
-" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-rooter'
@@ -414,13 +421,14 @@ let g:coc_global_extensions = [
             \]
 
 inoremap <silent><expr> <TAB>
-            \ pumvisible() ? "\<C-n>" :
+            \ coc#pum#visible() ? coc#pum#next(1) :
             \ <SID>check_back_space() ? "\<TAB>" :
             \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
 function! s:check_back_space() abort
-    let col = col('.') - 1
-    return !col || getline('.')[col - 1]  =~# '\s'
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
 
 " Use <c-space> to trigger completion.
@@ -430,7 +438,7 @@ else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " if exists('*complete_info')
@@ -543,7 +551,7 @@ let g:indentLine_fileTypeExclude = ['coc-explorer']
 
 let g:coc_explorer_global_presets = {
             \   'default': {
-            \     'file-child-template': '[git | 2] [indent][icon | 1] [diagnosticError & 1][diagnosticWarning & 1][filename omitCenter 1][modified][readonly] [linkIcon & 1][link growRight 1 omitCenter 5][size]'
+            \     'file-child-template': '[indent][icon | 1] [diagnosticError & 1][filename omitCenter 1] [linkIcon & 1][link growRight 1 omitCenter 5]'
             \   }
             \ }
 
@@ -689,7 +697,7 @@ command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
+            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg'  --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \ <bang>0)
@@ -944,6 +952,18 @@ endif
 " let g:matchup_matchparen_offscreen = {'method': 'popup'}
 
 " vim-buffet
+" if has("nvim")
+"     nmap <M-1> <Plug>BuffetSwitch(1)
+"     nmap <M-2> <Plug>BuffetSwitch(2)
+"     nmap <M-3> <Plug>BuffetSwitch(3)
+"     nmap <M-4> <Plug>BuffetSwitch(4)
+"     nmap <M-5> <Plug>BuffetSwitch(5)
+"     nmap <M-6> <Plug>BuffetSwitch(6)
+"     nmap <M-7> <Plug>BuffetSwitch(7)
+"     nmap <M-8> <Plug>BuffetSwitch(8)
+"     nmap <M-9> <Plug>BuffetSwitch(9)
+"     nmap <M-0> <Plug>BuffetSwitch(10)
+" else
 nmap <leader>1 <Plug>BuffetSwitch(1)
 nmap <leader>2 <Plug>BuffetSwitch(2)
 nmap <leader>3 <Plug>BuffetSwitch(3)
@@ -954,6 +974,7 @@ nmap <leader>7 <Plug>BuffetSwitch(7)
 nmap <leader>8 <Plug>BuffetSwitch(8)
 nmap <leader>9 <Plug>BuffetSwitch(9)
 nmap <leader>0 <Plug>BuffetSwitch(10)
+" endif
 
 let g:buffet_powerline_separators = 1
 let g:buffet_tab_icon = "\uf00a"
@@ -1010,7 +1031,58 @@ let g:silicon = {
       \   'window-controls':       v:true,
       \ }
 
-" antoinemadec/FixCursorHold.nvim
-" in millisecond, used for both CursorHold and CursorHoldI,
-" use updatetime instead if not defined
-let g:cursorhold_updatetime = 100
+" ale
+" let g:ale_lint_delay=200
+"
+" let g:ale_disable_lsp = 1
+" let g:ale_completion_enabled = 0
+" let g:ale_completion_autoimport = 0
+"
+" let g:ale_linters_explicit = 1
+" let g:ale_sign_column_always = 1
+" let g:ale_sign_error = '>>'
+" let g:ale_sign_warning = '⚠'
+"
+" let g:ale_warn_about_trailing_whitespace = 0
+" let g:ale_set_highlights = 0
+"
+" let g:ale_open_list = 0
+" let g:ale_keep_list_window_open = 0
+" let g:ale_list_window_size = 5
+"
+" let g:ale_linters = {
+"             \ 'solidity': ['solhint'],
+"             \ }
+"
+" let g:ale_lint_on_save = 1
+" let g:ale_lint_on_text_changed = 'never'
+" let g:ale_lint_on_insert_leave = 0
+" let g:ale_lint_on_enter = 1
+"
+" let g:ale_floating_preview = 1
+" let g:ale_virtualtext_cursor = 0
+" let g:ale_cursor_detail = 1
+" let g:ale_close_preview_on_insert = 1
+" let g:ale_echo_cursor = 0
+" let g:ale_virtualtext_prefix = '-> '
+
+" nmap <silent> <leader>k <Plug>(ale_previous_wrap)
+" nmap <silent> <leader>j <Plug>(ale_next_wrap)
+"
+
+" vim-rooter
+let g:rooter_patterns = [".git/"]
+
+" lua << EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = {"javascript", "typescript", "solidity", "rust", "go", "cpp"},
+"   highlight = {
+"     enable = true,
+"     disable = { "c", "javascript", "typescript", "go", "rust", "cpp" },
+"     additional_vim_regex_highlighting = false
+"   },
+"   indent = {
+"     enable = true
+"   }
+" }
+" EOF
