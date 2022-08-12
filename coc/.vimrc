@@ -250,7 +250,7 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
-Plug 'gopherj/eleline.vim'
+Plug 'liuchengxu/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
 Plug 'cdelledonne/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
