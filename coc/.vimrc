@@ -250,7 +250,7 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
-Plug 'gopherj/eleline.vim'
+Plug 'liuchengxu/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
 Plug 'cdelledonne/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -282,10 +282,10 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 " Plug 'lifepillar/vim-gruvbox8'
-" Plug 'chriskempson/base16-vim'
-" Plug 'itchyny/lightline.vim'
+Plug 'chriskempson/base16-vim'
+Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
 Plug 'justinmk/vim-gtfo'
@@ -327,8 +327,8 @@ call plug#end()
 "--------------------------------------------------------------------------------
 set background=dark
 " silent! colorscheme gruvbox8_hard
-silent! colorscheme gruvbox
-" colorscheme base16-default-dark
+" silent! colorscheme gruvbox
+silent! colorscheme base16-default-dark
 " if !has('nvim')
 "     autocmd vimenter * :hi clear IncSearch
 " endif
@@ -346,24 +346,24 @@ autocmd BufAdd * if getfsize(expand('<afile>')) > 1024*1024 |
 let $NVIM_COC_LOG_LEVEL = 'info'
 let $SKIP_WASM_BUILD = '1'
 
-hi clear CocErrorHighlight
-hi clear CocWarningHighlight
-hi clear CocHintHighlight
-if has("nvim")
-    hi CocErrorHighlight guibg= ctermbg=
-else
-    hi link CocErrorHighlight Normal
-endif
-if has("nvim")
-    hi CocWarningHighlight guibg= ctermbg=
-else
-    hi link CocWarningHighlight Normal
-endif
-if has("nvim")
-    hi CocHintHighlight guibg= ctermbg=
-else
-    hi link CocHintHighlight Normal
-endif
+" hi clear CocErrorHighlight
+" hi clear CocWarningHighlight
+" hi clear CocHintHighlight
+" if has("nvim")
+"     hi CocErrorHighlight guibg= ctermbg=
+" else
+"     hi link CocErrorHighlight Normal
+" endif
+" if has("nvim")
+"     hi CocWarningHighlight guibg= ctermbg=
+" else
+"     hi link CocWarningHighlight Normal
+" endif
+" if has("nvim")
+"     hi CocHintHighlight guibg= ctermbg=
+" else
+"     hi link CocHintHighlight Normal
+" endif
 
 set tagfunc=CocTagFunc
 set formatexpr=CocActionAsync('formatSelected')
