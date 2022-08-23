@@ -436,7 +436,7 @@ else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " if exists('*complete_info')
