@@ -62,7 +62,7 @@
   "rust-analyzer.imports.prefix": "crate",
   "rust-analyzer.diagnostics.disabled": ["inactive-code", "unlinked-file"],
   "rust-analyzer.diagnostics.experimental.enable": false,
-  "rust-analyzer.updates.channel": "stable",
+  "rust-analyzer.updates.channel": "nightly",
   "rust-analyzer.procMacro.enable": false,
   "rust-analyzer.procMacro.attributes.enable": false,
   "rust-analyzer.updates.prompt": false,
