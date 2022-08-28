@@ -65,7 +65,6 @@
   "rust-analyzer.updates.channel": "stable",
   "rust-analyzer.procMacro.enable": false,
   "rust-analyzer.procMacro.attributes.enable": false,
-  "rust-analyzer.inlayHints.refreshOnInsertMode": false,
   "rust-analyzer.updates.prompt": false,
   "rust-analyzer.checkOnSave.enable": false,
   "rust-analyzer.lens.enable": true,
