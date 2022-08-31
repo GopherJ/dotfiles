@@ -31,7 +31,6 @@
   "diagnostic.displayByAle": false,
   "colors.filetypes": ["*"],
   "semanticTokens.filetypes": ["*"],
-  "suggest.selection": "recentlyUsed",
   "suggest.enablePreselect": false,
   "suggest.noselect": true,
   "suggest.triggerCompletionWait": 50,
