@@ -59,7 +59,11 @@
   // "rust-analyzer.server.path": "~/.cargo/bin/rust-analyzer",
   "rust-analyzer.inlayHints.chainingHints.enable": true,
   "rust-analyzer.imports.prefix": "crate",
-  "rust-analyzer.diagnostics.disabled": ["inactive-code", "unlinked-file"],
+  "rust-analyzer.diagnostics.disabled": [
+    "inactive-code",
+    "unlinked-file",
+    "type-mismatch"
+  ],
   "rust-analyzer.diagnostics.experimental.enable": false,
   "rust-analyzer.updates.channel": "nightly",
   "rust-analyzer.procMacro.enable": false,
