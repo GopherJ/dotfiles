@@ -30,7 +30,6 @@
   "coc.preferences.enableMarkdown": true,
   "diagnostic.displayByAle": false,
   "colors.filetypes": ["*"],
-  "semanticTokens.filetypes": ["*"],
   "suggest.enablePreselect": false,
   "suggest.noselect": true,
   "suggest.triggerCompletionWait": 50,
