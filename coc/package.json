@@ -34,5 +34,6 @@
     "coc-yank": ">=1.2.1"
   },
   "disabled": [],
-  "locked": []
+  "locked": [],
+  "lastUpdate": 1664541432203
 }
