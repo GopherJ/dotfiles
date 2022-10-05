@@ -34,8 +34,6 @@
     "coc-yank": ">=1.2.1"
   },
   "disabled": [],
-  "locked": [
-    "coc-toml"
-  ],
-  "lastUpdate": 1664179577623
+  "locked": [],
+  "lastUpdate": 1664947396256
 }
