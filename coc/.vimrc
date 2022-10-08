@@ -490,7 +490,7 @@ augroup CocCustomGroup
     autocmd FileType scss setl iskeyword+=@-@
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     autocmd CursorHold * silent call CocActionAsync('highlight')
-    " autocmd BufWritePre *.ts  call CocActionAsync('runCommand', 'eslint.executeAutofix')
+    autocmd BufWritePre *.ts  call CocActionAsync('runCommand', 'eslint.executeAutofix')
 augroup end
 
 nmap <leader>rn  <Plug>(coc-rename)
