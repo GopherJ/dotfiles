@@ -8,16 +8,17 @@ else
     echo "Found fonts dir $fonts_dir"
 fi
 
-for type in Bold Light Medium Regular Retina; do
-    file_path="${HOME}/.local/share/fonts/FiraCode-${type}.ttf"
-    file_url="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/ttf/FiraCode-${type}.ttf"
-    if [ ! -e "${file_path}" ]; then
-        echo "wget -O ${file_path} $file_url"
-        wget -O "${file_path}" "${file_url}"
-    else
-	echo "Found existing file $file_path"
-    fi;
-done
+# for type in Bold Light Medium Regular Retina; do
+#     file_path="${HOME}/.local/share/fonts/FiraCode-${type}.ttf"
+#     file_url="https://cdn.jsdelivr.net/gh/tonsky/FiraCode@5/distr/ttf/FiraCode-${type}.ttf"
+#     if [ ! -e "${file_path}" ]; then
+#         echo "wget -O ${file_path} $file_url"
+#         wget -O "${file_path}" "${file_url}"
+#     else
+# 	echo "Found existing file $file_path"
+#     fi;
+# done
+cp *.ttf $fonts_dir/
 
 curl -fLo ~/.config/fontconfig/fonts.conf --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/fonts/fonts.conf
 
