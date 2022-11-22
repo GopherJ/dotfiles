@@ -4,4 +4,5 @@
 ssh/config
 openvpn/configs/*.ovpn
 switchy-omega/OmegaOptions.bak
-
+systemd/services/*
+!systemd/services/services.csv
