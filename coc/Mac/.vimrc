@@ -411,7 +411,6 @@ let g:coc_global_extensions = [
             \'coc-calc',
             \'coc-flutter',
             \'coc-explorer',
-            \'coc-tabnine',
             \'coc-toml',
             \'coc-yaml',
             \'coc-yank',
@@ -1076,10 +1075,10 @@ let g:rooter_patterns = [".git/"]
 
 " lua << EOF
 " require'nvim-treesitter.configs'.setup {
-"   ensure_installed = {"javascript", "typescript", "solidity", "rust", "go", "cpp"},
+"   ensure_installed = {"solidity"},
 "   highlight = {
 "     enable = true,
-"     disable = { "c", "javascript", "typescript", "go", "rust", "cpp" },
+"     disable = {},
 "     additional_vim_regex_highlighting = false
 "   },
 "   indent = {

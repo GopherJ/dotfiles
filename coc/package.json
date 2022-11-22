@@ -23,7 +23,6 @@
     "coc-pyright": ">=1.1.272",
     "coc-rust-analyzer": ">=0.68.2",
     "coc-snippets": ">=3.1.2",
-    "coc-tabnine": ">=1.3.7",
     "coc-tasks": ">=0.3.0",
     "coc-toml": "1.1.0",
     "coc-translator": ">=1.9.3",
@@ -35,5 +34,5 @@
   },
   "disabled": [],
   "locked": [],
-  "lastUpdate": 1666607650837
+  "lastUpdate": 1669111087090
 }

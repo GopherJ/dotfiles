@@ -21,8 +21,7 @@
     "rust",
     "toml",
     "yaml",
-    "cmake",
-    "solidity"
+    "cmake"
   ],
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.enableMessageDialog": false,
@@ -147,5 +146,6 @@
     "jsonc",
     "toml",
     "yaml"
-  ]
+  ],
+  "snippets.ultisnips.pythonPrompt": false
 }
