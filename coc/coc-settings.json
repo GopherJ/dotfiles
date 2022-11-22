@@ -1,17 +1,11 @@
 {
   "languageserver": {
     "solidity": {
-      "command": "solidity-language-server",
-      "args": [
-        "--stdio"
-      ],
-      "rootPatterns": [
-        ".git/"
-      ],
+      "command": "solsp",
+      "args": ["--stdio"],
+      "rootPatterns": [".git/"],
       "trace.server": "verbose",
-      "filetypes": [
-        "solidity"
-      ]
+      "filetypes": ["solidity"]
     }
   },
   "coc.preferences.formatOnSaveFiletypes": [
@@ -35,9 +29,7 @@
   "coc.preferences.maxFileSize": "1MB",
   "coc.preferences.enableMarkdown": true,
   "diagnostic.displayByAle": false,
-  "colors.filetypes": [
-    "*"
-  ],
+  "colors.filetypes": ["*"],
   "suggest.enablePreselect": false,
   "suggest.noselect": true,
   "suggest.triggerCompletionWait": 50,
@@ -82,9 +74,7 @@
   "rust-analyzer.lens.references.method.enable": false,
   "rust-analyzer.checkOnSave.allTargets": true,
   "rust-analyzer.cargo.buildScripts.enable": false,
-  "rust-analyzer.checkOnSave.extraArgs": [
-    "--all-features"
-  ],
+  "rust-analyzer.checkOnSave.extraArgs": ["--all-features"],
   "rust-analyzer.lens.implementations.enable": true,
   "rust-analyzer.completion.postfix.enable": true,
   "rust-analyzer.trace.server": "off",
@@ -101,9 +91,7 @@
   },
   "go.trace.server": "off",
   "clangd.enabled": true,
-  "clangd.arguments": [
-    "--header-insertion=never"
-  ],
+  "clangd.arguments": ["--header-insertion=never"],
   "yank.highlight.enable": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
@@ -118,45 +106,21 @@
   "explorer.icon.enableNerdfont": true,
   "explorer.icon.source": "vim-devicons",
   "explorer.openAction.select.filter": {
-    "buftypes": [
-      "terminal"
-    ],
-    "filetypes": [
-      "vista_kind",
-      "qf",
-      "minimap"
-    ],
+    "buftypes": ["terminal"],
+    "filetypes": ["vista_kind", "qf", "minimap"],
     "floatingWindows": true
   },
   "explorer.keyMappings.global": {
-    "<leader>k": [
-      "wait",
-      "markPrev:diagnosticError"
-    ],
-    "<leader>j": [
-      "wait",
-      "markNext:diagnosticError"
-    ],
-    "<leader>K": [
-      "wait",
-      "markPrev:diagnosticWarning"
-    ],
-    "<leader>J": [
-      "wait",
-      "markNext:diagnosticWarning"
-    ],
+    "<leader>k": ["wait", "markPrev:diagnosticError"],
+    "<leader>j": ["wait", "markNext:diagnosticError"],
+    "<leader>K": ["wait", "markPrev:diagnosticWarning"],
+    "<leader>J": ["wait", "markNext:diagnosticWarning"],
     "f": "search",
     "F": "search:recursive",
     "d": "delete",
     "D": "deleteForever",
-    ";k": [
-      "wait",
-      "markPrev:gitUnstaged"
-    ],
-    ";j": [
-      "wait",
-      "markNext:gitUnstaged"
-    ],
+    ";k": ["wait", "markPrev:gitUnstaged"],
+    ";j": ["wait", "markNext:gitUnstaged"],
     ">>": "gitStage",
     "<<": "gitUnstage"
   },
