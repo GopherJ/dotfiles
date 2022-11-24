@@ -2,6 +2,7 @@ alias vim="nvim -p"
 # alias v='nvim -p $(fzf)'
 alias tv="tidy-viewer"
 alias vf="nvim -d"
+alias abi="ethabi"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias rsync="rsync -a --delete --link-dest"
 alias bisect="git bisect start"
@@ -399,6 +400,25 @@ export GOPROXY="https://goproxy.cn,direct"
 export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 export DOCKER_CLIENT_TIMEOUT=120
 export COMPOSE_HTTP_TIMEOUT=120
+
+# export ETHERSCAN_API_KEY="$ETHERSCAN_KEY"
+# export ETH_RPC_URL="https://goerli.infura.io/v3/$INFURA_KEY"
+export WETH="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
+export USDC="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
+export DAI="0x6B175474E89094C44Da98b954EedeAC495271d0F"
+export USDT="0xdAC17F958D2ee523a2206206994597C13D831ec7"
+export WBTC="0x2260FAC5E5542a773Aa44fBCfeDf7C193bc2C599"
+export APE="0x4d224452801ACEd8B2F0aebE155379bb5D594381"
+export BAYC="0xBC4CA0EdA7647A8aB7C2061c2E118A18a936f13D"
+export MAYC="0x60E4d786628Fea6478F785A6d7e704777c86a7c6"
+export DOODLE="0x8a90CAb2b38dba80c64b7734e58Ee1dB38B8992e"
+export MOONBIRD="0x23581767a106ae21c074b2276d25e5c3e136a68b"
+export MEEBITS="0x7bd29408f11d2bfc23c34f18275bbf23bb716bc7"
+export AZUKI="0xed5af388653567af2f388e6224dc7c4b3241c544"
+export OTHR="0x34d85c9cdeb23fa97cb08333b511ac86e1c4e258"
+export CLONEX="0x49cf6f5d44e70224e2e23fdcdd2c053f30ada28b"
+export WPUNKS="0xb7F7F6C52F2e2fdb1963Eab30438024864c313F6"
+export UniswapV3="0xC36442b4a4522E871399CD717aBDD847Ab11FE88"
 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #   exec tmux
