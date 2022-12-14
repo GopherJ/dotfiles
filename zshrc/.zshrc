@@ -1,7 +1,7 @@
 alias vim="nvim -p"
 # alias v='nvim -p $(fzf)'
 alias tv="tidy-viewer"
-alias vf="nvim -d"
+alias vimdiff="nvim -d"
 alias abi="ethabi"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias rsync="rsync -a --delete --link-dest"
@@ -114,6 +114,7 @@ alias dot="polkadot-js-api"
 alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
 alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
+alias gpgkill="gpgconf --kill gpg-agent"
 alias squash-last="git rebase --interactive HEAD^^"
 # alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')\""
 alias up="docker-compose up -d"
@@ -429,6 +430,7 @@ export CHAINLINK_CLONEX="0xE42f272EdF974e9c70a6d38dCb47CAB2A28CED3F"
 export CHAINLINK_WPUNKS="0x5c13b249846540F81c093Bc342b5d963a7518145"
 export CHAINLINK_DOODLE="0xEDA76D1C345AcA04c6910f5824EC337C8a8F36d2"
 export CHAINLINK_AZUKI="0x9F6d70CDf08d893f0063742b51d3E9D1e18b7f74"
+export ETH_FROM="0x2f2d07d60ea7330DD2314f4413CCbB2dC25276EF"
 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #   exec tmux
