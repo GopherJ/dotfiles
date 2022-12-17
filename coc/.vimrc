@@ -239,6 +239,7 @@ Plug 'segeljakt/vim-silicon'
 Plug 'wakatime/vim-wakatime'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'puremourning/vimspector'
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
@@ -247,7 +248,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'arecarn/vim-fold-cycle'
 Plug 'bagrat/vim-buffet'
 Plug 'mzlogin/vim-markdown-toc'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
 Plug 'liuchengxu/eleline.vim'
@@ -301,7 +302,7 @@ Plug 'udalov/kotlin-vim'
 " Plug 'TovarishFin/vim-solidity'
 Plug 'sheerun/vim-polyglot'
 Plug 'dart-lang/dart-vim-plugin'
-Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter'
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
@@ -309,7 +310,7 @@ Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 " Plug 'dense-analysis/ale'
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-rooter'
@@ -672,20 +673,20 @@ let g:header_auto_add_header = 0
 " rust-vim
 " let g:rustfmt_autosave = 1
 
-" markdown-preview.nvim
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 0
-let g:mkdp_open_to_the_world = 1
-let g:mkdp_preview_options = {
-            \ 'mkit': {},
-            \ 'katex': {},
-            \ 'uml': {},
-            \ 'maid': {},
-            \ 'disable_sync_scroll': 0,
-            \ 'sync_scroll_type': 'middle',
-            \ 'hide_yaml_meta': 1,
-            \ 'sequence_diagrams': {}
-            \ }
+" " markdown-preview.nvim
+" let g:mkdp_auto_start = 0
+" let g:mkdp_auto_close = 0
+" let g:mkdp_open_to_the_world = 1
+" let g:mkdp_preview_options = {
+"             \ 'mkit': {},
+"             \ 'katex': {},
+"             \ 'uml': {},
+"             \ 'maid': {},
+"             \ 'disable_sync_scroll': 0,
+"             \ 'sync_scroll_type': 'middle',
+"             \ 'hide_yaml_meta': 1,
+"             \ 'sequence_diagrams': {}
+"             \ }
 
 " vim-fzf
 let g:fzf_layout    = { 'down': '~20%' }
@@ -1072,16 +1073,16 @@ let g:silicon = {
 " vim-rooter
 let g:rooter_patterns = [".git/"]
 
-lua << EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = {"javascript", "typescript", "solidity", "rust", "go", "cpp"},
-  highlight = {
-    enable = true,
-    disable = { "c", "javascript", "typescript", "go", "rust", "cpp" },
-    additional_vim_regex_highlighting = false
-  },
-  indent = {
-    enable = true
-  }
-}
-EOF
+" lua << EOF
+" require'nvim-treesitter.configs'.setup {
+"   ensure_installed = {"solidity"},
+"   highlight = {
+"     enable = true,
+"     disable = {},
+"     additional_vim_regex_highlighting = false
+"   },
+"   indent = {
+"     enable = true
+"   }
+" }
+" EOF
