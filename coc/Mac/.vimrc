@@ -242,6 +242,7 @@ Plug 'segeljakt/vim-silicon'
 Plug 'wakatime/vim-wakatime'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'puremourning/vimspector'
+Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
 Plug 'ryanoasis/vim-devicons'
@@ -253,7 +254,7 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
-Plug 'gopherj/eleline.vim'
+Plug 'liuchengxu/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
 Plug 'cdelledonne/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
@@ -312,7 +313,7 @@ Plug 'mattn/emmet-vim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 " Plug 'dense-analysis/ale'
 
-Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+" Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
 
 Plug 'tomtom/tcomment_vim'
 Plug 'airblade/vim-rooter'
@@ -438,7 +439,7 @@ else
     inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#pum#confirm()
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm()
             \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " if exists('*complete_info')
@@ -492,6 +493,7 @@ augroup CocCustomGroup
     autocmd FileType scss setl iskeyword+=@-@
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     autocmd CursorHold * silent call CocActionAsync('highlight')
+    " autocmd BufWritePre *.ts  call CocActionAsync('runCommand', 'eslint.executeAutofix')
 augroup end
 
 nmap <leader>rn  <Plug>(coc-rename)
@@ -673,20 +675,20 @@ let g:header_auto_add_header = 0
 " rust-vim
 " let g:rustfmt_autosave = 1
 
-" markdown-preview.nvim
-let g:mkdp_auto_start = 0
-let g:mkdp_auto_close = 0
-let g:mkdp_open_to_the_world = 1
-let g:mkdp_preview_options = {
-            \ 'mkit': {},
-            \ 'katex': {},
-            \ 'uml': {},
-            \ 'maid': {},
-            \ 'disable_sync_scroll': 0,
-            \ 'sync_scroll_type': 'middle',
-            \ 'hide_yaml_meta': 1,
-            \ 'sequence_diagrams': {}
-            \ }
+" " markdown-preview.nvim
+" let g:mkdp_auto_start = 0
+" let g:mkdp_auto_close = 0
+" let g:mkdp_open_to_the_world = 1
+" let g:mkdp_preview_options = {
+"             \ 'mkit': {},
+"             \ 'katex': {},
+"             \ 'uml': {},
+"             \ 'maid': {},
+"             \ 'disable_sync_scroll': 0,
+"             \ 'sync_scroll_type': 'middle',
+"             \ 'hide_yaml_meta': 1,
+"             \ 'sequence_diagrams': {}
+"             \ }
 
 " vim-fzf
 let g:fzf_layout    = { 'down': '~20%' }
