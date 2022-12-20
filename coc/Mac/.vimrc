@@ -387,6 +387,7 @@ endfunction
 call SetupCommandAbbrs('C', 'CocConfig')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('W', ':w !sudo tee > /dev/null')
+call SetupCommandAbbrs('N', ':e ~/.txt')
 
 let g:coc_global_extensions = [
             \'coc-tsserver',
