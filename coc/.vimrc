@@ -298,11 +298,12 @@ Plug 'junegunn/gv.vim'
 Plug 'alpertuna/vim-header'
 
 Plug 'udalov/kotlin-vim'
-" Plug 'tomlion/vim-solidity'
-" Plug 'TovarishFin/vim-solidity'
+Plug 'tomlion/vim-solidity'
+Plug 'iden3/vim-circom-syntax'
+
 Plug 'sheerun/vim-polyglot'
 Plug 'dart-lang/dart-vim-plugin'
-" Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
@@ -385,6 +386,8 @@ call SetupCommandAbbrs('C', 'CocConfig')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('W', ':w !sudo tee > /dev/null')
 call SetupCommandAbbrs('N', ':e ~/.txt')
+call SetupCommandAbbrs('D', ':e ~/.trash')
+call SetupCommandAbbrs('T', ':e ~/.todo')
 
 let g:coc_global_extensions = [
             \'coc-tsserver',
