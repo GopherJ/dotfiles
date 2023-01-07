@@ -303,7 +303,7 @@ Plug 'alpertuna/vim-header'
 Plug 'udalov/kotlin-vim'
 " Plug 'tomlion/vim-solidity'
 " Plug 'TovarishFin/vim-solidity'
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
 Plug 'dart-lang/dart-vim-plugin'
 " Plug 'nvim-treesitter/nvim-treesitter'
 
