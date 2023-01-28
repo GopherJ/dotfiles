@@ -501,15 +501,20 @@ augroup CocCustomGroup
 augroup end
 
 nmap <leader>rn  <Plug>(coc-rename)
+nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 
 xmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
 nmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
 " nmap <silent> <leader>c   <Plug>(coc-codeaction-cursor)
 
-nmap <leader>ca  <Plug>(coc-codeaction)
 
-nmap <leader>la  <Plug>(coc-codelens-action)
-nmap <leader>fc  <Plug>(coc-fix-current)
+nmap <leader>cl  <Plug>(coc-codelens-action)
+nmap <leader>ca  <Plug>(coc-codeaction-cursor)
+" nmap <leader>ca  <Plug>(coc-codeaction)
+" nmap <leader>sa  <Plug>(coc-codeaction-source)
+nmap <leader>qf  <Plug>(coc-fix-current)
 
 xmap if <Plug>(coc-funcobj-i)
 omap if <Plug>(coc-funcobj-i)
