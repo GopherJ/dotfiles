@@ -30,7 +30,8 @@
     "coc-yank": ">=1.2.1",
     "coc-translator": ">=1.9.5",
     "coc-docker": ">=0.5.0",
-    "coc-kotlin": ">=0.0.9"
+    "coc-kotlin": ">=0.0.9",
+    "@ignored/coc-solidity": ">=0.6.9"
   },
   "lastUpdate": 1674905629628
 }
