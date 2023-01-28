@@ -237,6 +237,7 @@ Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
 Plug 'wakatime/vim-wakatime'
+Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'puremourning/vimspector'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
