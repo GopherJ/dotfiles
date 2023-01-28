@@ -1081,6 +1081,10 @@ let g:silicon = {
 " vim-rooter
 let g:rooter_patterns = [".git/"]
 
+" vim-instant-markdown
+let g:instant_markdown_mermaid = 1
+let g:instant_markdown_mathjax = 1
+
 " lua << EOF
 " require'nvim-treesitter.configs'.setup {
 "   ensure_installed = {"solidity"},
