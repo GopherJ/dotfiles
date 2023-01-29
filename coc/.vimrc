@@ -119,8 +119,8 @@ set smartcase
 set incsearch
 set nohlsearch
 
-set backspace=indent,eol,start
-set formatoptions=tcqro
+" set backspace=indent,eol,start
+" set formatoptions=tcqro
 
 set shortmess+=c
 
