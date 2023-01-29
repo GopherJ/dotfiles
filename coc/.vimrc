@@ -241,6 +241,7 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'puremourning/vimspector'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
+" Plug 'jamessan/vim-gnupg'
 " Plug 'lervag/vimtex'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
