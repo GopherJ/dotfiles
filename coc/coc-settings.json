@@ -125,5 +125,6 @@
     "yaml"
   ],
   "snippets.ultisnips.pythonPrompt": false,
-  "@ignored/coc-solidity.telemetry": true
+  "@ignored/coc-solidity.telemetry": true,
+  "python.pythonPath": "python3"
 }
