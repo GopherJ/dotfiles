@@ -1,2 +1,2 @@
 sslocal,shadowsocks-rust-client,Shadowsocks Rust Client,-c jmsconfig.json
-filebrowser,file-browser,File Browser,-d ./filebrowser/filebrowser.db -r ./filebrowser/database
+filebrowser,file-browser,File Browser,-d ./filebrowser/filebrowser.db -r ./filebrowser/database -a 0.0.0.0
