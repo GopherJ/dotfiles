@@ -7,3 +7,5 @@ switchy-omega/OmegaOptions.bak
 systemd/services/*
 !systemd/services/services.csv
 cache/
+**/filebrowser.db
+**/database/
