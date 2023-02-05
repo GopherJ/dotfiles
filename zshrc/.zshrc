@@ -119,6 +119,7 @@ alias dot="polkadot-js-api"
 alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
 alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
+alias gpgkeygen="gpg --expert --full-generate-key"
 alias gpgkill="gpgconf --kill gpg-agent"
 alias squash-last="git rebase --interactive HEAD^^"
 # alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')\""
@@ -167,6 +168,11 @@ function gpgdecrypt {
     if [[ "$1" =~ \.gpg$ ]] && [ -f $1 ]; then
         FILE_PATH=$(realpath $1 | sed 's/\.gpg//')
         gpg -o $FILE_PATH -d $1
+    fi
+}
+function genqrcode {
+    if [ ! -z $1 ]; then
+      echo $1 |curl -F-=\<- qrenco.de
     fi
 }
 function osxcross {
