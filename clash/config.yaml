@@ -4,15 +4,42 @@ log-level: info
 external-controller: 0.0.0.0:9090
 dns:
   enabled: true
-  enhanced-mode: fake-ip
-  nameserver:
-    - 119.29.29.29
+  ipv6: false
+  listen: 127.0.0.1:53
+
+  default-nameserver:
     - 223.5.5.5
-  fallback:
+    - 119.29.29.29
+    - 114.114.114.114
+    - 1.1.1.1
     - 8.8.8.8
-    - 8.8.4.4
+    - 9.9.9.9
+
+  enhanced-mode: fake-ip
+  fake-ip-range: 198.18.0.1/16
+  fake-ip-filter:
+    - '*.lan'
+    - '*.linksys.com'
+    - '*.linksyssmartwifi.com'
+    - '*.msftconnecttest.com'
+    - '*.msftncsi.com'
+
+  nameserver:
+    - https://dns.alidns.com/dns-query
+    - https://doh.pub/dns-query
+
+  fallback:
+    - https://cloudflare-dns.com/dns-query
+    - https://dns.google/dns-query
     - tls://1.0.0.1:853
     - tls://dns.google:853
+
+  fallback-filter:
+    geoip: true
+    geoip-code: CN
+    ipcidr:
+      - 240.0.0.0/4
+
 tun:
   enable: true
   stack: system # 或 gvisor
