@@ -324,6 +324,11 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
 " Plug 'skywind3000/vim-terminal-help'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
+Plug 'MunifTanjim/nui.nvim'
+Plug 'jackMort/ChatGPT.nvim', {'commit': '8820b99c'}
+
 call plug#end()
 
 
@@ -1104,3 +1109,8 @@ let g:instant_markdown_mathjax = 1
 "   }
 " }
 " EOF
+
+lua <<EOF
+-- chat gpt
+require("chatgpt").setup()
+EOF
