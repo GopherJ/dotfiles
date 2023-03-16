@@ -52,7 +52,7 @@ set updatetime=300
 set cmdheight=1
 
 set nu
-set relativenumber
+" set relativenumber
 
 if !has("nvim")
     set nocompatible
@@ -306,7 +306,7 @@ Plug 'iden3/vim-circom-syntax'
 
 " Plug 'sheerun/vim-polyglot'
 Plug 'dart-lang/dart-vim-plugin'
-" Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
@@ -327,7 +327,7 @@ Plug 'skywind3000/asynctasks.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'MunifTanjim/nui.nvim'
-Plug 'jackMort/ChatGPT.nvim', {'commit': '8820b99c'}
+Plug 'jackMort/ChatGPT.nvim'
 
 call plug#end()
 
@@ -1096,21 +1096,33 @@ let g:rooter_patterns = [".git/"]
 let g:instant_markdown_mermaid = 1
 let g:instant_markdown_mathjax = 1
 
-" lua << EOF
-" require'nvim-treesitter.configs'.setup {
-"   ensure_installed = {"solidity"},
-"   highlight = {
-"     enable = true,
-"     disable = {},
-"     additional_vim_regex_highlighting = false
-"   },
-"   indent = {
-"     enable = true
-"   }
-" }
-" EOF
-
 lua <<EOF
 -- chat gpt
-require("chatgpt").setup()
+require("chatgpt").setup({
+ keymaps = {
+    close = { "<C-c>" },
+    submit = "<M-Enter>",
+    yank_last = "<C-y>",
+    scroll_up = "<C-u>",
+    scroll_down = "<C-d>",
+    toggle_settings = "<C-o>",
+    new_session = "<C-n>",
+    cycle_windows = "<Tab>",
+    -- in the Sessions pane
+    select_session = "<Space>",
+    rename_session = "r",
+    delete_session = "d",
+  },
+})
+require'nvim-treesitter.configs'.setup({
+ ensure_installed = {"solidity","typescript"},
+ highlight = {
+   enable = true,
+   disable = {},
+   additional_vim_regex_highlighting = false
+ },
+ indent = {
+   enable = true
+ }
+})
 EOF
