@@ -337,6 +337,12 @@ function gsync {
 function gpush {
     git push origin `git branch --show-current`
 }
+function gstash {
+  git stash push -m ${1:-latest} -u
+}
+function gapply {
+  git stash apply stash^{/${1:-latest}}
+}
 function kill-port {
     if [ ! -z "$1" ]; then
       pids=$(sudo lsof -i:$1 | grep "$1 (LISTEN)" | awk '{print $2}' | sort -u | uniq)
