@@ -1115,7 +1115,7 @@ require("chatgpt").setup({
   },
 })
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript"},
+ ensure_installed = {"solidity","typescript","go","rust"},
  highlight = {
    enable = true,
    disable = {},
