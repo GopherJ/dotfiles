@@ -127,6 +127,7 @@
   "snippets.ultisnips.pythonPrompt": false,
   "@ignored/coc-solidity.telemetry": true,
   "python.pythonPath": "python3",
+  "java.compile.nullAnalysis.mode": "disabled",
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-17",
