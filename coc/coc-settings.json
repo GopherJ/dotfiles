@@ -39,7 +39,7 @@
     "type-mismatch"
   ],
   "rust-analyzer.diagnostics.experimental.enable": false,
-  "rust-analyzer.updates.channel": "nightly",
+  "rust-analyzer.updates.channel": "stable",
   "rust-analyzer.procMacro.enable": false,
   "rust-analyzer.procMacro.attributes.enable": false,
   "rust-analyzer.updates.prompt": false,
@@ -49,7 +49,7 @@
   "rust-analyzer.lens.references.method.enable": false,
   "rust-analyzer.check.allTargets": true,
   "rust-analyzer.cargo.buildScripts.enable": false,
-  "rust-analyzer.check.extraArgs": ["--all-features"],
+  "rust-analyzer.cargo.features": "all",
   "rust-analyzer.lens.implementations.enable": true,
   "rust-analyzer.completion.postfix.enable": true,
   "rust-analyzer.trace.server": "off",
@@ -58,6 +58,7 @@
   "rust-analyzer.terminal.startinsert": true,
   "rust-analyzer.completion.autoimport.enable": false,
   "rust-analyzer.rustfmt.rangeFormatting.enable": true,
+  "rust-analyzer.notifications.cargoTomlNotFound": false,
   "go.goplsOptions": {
     "completeUnimported": true
   },
@@ -125,5 +126,12 @@
   ],
   "snippets.ultisnips.pythonPrompt": false,
   "@ignored/coc-solidity.telemetry": true,
-  "python.pythonPath": "python3"
+  "python.pythonPath": "python3",
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-17",
+      "path": "/usr/lib/jvm/java-17-openjdk-amd64",
+      "default": true
+    }
+  ]
 }
