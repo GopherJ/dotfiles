@@ -324,10 +324,11 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'skywind3000/asynctasks.vim'
 " Plug 'skywind3000/vim-terminal-help'
 
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'MunifTanjim/nui.nvim'
-Plug 'jackMort/ChatGPT.nvim'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'MunifTanjim/nui.nvim'
+" Plug 'jackMort/ChatGPT.nvim'
+" Plug 'github/copilot.vim'
 
 call plug#end()
 
@@ -517,8 +518,8 @@ nmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
 
 
 nmap <leader>cl  <Plug>(coc-codelens-action)
-nmap <leader>ca  <Plug>(coc-codeaction-cursor)
-" nmap <leader>ca  <Plug>(coc-codeaction)
+" nmap <leader>ca  <Plug>(coc-codeaction-cursor)
+nmap <leader>ca  <Plug>(coc-codeaction)
 " nmap <leader>sa  <Plug>(coc-codeaction-source)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -896,7 +897,6 @@ let g:gitgutter_max_signs = 1000
 let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
 let g:vimspector_install_gadgets = [
       \ 'vscode-go',
-      \ 'vscode-node-debug2',
       \ 'vscode-java-debug',
       \ 'vscode-cpptools',
       \ 'CodeLLDB'
@@ -1097,23 +1097,6 @@ let g:instant_markdown_mermaid = 1
 let g:instant_markdown_mathjax = 1
 
 lua <<EOF
--- chat gpt
-require("chatgpt").setup({
- keymaps = {
-    close = { "<C-c>" },
-    submit = "<M-Enter>",
-    yank_last = "<C-y>",
-    scroll_up = "<C-u>",
-    scroll_down = "<C-d>",
-    toggle_settings = "<C-o>",
-    new_session = "<C-n>",
-    cycle_windows = "<Tab>",
-    -- in the Sessions pane
-    select_session = "<Space>",
-    rename_session = "r",
-    delete_session = "d",
-  },
-})
 require'nvim-treesitter.configs'.setup({
  ensure_installed = {"solidity","typescript","go","rust"},
  highlight = {

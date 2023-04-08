@@ -31,7 +31,6 @@
   "codeLens.subseparator": " | ",
   "tsserver.trace.server": "off",
   "tsserver.disableAutomaticTypeAcquisition": true,
-  "rust-analyzer.server.path": "~/.cargo/bin/rust-analyzer",
   "rust-analyzer.inlayHints.chainingHints.enable": true,
   "rust-analyzer.imports.prefix": "crate",
   "rust-analyzer.diagnostics.disabled": [
