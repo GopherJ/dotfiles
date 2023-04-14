@@ -312,7 +312,7 @@ Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'posva/vim-vue'
 Plug 'mattn/emmet-vim'
 
-Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " Plug 'dense-analysis/ale'
 
 " Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
