@@ -1099,7 +1099,7 @@ let g:instant_markdown_mathjax = 1
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp"},
  highlight = {
    enable = true,
    disable = {},
