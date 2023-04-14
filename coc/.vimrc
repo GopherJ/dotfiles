@@ -519,8 +519,8 @@ nmap <silent> <leader>a   <Plug>(coc-codeaction-selected)
 
 
 nmap <leader>cl  <Plug>(coc-codelens-action)
-" nmap <leader>ca  <Plug>(coc-codeaction-cursor)
-nmap <leader>ca  <Plug>(coc-codeaction)
+nmap <leader>ca  <Plug>(coc-codeaction-cursor)
+" nmap <leader>ca  <Plug>(coc-codeaction)
 " nmap <leader>sa  <Plug>(coc-codeaction-source)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
