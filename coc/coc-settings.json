@@ -1,5 +1,6 @@
 {
   "coc.preferences.formatOnSave": true,
+  "coc.preferences.willSaveHandlerTimeout": 200,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.enableMessageDialog": false,
   "coc.preferences.maxFileSize": "1MB",
@@ -125,7 +126,6 @@
     "yaml"
   ],
   "snippets.ultisnips.pythonPrompt": false,
-  "@ignored/coc-solidity.telemetry": true,
   "python.pythonPath": "python3",
   "java.compile.nullAnalysis.mode": "disabled",
   "java.configuration.runtimes": [
