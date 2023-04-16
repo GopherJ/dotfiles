@@ -256,7 +256,7 @@ Plug 'mzlogin/vim-markdown-toc'
 " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
-Plug 'liuchengxu/eleline.vim'
+" Plug 'liuchengxu/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -290,9 +290,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'honza/vim-snippets'
 
 Plug 'Yggdroot/indentLine'
-Plug 'morhetz/gruvbox'
+" Plug 'morhetz/gruvbox'
 " Plug 'lifepillar/vim-gruvbox8'
-" Plug 'chriskempson/base16-vim'
+Plug 'chriskempson/base16-vim'
 " Plug 'itchyny/lightline.vim'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'edkolev/tmuxline.vim'
@@ -958,7 +958,7 @@ hi Folded term=NONE cterm=NONE
 "   return printf('+%d ~%d -%d', a, m, r)
 " endfunction
 " set statusline+=%{GitStatus()}
-"
+
 if has('nvim')
     let g:neoterm_autoscroll = 1
     autocmd TermOpen term://*:gitui startinsert
