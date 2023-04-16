@@ -243,6 +243,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'puremourning/vimspector'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
+Plug 'nvim-lua/lsp-status.nvim'
 " Plug 'lervag/vimtex'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
@@ -329,7 +330,7 @@ Plug 'skywind3000/asynctasks.vim'
 " Plug 'nvim-telescope/telescope.nvim'
 " Plug 'MunifTanjim/nui.nvim'
 " Plug 'jackMort/ChatGPT.nvim'
-" Plug 'github/copilot.vim'
+Plug 'github/copilot.vim'
 
 call plug#end()
 
