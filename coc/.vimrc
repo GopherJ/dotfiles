@@ -258,6 +258,8 @@ Plug 'mzlogin/vim-markdown-toc'
 " Plug 'wfxr/minimap.vim'
 Plug 'liuchengxu/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'cdelledonne/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'AndrewRadev/splitjoin.vim'
@@ -340,8 +342,8 @@ call plug#end()
 "--------------------------------------------------------------------------------
 set background=dark
 " silent! colorscheme gruvbox8_hard
-silent! colorscheme gruvbox
-" colorscheme base16-default-dark
+" silent! colorscheme gruvbox
+silent! colorscheme base16-default-dark
 " if !has('nvim')
 "     autocmd vimenter * :hi clear IncSearch
 " endif
@@ -943,8 +945,8 @@ hi Folded term=NONE cterm=NONE
 " let g:cpp_no_function_highlight = 1
 "
 " eleline.vim
-set laststatus=2
-let g:eleline_powerline_fonts = 1
+" set laststatus=2
+" let g:eleline_powerline_fonts = 1
 
 " vista.vim
 " autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
@@ -1100,7 +1102,7 @@ let g:instant_markdown_mathjax = 1
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda"},
  highlight = {
    enable = true,
    disable = {},
@@ -1111,3 +1113,6 @@ require'nvim-treesitter.configs'.setup({
  }
 })
 EOF
+
+let g:airline_theme='base16_gruvbox_dark_hard'
+let g:airline_powerline_fonts = 1
