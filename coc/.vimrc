@@ -258,8 +258,8 @@ Plug 'mzlogin/vim-markdown-toc'
 " Plug 'wfxr/minimap.vim'
 " Plug 'liuchengxu/eleline.vim'
 " Plug 'liuchengxu/vista.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+" Plug 'vim-airline/vim-airline'
+" Plug 'vim-airline/vim-airline-themes'
 Plug 'cdelledonne/vim-cmake'
 Plug 'mg979/vim-visual-multi', {'branch': 'master'}
 Plug 'AndrewRadev/splitjoin.vim'
@@ -656,7 +656,7 @@ vmap <leader>t <Plug>(coc-translator-pv)
 "--------------------------------------------------------------------------------
 
 " lightline.vim
-" set laststatus=2
+set laststatus=1
 " set noshowmode
 " if !has('gui_running')
 "   set t_Co=256
@@ -1114,5 +1114,5 @@ require'nvim-treesitter.configs'.setup({
 })
 EOF
 
-let g:airline_theme='base16_gruvbox_dark_hard'
-let g:airline_powerline_fonts = 1
+" let g:airline_theme='base16_gruvbox_dark_hard'
+" let g:airline_powerline_fonts = 1
