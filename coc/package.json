@@ -31,5 +31,6 @@
     "coc-docker": ">=1.0.2",
     "coc-kotlin": ">=0.0.9",
     "coc-explorer": ">=0.26.4"
-  }
+  },
+  "lastUpdate": 1681916198347
 }
