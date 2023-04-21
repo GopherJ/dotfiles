@@ -244,6 +244,7 @@ Plug 'puremourning/vimspector'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
+Plug 'voldikss/vim-floaterm'
 " Plug 'lervag/vimtex'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
@@ -835,7 +836,7 @@ command! -bang -nargs=* Rg
 " asynctasks
 let g:asyncrun_open = 6
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod', 'CMakeLists.txt', 'Makefile']
-let g:asynctasks_term_pos = 'quickfix'
+let g:asynctasks_term_pos = 'floaterm'
 let g:asynctasks_template = {}
 let g:asynctasks_template.cargo = [
             \ "[project-build]",
