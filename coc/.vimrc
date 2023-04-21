@@ -332,7 +332,7 @@ Plug 'skywind3000/asynctasks.vim'
 " Plug 'nvim-telescope/telescope.nvim'
 " Plug 'MunifTanjim/nui.nvim'
 " Plug 'jackMort/ChatGPT.nvim'
-Plug 'github/copilot.vim'
+" Plug 'github/copilot.vim'
 
 call plug#end()
 
