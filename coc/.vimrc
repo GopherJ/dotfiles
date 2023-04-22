@@ -245,6 +245,8 @@ Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn in
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'voldikss/vim-floaterm'
+Plug 'liuchengxu/vista.vim'
+" Plug 'preservim/vimux'
 " Plug 'lervag/vimtex'
 " Plug 'editorconfig/editorconfig-vim'
 " Plug 'andymass/vim-matchup'
@@ -258,7 +260,6 @@ Plug 'mzlogin/vim-markdown-toc'
 " Plug 'Valloric/ListToggle'
 " Plug 'wfxr/minimap.vim'
 " Plug 'liuchengxu/eleline.vim'
-" Plug 'liuchengxu/vista.vim'
 " Plug 'vim-airline/vim-airline'
 " Plug 'vim-airline/vim-airline-themes'
 Plug 'cdelledonne/vim-cmake'
@@ -950,8 +951,7 @@ hi Folded term=NONE cterm=NONE
 " let g:eleline_powerline_fonts = 1
 
 " vista.vim
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
-" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'vista') | qall! | endif
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " vim-gitgutter
 " function! GitStatus()
