@@ -137,5 +137,6 @@
   ],
   "python.analysis.diagnosticSeverityOverrides": {
     "reportPrivateImportUsage": "warning"
-  }
+  },
+  "@nomicfoundation/coc-solidity.telemetry": false
 }
