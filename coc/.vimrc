@@ -436,6 +436,7 @@ let g:coc_global_extensions = [
             \'coc-translator',
             \'coc-docker',
             \'coc-kotlin',
+            \'@nomicfoundation/coc-solidity',
             \]
 
 inoremap <silent><expr> <TAB>
