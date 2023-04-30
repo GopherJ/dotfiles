@@ -4,7 +4,7 @@
 ssh/config
 openvpn/configs/*.ovpn
 switchy-omega/OmegaOptions.bak
-systemd/services/*
+systemd/*.service
 !systemd/services/services.csv
 cache/
 clash/*.yaml
