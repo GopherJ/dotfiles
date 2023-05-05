@@ -424,9 +424,6 @@ export GIT_DISCOVERY_ACROSS_FILESYSTEM=1
 export DOCKER_CLIENT_TIMEOUT=120
 export COMPOSE_HTTP_TIMEOUT=120
 
-# export ETHERSCAN_API_KEY="$ETHERSCAN_KEY"
-# export NETWORK=goerli
-# export ETH_RPC_URL="https://eth-$NETWORK.alchemyapi.io/v2/$ALCHEMY_KEY"
 # export ETH_RPC_URL="https://$NETWORK.infura.io/v3/$INFURA_KEY"
 export WETH="0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2"
 export USDC="0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48"
@@ -453,7 +450,6 @@ export CHAINLINK_WPUNKS="0x5c13b249846540F81c093Bc342b5d963a7518145"
 export CHAINLINK_DOODLE="0xEDA76D1C345AcA04c6910f5824EC337C8a8F36d2"
 export CHAINLINK_AZUKI="0x9F6d70CDf08d893f0063742b51d3E9D1e18b7f74"
 export ETH_FROM="0x2f2d07d60ea7330DD2314f4413CCbB2dC25276EF"
-
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
 #   exec tmux
 # fi
@@ -463,6 +459,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf-git.zsh ] && source ~/.fzf-git.zsh
 # [ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
 
 [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -480,3 +477,9 @@ _systemctl_unit_state() {
 # export CGO_LDFLAGS="${CGO_LDFLAGS} -L${GOPATH}/deps/raft/.libs -L${GOPATH}/deps/dqlite/.libs/"
 # export LD_LIBRARY_PATH="${GOPATH}/deps/raft/.libs/:${GOPATH}/deps/dqlite/.libs/:${LD_LIBRARY_PATH}"
 # export CGO_LDFLAGS_ALLOW="-Wl,-wrap,pthread_create"
+eval "$(ssh-agent -s)" > /dev/null 2>&1
+ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
+
+# export ETHERSCAN_API_KEY="$ETHERSCAN_KEY"
+# export NETWORK=mainnet
+# export ETH_RPC_URL="https://eth-$NETWORK.alchemyapi.io/v2/$ALCHEMY_KEY"
