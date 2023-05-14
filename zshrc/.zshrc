@@ -143,6 +143,11 @@ function copy-from-image {
       docker container rm $id
   fi
 }
+function dog-query {
+    if [ ! -z $1 ]; then
+      dog -q $1 -H @https://dns.google/dns-query
+    fi
+}
 function pkg-flags {
   if [ ! -z "$1" ]; then
     pkg-config --cflags --libs $1 --static
