@@ -1,2 +1,3 @@
 sslocal,shadowsocks-rust-client,Shadowsocks Rust Client,-c ../jms/jmsconfig.json
 filebrowser,file-browser,File Browser,-d /media/cj/CJ-西部数据/Filebrowser/filebrowser.db -r /media/cj/CJ-西部数据/CJ -a 0.0.0.0
+miniserve,mini-serve,Mini server,--port 8181 /media/cj/CJ-西部数据/CJ/Public -i 0.0.0.0
