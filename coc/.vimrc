@@ -1101,6 +1101,7 @@ let g:rooter_patterns = [".git/"]
 " vim-instant-markdown
 let g:instant_markdown_mermaid = 1
 let g:instant_markdown_mathjax = 1
+let g:instant_markdown_autostart = 0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
