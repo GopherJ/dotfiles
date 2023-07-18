@@ -399,6 +399,7 @@ endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
+call SetupCommandAbbrs('S', ':e ~/.secret')
 call SetupCommandAbbrs('W', ':w !sudo tee > /dev/null')
 call SetupCommandAbbrs('N', ':e ~/.txt')
 call SetupCommandAbbrs('D', ':e ~/.trash')
@@ -952,7 +953,7 @@ hi Folded term=NONE cterm=NONE
 " let g:eleline_powerline_fonts = 1
 
 " vista.vim
-autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 
 " vim-gitgutter
 " function! GitStatus()
