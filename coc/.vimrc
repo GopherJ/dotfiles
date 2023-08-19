@@ -245,7 +245,7 @@ Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn in
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'voldikss/vim-floaterm'
-Plug 'liuchengxu/vista.vim'
+" Plug 'liuchengxu/vista.vim'
 " Plug 'preservim/vimux'
 " Plug 'lervag/vimtex'
 " Plug 'editorconfig/editorconfig-vim'
@@ -1106,7 +1106,7 @@ let g:instant_markdown_autostart = 0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda", "verilog"},
  highlight = {
    enable = true,
    disable = {},
