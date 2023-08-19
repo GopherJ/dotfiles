@@ -245,7 +245,7 @@ Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn in
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'voldikss/vim-floaterm'
-" Plug 'liuchengxu/vista.vim'
+Plug 'liuchengxu/vista.vim'
 " Plug 'preservim/vimux'
 " Plug 'lervag/vimtex'
 " Plug 'editorconfig/editorconfig-vim'
@@ -953,7 +953,8 @@ hi Folded term=NONE cterm=NONE
 " let g:eleline_powerline_fonts = 1
 
 " vista.vim
-" autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
+let g:vista#renderer#enable_icon = 0
 
 " vim-gitgutter
 " function! GitStatus()
