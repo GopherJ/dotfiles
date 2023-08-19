@@ -956,6 +956,7 @@ hi Folded term=NONE cterm=NONE
 " vista.vim
 autocmd VimEnter * call vista#RunForNearestMethodOrFunction()
 let g:vista#renderer#enable_icon = 0
+let g:vista_default_executive = 'coc'
 
 " vim-gitgutter
 " function! GitStatus()
