@@ -246,6 +246,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vista.vim'
+" Plug 'vimpostor/vim-tpipeline'
 " Plug 'preservim/vimux'
 " Plug 'lervag/vimtex'
 " Plug 'editorconfig/editorconfig-vim'
@@ -964,6 +965,7 @@ let g:vista_default_executive = 'coc'
 "   return printf('+%d ~%d -%d', a, m, r)
 " endfunction
 " set statusline+=%{GitStatus()}
+" set statusline+=%{coc#status()}
 
 if has('nvim')
     let g:neoterm_autoscroll = 1
