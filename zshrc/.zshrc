@@ -145,7 +145,7 @@ function copy-from-image {
 }
 function dog-query {
     if [ ! -z $1 ]; then
-      dog -q $1 -H @https://dns.google/dns-query
+      dog -q $1 -H @https://dns.alidns.com/dns-query
     fi
 }
 function pkg-flags {
