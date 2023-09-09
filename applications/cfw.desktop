@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=CFW
+Exec=/home/cj/Projects/cfw/cfw
+Type=Application
+Icon=/home/cj/Projects/cfw/Clash_Logo.png
+StartupNotify=true

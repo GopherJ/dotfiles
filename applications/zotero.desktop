@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Zotero
+Exec=/home/cj/Projects/zotero/zotero
+Type=Application
+Icon=/home/cj/Projects/zotero/zotero.png
+StartupNotify=true
