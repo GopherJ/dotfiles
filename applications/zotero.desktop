@@ -2,5 +2,5 @@
 Name=Zotero
 Exec=/home/cj/Projects/zotero/zotero
 Type=Application
-Icon=/home/cj/Projects/zotero/zotero.png
+Icon=/home/cj/Projects/cfg/icons/zotero.png
 StartupNotify=true

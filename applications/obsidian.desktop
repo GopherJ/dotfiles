@@ -1,0 +1,6 @@
+[Desktop Entry]
+Name=Obsidian
+Exec=/home/cj/Projects/obsidian/obsidian.AppImage
+Type=Application
+Icon=/home/cj/Projects/cfg/icons/obsidian.png
+StartupNotify=true
