@@ -57,7 +57,7 @@ server {
         }
 
         client_max_body_size 1024m;
-        client_body_timeout 1m;
+        client_body_timeout 60m;
 }
 
 server {
@@ -99,5 +99,5 @@ server {
         }
 
         client_max_body_size 1024m;
-        client_body_timeout 1m;
+        client_body_timeout 60m;
 }
