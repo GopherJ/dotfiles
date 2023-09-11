@@ -5,10 +5,18 @@
 	name = Cheng JIANG
 [core]
     quotepath = false
+    autocrlf = input
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 # [http]
 # 	proxy = http://127.0.0.1:10086
 # [https]
 # 	proxy = http://127.0.0.1:10086
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
 
+[pull]
+rebase = false
