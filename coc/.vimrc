@@ -237,6 +237,7 @@ Plug 'pseewald/vim-anyfold'
 Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
+Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'wakatime/vim-wakatime'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -1055,8 +1056,8 @@ let g:silicon = {
       \   'background':         '#000000',
       \   'shadow-color':       '#555555',
       \   'line-pad':                   2,
-      \   'pad-horiz':                 80,
-      \   'pad-vert':                 100,
+      \   'pad-horiz':                  0,
+      \   'pad-vert':                   0,
       \   'shadow-blur-radius':         0,
       \   'shadow-offset-x':            0,
       \   'shadow-offset-y':            0,
