@@ -10,12 +10,22 @@ server {
     rewrite ^(.*) https://$server_name$1 permanent;
 }
 
+server {
+    listen 80;
+    server_name code.alexcj96.com;
+    rewrite ^(.*) https://$server_name$1 permanent;
+}
+
 upstream data {
         server 127.0.0.1:51122;
 }
 
 upstream static {
         server 127.0.0.1:51123;
+}
+
+upstream code {
+        server 127.0.0.1:51124;
 }
 
 server {
@@ -93,6 +103,48 @@ server {
                 access_log off;
 
                 proxy_pass http://static;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        }
+
+        client_max_body_size 1024m;
+        client_body_timeout 60m;
+}
+
+server {
+        listen 443 ssl;
+        listen [::]:443 ssl;
+        ssl_certificate   /etc/letsencrypt/live/code.alexcj96.com/fullchain.pem;
+        ssl_certificate_key   /etc/letsencrypt/live/code.alexcj96.com/privkey.pem;
+
+        server_name code.alexcj96.com;
+
+        location / {
+            try_files /nonexistent @$http_upgrade;
+        }
+
+        location @websocket {
+                # switch off logging
+                access_log off;
+
+                # redirect all HTTP traffic to localhost:8080
+                proxy_pass http://code;
+                proxy_set_header X-Real-IP $remote_addr;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+
+                # WebSocket support (nginx 1.4)
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection "upgrade";
+        }
+
+        location @ {
+                # switch off logging
+                access_log off;
+
+                proxy_pass http://code;
                 proxy_set_header X-Real-IP $remote_addr;
                 proxy_set_header Host $host;
                 proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
