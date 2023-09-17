@@ -1116,7 +1116,7 @@ let g:instant_markdown_autostart = 0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda", "verilog"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","vim","python"},
  highlight = {
    enable = true,
    disable = {},
