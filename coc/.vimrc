@@ -229,7 +229,7 @@ cnoremap <C-e> <End>
 " Plugin List
 "--------------------------------------------------------------------------------
 "curl -fLo ~/.vim/autoload/plug.vim --create-dirs \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-call plug#begin()
+call plug#begin('~/.vim/plugged')
 
 Plug 'godlygeek/tabular'
 Plug 'tpope/vim-repeat'
