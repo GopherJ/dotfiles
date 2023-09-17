@@ -133,7 +133,8 @@ alias rebase-last="git rebase --interactive HEAD^^"
 alias reset-last="git reset --hard HEAD^"
 alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
-alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow-color '#555555' --line-pad 2 --pad-horiz 0 --pad-vert 0 --shadow-blur-radius 0 --shadow-offset-x 0 --shadow-offset-y 0'
+alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow-color '#555555' --line-pad 2 --pad-horiz 0 --pad-vert 0 --shadow-blur-radius 0 --shadow-offset-x 0 --shadow-offset-y 0 --output output.png"
+alias pandoc='pandoc -s -o output.pdf'
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
 function swap() {
