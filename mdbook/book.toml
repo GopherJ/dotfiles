@@ -1,0 +1,18 @@
+[book]
+authors      = ["CJ"]
+language     = "en"
+multilingual = false
+src          = "src"
+title        = "Untitled"
+
+
+[preprocessor.katex]
+after = ["links"]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+
+[preprocessor.plantuml]
+plantuml-cmd = "plantuml"
