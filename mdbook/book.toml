@@ -11,8 +11,17 @@ after = ["links"]
 
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
-[output.html]
-additional-js = ["mermaid.min.js", "mermaid-init.js"]
 
 [preprocessor.plantuml]
 plantuml-cmd = "plantuml"
+
+# [preprocessor.toc]
+# command  = "mdbook-toc"
+# renderer = ["html"]
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+[output.html.print]
+enable = true
+
+# [output.pdf]
