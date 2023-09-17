@@ -443,6 +443,7 @@ let g:coc_global_extensions = [
             \'coc-docker',
             \'coc-kotlin',
             \'@nomicfoundation/coc-solidity',
+            \'coc-texlab'
             \]
 
 inoremap <silent><expr> <TAB>
@@ -1103,7 +1104,7 @@ let g:silicon = {
 
 " nmap <silent> <leader>k <Plug>(ale_previous_wrap)
 " nmap <silent> <leader>j <Plug>(ale_next_wrap)
-"
+
 
 " vim-rooter
 let g:rooter_patterns = [".git/"]
