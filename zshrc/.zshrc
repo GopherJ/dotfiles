@@ -406,7 +406,8 @@ export PUB_HOME="$HOME/.pub-cache"
 export SCRIPT_HOME="$HOME/.bin"
 export GCLOUD_SDK_DIR="$HOME/google-cloud-sdk"
 export FOUNDRY_HOME="$HOME/.foundry"
-export PATH="$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PYENV_ROOT/bin:$PATH"
 # export TERM=tmux-256color
 export EDITOR=nvim
 export GITHUB_API_TOKEN=""
@@ -494,3 +495,6 @@ ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
 # export ETHERSCAN_API_KEY="$ETHERSCAN_KEY"
 # export NETWORK=mainnet
 # export ETH_RPC_URL="https://eth-$NETWORK.alchemyapi.io/v2/$ALCHEMY_KEY"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
