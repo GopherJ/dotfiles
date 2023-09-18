@@ -392,7 +392,7 @@ function kill-port {
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
 # export CARGO_TARGET_DIR="$HOME/.cargo/cache"
-export NPM_CONFIG_REGISTRY="https://registry.npm.taobao.org"
+export NPM_CONFIG_REGISTRY="http://npmmirror.com"
 export ES_JAVA_OPTS="-Xms2g -Xmx2g"
 export CARGO_BUILD_JOBS=4
 export GOENV_ROOT="$HOME/.goenv"
