@@ -900,7 +900,7 @@ let g:indentLine_enabled = 1
 " let g:indentLine_concealcursor = ""
 
 " emmet-vim
-imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
+" imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,sass,scss,vue EmmetInstall
 
