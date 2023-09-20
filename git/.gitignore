@@ -8,6 +8,7 @@ build
 *.log
 *.pdf
 *.synctex.gz
+*.bib
 
 .DS_Store
 **/.DS_Store
