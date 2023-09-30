@@ -221,6 +221,7 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'/' : '%%'
 
 " nmap <silent> <expr> <BS> &filetype == "qf" ? ":cclose<CR>" : (len(win_findbuf(bufnr('%'))) > 1 ? ":q<CR>" : ":bw<CR>")
 
@@ -248,6 +249,7 @@ Plug 'nvim-lua/lsp-status.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vista.vim'
 Plug 'triglav/vim-visual-increment'
+" Plug 'Shatur/neovim-session-manager'
 " Plug 'vimpostor/vim-tpipeline'
 " Plug 'preservim/vimux'
 Plug 'lervag/vimtex'
