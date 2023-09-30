@@ -1,4 +1,5 @@
 {
+  "npm.binPath": "yarn",
   "coc.preferences.formatOnSave": true,
   "coc.preferences.willSaveHandlerTimeout": 200,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
