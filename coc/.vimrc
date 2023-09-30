@@ -403,6 +403,7 @@ function! SetupCommandAbbrs(from, to)
 endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
+call SetupCommandAbbrs('Z', ':e ~/.zshrc')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('S', ':e ~/.secret')
 call SetupCommandAbbrs('W', ':w !sudo tee > /dev/null')
@@ -1116,7 +1117,7 @@ let g:instant_markdown_autostart = 0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","vim","python"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python"},
  highlight = {
    enable = true,
    disable = {},
