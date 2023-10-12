@@ -519,6 +519,7 @@ augroup CocCustomGroup
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     autocmd CursorHold * silent call CocActionAsync('highlight')
     " autocmd BufWritePre *.ts  call CocActionAsync('runCommand', 'eslint.executeAutofix')
+    " autocmd BufWritePre *.rs  call CocActionAsync('runCommand', 'rust-analyzer.runFlycheck')
 augroup end
 
 nmap <leader>rn  <Plug>(coc-rename)
@@ -551,7 +552,7 @@ xmap <silent> <C-s> <Plug>(coc-range-select)
 
 command! -nargs=0 R               CocRestart
 
-command! -nargs=0 TODO            CocList -A --normal grep -e TODO|FIXME
+command! -nargs=0 TODO            CocList -A --normal grep -e TODO|FIXME|todo
 command! -nargs=0 Status          CocList -A --normal gstatus
 command! -nargs=0 Tasks           CocList -A --normal tasks
 

@@ -58,7 +58,7 @@
   "rust-analyzer.debug.vimspector.configuration.name": "rust - launch",
   "rust-analyzer.terminal.startinsert": true,
   "rust-analyzer.completion.autoimport.enable": false,
-  "rust-analyzer.rustfmt.rangeFormatting.enable": false,
+  "rust-analyzer.rustfmt.rangeFormatting.enable": true,
   "rust-analyzer.notifications.cargoTomlNotFound": false,
   "go.goplsOptions": {
     "completeUnimported": true
