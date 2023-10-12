@@ -221,6 +221,7 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <expr> %% getcmdtype( ) == ':' ? expand('%:h').'/' : '%%'
 
 " nmap <silent> <expr> <BS> &filetype == "qf" ? ":cclose<CR>" : (len(win_findbuf(bufnr('%'))) > 1 ? ":q<CR>" : ":bw<CR>")
 
@@ -247,6 +248,8 @@ Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
 Plug 'voldikss/vim-floaterm'
 Plug 'liuchengxu/vista.vim'
+Plug 'triglav/vim-visual-increment'
+" Plug 'Shatur/neovim-session-manager'
 " Plug 'vimpostor/vim-tpipeline'
 " Plug 'preservim/vimux'
 Plug 'lervag/vimtex'
@@ -403,6 +406,7 @@ function! SetupCommandAbbrs(from, to)
 endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
+call SetupCommandAbbrs('Z', ':e ~/.zshrc')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('S', ':e ~/.secret')
 call SetupCommandAbbrs('W', ':w !sudo tee > /dev/null')
@@ -523,6 +527,7 @@ augroup CocCustomGroup
 augroup end
 
 nmap <leader>rn  <Plug>(coc-rename)
+nmap <leader>l  <Plug>(coc-openlink)
 nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
 xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
 nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
@@ -1117,7 +1122,7 @@ let g:instant_markdown_autostart = 0
 
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","vim","python"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python"},
  highlight = {
    enable = true,
    disable = {},
