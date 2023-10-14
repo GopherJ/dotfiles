@@ -218,6 +218,7 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " inoremap <C-a> <Home>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
+inoremap <C-x> <Esc>
 
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
