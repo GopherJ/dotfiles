@@ -97,6 +97,7 @@
     "floatingWindows": true
   },
   "explorer.keyMappings.global": {
+    "<space><space>": "noop",
     "<leader>k": ["wait", "markPrev:diagnosticError"],
     "<leader>j": ["wait", "markNext:diagnosticError"],
     "<leader>K": ["wait", "markPrev:diagnosticWarning"],
