@@ -1,0 +1,74 @@
+# Cryptography
+
+- sha2
+- sha3
+- k256
+- secp256k1
+- ripemd
+
+
+# Macro
+
+- auto_impl
+- once_cell
+- lazy_static
+- derive_more
+- bitflags
+
+# Data Processing
+
+- hex
+- hex-literal
+- serde
+- rlp
+- bytes
+- prost
+- erased-serde
+- num-enum
+
+
+# Ethereum
+
+- ethers-core
+- ethers-contract
+- ethers-providers
+
+# Number
+
+- rust-decimal
+- num-bigint
+- num-traits
+- bigdecimal
+- num
+- bn
+- ruint
+- alloy-primitives
+- alloy-rlp
+- alloy-rlp-derive
+
+# RPC
+
+- tonic
+- jsonrpsee
+
+# Database
+
+- hash-db
+- trie-db
+- memory-db
+
+
+# HTTP
+
+- actix-web
+- axum
+
+# CLI
+
+- clap
+
+# ZKP
+
+- halo2
+- plonky2
+
