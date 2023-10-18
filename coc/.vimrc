@@ -391,8 +391,8 @@ else
     hi link CocHintHighlight Normal
 endif
 
-highlight ExtraWhitespace ctermbg=red guibg=red
-autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
+" highlight ExtraWhitespace ctermbg=red guibg=red
+" autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
 
 set tagfunc=CocTagFunc
 set formatexpr=CocActionAsync('formatSelected')
