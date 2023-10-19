@@ -3,6 +3,7 @@
 - sha2
 - sha3
 - k256
+- tiny-keccak
 - secp256k1
 - ripemd
 
@@ -20,11 +21,18 @@
 - hex
 - hex-literal
 - serde
+- serde_json
 - rlp
 - bytes
 - prost
 - erased-serde
 - num-enum
+- num
+- ruint
+- flate2
+- bincode
+- base64
+- rykv
 
 
 # Ethereum
@@ -56,6 +64,9 @@
 - hash-db
 - trie-db
 - memory-db
+- sqlx
+- sea-orm
+- diesel
 
 
 # HTTP
@@ -72,3 +83,17 @@
 - halo2
 - plonky2
 
+# Error Handling
+
+- this-error
+- anyhow
+- eyre
+
+
+# Test
+
+- rstest
+
+# Docs
+
+- utoipa
