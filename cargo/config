@@ -41,3 +41,6 @@ git-fetch-with-cli = false
 # replace-with = 'ustc'
 # [source.ustc]
 # registry = "git://mirrors.ustc.edu.cn/crates.io-index"
+
+[registries.crates-io]
+protocol = "sparse"
