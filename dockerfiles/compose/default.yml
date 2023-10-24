@@ -1,0 +1,73 @@
+version: '3.7'
+services:
+  redis:
+    image: redis
+    volumes:
+      - redis:/data
+    ports:
+      - 6379:6379
+    networks:
+      testing_net:
+        ipv4_address: 172.16.238.2
+    restart: always
+
+  postgres:
+    image: postgres:11
+    networks:
+      testing_net:
+        ipv4_address: 172.16.238.13
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=pxp
+      - POSTGRES_PASSWORD=pxp2023
+      - POSTGRES_DB=pxp
+    volumes:
+      - 'postgres:/var/lib/postgres'
+
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports:
+      - 2181:2181
+    volumes:
+      - zookeeper:/data
+    networks:
+      testing_net:
+        ipv4_address: 172.16.238.7
+    restart: always
+
+  kafka:
+    image: wurstmeister/kafka:2.13-2.7.0
+    ports:
+      - 9092:9092
+      - 9093:9093
+    volumes:
+      - kafka:/kafka
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 172.16.238.8
+      KAFKA_BROKER_ID: 1000
+      KAFKA_CREATE_TOPICS: 'transactions:3:1'
+      KAFKA_DELETE_TOPIC_ENABLE: 'true'
+      KAFKA_ADVERTISED_PORT: '9092'
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+    networks:
+      testing_net:
+        ipv4_address: 172.16.238.8
+    depends_on:
+      - 'zookeeper'
+    restart: always
+
+volumes:
+  redis:
+  postgres:
+  zookeeper:
+  kafka:
+
+networks:
+  testing_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
