@@ -1,0 +1,8 @@
+[profile.default]
+ffi  = true
+libs = ["lib", "node_modules"]
+out  = "out"
+src  = "src"
+test = "tests"
+
+# See more config options https://github.com/foundry-rs/foundry/blob/master/crates/config/README.md#all-options
