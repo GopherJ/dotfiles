@@ -51,8 +51,8 @@ set timeoutlen=100
 set updatetime=300
 set cmdheight=1
 
-set nu
-" set relativenumber
+" set nu
+set relativenumber
 
 if !has("nvim")
     set nocompatible
@@ -265,6 +265,7 @@ Plug 'bagrat/vim-buffet'
 Plug 'mzlogin/vim-markdown-toc'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
+Plug 'NoahTheDuke/vim-just'
 Plug 'weirongxu/plantuml-previewer.vim'
 " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
@@ -417,6 +418,7 @@ call SetupCommandAbbrs('S', ':e ~/.secret')
 call SetupCommandAbbrs('N', ':e ~/.txt')
 call SetupCommandAbbrs('D', ':e ~/.trash')
 call SetupCommandAbbrs('T', ':e ~/.todo')
+call SetupCommandAbbrs('F', ':FloatermNew --width=90')
 
 let g:coc_global_extensions = [
             \'coc-tsserver',

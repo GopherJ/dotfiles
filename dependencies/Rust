@@ -3,9 +3,11 @@
 - sha2
 - sha3
 - k256
+- elliptic_curve
 - tiny-keccak
 - secp256k1
 - ripemd
+- babyjubjub
 
 
 # Macro
@@ -15,6 +17,7 @@
 - lazy_static
 - derive_more
 - bitflags
+- strum_macros
 
 # Data Processing
 
@@ -23,6 +26,9 @@
 - serde
 - serde_json
 - serde_with
+- serde_aux
+- fastrlp
+- ethabi
 - rlp
 - bytes
 - prost
