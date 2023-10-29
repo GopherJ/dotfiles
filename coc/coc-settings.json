@@ -149,5 +149,6 @@
   "python.analysis.diagnosticSeverityOverrides": {
     "reportPrivateImportUsage": "warning"
   },
-  "@nomicfoundation/coc-solidity.telemetry": false
+  "@nomicfoundation/coc-solidity.telemetry": false,
+  "json.maxItemsComputed": 10000
 }
