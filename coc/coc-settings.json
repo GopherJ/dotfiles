@@ -48,12 +48,13 @@
     "unlinked-file",
     "type-mismatch"
   ],
+  "rust-analyzer.diagnostics.enable": true,
   "rust-analyzer.diagnostics.experimental.enable": false,
   "rust-analyzer.updates.channel": "stable",
   "rust-analyzer.procMacro.enable": false,
   "rust-analyzer.procMacro.attributes.enable": false,
   "rust-analyzer.updates.prompt": false,
-  "rust-analyzer.checkOnSave": false,
+  "rust-analyzer.checkOnSave": true,
   "rust-analyzer.lens.enable": false,
   "rust-analyzer.lens.run.enable": false,
   "rust-analyzer.lens.references.method.enable": false,
@@ -68,6 +69,7 @@
   "rust-analyzer.terminal.startinsert": true,
   "rust-analyzer.completion.autoimport.enable": false,
   "rust-analyzer.rustfmt.rangeFormatting.enable": true,
+  "rust-analyzer.disableProgressNotifications": true,
   "rust-analyzer.notifications.cargoTomlNotFound": false,
   "go.goplsOptions": {
     "completeUnimported": true
