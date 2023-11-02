@@ -928,7 +928,7 @@ let g:vimspector_install_gadgets = [
       \ 'vscode-cpptools',
       \ 'CodeLLDB'
       \ ]
-nnoremap <F8> :call vimspector#Reset()<CR>
+nnoremap <F8> :VimspectorReset<CR>
 let g:vimspector_sign_priority = {
             \    'vimspectorBP':         15,
             \ }
