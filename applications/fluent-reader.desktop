@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Fluent
+Exec=/home/cj/Projects/fluent/Fluent.Reader.AppImage
+Type=Application
+Icon=/home/cj/Projects/fluent/fluent.png
+StartupNotify=true
+
