@@ -18,6 +18,8 @@
 - derive_more
 - bitflags
 - strum_macros
+- derive-builder
+- validator
 
 # Data Processing
 
