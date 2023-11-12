@@ -244,7 +244,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'wakatime/vim-wakatime'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'puremourning/vimspector'
+" Plug 'puremourning/vimspector'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -920,21 +920,20 @@ autocmd FileType html,css,sass,scss,vue EmmetInstall
 let g:gitgutter_max_signs = 1000
 
 " vimspector
-" let g:vimspector_enable_mappings = 'HUMAN'
-let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
-let g:vimspector_install_gadgets = [
-      \ 'vscode-go',
-      \ 'vscode-java-debug',
-      \ 'vscode-cpptools',
-      \ 'CodeLLDB'
-      \ ]
-nnoremap <F8> :VimspectorReset<CR>
-let g:vimspector_sign_priority = {
-            \    'vimspectorBP':         15,
-            \ }
-let g:vimspector_bottombar_height = 5
-nmap <leader>di <Plug>VimspectorBalloonEval
-xmap <leader>di <Plug>VimspectorBalloonEval
+" let g:vimspector_enable_mappings = 'VISUAL_STUDIO'
+" let g:vimspector_install_gadgets = [
+"       \ 'vscode-go',
+"       \ 'vscode-java-debug',
+"       \ 'vscode-cpptools',
+"       \ 'CodeLLDB'
+"       \ ]
+" nnoremap <F8> :VimspectorReset<CR>
+" let g:vimspector_sign_priority = {
+"             \    'vimspectorBP':         15,
+"             \ }
+" let g:vimspector_bottombar_height = 5
+" nmap <leader>di <Plug>VimspectorBalloonEval
+" xmap <leader>di <Plug>VimspectorBalloonEval
 
 " vim-jsdoc
 " let g:jsdoc_enable_es6 = 1
