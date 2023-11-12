@@ -366,6 +366,11 @@ function kill-port {
       done
     fi
 }
+function to-pdf {
+    if [ ! -z "$1" ]; then
+      ebook-convert $1 "${1%%.*}.pdf"
+    fi
+}
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
 # function PortForwardInterface() {
