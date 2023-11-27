@@ -6,11 +6,13 @@ email = 'alex_cj96@foxmail.com'
 vcs = 'git'
 
 [profile.release]
-lto = true
-opt-level = 'z'
-panic = 'abort'
-# strip = 'symbols'
-codegen-units = 1
+lto = true # link time optimization
+opt-level = 'z'  # optimize for size ("s" may also work)
+panic = 'abort'  # use simple panics
+strip = true # remove debug info
+codegen-units = 1 # prefer efficiency to compile time
+debug-assertions = false # prune debug assertions
+debug = false            # no debug data
 
 [target.i686-pc-windows-gnu]
 linker = 'i686-w64-mingw32-gcc'
@@ -26,6 +28,11 @@ ar = 'x86_64-apple-darwin14-ar'
 [target.mips-unknown-linux-musl]
 ar = 'mips-openwrt-linux-musl-ar'
 linker = 'mips-openwrt-linux-musl-gcc'
+
+[target.wasm32-unknown-unknown]
+rustflags = [
+  "-C", "link-arg=-zstack-size=8192", # shrink the heap
+]
 
 [term]
 verbose = false
