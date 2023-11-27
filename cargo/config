@@ -13,6 +13,7 @@ strip = true # remove debug info
 codegen-units = 1 # prefer efficiency to compile time
 debug-assertions = false # prune debug assertions
 debug = false            # no debug data
+# incremental = false      # no incremental builds
 
 [target.i686-pc-windows-gnu]
 linker = 'i686-w64-mingw32-gcc'
