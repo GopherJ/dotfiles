@@ -20,16 +20,15 @@ NORMAL=$(tput sgr0)
 
 NAME=$1
 
-USER=alex_cj96
-PASS=alex_cj96
+USER=dev
+PASS=dev
 
-SSH_KEY_PUB_CONTENT=`cat ~/.ssh/id_rsa.pub`
-SSH_KEY_PRIV_PATH=~/.ssh/id_rsa
+SSH_KEY_PUB_CONTENT=`cat /home/cj/.ssh/id_ed25519.pub`
+SSH_KEY_PRIV_PATH=/home/cj/.ssh/id_ed25519
 
 
 echo -e "${BOLD}=> Creating container ${NAME}...${NORMAL}"
-# lxc launch ubuntu:bionic $NAME
-lxc launch ubuntu:focal $NAME
+lxc launch ubuntu:jammy $NAME
 
 echo -e "${BOLD}=> Making container privileged...${NORMAL}"
 lxc config set $NAME security.privileged true
