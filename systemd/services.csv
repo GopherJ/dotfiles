@@ -2,3 +2,4 @@ sslocal,shadowsocks-rust-client,Shadowsocks Rust Client,-c ../jms/jmsconfig.json
 filebrowser,file-browser,File Browser,-d /home/cj/Documents/Filebrowser/filebrowser.db -r /home/cj/Documents/CJ -a 0.0.0.0
 #rsync,rsync,Rsync Documents,-av --delete --exclude={'Documents'} /home/cj/Documents/CJ/ /media/cj/CJ-西部数据/CJ
 miniserve,mini-serve,Mini server,--port 8181 /home/cj/Documents/CJ/Public -i 0.0.0.0
+#buzz,buzz-email-notification-server,Buzz Email Notification Server,
