@@ -67,7 +67,7 @@ alias doc-ref='rustup doc --reference'
 alias clean-container='docker container ls -q --all | xargs -i docker stop {} | xargs -i docker rm {}; docker network prune -f; docker volume prune -f'
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
-alias make='make -j8'
+# alias make='make -j8'
 alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 CMAKE_BUILD_TYPE=Release'
 alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
@@ -118,6 +118,7 @@ alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
 alias dedup="sort -u | uniq"
+alias sum="awk -F',' '{sum+=$1;} END{print sum;}'"
 alias iptables-reset="iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X"
 alias show-ip="curl ip.gs"
 alias check-if-socks5="curl cip.cc"
