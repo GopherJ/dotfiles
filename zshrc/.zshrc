@@ -432,6 +432,7 @@ export PKG_CONFIG_ALLOW_CROSS=1
 export VCPKG_DISABLE_METRICS=1
 export WASM_BUILD_TYPE=release
 export SKIP_WASM_BUILD=1
+export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:/usr/local/lib
 # locale-gen en_US.UTF-8
 # dpkg-reconfigure locales
 #
