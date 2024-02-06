@@ -140,6 +140,7 @@
   ],
   "snippets.ultisnips.pythonPrompt": false,
   "python.pythonPath": "python3",
+  "pyright.inlayHints.variableTypes": false,
   "java.compile.nullAnalysis.mode": "disabled",
   "java.configuration.runtimes": [
     {
