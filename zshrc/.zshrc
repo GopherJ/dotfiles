@@ -373,6 +373,18 @@ function to-pdf {
       ebook-convert $1 "${1%%.*}.pdf"
     fi
 }
+function bitcoin-block {
+    if [ ! -z "$1" ]; then
+      blockHash=$(bitcoin-cli getblockhash $1)
+      bitcoin-cli getblock $blockHash
+    fi
+}
+function bitcoin-tx {
+    if [ ! -z "$1" ]; then
+      txData=$(bitcoin-cli getrawtransaction $1)
+      bitcoin-cli decoderawtransaction $txData
+    fi
+}
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
 # function PortForwardInterface() {
@@ -417,7 +429,7 @@ export SCRIPT_HOME="$HOME/.bin"
 export GCLOUD_SDK_DIR="$HOME/google-cloud-sdk"
 export FOUNDRY_HOME="$HOME/.foundry"
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$PATH"
+export PATH="$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$HOME/.local/share/solana/install/active_release/bin:$PATH"
 # export TERM=tmux-256color
 export EDITOR=nvim
 export GITHUB_API_TOKEN=""
