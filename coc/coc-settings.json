@@ -141,6 +141,9 @@
   "snippets.ultisnips.pythonPrompt": false,
   "python.pythonPath": "python3",
   "pyright.inlayHints.variableTypes": false,
+  "pyright.inlayHints.parameterTypes": false,
+  "pyright.inlayHints.functionReturnTypes": false,
+  "python.analysis.typeCheckingMode": "off",
   "java.compile.nullAnalysis.mode": "disabled",
   "java.configuration.runtimes": [
     {
