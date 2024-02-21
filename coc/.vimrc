@@ -51,8 +51,8 @@ set timeoutlen=100
 set updatetime=300
 set cmdheight=1
 
-" set nu
-set relativenumber
+set nu
+" set relativenumber
 
 if !has("nvim")
     set nocompatible
