@@ -385,6 +385,11 @@ function bitcoin-tx {
       bitcoin-cli decoderawtransaction $txData
     fi
 }
+function bitcoin-script {
+    if [ ! -z "$1" ]; then
+      bitcoin-cli decodescript $1
+    fi
+}
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
 # function PortForwardInterface() {
