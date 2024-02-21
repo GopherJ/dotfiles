@@ -454,7 +454,6 @@ let g:coc_global_extensions = [
             \'coc-yaml',
             \'coc-yank',
             \'coc-clangd',
-            \'coc-translator',
             \'coc-docker',
             \'coc-kotlin',
             \'@nomicfoundation/coc-solidity',
@@ -676,8 +675,9 @@ nnoremap <silent> <space>q  : exe 'CocList -I --input='.expand('<cword>').' grep
 nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 
 " coc-translator
-nmap <leader>t <Plug>(coc-translator-p)
-vmap <leader>t <Plug>(coc-translator-pv)
+" let g:translator_default_engines = ['youdao', 'bing', 'google', 'haici']
+" nmap <leader>t <Plug>(coc-translator-p)
+" vmap <leader>t <Plug>(coc-translator-pv)
 
 "--------------------------------------------------------------------------------
 " Plugin configuration
@@ -890,6 +890,7 @@ noremap  <silent><F1>        : AsyncTask file-build<cr>
 noremap  <silent><F2>        : AsyncTask file-run<cr>
 noremap  <silent><F3>        : AsyncTask project-build<cr>
 noremap  <silent><F4>        : AsyncTask project-run<cr>
+nnoremap <silent><leader>t   : AsyncTask project-test<cr>
 nnoremap <silent> <space>t   : <C-u>CocList --normal tasks<CR>
 
 " vim-vue
