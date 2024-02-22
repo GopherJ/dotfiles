@@ -1131,9 +1131,11 @@ let g:instant_markdown_mermaid = 1
 let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autostart = 0
 
+" sudo rm -fr /usr/share/nvim/runtime/queries
+" sudo rm -fr /usr/lib/x86_64-linux-gnu/nvim/parser                                    │
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc"},
  highlight = {
    enable = true,
    disable = {},
