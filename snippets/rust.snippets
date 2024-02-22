@@ -23,3 +23,322 @@
 #		endsnippet
 #
 # Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+
+snippet p2generator "Plonky2 ArithmeticBaseGenerator" b
+impl<F: RichField + Extendable<D>, const D: usize> SimpleGenerator<F, D>
+		for ArithmeticBaseGenerator<F, D>
+{
+		fn id(&self) -> String {
+				"ArithmeticBaseGenerator".to_string()
+		}
+
+		fn dependencies(&self) -> Vec<Target> {
+				[
+						ArithmeticGate::wire_ith_multiplicand_0(self.i),
+						ArithmeticGate::wire_ith_multiplicand_1(self.i),
+						ArithmeticGate::wire_ith_addend(self.i),
+				]
+				.iter()
+				.map(|&i| Target::wire(self.row, i))
+				.collect()
+		}
+
+		fn run_once(&self, witness: &PartitionWitness<F>, out_buffer: &mut GeneratedValues<F>) {
+				let get_wire = |wire: usize| -> F { witness.get_target(Target::wire(self.row, wire)) };
+
+				let multiplicand_0 = get_wire(ArithmeticGate::wire_ith_multiplicand_0(self.i));
+				let multiplicand_1 = get_wire(ArithmeticGate::wire_ith_multiplicand_1(self.i));
+				let addend = get_wire(ArithmeticGate::wire_ith_addend(self.i));
+
+				let output_target = Target::wire(self.row, ArithmeticGate::wire_ith_output(self.i));
+
+				let computed_output =
+						multiplicand_0 * multiplicand_1 * self.const_0 + addend * self.const_1;
+
+				out_buffer.set_target(output_target, computed_output)
+		}
+
+		fn serialize(&self, dst: &mut Vec<u8>, _common_data: &CommonCircuitData<F, D>) -> IoResult<()> {
+				dst.write_usize(self.row)?;
+				dst.write_field(self.const_0)?;
+				dst.write_field(self.const_1)?;
+				dst.write_usize(self.i)
+		}
+
+		fn deserialize(src: &mut Buffer, _common_data: &CommonCircuitData<F, D>) -> IoResult<Self> {
+				let row = src.read_usize()?;
+				let const_0 = src.read_field()?;
+				let const_1 = src.read_field()?;
+				let i = src.read_usize()?;
+				Ok(Self {
+						row,
+						const_0,
+						const_1,
+						i,
+				})
+		}
+}
+
+endsnippet
+
+snippet p2gate "Plonky2 ArithmeticGate" b
+impl<F: RichField + Extendable<D>, const D: usize> Gate<F, D> for ArithmeticGate {
+		fn id(&self) -> String {
+				format!("{self:?}")
+		}
+
+		fn serialize(&self, dst: &mut Vec<u8>, _common_data: &CommonCircuitData<F, D>) -> IoResult<()> {
+				dst.write_usize(self.num_ops)
+		}
+
+		fn deserialize(src: &mut Buffer, _common_data: &CommonCircuitData<F, D>) -> IoResult<Self> {
+				let num_ops = src.read_usize()?;
+				Ok(Self { num_ops })
+		}
+
+		fn eval_unfiltered(&self, vars: EvaluationVars<F, D>) -> Vec<F::Extension> {
+				let const_0 = vars.local_constants[0];
+				let const_1 = vars.local_constants[1];
+
+				let mut constraints = Vec::with_capacity(self.num_ops);
+				for i in 0..self.num_ops {
+						let multiplicand_0 = vars.local_wires[Self::wire_ith_multiplicand_0(i)];
+						let multiplicand_1 = vars.local_wires[Self::wire_ith_multiplicand_1(i)];
+						let addend = vars.local_wires[Self::wire_ith_addend(i)];
+						let output = vars.local_wires[Self::wire_ith_output(i)];
+						let computed_output = multiplicand_0 * multiplicand_1 * const_0 + addend * const_1;
+
+						constraints.push(output - computed_output);
+				}
+
+				constraints
+		}
+
+		fn eval_unfiltered_base_one(
+				&self,
+				_vars: EvaluationVarsBase<F>,
+				_yield_constr: StridedConstraintConsumer<F>,
+		) {
+				panic!("use eval_unfiltered_base_packed instead");
+		}
+
+		fn eval_unfiltered_base_batch(&self, vars_base: EvaluationVarsBaseBatch<F>) -> Vec<F> {
+				self.eval_unfiltered_base_batch_packed(vars_base)
+		}
+
+		fn eval_unfiltered_circuit(
+				&self,
+				builder: &mut CircuitBuilder<F, D>,
+				vars: EvaluationTargets<D>,
+		) -> Vec<ExtensionTarget<D>> {
+				let const_0 = vars.local_constants[0];
+				let const_1 = vars.local_constants[1];
+
+				let mut constraints = Vec::with_capacity(self.num_ops);
+				for i in 0..self.num_ops {
+						let multiplicand_0 = vars.local_wires[Self::wire_ith_multiplicand_0(i)];
+						let multiplicand_1 = vars.local_wires[Self::wire_ith_multiplicand_1(i)];
+						let addend = vars.local_wires[Self::wire_ith_addend(i)];
+						let output = vars.local_wires[Self::wire_ith_output(i)];
+						let computed_output = {
+								let scaled_mul =
+										builder.mul_many_extension([const_0, multiplicand_0, multiplicand_1]);
+								builder.mul_add_extension(const_1, addend, scaled_mul)
+						};
+
+						let diff = builder.sub_extension(output, computed_output);
+						constraints.push(diff);
+				}
+
+				constraints
+		}
+
+		fn generators(&self, row: usize, local_constants: &[F]) -> Vec<WitnessGeneratorRef<F, D>> {
+				(0..self.num_ops)
+						.map(|i| {
+								WitnessGeneratorRef::new(
+										ArithmeticBaseGenerator {
+												row,
+												const_0: local_constants[0],
+												const_1: local_constants[1],
+												i,
+										}
+										.adapter(),
+								)
+						})
+						.collect()
+		}
+
+		fn num_wires(&self) -> usize {
+				self.num_ops * 4
+		}
+
+		fn num_constants(&self) -> usize {
+				2
+		}
+
+		fn degree(&self) -> usize {
+				3
+		}
+
+		fn num_constraints(&self) -> usize {
+				self.num_ops
+		}
+}
+
+endsnippet
+
+snippet p2u64target "Plonky2 u64 target" b
+#[derive(Clone, Debug)]
+pub struct U64Target<F, const D: usize> {
+		pub bits: Vec<BoolTarget>,
+		_phantom: PhantomData<F>,
+}
+
+impl<F, const D: usize> U64Target<F, D>
+where
+		F: RichField + Extendable<D>,
+{
+		pub fn new(builder: &mut CircuitBuilder<F, D>) -> Self {
+				let mut result = vec![];
+				for _ in 0..64 {
+						result.push(builder.add_virtual_bool_target_safe());
+				}
+				Self {
+						bits: result,
+						_phantom: PhantomData,
+				}
+		}
+
+		pub fn set_witness(&self, bits: Vec<bool>, pw: &mut PartialWitness<F>) {
+				for i in 0..64 {
+						pw.set_bool_target(self.bits[i], bits[i]);
+				}
+		}
+}
+
+endsnippet
+
+snippet p2hash "Plonky2 Hash Example" b
+const D: usize = 2;
+type F = GoldilocksField;
+type C = PoseidonGoldilocksConfig;
+type H = PoseidonHash;
+
+let a = F::from_canonical_u64(42);
+let hash_a = H::hash_no_pad(&[a.clone()]); // hash(a)
+
+println!("a = {}, hash(a) = {:?}", a, hash_a);
+
+// Proof that "I know x that hash(x) = hash_a"
+let config = CircuitConfig::standard_recursion_config();
+let mut builder = CircuitBuilder::<F, D>::new(config);
+
+let hash_a_t = builder.constant_hash(hash_a); // add constant hash target
+let x_t = builder.add_virtual_target();
+let hash_x_t = builder.hash_n_to_hash_no_pad::<H>(vec![x_t]);
+
+builder.connect_hashes(hash_x_t, hash_a_t); // hash(x) = hash_a
+
+let data = builder.build::<C>();
+
+let mut pw = PartialWitness::<F>::new();
+pw.set_target(x_t, F::from_canonical_u64(42)); // x = 42
+
+let proof = data.prove(pw)?;
+data.verify(proof)?;
+
+endsnippet
+
+snippet p2recursion "Plonky2 Recursion Example" b
+fn make_first_proof<F, C, const D: usize>(
+) -> Result<(VerifierCircuitData<F, C, D>, ProofWithPublicInputs<F, C, D>)>
+where
+		F: RichField + Extendable<D>,
+		C: GenericConfig<D, F = F>,
+{
+		let config = CircuitConfig::standard_recursion_config();
+
+		// First proof that "x satisfies x^2 = 4"
+		let mut builder = CircuitBuilder::<F, D>::new(config.clone());
+		let x_t = builder.add_virtual_target();
+		builder.register_public_input(x_t); // Register x as public input
+		let x2_t = builder.exp_u64(x_t, 2);
+		let four_t = builder.constant(F::from_canonical_u64(4));
+		builder.connect(x2_t, four_t);
+
+		let data = builder.build::<C>();
+		let mut pw = PartialWitness::<F>::new();
+		pw.set_target(x_t, F::from_canonical_u64(2)); // x = 2
+		let proof = data.prove(pw)?;
+		data.verify(proof.clone())?;
+		Ok((data.verifier_data(), proof))
+}
+
+const D: usize = 2;
+type F = GoldilocksField;
+type C = PoseidonGoldilocksConfig;
+
+let (verifier_data, proof) = make_first_proof::<F, C, D>()?;
+
+// Recursive proof
+let config = CircuitConfig::standard_recursion_config();
+let mut builder = CircuitBuilder::<F, D>::new(config);
+
+let proof_t = builder.add_virtual_proof_with_pis(&verifier_data.common);
+builder.register_public_inputs(&proof_t.public_inputs); // register first proof's public input
+
+let constants_sigmas_cap_t =
+		builder.constant_merkle_cap(&verifier_data.verifier_only.constants_sigmas_cap);
+
+let circuit_digest_t = builder.constant_hash(verifier_data.verifier_only.circuit_digest);
+let verifier_circuit_t = VerifierCircuitTarget {
+		constants_sigmas_cap: constants_sigmas_cap_t,
+		circuit_digest: circuit_digest_t,
+};
+
+builder.verify_proof::<C>(&proof_t, &verifier_circuit_t, &verifier_data.common);
+
+let mut pw = PartialWitness::<F>::new();
+pw.set_proof_with_pis_target(&proof_t, &proof);
+let data = builder.build::<C>();
+let proof_recursive = data.prove(pw)?;
+data.verify(proof_recursive.clone())?;
+
+endsnippet
+
+snippet p2ecdsa "Plonky2 Ecdsa Example" b
+const D: usize = 2;
+type C = PoseidonGoldilocksConfig;
+type F = <C as GenericConfig<D>>::F;
+type Curve = Secp256K1;
+
+let config = CircuitConfig::standard_ecc_config();
+let pw = PartialWitness::new();
+let mut builder = CircuitBuilder::<F, D>::new(config);
+
+let msg = Secp256K1Scalar::rand();
+let msg_target = builder.constant_nonnative(msg);
+
+let sk = ECDSASecretKey::<Curve>(Secp256K1Scalar::rand());
+let pk = ECDSAPublicKey((CurveScalar(sk.0) * Curve::GENERATOR_PROJECTIVE).to_affine());
+
+let pk_target = ECDSAPublicKeyTarget(builder.constant_affine_point(pk.0));
+
+let sig = sign_message(msg, sk);
+
+let ECDSASignature { r, s } = sig;
+let r_target = builder.constant_nonnative(r);
+let s_target = builder.constant_nonnative(s);
+let sig_target = ECDSASignatureTarget {
+		r: r_target,
+		s: s_target,
+};
+verify_message_circuit(&mut builder, msg_target, sig_target, pk_target);
+println!("{sig:?}");
+let data = builder.build::<C>();
+let proof = data.prove(pw)?;
+data.verify(proof)?;
+
+endsnippet
