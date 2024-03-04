@@ -15,6 +15,7 @@
 " :'<,'>!tac
 " :'<,'>s/,/\r/g
 
+
 if has("gui_running")
     set guifont=Fira\ Code
 endif
@@ -224,7 +225,7 @@ nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " inoremap <C-a> <Home>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
-inoremap <C-x> <Esc>
+map <C-x> <Esc>
 
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
@@ -251,6 +252,7 @@ Plug 'wakatime/vim-wakatime'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
 " Plug 'puremourning/vimspector'
+Plug 'mfussenegger/nvim-dap'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -401,7 +403,7 @@ endif
 
 " highlight ExtraWhitespace ctermbg=red guibg=red
 " autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
-
+"
 set tagfunc=CocTagFunc
 set formatexpr=CocActionAsync('formatSelected')
 
@@ -1153,6 +1155,36 @@ require'nvim-treesitter.configs'.setup({
 })
 EOF
 
+lua <<EOF
+local dap = require('dap')
+dap.adapters.codelldb = {
+  type = 'server',
+  port = "${port}",
+  executable = {
+    command = '/home/cj/Downloads/extension/adapter/codelldb',
+    args = {"--port", "${port}"},
+
+    -- On windows you may have to uncomment this:
+    -- detached = false,
+  }
+}
+EOF
+lua <<EOF
+local dap = require('dap')
+dap.configurations.rust = {
+  {
+  name = "Debug (with args)",
+  type = "codelldb",
+  request = "launch",
+  program = "$exe",
+  args = "$args",
+  cwd = "${workspaceFolder}",
+  stopOnEntry = false,
+  terminal = "integrated"
+ }
+}
+EOF
+
 " let g:airline_theme='base16_gruvbox_dark_hard'
 " let g:airline_powerline_fonts = 1
 
@@ -1166,3 +1198,31 @@ let g:vimtex_quickfix_mode=0
 " copilot.nvim
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
 let g:copilot_no_tab_map = v:true
+
+
+" nvim-dapp
+lua <<EOF
+  vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+    vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
+    vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
+    vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+    vim.keymap.set('n', '<Leader>b', function() require('dap').toggle_breakpoint() end)
+    vim.keymap.set('n', '<Leader>B', function() require('dap').set_breakpoint() end)
+    vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
+    vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
+    vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
+    vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
+      require('dap.ui.widgets').hover()
+    end)
+    vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
+      require('dap.ui.widgets').preview()
+    end)
+    vim.keymap.set('n', '<Leader>df', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.frames)
+    end)
+    vim.keymap.set('n', '<Leader>ds', function()
+      local widgets = require('dap.ui.widgets')
+      widgets.centered_float(widgets.scopes)
+    end)
+EOF
