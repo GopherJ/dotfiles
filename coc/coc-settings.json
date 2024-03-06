@@ -1,5 +1,5 @@
 {
-  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnSave": false,
   "coc.preferences.willSaveHandlerTimeout": 200,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
   "coc.preferences.enableMessageDialog": false,
