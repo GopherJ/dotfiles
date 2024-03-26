@@ -57,7 +57,7 @@ alias cfix="cargo fix --all-targets --allow-dirty --allow-staged && cargo clippy
 alias ck="cargo check --all-targets && cargo fmt --all -- --check"
 alias ckwasm="cargo check --target wasm32-unknown-unknown"
 alias ct="RUST_BACKTRACE=1 cargo test -- --nocapture"
-alias ctbin="cargo test --no-run --message-format=json | jq -r 'select(.profile.test == true) | .filenames[]'"
+alias ctbin="cargo test -q --no-run --message-format=json | jq -r 'select(.profile.test == true) | .filenames[]'"
 alias cdo="cargo doc --open"
 alias clean="sudo apt clean && sudo apt autoclean && sudo apt autoremove && dpkg -l | grep ^rc | awk '{print \$2}' | sudo xargs -i dpkg -P {}"
 alias doc-std='rustup doc --std'
