@@ -14,6 +14,7 @@
 " :r !printf '\%s,' {a..z}
 " :'<,'>!tac
 " :'<,'>s/,/\r/g
+" :s/\v(.{8})/\1\r/g
 
 
 if has("gui_running")
