@@ -44,6 +44,14 @@ jobs = 4
 [net]
 git-fetch-with-cli = false
 
+[profile.profiling]
+inherits = "release"
+debug = true
+
+# [target.x86_64-unknown-linux-gnu]
+# linker = "/usr/bin/clang"
+# rustflags = ["-Clink-arg=-fuse-ld=lld", "-Clink-arg=-Wl,--no-rosegment"]
+#
 # [source.crates-io]
 # registry = "https://github.com/rust-lang/crates.io-index"
 # replace-with = 'ustc'
