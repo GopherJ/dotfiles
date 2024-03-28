@@ -142,6 +142,7 @@ augroup FiletypeConfig
     autocmd BufNewFile,BufReadPost *.kt setlocal filetype=kotlin
     autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
     autocmd BufNewFile,BufReadPost *.json setlocal filetype=jsonc
+    autocmd BufNewFile,BufReadPost *.sage setlocal filetype=python
     autocmd BufNewFile,BufReadPost *Dockerfile* setlocal filetype=dockerfile
     autocmd User CocStatusChange redrawstatus
 augroup END
