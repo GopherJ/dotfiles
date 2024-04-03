@@ -15,7 +15,7 @@
 " :'<,'>!tac
 " :'<,'>s/,/\r/g
 " :s/\v(.{8})/\1\r/g
-
+" :s/\s\+/\r/g
 
 if has("gui_running")
     set guifont=Fira\ Code
