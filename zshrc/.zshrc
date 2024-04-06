@@ -394,6 +394,11 @@ function bitcoin-script {
       bitcoin-cli decodescript $1
     fi
 }
+function snarkjs-info {
+    if [ ! -z "$1" ]; then
+      snarkjs info -r ${1}.r1cs
+    fi
+}
 function circom-compile {
     if [ ! -z "$1" ]; then
       circom $1.circom --r1cs --wasm --sym --c
@@ -415,8 +420,13 @@ function circom-prove {
       snarkjs zkey contribute ${1}_0000.zkey ${1}_0001.zkey --name="1st Contributor Name" -v -e="c5ff022fa7f4639d17507be74b2bd732537cc56d44570cae511d7bed3482f117"
       snarkjs zkey export verificationkey ${1}_0001.zkey ../verification_key.json
       snarkjs groth16 prove ${1}_0001.zkey ../witness.wtns ../proof.json ../public.json
+      snarkjs zkey export solidityverifier ${1}_0001.zkey ../${1}_verifier.sol
       cd ..
+      snarkjs generatecall
     fi
+}
+function circom-verify {
+    snarkjs groth16 verify verification_key.json public.json proof.json
 }
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
