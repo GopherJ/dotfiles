@@ -412,7 +412,10 @@ function circom-compile {
 }
 function circom-synthesize {
     if [ ! -z "$1" ]; then
-      cd ${1}_js && node generate_witness.js $1.wasm ../input.json ../witness.wtns && cd ..
+      cd ${1}_js \
+        && node generate_witness.js $1.wasm ../input.json ../witness.wtns \
+        && cd .. \
+        && snarkjs wtns export json witness.wtns
     fi
 }
 function snarkjs-prove {
