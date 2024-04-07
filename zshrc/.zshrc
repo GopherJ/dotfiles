@@ -399,6 +399,11 @@ function snarkjs-info {
       snarkjs info -r ${1}.r1cs
     fi
 }
+function snarkjs-print-constraints {
+    if [ ! -z "$1" ]; then
+      snarkjs r1cs print $1.r1cs $1.sym
+    fi
+}
 function circom-compile {
     if [ ! -z "$1" ]; then
       circom $1.circom --r1cs --wasm --sym --c
@@ -410,7 +415,7 @@ function circom-synthesize {
       cd ${1}_js && node generate_witness.js $1.wasm ../input.json ../witness.wtns && cd ..
     fi
 }
-function circom-prove {
+function snarkjs-prove {
     if [ ! -z "$1" ]; then
       cd ${1}_js
       snarkjs powersoftau new bn128 12 pot12_0000.ptau -v
@@ -425,7 +430,7 @@ function circom-prove {
       snarkjs generatecall
     fi
 }
-function circom-verify {
+function snarkjs-verify {
     snarkjs groth16 verify verification_key.json public.json proof.json
 }
 # create forward rule by source interface
