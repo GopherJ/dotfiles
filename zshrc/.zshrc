@@ -50,6 +50,7 @@ alias bl="git branch -l"
 alias bd="git branch -d"
 alias gotest="go test -run"
 alias cr="cargo run"
+alias cre="cargo run --example"
 alias cf="cargo fmt --all -- --check"
 alias cb="cargo build --release"
 alias ckall="cargo check --all-targets --all-features"
@@ -66,17 +67,17 @@ alias doc-example='rustup doc --rust-by-example'
 alias doc-book='rustup doc --book'
 alias doc-ref='rustup doc --reference'
 alias clean-container='docker container ls -q --all | xargs -i docker stop {} | xargs -i docker rm {}; docker network prune -f; docker volume prune -f'
-alias xz='tar -Jxvf'
-alias jz='tar -zxvf'
 # alias ord='ord -r --bitcoin-rpc-user=devnet --bitcoin-rpc-pass=devnet'
 # alias bitcoin-cli='bitcoin-cli -regtest -rpcwallet=default -rpcuser=devnet -rpcpassword=devnet'
+alias xz='tar -Jxvf'
+alias jz='tar -zxvf'
 # alias make='make -j8'
 alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 CMAKE_BUILD_TYPE=Release'
 alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
 alias n='nnn'
-alias python='python3'
-alias pip='pip3'
+# alias python='python3'
+# alias pip='pip3'
 alias sage-start='sage -n jupyter --notebook-dir ~/Projects/cfg/jupyter'
 alias pari='/usr/bin/gp'
 alias jupyter-start='jupyter notebook --notebook-dir ~/Projects/cfg/jupyter'
@@ -151,6 +152,7 @@ function swap() {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE "$2"
 }
+
 function copy-from-image {
   if [ ! -z "$1" ] && [ ! -z "$2" ]; then
       id=$(docker create $1)
@@ -356,6 +358,9 @@ function gsync {
 }
 function gpush {
     git push origin `git branch --show-current`
+}
+function gpull {
+    git pull origin
 }
 function gstash {
   git stash push -m ${1:-latest} -u
