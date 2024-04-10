@@ -67,6 +67,7 @@ alias doc-example='rustup doc --rust-by-example'
 alias doc-book='rustup doc --book'
 alias doc-ref='rustup doc --reference'
 alias clean-container='docker container ls -q --all | xargs -i docker stop {} | xargs -i docker rm {}; docker network prune -f; docker volume prune -f'
+alias clean-artifacts="find . -type d -a -name 'node_modules' -o -name 'target' | xargs rm -fr {}"
 # alias ord='ord -r --bitcoin-rpc-user=devnet --bitcoin-rpc-pass=devnet'
 # alias bitcoin-cli='bitcoin-cli -regtest -rpcwallet=default -rpcuser=devnet -rpcpassword=devnet'
 alias xz='tar -Jxvf'
