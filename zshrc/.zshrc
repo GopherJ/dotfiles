@@ -441,6 +441,11 @@ function snarkjs-prove {
 function snarkjs-verify {
     snarkjs groth16 verify verification_key.json public.json proof.json
 }
+function v {
+    if [ ! -z $1 ]; then
+      fd $1 | xargs -i nvim -p {}
+    fi
+}
 # create forward rule by source interface
 # http://serverfault.com/questions/532569/how-to-do-port-forwarding-redirecting-on-debian
 # function PortForwardInterface() {
