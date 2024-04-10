@@ -16,6 +16,7 @@
 " :'<,'>s/,/\r/g
 " :s/\v(.{8})/\1\r/g
 " :s/\s\+/\r/g
+" <C-A> to get serial number
 
 if has("gui_running")
     set guifont=Fira\ Code
