@@ -154,7 +154,11 @@ function swap() {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE "$2"
 }
-
+function check-if-private-key-matches-public-key() {
+  if [ ! -z "$1" ]; then
+    diff <( ssh-keygen -y -e -f "$1" ) <( ssh-keygen -y -e -f "$1.pub" )
+  fi
+}
 function copy-from-image {
   if [ ! -z "$1" ] && [ ! -z "$2" ]; then
       id=$(docker create $1)
