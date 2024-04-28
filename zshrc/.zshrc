@@ -162,6 +162,11 @@ function check-if-private-key-matches-public-key() {
     diff <( ssh-keygen -y -e -f "$1" ) <( ssh-keygen -y -e -f "$1.pub" )
   fi
 }
+function v {
+    if [ ! -z $1 ]; then
+      fd $1 | xargs -i nvim -p {}
+    fi
+}
 function copy-from-image {
   if [ ! -z "$1" ] && [ ! -z "$2" ]; then
       id=$(docker create $1)
@@ -393,14 +398,14 @@ function to-pdf {
 }
 function bitcoin-block {
     if [ ! -z "$1" ]; then
-      blockHash=$(bitcoin-cli getblockhash $1)
-      bitcoin-cli getblock $blockHash
+      blockHash=$(bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getblockhash $1)
+      bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getblock $blockHash
     fi
 }
 function bitcoin-tx {
     if [ ! -z "$1" ]; then
-      txData=$(bitcoin-cli getrawtransaction $1)
-      bitcoin-cli decoderawtransaction $txData
+      txData=$(bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getrawtransaction $1)
+      bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet decoderawtransaction $txData
     fi
 }
 function bitcoin-script {
