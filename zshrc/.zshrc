@@ -399,7 +399,14 @@ function to-pdf {
 function bitcoin-block {
     if [ ! -z "$1" ]; then
       blockHash=$(bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getblockhash $1)
-      bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getblock $blockHash
+      blockData=$(bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getblock $blockHash)
+      echo $blockData
+
+      if [ ! -z "$2" ]; then
+        txHash=$(echo $blockData | jq -r ".tx[$2]")
+        txData=$(bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getrawtransaction $txHash)
+        bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet decoderawtransaction $txData
+      fi
     fi
 }
 function bitcoin-tx {
