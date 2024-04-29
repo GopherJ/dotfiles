@@ -277,6 +277,7 @@ Plug 'mzlogin/vim-markdown-toc'
 Plug 'tyru/open-browser.vim'
 Plug 'aklt/plantuml-syntax'
 Plug 'NoahTheDuke/vim-just'
+Plug 'tikhomirov/vim-glsl'
 Plug 'weirongxu/plantuml-previewer.vim'
 " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'Valloric/ListToggle'
