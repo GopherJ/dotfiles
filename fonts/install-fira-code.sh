@@ -20,7 +20,7 @@ fi
 # done
 cp *.ttf $fonts_dir/
 
-curl -fLo ~/.config/fontconfig/fonts.conf --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/cfg/fonts/fonts.conf
+curl -fLo ~/.config/fontconfig/fonts.conf --create-dirs https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/fonts/fonts.conf
 
 echo "fc-cache -f"
 sudo fc-cache -vf

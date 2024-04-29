@@ -37,7 +37,7 @@ if [ ! -f ~/Downloads/msyh_consola.ttf ]; then
     curl -fLo ~/Downloads/msyh_consola.ttf https://github.com/GopherJ/Fonts/raw/master/msyh_consola.ttf --retry-delay 2 --retry 3
 fi
 if [ ! -f ~/Downloads/msyh_consola_config.reg ]; then
-    curl -fLo ~/Downloads/msyh_consola_config.reg https://github.com/GopherJ/cfg/blob/master/deepinwine/msyh_consola_config.reg --retry-delay 2 --retry 3
+    curl -fLo ~/Downloads/msyh_consola_config.reg https://github.com/GopherJ/dotfiles/blob/master/deepinwine/msyh_consola_config.reg --retry-delay 2 --retry 3
 fi
 
 # The following line must be run after starting at least once wechat

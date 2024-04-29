@@ -2,5 +2,5 @@
 Name=Obsidian
 Exec=/home/cj/Projects/obsidian/obsidian.AppImage
 Type=Application
-Icon=/home/cj/Projects/cfg/icons/obsidian.png
+Icon=/home/cj/Projects/dotfiles/icons/obsidian.png
 StartupNotify=true

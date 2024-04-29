@@ -83,9 +83,9 @@ alias visudo='sudo EDITOR=vim visudo'
 alias n='nnn'
 # alias python='python3'
 # alias pip='pip3'
-alias sage-start='sage -n jupyter --notebook-dir ~/Projects/cfg/jupyter'
+alias sage-start='sage -n jupyter --notebook-dir ~/Projects/dotfiles/jupyter'
 alias pari='/usr/bin/gp'
-alias jupyter-start='jupyter notebook --notebook-dir ~/Projects/cfg/jupyter'
+alias jupyter-start='jupyter notebook --notebook-dir ~/Projects/dotfiles/jupyter'
 alias jupyter-stop='jupyter notebook stop'
 alias randomHex='openssl rand -hex 32'
 # alias sccache-clean-restart='sccache -z && sccache --stop-server && sccache --start-server'
@@ -120,9 +120,9 @@ alias vimdocker='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm -i
 alias vimdockerd='docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 9999:9999 alexcj96/vim-docker-env:latest'
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias sshkeygen-ecdsa='ssh-keygen -f ~/.ssh/id_ecdsa -t ecdsa'
-alias create-vimspector-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/cfg/vimspector/.vimspector.json'
-alias create-clang-format-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/cfg/clangformat/.clang-format'
-alias create-cmakelists-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/cfg/cmake/CMakeLists.txt'
+alias create-vimspector-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/vimspector/.vimspector.json'
+alias create-clang-format-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/clangformat/.clang-format'
+alias create-cmakelists-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/cmake/CMakeLists.txt'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
@@ -151,6 +151,8 @@ alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow-color '#555555' --line-pad 2 --pad-horiz 0 --pad-vert 0 --shadow-blur-radius 0 --shadow-offset-x 0 --shadow-offset-y 0 --output output.png"
 alias pandoc='pandoc -s -o output.pdf --pdf-engine=xelatex'
+alias aws-list-ec2='aws ec2 describe-instances'
+alias aws-launch-ec2='aws ec2 run-instances --image-id ami-0fc61db8544a617ed --count 1 --instance-type t3.2xlarge --key-name my-key-pair --security-groups my-security-group'
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
 function swap() {
@@ -257,7 +259,7 @@ function npm-pkg-version {
 }
 function create-eslint-config {
     if [[ "$1" == "browser" ]] || [[ "$1" == "node" ]]; then
-        curl -sSo .eslintrc.json https://cdn.jsdelivr.net/gh/GopherJ/cfg/eslint/$1.eslintrc.json
+        curl -sSo .eslintrc.json https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/eslint/$1.eslintrc.json
     fi
 }
 function ecat {

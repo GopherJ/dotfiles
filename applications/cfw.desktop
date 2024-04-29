@@ -2,5 +2,5 @@
 Name=CFW
 Exec=/home/cj/Projects/cfw/cfw
 Type=Application
-Icon=/home/cj/Projects/cfg/icons/clash.png
+Icon=/home/cj/Projects/dotfiles/icons/clash.png
 StartupNotify=true

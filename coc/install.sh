@@ -224,35 +224,35 @@ fi
 
 # echoc "=> Configuring tern..."
 # curl -fLo ~/.tern-config --create-dirs \
-#     https://raw.githubusercontent.com/GopherJ/cfg/master/tern/.tern-config --retry-delay 2 --retry 3
+#     https://raw.githubusercontent.com/GopherJ/dotfiles/master/tern/.tern-config --retry-delay 2 --retry 3
 
 echoc "=> Configuring tmux..."
 if [ ! -d ~/.tmux/plugins/tpm ]; then
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 curl -fLo ~/.tmux.conf --create-dirs \
-    https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmux.conf --retry-delay 2 --retry 3
+    https://raw.githubusercontent.com/GopherJ/dotfiles/master/tmux/.tmux.conf --retry-delay 2 --retry 3
 curl -fLo ~/.tmuxline_snapshot --create-dirs \
-    https://raw.githubusercontent.com/GopherJ/cfg/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
+    https://raw.githubusercontent.com/GopherJ/dotfiles/master/tmux/.tmuxline_snapshot --retry-delay 2 --retry 3
 tmux source-file ~/.tmux.conf
 
 echoc "=> Configuring eslint..."
 curl -fLo ~/.eslintrc.js --create-dirs \
-    https://raw.githubusercontent.com/GopherJ/cfg/master/eslint/.eslintrc.js --retry-delay 2 --retry 3
+    https://raw.githubusercontent.com/GopherJ/dotfiles/master/eslint/.eslintrc.js --retry-delay 2 --retry 3
 
 echoc "=> Configuring stylint..."
 curl -fLo ~/.stylelintrc --create-dirs \
-    https://raw.githubusercontent.com/GopherJ/cfg/master/stylelint/.stylelintrc --retry-delay 2 --retry 3
+    https://raw.githubusercontent.com/GopherJ/dotfiles/master/stylelint/.stylelintrc --retry-delay 2 --retry 3
 
 # echoc "=> Configuring ctags..."
 # curl -fLo ~/.ctags.d/makefile.ctags --create-dirs \
-#     https://raw.githubusercontent.com/GopherJ/cfg/master/ctags/.ctags.d/makefile.ctags --retry-delay 2 --retry 3
+#     https://raw.githubusercontent.com/GopherJ/dotfiles/master/ctags/.ctags.d/makefile.ctags --retry-delay 2 --retry 3
 # curl -fLo ~/.ctags.d/ansible.ctags --create-dirs \
-#     https://raw.githubusercontent.com/GopherJ/cfg/master/ctags/.ctags.d/ansible.ctags --retry-delay 2 --retry 3
+#     https://raw.githubusercontent.com/GopherJ/dotfiles/master/ctags/.ctags.d/ansible.ctags --retry-delay 2 --retry 3
 
 echoc "=> Configuring oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" \
-    && curl https://raw.githubusercontent.com/GopherJ/cfg/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc \
+    && curl https://raw.githubusercontent.com/GopherJ/dotfiles/master/zshrc/.zshrc --retry-delay 2 --retry 3 >> ~/.zshrc \
     && source ~/.zshrc \
     && git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions \
     && git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:=~/.oh-my-zsh/custom}/plugins/zsh-completions
@@ -263,7 +263,7 @@ if [ ! -f ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb ]; then
 fi
 sudo dpkg -i ~/Downloads/Alacritty-v0.4.3-ubuntu_18_04_amd64.deb
 # cargo install --git https://github.com/alacritty/alacritty
-curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/alacritty/alacritty.yml --retry-delay 2 --retry 3
+curl -fLo ~/.config/alacritty/alacritty.yml --create-dirs https://raw.githubusercontent.com/GopherJ/dotfiles/master/alacritty/alacritty.yml --retry-delay 2 --retry 3
 
 echoc "=> Installing autojump.zsh..."
 if [ ! -f ~/.autojump.zsh ]; then
@@ -360,7 +360,7 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
     && npm i -g stylelint stylelint-processor-styled-components stylelint-config-styled-components stylelint-config-recommended
 
 # echoc "=> Configuring vim and building YCM..."
-# curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/vim/.vimrc --retry-delay 2 --retry 3 \
+# curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/dotfiles/master/vim/.vimrc --retry-delay 2 --retry 3 \
 #     && sed -i "s/v12.18.2/$NODE_VERSION/g" ~/.vimrc \
 #     && vim +PlugInstall \
 #     && vim +GoInstallBinaries \
@@ -370,8 +370,8 @@ echoc "=> Installing yarn, vue, js language server, eslint, markdown render, bea
 #     && npm install
 
 echoc "=> Configuring vim..."
-curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/cfg/master/coc/.vimrc --retry-delay 2 --retry 3 \
-    && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/cfg/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
+curl -fo ~/.vimrc https://raw.githubusercontent.com/GopherJ/dotfiles/master/coc/.vimrc --retry-delay 2 --retry 3 \
+    && curl -fo ~/.vim/coc-settings.json --create-dirs https://raw.githubusercontent.com/GopherJ/dotfiles/master/coc/coc-settings.json --retry-delay 2 --retry 3 \
     && vim +PlugInstall
 
 echoc "=> Installing vimspector..."
