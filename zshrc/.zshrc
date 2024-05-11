@@ -167,7 +167,7 @@ function check-if-private-key-matches-public-key() {
 }
 function v {
     if [ ! -z $1 ]; then
-      fd --type file $1 | xargs -i nvim -p {}
+      fd --type file $1 | sort -r | head -n 1 | xargs -i nvim -p {}
     fi
 }
 function copy-from-image {
