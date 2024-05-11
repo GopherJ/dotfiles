@@ -12,9 +12,9 @@
 "
 "
 " :r !printf '\%s,' {a..z}
+" :s/\v(.{8})/\1\r/g
 " :'<,'>!tac
 " :'<,'>s/,/\r/g
-" :s/\v(.{8})/\1\r/g
 " :s/\s\+/\r/g
 " <C-A> to get serial number
 
