@@ -499,6 +499,8 @@ function v {
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
 # export CARGO_TARGET_DIR="$HOME/.cargo/cache"
+export CUDA_HOME="/usr/lib/cuda"
+export CMAKE_CUDA_COMPILER="/usr/bin/nvcc"
 export NPM_CONFIG_REGISTRY="http://registry.npmmirror.com"
 export ES_JAVA_OPTS="-Xms2g -Xmx2g"
 export CARGO_BUILD_JOBS=4
@@ -513,6 +515,7 @@ export PUB_HOME="$HOME/.pub-cache"
 export SCRIPT_HOME="$HOME/.bin"
 export GCLOUD_SDK_DIR="$HOME/google-cloud-sdk"
 export FOUNDRY_HOME="$HOME/.foundry"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$HOME/.local/share/solana/install/active_release/bin:$PATH"
 # export TERM=tmux-256color
