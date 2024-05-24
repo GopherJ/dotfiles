@@ -454,6 +454,7 @@ let g:coc_global_extensions = [
             \'coc-jest',
             \'coc-json',
             \'coc-tasks',
+            \'coc-lua',
             \'coc-go',
             \'coc-java',
             \'coc-pyright',
