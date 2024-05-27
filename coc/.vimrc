@@ -17,6 +17,12 @@
 " :'<,'>s/,/\r/g
 " :s/\s\+/\r/g
 " <C-A> to get serial number
+" crc to convert to fooBar
+" crm to convert to FooBar
+" cr_ or
+" crs to convert to foo_bar
+" cru to convert to FOO_BAR
+" cr- to convert to foo-bar
 
 if has("gui_running")
     set guifont=Fira\ Code
