@@ -84,7 +84,7 @@ set mouse=a
 set autochdir
 
 set autoread
-au CursorHold * checktime
+" au CursorHold * checktime
 
 set noruler
 set noshowcmd
