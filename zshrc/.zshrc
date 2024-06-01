@@ -516,7 +516,7 @@ export PUB_HOME="$HOME/.pub-cache"
 export SCRIPT_HOME="$HOME/.bin"
 export GCLOUD_SDK_DIR="$HOME/google-cloud-sdk"
 export FOUNDRY_HOME="$HOME/.foundry"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/usr/local/lib"
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$HOME/.local/share/solana/install/active_release/bin:$CUDA_HOME/bin:$PATH"
 # export TERM=tmux-256color
@@ -533,7 +533,6 @@ export PKG_CONFIG_ALLOW_CROSS=1
 export VCPKG_DISABLE_METRICS=1
 export WASM_BUILD_TYPE=release
 export SKIP_WASM_BUILD=1
-export LD_LIBRARY_PATH=/lib/x86_64-linux-gnu:/usr/local/lib
 # locale-gen en_US.UTF-8
 # dpkg-reconfigure locales
 #
