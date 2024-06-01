@@ -1184,16 +1184,13 @@ dap.adapters.codelldb = {
   }
 }
 dap.configurations.rust = {
-  {
-  name = "Debug (with args)",
-  type = "codelldb",
-  request = "launch",
-  program = "$exe",
-  args = "$args",
-  cwd = "${workspaceFolder}",
-  stopOnEntry = false,
-  terminal = "integrated"
- }
+ {
+  name = "Attach to process",
+  type = 'codelldb',
+  request = 'attach',
+  pid = require('dap.utils').pick_process,
+  args = {},
+  }
 }
 dap.configurations.c = {
   {
@@ -1207,6 +1204,13 @@ dap.configurations.c = {
   cwd = "${workspaceFolder}",
   stopOnEntry = false,
   terminal = "integrated"
+ },
+ {
+  name = "Attach to process",
+  type = 'codelldb',
+  request = 'attach',
+  pid = require('dap.utils').pick_process,
+  args = {},
  }
 }
 dap.configurations.cpp = dap.configurations.c
