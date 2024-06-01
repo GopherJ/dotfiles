@@ -154,6 +154,7 @@ alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow
 alias pandoc='pandoc -s -o output.pdf --pdf-engine=xelatex'
 alias aws-list-ec2='aws ec2 describe-instances'
 alias aws-launch-ec2='aws ec2 run-instances --image-id ami-0fc61db8544a617ed --count 1 --instance-type t3.2xlarge --key-name my-key-pair --security-groups my-security-group'
+alias test-cache-misses="perf stat -e cache-misses"
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
 function swap() {
