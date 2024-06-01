@@ -262,6 +262,8 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
+Plug 'nvim-neotest/nvim-nio'
+Plug 'rcarriga/nvim-dap-ui'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -1173,7 +1175,7 @@ dap.adapters.codelldb = {
   type = 'server',
   port = "${port}",
   executable = {
-    command = '/home/cj/Downloads/extension/adapter/codelldb',
+    command = 'codelldb',
     args = {"--port", "${port}"},
 
     -- On windows you may have to uncomment this:
@@ -1195,6 +1197,21 @@ dap.configurations.rust = {
   terminal = "integrated"
  }
 }
+dap.configurations.c = {
+  {
+  name = "Debug (with args)",
+  type = "codelldb",
+  request = "launch",
+  program = function()
+    return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
+  end,
+  args = {},
+  cwd = "${workspaceFolder}",
+  stopOnEntry = false,
+  terminal = "integrated"
+ }
+}
+dap.configurations.cpp = dap.configurations.c
 EOF
 
 " let g:airline_theme='base16_gruvbox_dark_hard'
