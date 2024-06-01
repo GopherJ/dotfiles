@@ -1167,7 +1167,26 @@ require'nvim-treesitter.configs'.setup({
  }
 })
 require('dap-go').setup()
-require('dapui').setup()
+require('dapui').setup({
+  controls = {
+    icons = {
+      disconnect = "",
+      pause = "",
+      play = "",
+      run_last = "",
+      step_back = "",
+      step_into = "",
+      step_out = "",
+      step_over = "",
+      terminate = ""
+    }
+  },
+  icons = {
+    collapsed = "",
+    current_frame = "",
+    expanded = ""
+  },
+})
 EOF
 
 lua <<EOF
