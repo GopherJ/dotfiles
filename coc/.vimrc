@@ -264,6 +264,7 @@ Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'leoluz/nvim-dap-go'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -461,7 +462,6 @@ let g:coc_global_extensions = [
             \'coc-css',
             \'coc-jest',
             \'coc-json',
-            \'coc-tasks',
             \'coc-lua',
             \'coc-go',
             \'coc-java',
@@ -591,7 +591,6 @@ command! -nargs=0 R               CocRestart
 
 command! -nargs=0 TODO            CocList -A --normal grep -e TODO|FIXME|todo
 command! -nargs=0 Status          CocList -A --normal gstatus
-command! -nargs=0 Tasks           CocList -A --normal tasks
 
 command! -nargs=0 Format        call CocAction('format')
 command! -nargs=0 Fold          call CocAction('fold')
@@ -1167,6 +1166,8 @@ require'nvim-treesitter.configs'.setup({
    enable = true
  }
 })
+require('dap-go').setup()
+require('dapui').setup()
 EOF
 
 lua <<EOF
@@ -1182,9 +1183,6 @@ dap.adapters.codelldb = {
     -- detached = false,
   }
 }
-EOF
-lua <<EOF
-local dap = require('dap')
 dap.configurations.rust = {
   {
   name = "Debug (with args)",
@@ -1231,7 +1229,7 @@ let g:copilot_no_tab_map = v:true
 
 " nvim-dapp
 lua <<EOF
-  vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
+    vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
     vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
     vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
     vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
@@ -1254,4 +1252,18 @@ lua <<EOF
       local widgets = require('dap.ui.widgets')
       widgets.centered_float(widgets.scopes)
     end)
+
+    local dap, dapui = require("dap"), require("dapui")
+    dap.listeners.before.attach.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.launch.dapui_config = function()
+      dapui.open()
+    end
+    dap.listeners.before.event_terminated.dapui_config = function()
+      dapui.close()
+    end
+    dap.listeners.before.event_exited.dapui_config = function()
+      dapui.close()
+    end
 EOF
