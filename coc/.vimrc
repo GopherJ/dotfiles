@@ -1267,3 +1267,4 @@ lua <<EOF
       dapui.close()
     end
 EOF
+vnoremap <M-k> <Cmd>lua require("dapui").eval()<CR>
