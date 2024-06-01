@@ -1185,7 +1185,7 @@ require('dapui').setup({
     collapsed = "",
     current_frame = "",
     expanded = ""
-  },
+  }
 })
 EOF
 
@@ -1289,4 +1289,4 @@ lua <<EOF
       dapui.close()
     end
 EOF
-vnoremap <M-k> <Cmd>lua require("dapui").eval()<CR>
+vnoremap <C-k> <Cmd>lua require("dapui").eval()<CR>
