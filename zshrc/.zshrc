@@ -590,7 +590,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf-git.zsh ] && source ~/.fzf-git.zsh
 # [ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
 
-[ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(goenv init -)"
 eval "$(zoxide init zsh)"
 
