@@ -590,6 +590,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -f ~/.fzf-git.zsh ] && source ~/.fzf-git.zsh
 [ -f ~/.emsdk/emsdk_env.sh ] && source ~/.emsdk/emsdk_env.sh > /dev/null 2>&1
 [ -f $CARGO_HOME/env ] && . $CARGO_HOME/env
+[ -f ~/.zshenv ] && source ~/.zshenv
 # [ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
 
 # [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
