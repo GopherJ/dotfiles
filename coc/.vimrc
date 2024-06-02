@@ -150,6 +150,7 @@ augroup FiletypeConfig
     autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
     autocmd BufNewFile,BufReadPost *.json setlocal filetype=jsonc
     autocmd BufNewFile,BufReadPost *.sage setlocal filetype=python
+    autocmd BufNewFile,BufReadPost *.typst setlocal filetype=typst
     autocmd BufNewFile,BufReadPost *Dockerfile* setlocal filetype=dockerfile
     autocmd User CocStatusChange redrawstatus
 augroup END
@@ -1156,7 +1157,7 @@ let g:instant_markdown_autostart = 0
 " sudo rm -fr /usr/lib/x86_64-linux-gnu/nvim/parser                                    │
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc","typst"},
  highlight = {
    enable = true,
    disable = {},

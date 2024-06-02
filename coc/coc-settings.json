@@ -1,4 +1,10 @@
 {
+  "languageserver": {
+    "typst": {
+        "command": "typst-lsp",
+        "filetypes": ["typst"]
+    }
+  },
   "coc.preferences.formatOnSave": false,
   "coc.preferences.willSaveHandlerTimeout": 200,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
