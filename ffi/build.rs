@@ -28,7 +28,7 @@ fn main() -> anyhow::Result<()> {
     println!("cargo:rerun-if-changed=cmake/CMakeLists.txt");
 
     // CMake
-    // NOTE: you must delete ../cmake/src/main.cpp to make the following work
+    // NOTE: somehow this will not work for cuda
     // let dst = cmake::Config::new("../cmake")
     //     .define("GOOGLE_TEST", "OFF")
     //     .build_target("all")
