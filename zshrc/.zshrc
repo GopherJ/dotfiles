@@ -518,7 +518,7 @@ export PUB_HOME="$HOME/.pub-cache"
 export SCRIPT_HOME="$HOME/.bin"
 export GCLOUD_SDK_DIR="$HOME/google-cloud-sdk"
 export FOUNDRY_HOME="$HOME/.foundry"
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/usr/lib/x86_64-linux-gnu:/lib/x86_64-linux-gnu:/usr/local/lib"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:/lib/x86_64-linux-gnu:/usr/lib/x86_64-linux-gnu:/usr/local/lib"
 export PYENV_ROOT="$HOME/.pyenv"
 export ZVM_DIR="$HOME/.zvm"
 export SP1_HOME="$HOME/.sp1"
@@ -588,6 +588,8 @@ export NVM_DIR="$HOME/.nvm"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.fzf-git.zsh ] && source ~/.fzf-git.zsh
+[ -f ~/.emsdk/emsdk_env.sh ] && source ~/.emsdk/emsdk_env.sh > /dev/null 2>&1
+[ -f $CARGO_HOME/env ] && . $CARGO_HOME/env
 # [ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
 
 # [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
@@ -606,7 +608,7 @@ _systemctl_unit_state() {
 # export LD_LIBRARY_PATH="${GOPATH}/deps/raft/.libs/:${GOPATH}/deps/dqlite/.libs/:${LD_LIBRARY_PATH}"
 # export CGO_LDFLAGS_ALLOW="-Wl,-wrap,pthread_create"
 eval "$(ssh-agent -s)" > /dev/null 2>&1
-ssh-add ~/.ssh/id_ed25519 > /dev/null 2>&1
+ssh-add > /dev/null 2>&1
 
 # export ETHERSCAN_API_KEY="$ETHERSCAN_KEY"
 # export NETWORK=mainnet
