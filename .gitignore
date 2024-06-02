@@ -10,3 +10,6 @@ cache/
 clash/*.yaml
 **/filebrowser.db
 **/database/
+cmake/build
+cmake/.cache
+target/
