@@ -503,6 +503,8 @@ function v {
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
 # export CARGO_TARGET_DIR="$HOME/.cargo/cache"
+export C_INCLUDE_PATH="/usr/include/x86_64-linux-gnu:$C_INCLUDE_PATH"
+export CPLUS_INCLUDE_PATH="/usr/include/x86_64-linux-gnu:$CPLUS_INCLUDE_PATH"
 export CC=/usr/bin/clang
 export CXX=/usr/bin/clang++
 export CUDA_HOME="/usr/lib/cuda"
