@@ -237,6 +237,16 @@ function wincross {
     cargo $@ \
     --target=x86_64-pc-windows-gnu
 }
+function c2wasm32 {
+  if [ ! -z "$1" ]; then
+      clang \
+      --target=wasm32 \
+      --no-standard-libraries \
+      -Wl,--export-all -Wl,--no-entry \
+      -o "${1%%.*}.wasm" \
+      $1
+  fi
+}
 function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         nvm install $2 --reinstall-packages-from=$1 \
