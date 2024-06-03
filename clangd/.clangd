@@ -1,3 +1,11 @@
 CompileFlags:
   Add: -Wno-unknown-warning-option
-  Remove: [-m*, -f*]
+  Remove:
+    - -m*
+    - -f*
+    - -forward-unknown-to-host-compiler
+    - --generate-code*
+Diagnostics:
+  Suppress:
+    - drv_unknown_argument
+    - drv_unsupported_opt
