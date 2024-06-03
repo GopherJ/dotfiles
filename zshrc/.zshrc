@@ -502,6 +502,8 @@ function v {
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
 # export CARGO_TARGET_DIR="$HOME/.cargo/cache"
+export CC=/usr/bin/clang
+export CXX=/usr/bin/clang++
 export CUDA_HOME="/usr/lib/cuda"
 export CMAKE_CUDA_COMPILER="/usr/bin/nvcc"
 export NPM_CONFIG_REGISTRY="http://registry.npmmirror.com"
