@@ -247,6 +247,60 @@ function c2wasm32 {
       $1
   fi
 }
+function c2exe {
+  if [ ! -z "$1" ]; then
+      zig \
+      cc \
+      -o "${1%%.*}.exe" \
+      $1 \
+      -target x86_64-windows-gnu
+  fi
+}
+function c2mipsel {
+  if [ ! -z "$1" ]; then
+      zig \
+      cc \
+      -o "${1%%.*}" \
+      $1 \
+      -target mipsel-linux-musl
+  fi
+}
+function c2aarch64 {
+  if [ ! -z "$1" ]; then
+      zig \
+      cc \
+      -o "${1%%.*}" \
+      $1 \
+      -target aarch64-linux-musl
+  fi
+}
+function c2riscv64 {
+  if [ ! -z "$1" ]; then
+      zig \
+      cc \
+      -o "${1%%.*}" \
+      $1 \
+      -target riscv64-linux-musl
+  fi
+}
+function c2ebpf {
+  if [ ! -z "$1" ]; then
+      clang \
+      --target=bpf \
+      -S \
+      -o "${1%%.*}.s" \
+      $1
+  fi
+}
+function ebpf2obj {
+  if [ ! -z "$1" ]; then
+      llvm-mc \
+      -triple bpf \
+      -filetype=obj \
+      -o "${1%%.*}.o" \
+      $1
+  fi
+}
 function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         nvm install $2 --reinstall-packages-from=$1 \
