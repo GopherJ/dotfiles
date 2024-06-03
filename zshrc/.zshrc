@@ -79,7 +79,7 @@ alias clean-cache="rm -fr ~/.cargo/registry ~/.cargo/git"
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
 # alias make='make -j8'
-alias cmake='cmake -D CMAKE_EXPORT_COMPILE_COMMANDS=1 CMAKE_BUILD_TYPE=Release'
+alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release'
 alias cmake-build='cmake -S . -B build && cp build/compile_commands.json .'
 alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
