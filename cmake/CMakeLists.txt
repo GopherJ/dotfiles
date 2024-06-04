@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-option(GOOGLE_TEST        "Enables testing with Google Test." OFF)
+option(GOOGLE_TEST "Enables testing with Google Test." OFF)
 
 set(APP_BUILD_VERSION "0.0.1")
 
@@ -47,7 +47,8 @@ execute_process(
   OUTPUT_VARIABLE GIT_COMMIT_HASH
   OUTPUT_STRIP_TRAILING_WHITESPACE)
 
-project(App
+project(
+  App
   VERSION ${APP_BUILD_VERSION}
   LANGUAGES CXX C CUDA)
 
@@ -55,23 +56,32 @@ if(EXISTS ${PROJECT_SOURCE_DIR}/include)
   include_directories(${PROJECT_SOURCE_DIR}/include)
 endif()
 
-set(OPENSSL_USE_STATIC_LIBS ON)
 find_package(Threads)
+set(OPENSSL_USE_STATIC_LIBS ON)
 find_package(OpenSSL)
 find_package(CUDAToolkit)
-find_package(Boost 1.74 REQUIRED COMPONENTS filesystem system)
+set(Boost_USE_STATIC_LIBS ON)
+set(Boost_USE_MULTITHREADED ON)
+set(Boost_USE_STATIC_RUNTIME OFF)
+find_package(Boost REQUIRED COMPONENTS filesystem atomic regex chrono)
 
 add_definitions(-DBUILD_VERSION="${APP_BUILD_VERSION}")
 add_definitions(-DBUILD_ID="${GIT_COMMIT_HASH}")
 add_definitions(-DBUILD_ARCH="${CMAKE_HOST_SYSTEM_PROCESSOR}")
 
-file(GLOB_RECURSE SRC_FILES "src/*.cpp" "src/*.c" "src/*.h" "src/*.cuh" "src/*.cu")
+file(
+  GLOB_RECURSE
+  SRC_FILES
+  "src/*.cpp"
+  "src/*.c"
+  "src/*.h"
+  "src/*.cuh"
+  "src/*.cu")
 
 if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
    OR EXISTS "${PROJECT_SOURCE_DIR}/src/main.c")
-  # set(CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
+  # list(APPEND CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
   add_executable(${PROJECT_NAME} ${SRC_FILES})
-  add_custom_target(run ./${PROJECT_NAME})
 
   install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 else()
@@ -105,11 +115,12 @@ foreach(SUB_DIR ${SUB_DIRS})
   add_subdirectory(${CMAKE_SOURCE_DIR}/third_party/${SUB_DIR})
 endforeach()
 
-target_link_libraries(${PROJECT_NAME} Threads::Threads CUDA::cudart cuda)
+# cuda_driver cannot be statically linked
+target_link_libraries(${PROJECT_NAME} Threads::Threads CUDA::cudart_static CUDA::cuda_driver)
 if(OPENSSL_FOUND)
   target_link_libraries(${PROJECT_NAME} OpenSSL::SSL OpenSSL::Crypto)
 endif()
 
 if(Boost_FOUND)
-  target_link_libraries(${PROJECT_NAME} Boost::filesystem)
+  target_link_libraries(${PROJECT_NAME} Boost::filesystem Boost::atomic Boost::regex Boost::chrono)
 endif()
