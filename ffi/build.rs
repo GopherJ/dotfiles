@@ -17,6 +17,7 @@ fn main() -> anyhow::Result<()> {
 
     cc::Build::new()
         .cuda(true)
+        .flag("-allow-unsupported-compiler")
         .opt_level(3)
         .cudart("static")
         .file(concat!(env!("CARGO_MANIFEST_DIR"), "/../cmake/src/kernel.cu"))
