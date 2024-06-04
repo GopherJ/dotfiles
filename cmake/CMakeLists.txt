@@ -80,7 +80,7 @@ file(
 
 if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
    OR EXISTS "${PROJECT_SOURCE_DIR}/src/main.c")
-  # list(APPEND CMAKE_EXE_LINKER_FLAGS "-static -static-libgcc -static-libstdc++")
+  # list(APPEND CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++")
   add_executable(${PROJECT_NAME} ${SRC_FILES})
 
   install(TARGETS ${PROJECT_NAME} DESTINATION bin)

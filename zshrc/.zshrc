@@ -301,6 +301,13 @@ function ebpf2obj {
       $1
   fi
 }
+function c2llvm {
+  if [ ! -z "$1" ]; then
+      clang -S \
+      -emit-llvm \
+      $1
+  fi
+}
 function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         nvm install $2 --reinstall-packages-from=$1 \
