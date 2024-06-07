@@ -358,6 +358,11 @@ function ra {
         rg $1 -l | xargs -i sed -i "s|$1|$2|g" {}
     fi
 }
+function raa {
+    if [ ! -z "$1" ] && [ ! -z "$2" ]; then
+        rg $1 -l | xargs -i  perl -pi -e "s|$1|$2|g" {}
+    fi
+}
 function ge {
     if [ ! -z "$1" ]; then
         git fetch origin +refs/pull/$1/merge
