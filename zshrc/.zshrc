@@ -1,4 +1,6 @@
 alias vim="nvim -p"
+alias llc="llc-15"
+alias opt="opt-15"
 # alias v='nvim -p $(fzf)'
 alias tv="tidy-viewer"
 alias vimdiff="nvim -d"
@@ -78,7 +80,7 @@ alias clean-cache="rm -fr ~/.cargo/registry ~/.cargo/git"
 # alias bitcoin-cli='bitcoin-cli -regtest -rpcwallet=default -rpcuser=devnet -rpcpassword=devnet'
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
-# alias make='make -j8'
+alias make-clean='make -j$(nproc) clean && make -j$(nproc) distclean'
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release'
 alias cmake-build='cmake -S . -B build && cp build/compile_commands.json .'
 alias wrk='wrk -t8 -d30s -c1000'
@@ -306,6 +308,18 @@ function c2llvm {
       clang -S \
       -emit-llvm \
       $1
+  fi
+}
+function s2o {
+  if [ ! -z "$1" ]; then
+      clang \
+      -c $1 \
+      -o "${1%%.*}.o" \
+  fi
+}
+function ll2o {
+  if [ ! -z "$1" ]; then
+    llc -filetype=obj $1 -o "${1%%.*}.o"
   fi
 }
 function nvm-change-from-to {
