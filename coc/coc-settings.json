@@ -153,6 +153,8 @@
   "pyright.inlayHints.functionReturnTypes": false,
   "python.analysis.typeCheckingMode": "off",
   "java.compile.nullAnalysis.mode": "disabled",
+  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.autoImportCompletions": true,
   "java.configuration.runtimes": [
     {
       "name": "JavaSE-17",
