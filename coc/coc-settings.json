@@ -86,8 +86,6 @@
   },
   "go.trace.server": "off",
   "clangd.enabled": true,
-  "clangd.arguments": ["--header-insertion=never"],
-  "clangd.disableDiagnostics": ["drv_unsupported_opt","drv_unknown_argument"],
   "yank.highlight.enable": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",
