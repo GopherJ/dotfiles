@@ -6,8 +6,10 @@
 [core]
     quotepath = false
     autocrlf = input
-[url "ssh://git@github.com/"]
-    insteadOf = https://github.com/
+[credential]
+	helper = /usr/share/doc/git/contrib/credential/libsecret/git-credential-libsecret
+# [url "ssh://git@github.com/"]
+#     insteadOf = https://github.com/
 # [http]
 # 	proxy = http://127.0.0.1:10086
 # [https]
