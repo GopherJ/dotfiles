@@ -2,7 +2,10 @@
   "languageserver": {
     "typst": {
         "command": "typst-lsp",
-        "filetypes": ["typst"]
+        "filetypes": ["typst"],
+        "settings": {
+		      "exportPdf": "onSave"
+	      }
     }
   },
   "workspace.ignoredFolders": [
