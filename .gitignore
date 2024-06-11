@@ -13,3 +13,9 @@ clash/*.yaml
 cmake/build
 cmake/.cache
 target/
+
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
