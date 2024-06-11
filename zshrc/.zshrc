@@ -82,6 +82,7 @@ alias clean-cache="rm -fr ~/.cargo/registry ~/.cargo/git"
 # alias bitcoin-cli='bitcoin-cli -regtest -rpcwallet=default -rpcuser=devnet -rpcpassword=devnet'
 alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
+alias make-build='bear -- make -j$(nproc)'
 alias make-clean='make -j$(nproc) clean && make -j$(nproc) distclean'
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release'
 alias cmake-build='cmake -S . -B build && cp build/compile_commands.json .'
