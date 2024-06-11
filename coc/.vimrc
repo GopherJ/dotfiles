@@ -266,6 +266,7 @@ Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
 Plug 'leoluz/nvim-dap-go'
+Plug 'kaarmu/typst.vim'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/lsp-status.nvim'
@@ -1245,6 +1246,9 @@ let g:tex_flavor='latex'
 let g:vimtex_quickfix_mode=0
 " set conceallevel=1
 " let g:tex_conceal='abdmg'
+
+" typst.vim
+let g:typst_pdf_viewer = 'xreader'
 
 " copilot.nvim
 imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
