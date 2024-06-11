@@ -16,6 +16,7 @@
 " :'<,'>!tac
 " :'<,'>s/,/\r/g
 " :s/\s\+/\r/g
+" :sort u
 " <C-A> to get serial number
 " crc to convert to fooBar
 " crm to convert to FooBar
