@@ -309,7 +309,7 @@ Plug 'cespare/vim-toml'
 Plug 'stephpy/vim-yaml'
 Plug 'jparise/vim-graphql'
 Plug 'hashivim/vim-vagrant'
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'rhysd/vim-clang-format'
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }

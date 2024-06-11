@@ -5,6 +5,11 @@
         "filetypes": ["typst"]
     }
   },
+  "workspace.ignoredFolders": [
+    "$HOME",
+    "$HOME/.cargo/**",
+    "$HOME/.rustup/**"
+  ],
   "coc.preferences.formatOnSave": false,
   "coc.preferences.willSaveHandlerTimeout": 200,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
