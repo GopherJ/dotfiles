@@ -94,6 +94,8 @@
   },
   "go.trace.server": "off",
   "clangd.enabled": true,
+  "clangd.arguments": ["--enable-config"],
+  "clangd.disableDiagnostics": true,
   "yank.highlight.enable": false,
   "prettier.singleQuote": true,
   "prettier.trailingComma": "es5",

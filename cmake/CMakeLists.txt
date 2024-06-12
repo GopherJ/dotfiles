@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.18)
 
-option(GOOGLE_TEST "Enables testing with Google Test." OFF)
+option(BUILD_TESTING "Enables testing with Google Test." OFF)
 
 set(APP_BUILD_VERSION "0.0.1")
 
@@ -53,7 +53,7 @@ project(
   LANGUAGES CXX C CUDA)
 
 if(EXISTS ${PROJECT_SOURCE_DIR}/include)
-  include_directories(${PROJECT_SOURCE_DIR}/include)
+  target_include_directories(${PROJECT_SOURCE_DIR}/include)
 endif()
 
 find_package(Threads)
@@ -72,8 +72,10 @@ add_definitions(-DBUILD_ARCH="${CMAKE_HOST_SYSTEM_PROCESSOR}")
 file(
   GLOB_RECURSE
   SRC_FILES
+  CONFIGURE_DEPENDS
   "src/*.cpp"
   "src/*.c"
+  "src/*.hpp"
   "src/*.h"
   "src/*.cuh"
   "src/*.cu")
@@ -86,12 +88,12 @@ if(EXISTS "${PROJECT_SOURCE_DIR}/src/main.cpp"
   install(TARGETS ${PROJECT_NAME} DESTINATION bin)
 else()
   add_library(${PROJECT_NAME} ${SRC_FILES})
-  target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/src)
+  target_include_directories(${PROJECT_NAME} PRIVATE ${PROJECT_SOURCE_DIR}/src)
 
   install(TARGETS ${PROJECT_NAME} DESTINATION lib)
 endif()
 
-if(GOOGLE_TEST AND EXISTS "${CMAKE_SOURCE_DIR}/tests")
+if(BUILD_TESTING AND EXISTS "${CMAKE_SOURCE_DIR}/tests")
   add_subdirectory(tests)
   enable_testing()
   add_test(test_all tests/run_tests)
@@ -101,6 +103,7 @@ macro(SUBDIRLIST result curdir)
   file(
     GLOB children
     RELATIVE ${curdir}
+    CONFIGURE_DEPENDS
     ${curdir}/*)
   set(dirlist "")
   foreach(child ${children})
