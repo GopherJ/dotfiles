@@ -53,7 +53,7 @@ project(
   LANGUAGES CXX C CUDA)
 
 if(EXISTS ${PROJECT_SOURCE_DIR}/include)
-  target_include_directories(${PROJECT_SOURCE_DIR}/include)
+  include_directories(${PROJECT_SOURCE_DIR}/include)
 endif()
 
 find_package(Threads)
