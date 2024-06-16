@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=BilibiliDownload
+Exec=/home/cj/Projects/BilibiliVideoDownload/dist_electron/BilibiliVideoDownload-3.3.3.AppImage
+Type=Application
+Icon=/home/cj/Projects/BilibiliVideoDownload/build/icons/256x256.png
+StartupNotify=true
+
