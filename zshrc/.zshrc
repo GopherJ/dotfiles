@@ -1,6 +1,4 @@
 alias vim="nvim -p"
-alias llc="llc-15"
-alias opt="opt-15"
 # alias v='nvim -p $(fzf)'
 alias tv="tidy-viewer"
 alias vimdiff="nvim -d"
@@ -91,7 +89,7 @@ alias xz='tar -Jxvf'
 alias jz='tar -zxvf'
 alias make-build='bear -- make -j$(nproc)'
 alias make-clean='make -j$(nproc) clean && make -j$(nproc) distclean'
-alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release'
+alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug'
 alias cmake-generate='cmake -S . -B build && cp build/compile_commands.json .'
 alias cmake-build='cd build && make -j$(nproc)'
 alias wrk='wrk -t8 -d30s -c1000'
@@ -168,7 +166,6 @@ alias reset-last="git reset --hard HEAD^"
 alias diff-last="git diff HEAD^"
 alias rebase-latest='git stash && git fetch origin && git rebase origin/`git branch --show-current` && git stash apply'
 alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow-color '#555555' --line-pad 2 --pad-horiz 0 --pad-vert 0 --shadow-blur-radius 0 --shadow-offset-x 0 --shadow-offset-y 0 --output output.png"
-alias pandoc='pandoc -s -o output.pdf --pdf-engine=xelatex'
 alias aws-list-ec2='aws ec2 describe-instances'
 alias aws-launch-ec2='aws ec2 run-instances --image-id ami-0fc61db8544a617ed --count 1 --instance-type t3.2xlarge --key-name my-key-pair --security-groups my-security-group'
 alias test-cache-misses="perf stat -e cache-misses"
@@ -327,7 +324,7 @@ function s2o {
   if [ ! -z "$1" ]; then
       clang \
       -c $1 \
-      -o "${1%%.*}.o" \
+      -o "${1%%.*}.o"
   fi
 }
 function ll2o {
@@ -504,6 +501,11 @@ function kill-port {
 function to-pdf {
     if [ ! -z "$1" ]; then
       ebook-convert $1 "${1%%.*}.pdf"
+    fi
+}
+function markdown-to-pdf {
+    if [ ! -z "$1" ]; then
+      pandoc $1 -s -o "${1%%.*}.pdf" --pdf-engine=xelatex
     fi
 }
 function bitcoin-block {
