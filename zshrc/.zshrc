@@ -38,6 +38,7 @@ alias ebooks="o ~/Documents/CJ/Public/Ebook/ebooks"
 alias draft="o https://www.notion.so/0xcc6347c/Draft-3a0bdc2d2ee045378aafd5f8b058a6ad"
 alias todo="o https://www.notion.so/0xcc6347c/TODO-497b4e700a1a4a5dbc063ec711153fa7"
 alias selfteaching="o https://www.notion.so/0xcc6347c/0b55518669c340258018834f30f0e757"
+alias cppreference="o https://en.cppreference.com/w/cpp/17"
 alias c='xclip -selection c'
 alias rg="rg --hidden --iglob '!**/out' --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/.yarn' --iglob '!**/build' --iglob '!**/yarn.lock' --iglob '!**/*.min.js' --iglob '!**/*.min.css'"
 alias h="history -n"
@@ -65,7 +66,7 @@ alias goclean="go clean -modcache"
 alias cr="cargo run"
 alias cre="cargo run --example"
 alias cf="cargo fmt --all -- --check"
-alias cb="cargo build --release"
+alias cb="cargo build"
 alias ckall="cargo check --all-targets --all-features"
 alias cu="cargo update --recursive -v --color always"
 alias cfix="cargo fix --all-targets --allow-dirty --allow-staged && cargo clippy --fix --all-targets --allow-dirty --allow-staged"
@@ -85,13 +86,13 @@ alias clean-artifacts="find . -type d -a -name 'node_modules' -o -name 'target' 
 alias clean-cache="rm -fr ~/.cargo/registry ~/.cargo/git"
 # alias ord='ord -r --bitcoin-rpc-user=devnet --bitcoin-rpc-pass=devnet'
 # alias bitcoin-cli='bitcoin-cli -regtest -rpcwallet=default -rpcuser=devnet -rpcpassword=devnet'
-alias xz='tar -Jxvf'
-alias jz='tar -zxvf'
 alias make-build='bear -- make -j$(nproc)'
 alias make-clean='make -j$(nproc) clean && make -j$(nproc) distclean'
 alias cmake='cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug'
-alias cmake-generate='cmake -S . -B build && cp build/compile_commands.json .'
-alias cmake-build='cd build && make -j$(nproc)'
+alias cmake-generate='cmake -S . -B Debug && (cp Debug/compile_commands.json . > /dev/null 2>&1 || true)'
+alias cmake-build='cd Debug && (make -j$(nproc) || true) && cd ..'
+alias cmake-clean='rm -fr Debug'
+alias cmake-run='(cd Debug && make run) || cd ..'
 alias wrk='wrk -t8 -d30s -c1000'
 alias visudo='sudo EDITOR=vim visudo'
 alias n='nnn'
@@ -136,9 +137,6 @@ alias vimdocker='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm -i
 alias vimdockerd='docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 9999:9999 alexcj96/vim-docker-env:latest'
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias sshkeygen-ecdsa='ssh-keygen -f ~/.ssh/id_ecdsa -t ecdsa'
-alias create-vimspector-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/vimspector/.vimspector.json'
-alias create-clang-format-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/clangformat/.clang-format'
-alias create-cmakelists-config='curl -sSO https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/cmake/CMakeLists.txt'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
 alias list-global-node-packages="npm list -g --depth 0"
 alias give-me-certificates="certbot certonly --standalone -d"
@@ -146,8 +144,7 @@ alias dedup="sort -u | uniq"
 alias ignore-first-line="awk NR\>1"
 alias sum="awk -F',' '{sum+=$1;} END{print sum;}'"
 alias iptables-reset="iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X"
-alias show-ip="curl ip.gs"
-alias check-if-socks5="curl cip.cc"
+alias show-ip="curl cip.cc"
 alias setproxy="export ALL_PROXY=socks5://127.0.0.1:10086"
 alias unsetproxy="unset ALL_PROXY"
 alias dot="polkadot-js-api"
@@ -156,7 +153,6 @@ alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) 
 alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
 alias gpgkeygen="gpg --expert --full-generate-key"
 alias gpgkill="gpgconf --kill gpg-agent"
-alias squash-last="git rebase --interactive HEAD^^"
 # alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')\""
 alias up="docker-compose up -d"
 alias down="docker-compose down --remove-orphans"
@@ -169,9 +165,19 @@ alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow
 alias aws-list-ec2='aws ec2 describe-instances'
 alias aws-launch-ec2='aws ec2 run-instances --image-id ami-0fc61db8544a617ed --count 1 --instance-type t3.2xlarge --key-name my-key-pair --security-groups my-security-group'
 alias test-cache-misses="perf stat -e cache-misses"
-alias pc-path="pkg-config --variable pc_path pkg-config"
+alias pkg-config-path="pkg-config --variable pc_path pkg-config"
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
+function xz() {
+    if [ ! -z "$1" ]; then
+      tar -Jcvf $1.tar.xz --exclude .git --exclude node_modules --exclude target $1
+    fi
+}
+function gz() {
+    if [ ! -z "$1" ]; then
+      tar -zcvf $1.tgz --exclude .git --exclude node_modules --exclude target $1
+    fi
+}
 function swap() {
     local TMPFILE=tmp.$$
     mv "$1" $TMPFILE && mv "$2" "$1" && mv $TMPFILE "$2"
@@ -357,11 +363,6 @@ function npm-pkg-version {
         npm view  $1 versions --json
     fi
 }
-function create-eslint-config {
-    if [[ "$1" == "browser" ]] || [[ "$1" == "node" ]]; then
-        curl -sSo .eslintrc.json https://cdn.jsdelivr.net/gh/GopherJ/dotfiles/eslint/$1.eslintrc.json
-    fi
-}
 function ecat {
     if [ ! -z "$1" ]; then
         cat $1 | sed ':a;N;$!ba;s/\n/\\n/g'
@@ -498,14 +499,19 @@ function kill-port {
       done
     fi
 }
-function to-pdf {
+function ebook-to-pdf {
     if [ ! -z "$1" ]; then
       ebook-convert $1 "${1%%.*}.pdf"
     fi
 }
-function markdown-to-pdf {
+function pandoc-to-pdf {
     if [ ! -z "$1" ]; then
       pandoc $1 -s -o "${1%%.*}.pdf" --pdf-engine=xelatex
+    fi
+}
+function pandoc-to-tex {
+    if [ ! -z "$1" ]; then
+      pandoc $1 -s -o "${1%%.*}.tex"
     fi
 }
 function bitcoin-block {
@@ -608,10 +614,12 @@ function v {
 # export GOPATH="$HOME/go"
 # export GOROOT="/usr/local/go"
 # export CARGO_TARGET_DIR="$HOME/.cargo/cache"
+export NVM_LAZY_LOAD=true
+export DISABLE_AUTO_UPDATE="true"
 export C_INCLUDE_PATH="/usr/include/x86_64-linux-gnu:$C_INCLUDE_PATH"
 export CPLUS_INCLUDE_PATH="/usr/include/x86_64-linux-gnu:$CPLUS_INCLUDE_PATH"
-export CC=/usr/bin/clang
-export CXX=/usr/bin/clang++
+# export CC=/usr/bin/clang
+# export CXX=/usr/bin/clang++
 export CUDA_HOME="/usr/lib/cuda"
 export CMAKE_CUDA_COMPILER="/usr/bin/nvcc"
 export NPM_CONFIG_REGISTRY="http://registry.npmmirror.com"
@@ -695,18 +703,18 @@ export ETH_FROM="0x2f2d07d60ea7330DD2314f4413CCbB2dC25276EF"
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# eval "$(fnm env --use-on-cd)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 [ -f ~/.fzf-git.zsh ] && source ~/.fzf-git.zsh
 [ -f ~/.emsdk/emsdk_env.sh ] && source ~/.emsdk/emsdk_env.sh > /dev/null 2>&1
 [ -f $CARGO_HOME/env ] && . $CARGO_HOME/env
-[ -f ~/.zshenv ] && source ~/.zshenv
 # [ -f ~/.autojump.zsh ] && source ~/.autojump.zsh
 
 # [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-eval "$(goenv init -)"
 eval "$(zoxide init zsh)"
 
+eval "$(goenv init -)"
 export PATH="$(go env GOPATH)/bin:$PATH"
 
 _systemctl_unit_state() {

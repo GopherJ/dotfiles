@@ -17,6 +17,9 @@
 " :'<,'>s/,/\r/g
 " :s/\s\+/\r/g
 " :sort u
+" :%!xxd
+" :%!xxd -r
+" :%s/\s*$//g
 " <C-A> to get serial number
 " crc to convert to fooBar
 " crm to convert to FooBar
@@ -44,7 +47,7 @@ let g:loaded_ruby_provider = 0
 let g:loaded_perl_provider = 0
 let g:loaded_python_provider = 0
 
-" set shell=/usr/bin/zsh
+set shell=/usr/bin/bash
 
 set encoding=UTF-8
 
@@ -169,6 +172,8 @@ nnoremap <silent>  g* g*zz
 nnoremap <leader>v        <C-W>v
 nnoremap <leader>s        <C-W>s
 
+nnoremap <M-=> :below terminal<CR>i
+
 " nnoremap <C-W>     :cclose<CR>
 " nnoremap <C-D>     :qall!<CR>
 
@@ -262,6 +267,7 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'wakatime/vim-wakatime'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'kawre/leetcode.nvim'
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
@@ -436,7 +442,7 @@ function! SetupCommandAbbrs(from, to)
 endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
-call SetupCommandAbbrs('Z', ':e ~/.zshrc')
+call SetupCommandAbbrs('Z', ':e ~/.zshenv')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('RS', ':e ~/Downloads/test-rs/src/main.rs')
 call SetupCommandAbbrs('GO', ':e ~/Downloads/test-go/main.go')
@@ -448,14 +454,12 @@ call SetupCommandAbbrs('N', ':e ~/.txt')
 call SetupCommandAbbrs('K', ':e ~/.kpi')
 call SetupCommandAbbrs('D', ':e ~/.trash')
 call SetupCommandAbbrs('T', ':e ~/.todo')
-call SetupCommandAbbrs('F', ':FloatermNew --width=90')
 
 let g:coc_global_extensions = [
             \'coc-tsserver',
             \'coc-pairs',
             \'coc-rust-analyzer',
             \'coc-vetur',
-            \'coc-fzf-preview',
             \'coc-git',
             \'coc-lists',
             \'coc-snippets',
@@ -595,13 +599,13 @@ command! -nargs=0 R               CocRestart
 command! -nargs=0 TODO            CocList -A --normal grep -e TODO|FIXME|todo
 command! -nargs=0 Status          CocList -A --normal gstatus
 
-command! -nargs=0 Format        call CocAction('format')
-command! -nargs=0 Fold          call CocAction('fold')
+command! -nargs=0 Format :call CocActionAsync('format')
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 command! -nargs=0 GitChunkUndo  call CocAction('runCommand', 'git.chunkUndo')
 command! -nargs=0 GitChunkStage call CocAction('runCommand', 'git.chunkStage')
 command! -nargs=0 GitShowCommit call CocAction('runCommand', 'git.showCommit')
 command! -nargs=0 GitDiffCached call CocAction('runCommand', 'git.diffCached')
-command! -nargs=0 OR            call CocAction('runCommand', 'editor.action.organizeImport')
+command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.go        : call CocAction('runCommand', 'editor.action.organizeImport')
 " autocmd BufWritePre *.ts        : call CocAction('runCommand', 'editor.action.organizeImport')
 
@@ -887,35 +891,13 @@ command! -bang -nargs=* Rg
 " asynctasks
 let g:asyncrun_open = 6
 let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod', 'CMakeLists.txt', 'Makefile']
-let g:asynctasks_term_pos = 'floaterm'
+let g:asynctasks_term_pos = 'floaterm_reuse'
+let g:asynctasks_term_reuse = 1
+let g:asynctasks_term_focus = 0
 let g:asynctasks_template = {}
-let g:asynctasks_template.cargo = [
-            \ "[project-build]",
-            \ "command=cargo build",
-            \ "cwd=<root>",
-            \ "errorformat=%. %#--> %f:%l:%c",
-            \ "",
-            \ "[project-run]",
-            \ "command=cargo run",
-            \ "cwd=<root>",
-            \ "output=terminal",
-            \ ]
-let g:asynctasks_template.cmake = [
-            \ "[project-build]",
-            \ "command=make",
-            \ "cwd=<root>/Debug",
-            \ "",
-            \ "[project-run]",
-            \ "command=make run",
-            \ "cwd=<root>/Debug",
-            \ "output=terminal",
-            \ ]
-noremap  <silent><F1>        : AsyncTask file-build<cr>
-noremap  <silent><F2>        : AsyncTask file-run<cr>
-noremap  <silent><F3>        : AsyncTask project-build<cr>
-noremap  <silent><F4>        : AsyncTask project-run<cr>
-nnoremap <silent><leader>t   : AsyncTask project-test<cr>
-nnoremap <silent> <space>t   : <C-u>CocList --normal tasks<CR>
+noremap  <silent><F1>        : AsyncTask file-run<cr>
+noremap  <silent><F2>        : AsyncTask project-run<cr>
+noremap  <silent><F3>        : AsyncTask project-test<cr>
 
 " vim-vue
 " npm i -g eslint eslint-plugin-vue
@@ -1017,6 +999,7 @@ if has('nvim')
     let g:neoterm_autoscroll = 1
     autocmd TermOpen term://*:gitui startinsert
     autocmd TermOpen term://*:zsh startinsert
+    autocmd TermOpen term://*:bash startinsert
     tnoremap <Esc> <C-\><C-n>:bw!<CR>
     noremap <C-G> :tabe<CR>:-tabmove<CR>:term gitui<CR>
     noremap <C-Y> :tabe<CR>:-tabmove<CR>:term zsh<CR>
@@ -1148,7 +1131,7 @@ let g:silicon = {
 
 
 " vim-rooter
-let g:rooter_patterns = [".git/"]
+let g:rooter_patterns = [".git/", 'CMakeLists.txt']
 
 " vim-instant-markdown
 let g:instant_markdown_mermaid = 1
@@ -1296,3 +1279,8 @@ lua <<EOF
     end
 EOF
 vnoremap <C-k> <Cmd>lua require("dapui").eval()<CR>
+
+"vim-floaterm
+let g:floaterm_wintype = "split"
+let g:floaterm_position =  "botright"
+let g:floaterm_height = 0.35
