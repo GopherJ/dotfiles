@@ -10,7 +10,7 @@ END="\033[0m"
 
 STATUS_TEXT=""
 
-command -v mo > /dev/null 2>&1 || bash -c "curl -sSL https://git.io/get-mo -o mo && chmod +x mo && sudo mv mo /usr/local/bin/"
+# command -v mo > /dev/null 2>&1 || bash -c "curl -sSL https://git.io/get-mo -o mo && chmod +x mo && sudo mv mo /usr/local/bin/"
 
 if [ ! "$1" == "--install" ] && [ ! "$1" == "--uninstall" ] && [ ! "$1" == "--status" ] && [ ! "$1" == "--start" ] && [ ! "$1" == "--stop" ] && [ ! "$1" ==  "--restart" ]; then
     echo -e "$RED./setup.sh --install|--uninstall|--status|--start|--stop|--restart$END" && exit 1
@@ -27,7 +27,7 @@ while IFS="\n" read -r SERVICE; do
     if [ -z "$SERVICE_NAME" ]; then continue; fi
 
     SERVICE_DESCRIPTION="$(echo $SERVICE | cut -f3 -d,)"
-    EXEC_START="$(echo "$(readlink -f $EXECUTABLE) $(echo $SERVICE | cut -f4 -d,)" | mo)"
+    EXEC_START="$(echo "$(readlink -f $EXECUTABLE) $(echo $SERVICE | cut -f4 -d,)")"
 
     if [ "$1" == "--install" ]; then
         echo -e "$GREEN=> Daemonlizing $EXECUTABLE...$END"
