@@ -890,7 +890,7 @@ command! -bang -nargs=* Rg
 
 " asynctasks
 let g:asyncrun_open = 6
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod', 'CMakeLists.txt', 'Makefile']
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod', 'CMakeLists.txt', 'Makefile', 'pyproject.toml']
 let g:asynctasks_term_pos = 'floaterm_reuse'
 let g:asynctasks_term_reuse = 1
 let g:asynctasks_term_focus = 0
