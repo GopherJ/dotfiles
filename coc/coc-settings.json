@@ -6,6 +6,12 @@
         "settings": {
 		      "exportPdf": "onSave"
 	      }
+    },
+    "zig": {
+      "command": "zls",
+      "filetypes": [
+        "zig"
+      ]
     }
   },
   "workspace.ignoredFolders": [

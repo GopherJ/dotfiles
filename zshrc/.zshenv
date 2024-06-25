@@ -8,9 +8,8 @@ alias error-decode="cast calldata-decode 'Error(string)'"
 alias sig="cast sig"
 alias keccak="cast keccak"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
-alias youtube-dl="proxychains -q youtube-dl"
-alias you-get="proxychains -q you-get"
-alias rsync="rsync -a --delete --link-dest"
+alias yt-dlp="yt-dlp --proxy 'socks5://127.0.0.1:10086'"
+alias rsync="rsync -a --delete"
 alias bisect="git bisect start"
 alias bisect-good="git bisect good"
 alias bisect-bad="git bisect bad"
@@ -738,3 +737,6 @@ ssh-add > /dev/null 2>&1
 
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
+
+setopt no_nomatch
+/usr/bin/setxkbmap -option "caps:escape"

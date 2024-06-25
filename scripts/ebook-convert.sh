@@ -1,16 +1,7 @@
 #!/bin/bash
 
-for f in `find . -name '*.epub'`
+for f in `find . -name '*.epub' -o -name '*.mobi' -o -name '*.azw3'`
 do
   ebook-convert $f "${f%%.*}.pdf"
-done
-
-for f in `find . -name '*.mobi'`
-do
-  ebook-convert $f "${f%%.*}.pdf"
-done
-
-for f in `find . -name '*.azw3'`
-do
-  ebook-convert $f "${f%%.*}.pdf"
+  rm $f
 done

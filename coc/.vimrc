@@ -156,10 +156,7 @@ augroup FiletypeConfig
     autocmd BufNewFile,BufReadPost *.sage setlocal filetype=python
     autocmd BufNewFile,BufReadPost *.typst setlocal filetype=typst
     autocmd BufNewFile,BufReadPost *Dockerfile* setlocal filetype=dockerfile
-    autocmd User CocStatusChange redrawstatus
 augroup END
-
-autocmd InsertLeave * set nopaste
 
 syntax enable
 
@@ -267,7 +264,6 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'wakatime/vim-wakatime'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
-Plug 'kawre/leetcode.nvim'
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
@@ -442,6 +438,7 @@ function! SetupCommandAbbrs(from, to)
 endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
+call SetupCommandAbbrs('CP', ":Copilot panel<CR>")
 call SetupCommandAbbrs('Z', ':e ~/.zshenv')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('RS', ':e ~/Downloads/test-rs/src/main.rs')
@@ -451,7 +448,6 @@ call SetupCommandAbbrs('TS', ':e ~/Downloads/test-ts/main.ts')
 call SetupCommandAbbrs('JS', ':e ~/Downloads/test-js/main.js')
 call SetupCommandAbbrs('S', ':e ~/.secret')
 call SetupCommandAbbrs('N', ':e ~/.txt')
-call SetupCommandAbbrs('K', ':e ~/.kpi')
 call SetupCommandAbbrs('D', ':e ~/.trash')
 call SetupCommandAbbrs('T', ':e ~/.todo')
 
@@ -561,6 +557,10 @@ augroup CocCustomGroup
     autocmd FileType scss setl iskeyword+=@-@
     autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
     autocmd CursorHold * silent call CocActionAsync('highlight')
+    autocmd User CocStatusChange redrawstatus
+    autocmd InsertLeave * set nopaste
+    autocmd InsertLeave * :silent !fcitx-remote -c
+    autocmd InsertEnter * :silent !fcitx-remote -o
     " autocmd BufWritePre *.ts  call CocActionAsync('runCommand', 'eslint.executeAutofix')
     " autocmd BufWritePre *.rs  call CocActionAsync('runCommand', 'rust-analyzer.runFlycheck')
 augroup end
@@ -699,7 +699,7 @@ function! s:GrepArgs(...)
     return join(list, "\n")
 endfunction
 
-nnoremap <silent> <space>q  : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
+nnoremap <silent> <space>q    : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 
 " coc-translator
@@ -777,7 +777,7 @@ command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg'  --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' ".shellescape(<q-args>), 1,
+            \   "rg --column --ignore-case --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg'  --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' --iglob '!**/.zig-cache' ".shellescape(<q-args>), 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \ <bang>0)
@@ -890,7 +890,7 @@ command! -bang -nargs=* Rg
 
 " asynctasks
 let g:asyncrun_open = 6
-let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod', 'CMakeLists.txt', 'Makefile', 'pyproject.toml']
+let g:asyncrun_rootmarks = ['.git', '.svn', '.root', '.project', '.hg', 'Cargo.toml', 'package.json', 'go.mod', 'CMakeLists.txt', 'Makefile', 'pyproject.toml', 'build.zig']
 let g:asynctasks_term_pos = 'floaterm_reuse'
 let g:asynctasks_term_reuse = 1
 let g:asynctasks_term_focus = 0
@@ -1053,7 +1053,7 @@ let g:fold_cycle_default_mapping = 0
 nmap za <Plug>(fold-cycle-toggle-all)
 
 " asyncrun.vim
-nnoremap <F12> :call asyncrun#quickfix_toggle(6)<CR>
+" nnoremap <F12> :call asyncrun#quickfix_toggle(6)<CR>
 
 " vim-cmake
 let g:cmake_link_compile_commands=1
@@ -1142,7 +1142,7 @@ let g:instant_markdown_autostart = 0
 " sudo rm -fr /usr/lib/x86_64-linux-gnu/nvim/parser                                    │
 lua <<EOF
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc","typst"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc","typst","nasm","zig"},
  highlight = {
    enable = true,
    disable = {},
@@ -1284,3 +1284,6 @@ vnoremap <C-k> <Cmd>lua require("dapui").eval()<CR>
 let g:floaterm_wintype = "split"
 let g:floaterm_position =  "botright"
 let g:floaterm_height = 0.35
+
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
