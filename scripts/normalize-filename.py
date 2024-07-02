@@ -44,7 +44,7 @@ def normalize_file_names(path):
             new_fname = re.sub(r'\{([^}]*)\}', r"_\1_", new_fname)
             new_fname = re.sub(r'\[([^\]]*)\]', r"_\1_", new_fname)
 
-            new_fname = re.sub(r'[~!@#$%^&*()+={}\[\]\|\\;:\'",<>/?]', '', new_fname)
+            new_fname = re.sub(r'[~!¡@#$%^&*()+={}\[\]\|\\;:\'"`,<>/?]', '', new_fname)
 
             new_fname = re.sub(r'\.+', '_', new_fname)
             new_fname = re.sub(r'[-\s]+', '_', new_fname)
