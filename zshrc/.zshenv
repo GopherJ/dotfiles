@@ -1,5 +1,5 @@
 alias vim="nvim -p"
-# alias v='nvim -p $(fzf)'
+alias minivim="nvim -u ~/.minivim.lua -p"
 alias tv="tidy-viewer"
 alias vimdiff="nvim -d"
 alias abi-encode="cast abi-encode"
@@ -34,19 +34,10 @@ alias sb="source ~/.bashrc"
 alias tz="date +'%Z %z'"
 alias x="chmod u+x"
 alias o="xdg-open "
-alias youtube="o https://www.youtube.com/feed/playlists"
-alias bilibili="o https://space.bilibili.com/470438587/favlist"
-alias ebooks="o ~/Documents/CJ/Public/Ebook/ebooks"
-alias videos="o ~/Documents/CJ/Videos"
-alias articles="o ~/Documents/CJ/Articles"
-alias draft="o https://www.notion.so/0xcc6347c/Draft-3a0bdc2d2ee045378aafd5f8b058a6ad"
-alias todo="o https://www.notion.so/0xcc6347c/TODO-497b4e700a1a4a5dbc063ec711153fa7"
-alias selfteaching="o https://www.notion.so/0xcc6347c/0b55518669c340258018834f30f0e757"
-alias cppreference="o https://en.cppreference.com/w/cpp/17"
 alias c='xclip -selection c'
-alias rg="rg --hidden --iglob '!**/out' --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/.yarn' --iglob '!**/build' --iglob '!**/yarn.lock' --iglob '!**/*.min.js' --iglob '!**/*.min.css'"
+alias rg="rg --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' --iglob '!**/.zig-cache'"
 alias h="history -n"
-alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
+# alias rust-musl-builder='docker run --rm -it -v "$(pwd)":/home/rust/src ekidd/rust-musl-builder'
 alias afs="sudo apt-file search "
 alias rstrip="sed -i 's/ *$//g'"
 alias uu="sudo apt update -y --fix-missing && sudo apt upgrade"
@@ -114,32 +105,32 @@ alias randomHex='openssl rand -hex 32'
 # alias repo='ghs repo'
 # alias issues='ghs issues'
 # alias commits='ghs commits'
-alias features='cargo whatfeatures -p'
-alias start='sudo systemctl start'
-alias stop='sudo systemctl stop'
-alias restart='sudo systemctl restart'
-alias status='sudo systemctl status'
-alias enable='sudo systemctl enable'
-alias disable='sudo systemctl disable'
-alias logf='sudo journal -f -u'
+# alias features='cargo whatfeatures -p'
+# alias start='sudo systemctl start'
+# alias stop='sudo systemctl stop'
+# alias restart='sudo systemctl restart'
+# alias status='sudo systemctl status'
+# alias enable='sudo systemctl enable'
+# alias disable='sudo systemctl disable'
+# alias logf='sudo journalctl -f -u'
 alias gofmt='gofmt -s -w .'
 alias triple-list='rustc --print target-list | pr -tw100 --columns 3'
-alias scan='rustscan'
+# alias scan='rustscan'
 alias groups='id -Gn'
 alias revert='git revert HEAD'
-alias weather='curl wttr.in'
+# alias weather='curl wttr.in'
 alias sockstat="netstat -an |awk '/tcp/ {++S[\$NF]}END {for (a in S) print a , S[a]}'"
-alias cronlogs='sudo grep CRON /var/log/syslog'
+# alias cronlogs='sudo grep CRON /var/log/syslog'
 alias cppcheck='cppcheck --enable=warning,performance --project=compile_commands.json'
-alias fetch-submodules='git submodule update --init --recursive'
+alias submodules-init='git submodule update --init --recursive'
 alias discover-hosts='nmap -sP 192.168.1.0/24'
-alias discover-macs='sudo arp-scan -I wlp0s20f3 -l'
+alias discover-macs='sudo arp-scan -I wlp4s0 -l'
 alias tcpdump='sudo tcpdump -i any -nnn -X -vvv -e -tttt'
 alias immutable-file='chattr +i'
 alias mutable-file='chattr -i'
 alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); exit}'"
-alias vimdocker='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm -it alexcj96/vim-docker-env:latest zsh'
-alias vimdockerd='docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 9999:9999 alexcj96/vim-docker-env:latest'
+# alias vimdocker='docker run -v /var/run/docker.sock:/var/run/docker.sock --rm -it alexcj96/vim-docker-env:latest zsh'
+# alias vimdockerd='docker run -v /var/run/docker.sock:/var/run/docker.sock -d -p 9999:9999 alexcj96/vim-docker-env:latest'
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias sshkeygen-ecdsa='ssh-keygen -f ~/.ssh/id_ecdsa -t ecdsa'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
@@ -152,15 +143,14 @@ alias iptables-reset="iptables -F && iptables -t nat -F && iptables -t mangle -F
 alias show-ip="curl cip.cc"
 alias setproxy="export ALL_PROXY=socks5://127.0.0.1:10086"
 alias unsetproxy="unset ALL_PROXY"
-alias dot="polkadot-js-api"
 alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
 alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
 alias gpgkeygen="gpg --expert --full-generate-key"
 alias gpgkill="gpgconf --kill gpg-agent"
 # alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')\""
-alias up="docker-compose up -d"
-alias down="docker-compose down --remove-orphans"
+# alias up="docker-compose up -d"
+# alias down="docker-compose down --remove-orphans"
 alias rebase-last="git rebase --interactive HEAD^^"
 alias gitsubmodules="git submodule update --init --recursive"
 alias reset-last="git reset --hard HEAD^"
@@ -191,6 +181,12 @@ function check-if-private-key-matches-public-key() {
   if [ ! -z "$1" ]; then
     diff <( ssh-keygen -y -e -f "$1" ) <( ssh-keygen -y -e -f "$1.pub" )
   fi
+}
+function skfd {
+  nvim $(fd --type f --exclude .git --exclude node_modules --exclude .cache --exclude third-party --exclude vendor --exclude target --exclude Cargo.lock --exclude yarn.lock --exclude package-lock.json --exclude .zig-cache --follow --hidden | sk -m)
+}
+function skrg {
+  nvim $(sk -m --ansi -i -c 'rg --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' --iglob '!**/.zig-cache' "{}"'| awk -F':' '{print "+"$2, $1}')
 }
 function v {
     if [ ! -z $1 ]; then
@@ -347,9 +343,9 @@ function nvm-change-from-to {
     if [ ! -z "$1" ] && [ ! -z "$2" ]; then
         nvm install $2 --reinstall-packages-from=$1 \
             && nvm use $2 \
-            && nvm alias default $2
-            # && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
-            # && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
+            && nvm alias default $2 \
+            && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/node" "/usr/local/bin/node" \
+            && sudo ln -s --force "$NVM_DIR/versions/node/$(nvm version)/bin/npm" "/usr/local/bin/npm"
     fi
 }
 function strace {
@@ -511,12 +507,54 @@ function ebook-to-pdf {
 }
 function pandoc-to-pdf {
     if [ ! -z "$1" ]; then
-      pandoc $1 -s -o "${1%%.*}.pdf" --pdf-engine=xelatex
+      if [ "$1" == "*.tex" ]; then
+        xelatex $1
+      else
+        pandoc $1 -s -o "${1%%.*}.pdf" --pdf-engine=xelatex -V mainfont="Noto Sans CJK SC"
+      fi
     fi
 }
 function pandoc-to-tex {
     if [ ! -z "$1" ]; then
-      pandoc $1 -s -o "${1%%.*}.tex"
+      pandoc $1 -s -o "${1%%.*}.tex" --pdf-engine=xelatex -V mainfont="Noto Sans CJK SC"
+      sed -i '1s|^|%! TEX TS-program = xelatex\n|' "${1%%.*}.tex"
+    fi
+}
+function graphviz-to-pdf {
+    if [ ! -z "$1" ]; then
+      dot -Tps2 $1 -o "${1%%.*}.ps" | ps2pdf "${1%%.*}.ps"
+    fi
+}
+function mdbook-init {
+    if [ ! -z "$1" ]; then
+      mdbook init --title "Test" --ignore git $1 && mdbook-mermaid install $1
+      for file in `find $1 -maxdepth 1 -name '*.md'`; do
+        md=$(basename -- $file)
+        mv $1/$md $1/src
+        echo "- [${md%%.*}](./$md)" >> $1/src/SUMMARY.md
+      done
+      sed -i '/additional-js/i mathjax-support = true' $1/book.toml
+      cat << EOF >> $1/book.toml
+
+[preprocessor.katex]
+after = ["links"]
+
+[preprocessor.plantuml]
+plantuml-cmd = "plantuml"
+
+# [preprocessor.toc]
+# command  = "mdbook-toc"
+# renderer = ["html"]
+#
+# [output.pdf]
+# enable = true
+# display-header-footer = true
+# header-template = "<span></span>"
+# footer-template = "<p style='font-size:10px; margin-left: 48%'><span class='pageNumber'></span> / <span class='totalPages'></span></p>"
+#
+# [output.pdf-outline]
+# like-wkhtmltopdf = false
+EOF
     fi
 }
 function bitcoin-block {
@@ -652,6 +690,7 @@ export EDITOR=nvim
 export GITHUB_API_TOKEN=""
 export GITLAB_PRIVATE_TOKEN=""
 export FZF_DEFAULT_COMMAND="fd --type f --exclude .git --exclude node_modules --exclude .cache --exclude third-party --exclude vendor --exclude target --exclude Cargo.lock --exclude yarn.lock --exclude package-lock.json --exclude .zig-cache --follow --hidden"
+export SKIM_DEFAULT_COMMAND="$FZF_DEFAULT_COMMAND"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export GO111MODULE=on
 # export RUSTC_WRAPPER="$CARGO_HOME/bin/sccache"
@@ -706,8 +745,8 @@ export ETH_FROM="0x2f2d07d60ea7330DD2314f4413CCbB2dC25276EF"
 # fi
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # eval "$(fnm env --use-on-cd)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -719,8 +758,8 @@ export NVM_DIR="$HOME/.nvm"
 # [ -f /home/linuxbrew/.linuxbrew/bin/brew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
 eval "$(zoxide init zsh)"
 
-eval "$(goenv init -)"
-export PATH="$(go env GOPATH)/bin:$PATH"
+# eval "$(goenv init -)"
+# export PATH="$(go env GOPATH)/bin:$PATH"
 
 _systemctl_unit_state() {
   typeset -gA _sys_unit_state
@@ -742,4 +781,4 @@ eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
 
 setopt no_nomatch
-/usr/bin/setxkbmap -option "caps:escape"
+/usr/bin/setxkbmap -option "caps:escape" > /dev/null 2>&1 || true

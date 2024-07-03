@@ -5,12 +5,18 @@ multilingual = false
 src          = "src"
 title        = "Untitled"
 
-
-[preprocessor.katex]
-after = ["links"]
-
 [preprocessor.mermaid]
 command = "mdbook-mermaid"
+
+[output.html]
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+mathjax-support = true
+
+[output.html.print]
+enable = true
+
+# [preprocessor.katex]
+# after = ["links"]
 
 [preprocessor.plantuml]
 plantuml-cmd = "plantuml"
@@ -18,10 +24,12 @@ plantuml-cmd = "plantuml"
 # [preprocessor.toc]
 # command  = "mdbook-toc"
 # renderer = ["html"]
-
-[output.html]
-additional-js = ["mermaid.min.js", "mermaid-init.js"]
-[output.html.print]
-enable = true
-
+#
 # [output.pdf]
+# enable = true
+# display-header-footer = true
+# header-template = "<span></span>"
+# footer-template = "<p style='font-size:10px; margin-left: 48%'><span class='pageNumber'></span> / <span class='totalPages'></span></p>"
+#
+# [output.pdf-outline]
+# like-wkhtmltopdf = false

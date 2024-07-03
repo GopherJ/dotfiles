@@ -4,3 +4,5 @@ filebrowser,file-browser,File Browser,-d /home/cj/Documents/Filebrowser/filebrow
 miniserve,mini-serve,Mini server,--port 8181 /home/cj/Documents/CJ/Public -i 0.0.0.0
 sage,sage-jupyter-notebook,Sage Jupyter Notebook,-n jupyter --notebook-dir /home/cj/Projects/jupyter --port 9797
 #buzz,buzz-email-notification-server,Buzz Email Notification Server,
+ollama,llama3-70b-large-language-model,LLama3 70b Large Language Model,run llama3:70b
+open-webui,open-webui,Open WebUI,serve --port 8383
