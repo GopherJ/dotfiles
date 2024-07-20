@@ -266,6 +266,8 @@ Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'wakatime/vim-wakatime'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
+Plug 'andrewferrier/debugprint.nvim'
+Plug 'famiu/bufdelete.nvim'
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
@@ -318,6 +320,8 @@ Plug 'hashivim/vim-vagrant'
 " Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'rhysd/vim-clang-format'
 
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 " Plug 'majutsushi/tagbar'
 " Plug 'terryma/vim-expand-region'
 
@@ -368,8 +372,8 @@ Plug 'skywind3000/asynctasks.vim'
 " Plug 'skywind3000/vim-terminal-help'
 
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+" Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 " Plug 'MunifTanjim/nui.nvim'
 " Plug 'jackMort/ChatGPT.nvim'
 Plug 'github/copilot.vim'
@@ -768,10 +772,26 @@ let g:header_auto_add_header = 0
 "             \ 'hide_yaml_meta': 1,
 "             \ 'sequence_diagrams': {}
 "             \ }
-nnoremap ;; <cmd>Telescope find_files<cr>
-nnoremap ;g <cmd>Telescope git_bcommits<cr>
-nnoremap ;f <cmd>Telescope live_grep<cr>
-nnoremap ;b <cmd>Telescope buffers<cr>
+
+" nnoremap ;; <cmd>Telescope find_files<cr>
+" nnoremap ;g <cmd>Telescope git_bcommits<cr>
+" nnoremap ;f <cmd>Telescope live_grep<cr>
+" nnoremap ;b <cmd>Telescope buffers<cr>
+
+let g:fzf_preview_window = []
+let g:fzf_layout    = { 'down': '~25%' }
+nnoremap ;;  : Files<CR>
+nnoremap ;b  : Buffers<CR>
+nnoremap ;g  : BCommits<CR>
+nnoremap ;f  : Rg<CR>
+command! -bang -nargs=? -complete=dir Files
+            \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
+command! -bang -nargs=* Rg
+            \ call fzf#vim#grep(
+            \   "rg --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' --iglob '!**/.zig-cache' ".shellescape(<q-args>), 1,
+            \   <bang>0 ? fzf#vim#with_preview('up:60%')
+            \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+            \ <bang>0)
 
 
 " tagbar
@@ -1130,11 +1150,15 @@ let g:instant_markdown_mermaid = 1
 let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autostart = 0
 
+" lua <<EOF
+" require('telescope').setup()
+" require('telescope').load_extension('fzf')
+" EOF
+
 " sudo rm -fr /usr/share/nvim/runtime/queries
 " sudo rm -fr /usr/lib/x86_64-linux-gnu/nvim/parser                                    │
 lua <<EOF
-require('telescope').setup()
-require('telescope').load_extension('fzf')
+require'debugprint'.setup({})
 require'nvim-treesitter.configs'.setup({
  ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc","typst","nasm","lua","zig","ebnf"},
  highlight = {
@@ -1281,3 +1305,6 @@ let g:floaterm_height = 0.35
 
 inoremap <C-h> <Left>
 inoremap <C-l> <Right>
+
+nnoremap <Down> 2j
+nnoremap <Up> 2k

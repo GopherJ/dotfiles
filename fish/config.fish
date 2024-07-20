@@ -4,8 +4,10 @@ end
 
 set -U fish_greeting ""
 
+alias unalias="functions --erase"
 alias vim="nvim -p"
 alias minivim="nvim -u ~/.minivim.lua -p"
+alias watchexec="watchexec -r -e ts,rs,py,go"
 alias tv="tidy-viewer"
 alias vimdiff="nvim -d"
 alias abi-encode="cast abi-encode"
@@ -15,10 +17,12 @@ alias sig="cast sig"
 alias keccak="cast keccak"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias yt-dlp="yt-dlp --proxy 'socks5://127.0.0.1:10086'"
-alias rsync-merge="rsync -abviuzP"
-alias rsync-merge-dry-run="rsync -abviuzP --dry-run -v"
-alias rsync-delete="rsync -a --delete"
-alias rsync-delete-dry-run="rsync -a --delete --dry-run -v"
+function rsync-merge
+    if test -n "$argv[1]" -a -n "$argv[2]"
+        rsync -abviuzP $argv[1]/ $argv[2]/
+        rsync -abviuzP $argv[2]/ $argv[1]/
+    end
+end
 alias bisect="git bisect start"
 alias bisect-good="git bisect good"
 alias bisect-bad="git bisect bad"
@@ -114,8 +118,8 @@ function venv-activate
     source .venv/bin/activate.fish
 end
 alias venv-deactivate='deactivate'
-# alias python='python3'
-# alias pip='pip3'
+alias python='python3'
+alias pip='pip3'
 alias sage-start='sage -n jupyter --notebook-dir ~/Projects/jupyter --port 9797'
 alias pari='/usr/bin/gp'
 alias jp="jupyter notebook list | awk NR\>1 | awk '{print \$1}' | xargs -i xdg-open {}"
@@ -197,8 +201,10 @@ function gz
 end
 
 function swap
-    set TMPFILE tmp.$fish_pid
-    mv $argv[1] $TMPFILE; and mv $argv[2] $argv[1]; and mv $TMPFILE $argv[2]
+    if test -n "$argv[1]" -a -n "$argv[2]"
+        set TMPFILE tmp.$fish_pid
+        mv $argv[1] $TMPFILE; and mv $argv[2] $argv[1]; and mv $TMPFILE $argv[2]
+    end
 end
 
 # function check-if-private-key-matches-public-key
@@ -212,7 +218,8 @@ function skfd
 end
 
 function skrg
-    nvim (sk -m --ansi -i -c 'rg --hidden --line-number --no-heading --color=always --iglob "!**/heiko.json" --iglob "!**/parallel.json" --iglob "!**/vendor" --iglob "!**/*.svg" --iglob "!**/*.min.js" --iglob "!**/*.umd.js" --iglob "!**/*.common.js" --iglob "!**/.cache" --iglob "!**/out" --iglob "!**/package-lock.json" --iglob "!**/Cargo.lock" --iglob "!**/.git/**" --iglob "!**/dist" --iglob "!**/build" --iglob "!**/.yarn" --iglob "!**/node_modules" --iglob "!**/target" --iglob "!**/yarn.lock" --iglob "!**/Cargo.lock" --iglob "!**/go.sum" --iglob "!**/.zig-cache" "{}"'| awk -F':' '{print $1}')
+    set choice (sk -m --ansi -i -c 'rg --hidden --line-number --no-heading --color=never --iglob "!**/heiko.json" --iglob "!**/parallel.json" --iglob "!**/vendor" --iglob "!**/*.svg" --iglob "!**/*.min.js" --iglob "!**/*.umd.js" --iglob "!**/*.common.js" --iglob "!**/.cache" --iglob "!**/out" --iglob "!**/package-lock.json" --iglob "!**/Cargo.lock" --iglob "!**/.git/**" --iglob "!**/dist" --iglob "!**/build" --iglob "!**/.yarn" --iglob "!**/node_modules" --iglob "!**/target" --iglob "!**/yarn.lock" --iglob "!**/Cargo.lock" --iglob "!**/go.sum" --iglob "!**/.zig-cache" "{}"'| awk -F':' '{print "+"$2,$1}')
+    nvim (echo $choice | awk '{print $1; print $2}')
 end
 
 function v
@@ -593,14 +600,20 @@ function pandoc-to-pdf
         if string match -q '*.tex' -- $argv[1]
             xelatex $argv[1]
         else
-            pandoc $argv[1] -s -o (string split -r -m2 . $argv[1])[1].pdf --pdf-engine=xelatex -V 'mainfont:Noto Sans CJK SC'
+            pandoc $argv[1] -s -o (string split -r -m2 . $argv[1])[1].pdf --pdf-engine=xelatex \
+              -V mainfont="Noto Sans CJK SC" \
+              -V sansfont="Noto Sans CJK SC" \
+              -V monofont="Noto Sans Mono CJK SC"
         end
     end
 end
 
 function pandoc-to-tex
     if test -n "$argv[1]"
-        pandoc $argv[1] -s -o (string split -r -m2 . $argv[1])[1].tex --pdf-engine=xelatex -V 'mainfont:Noto Sans CJK SC'
+        pandoc $argv[1] -s -o (string split -r -m2 . $argv[1])[1].tex --pdf-engine=xelatex \
+          -V mainfont="Noto Sans CJK SC" \
+          -V sansfont="Noto Sans CJK SC" \
+          -V monofont="Noto Sans Mono CJK SC"
         sed -i '1s|^|%! TEX TS-program = xelatex\n|' (string split -r -m2 . $argv[1])[1].tex
     end
 end
@@ -740,6 +753,7 @@ set -x CMAKE_CUDA_COMPILER "/usr/bin/nvcc"
 set -x NPM_CONFIG_REGISTRY "http://registry.npmmirror.com"
 set -x ES_JAVA_OPTS "-Xms2g -Xmx2g"
 set -x CARGO_BUILD_JOBS 4
+set -x NVM_DIR "$HOME/.nvm"
 set -x GOENV_ROOT "$HOME/.goenv"
 set -x CARGO_HOME "$HOME/.cargo"
 set -x DENO_INSTALL "$HOME/.deno"
@@ -756,7 +770,7 @@ set -x PYENV_ROOT "$HOME/.pyenv"
 set -x ZVM_DIR "$HOME/.zvm"
 set -x SP1_HOME "$HOME/.sp1"
 set -x SOLANA_HOME "$HOME/.local/share/solana/install/active_release"
-set -x PATH "$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$SOLANA_HOME/bin:$CUDA_HOME/bin:$ZVM_DIR/self:$ZVM_DIR/bin:$SP1_HOME/bin:$HOME/Projects/codelldb/extension/adapter:$HOME/.zig/bin:$PATH"
+set -x PATH "$FOUNDRY_HOME/bin:$CARGO_HOME/bin:$GOENV_ROOT/bin:$GCLOUD_SDK_DIR/bin:$DENO_INSTALL/bin:$FLUTTER_HOME/bin:$DART_HOME/bin:$PUB_HOME/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/tools:$ANDROID_HOME/emulator:$GOENV_ROOT/bin:$SCRIPT_HOME:$PYENV_ROOT/bin:$PYENV_ROOT/shims:$GOENV_ROOT/shims:$SOLANA_HOME/bin:$CUDA_HOME/bin:$ZVM_DIR/self:$ZVM_DIR/bin:$SP1_HOME/bin:$HOME/Projects/codelldb/extension/adapter:$HOME/.zig/bin:$PATH"
 # # set -x TERM tmux-256color
 set -x EDITOR nvim
 set -x GITHUB_API_TOKEN ""
@@ -816,7 +830,6 @@ set -x ETH_FROM "0x2f2d07d60ea7330DD2314f4413CCbB2dC25276EF"
 # #     exec tmux
 # # end
 #
-set -x NVM_DIR "$HOME/.nvm"
 # # [ -s "$NVM_DIR/nvm.sh" ]; and . "$NVM_DIR/nvm.sh"  # This loads nvm
 # # [ -s "$NVM_DIR/bash_completion" ]; and . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 # # eval (fnm env --use-on-cd | source)

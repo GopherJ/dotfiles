@@ -1,24 +1,18 @@
 {
   "languageserver": {
     "typst": {
-        "command": "typst-lsp",
-        "filetypes": ["typst"],
-        "settings": {
-		      "exportPdf": "onSave"
-	      }
+      "command": "typst-lsp",
+      "filetypes": ["typst"],
+      "settings": {
+        "exportPdf": "onSave"
+      }
     },
     "zig": {
       "command": "zls",
-      "filetypes": [
-        "zig"
-      ]
+      "filetypes": ["zig"]
     }
   },
-  "workspace.ignoredFolders": [
-    "$HOME",
-    "$HOME/.cargo/**",
-    "$HOME/.rustup/**"
-  ],
+  "workspace.ignoredFolders": ["$HOME", "$HOME/.cargo/**", "$HOME/.rustup/**"],
   "coc.preferences.formatOnSave": false,
   "coc.preferences.willSaveHandlerTimeout": 200,
   "coc.preferences.currentFunctionSymbolAutoUpdate": true,
@@ -53,6 +47,7 @@
   "tsserver.trace.server": "off",
   "tsserver.disableAutomaticTypeAcquisition": true,
   "rust-analyzer.inlayHints.bindingModeHints.enable": false,
+  "rust-analyzer.completion.callable.snippets":"add_parentheses",
   "rust-analyzer.inlayHints.chainingHints.enable": false,
   "rust-analyzer.inlayHints.closingBraceHints.enable": false,
   "rust-analyzer.inlayHints.closureReturnTypeHints.enable": "never",
