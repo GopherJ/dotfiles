@@ -455,6 +455,7 @@ call SetupCommandAbbrs('S', ':e ~/.secret')
 call SetupCommandAbbrs('N', ':e ~/.txt')
 call SetupCommandAbbrs('D', ':e ~/.trash')
 call SetupCommandAbbrs('T', ':e ~/.todo')
+call SetupCommandAbbrs('MM', ':CocCommand markmap.create --offline')
 
 let g:coc_global_extensions = [
             \'coc-tsserver',
@@ -487,7 +488,8 @@ let g:coc_global_extensions = [
             \'coc-docker',
             \'coc-kotlin',
             \'@nomicfoundation/coc-solidity',
-            \'coc-texlab'
+            \'coc-texlab',
+            \'coc-markmap'
             \]
 
 inoremap <silent><expr> <TAB>
@@ -627,6 +629,7 @@ endif
 
 " coc-explorer
 nmap <silent> <space>e :CocCommand explorer --preset default<CR>
+
 " autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | qall! | endif
 let g:indentLine_fileTypeExclude = ['coc-explorer']
 let g:indentLine_setConceal = 0
