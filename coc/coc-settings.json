@@ -139,6 +139,7 @@
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "eslint.enable": false,
   "eslint.autoFixOnSave": false,
   "eslint.run": "onSave",
   "toml.formatter.reorderKeys": true,
