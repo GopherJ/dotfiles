@@ -61,7 +61,8 @@
   "rust-analyzer.diagnostics.disabled": [
     "inactive-code",
     "unlinked-file",
-    "type-mismatch"
+    "type-mismatch",
+    "macro-error"
   ],
   "rust-analyzer.diagnostics.enable": true,
   "rust-analyzer.diagnostics.experimental.enable": false,
