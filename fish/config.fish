@@ -566,7 +566,7 @@ end
 # end
 function rebase
     if test -n "$argv[1]"
-      git rebase $argv[1]
+      git rebase --interactive $argv[1]
     else
       git rebase --interactive HEAD^^
     end
