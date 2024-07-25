@@ -59,7 +59,7 @@ alias ga="git add"
 alias gc="git checkout"
 alias gm="git commit -s -m"
 alias wip="git commit -s -m 'WIP'"
-alias chore="git commit -s -m 'chore: update'"
+alias chore="git commit -s -m 'chore: UPDATE'"
 alias am="git commit -s --amend -m"
 alias gl="git log --pretty=oneline"
 alias gp="git cherry-pick -n"
@@ -130,7 +130,7 @@ alias randomHex='openssl rand -hex 32'
 # alias repo='ghs repo'
 # alias issues='ghs issues'
 # alias commits='ghs commits'
-# alias features='cargo whatfeatures -p'
+alias features='cargo whatfeatures -p'
 # alias start='sudo systemctl start'
 # alias stop='sudo systemctl stop'
 # alias restart='sudo systemctl restart'
@@ -176,7 +176,6 @@ alias gpgkill="gpgconf --kill gpg-agent"
 # alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print\$1}')\""
 # alias up="docker-compose up -d"
 # alias down="docker-compose down --remove-orphans"
-alias rebase-last="git rebase --interactive HEAD^^"
 alias gitsubmodules="git submodule update --init --recursive"
 alias reset-last="git reset --hard HEAD^"
 alias diff-last="git diff HEAD^"
@@ -563,10 +562,17 @@ end
 # function gsync
 #     git fetch origin; and git rebase origin/(git branch --show-current)
 # end
-#
-# function gpush
-#     git push origin (git branch --show-current)
-# end
+function rebase
+    if test -n "$argv[1]"
+      git rebase $argv[1]
+    else
+      git rebase --interactive HEAD^^
+    end
+end
+
+function gpush
+    git push origin (git branch --show-current)
+end
 #
 # function gpull
 #     git pull origin

@@ -168,6 +168,12 @@ nnoremap <silent>  * *zz
 nnoremap <silent>  # #zz
 nnoremap <silent>  g* g*zz
 
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+nnoremap <Down> 2j
+nnoremap <Up> 2k
+
 nnoremap <leader>v        <C-W>v
 nnoremap <leader>s        <C-W>s
 
@@ -268,6 +274,8 @@ Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
 Plug 'andrewferrier/debugprint.nvim'
 Plug 'famiu/bufdelete.nvim'
+Plug 'francoiscabrol/ranger.vim'
+Plug 'rbgrouleff/bclose.vim'
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
@@ -1306,8 +1314,6 @@ let g:floaterm_wintype = "split"
 let g:floaterm_position =  "botright"
 let g:floaterm_height = 0.35
 
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
-nnoremap <Down> 2j
-nnoremap <Up> 2k
+" ranger.vim
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
