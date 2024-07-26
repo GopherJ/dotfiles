@@ -191,13 +191,13 @@ alias pkg-config-path="pkg-config --variable pc_path pkg-config"
 
 function xz
     if test -n "$argv[1]"
-        tar -Jcvf $argv[1].tar.xz --exclude .git --exclude node_modules --exclude target $argv[1]
+        tar -Jcvf (basename -- $argv[1]).tar.xz --exclude .git --exclude node_modules --exclude target $argv[1]
     end
 end
 
 function gz
     if test -n "$argv[1]"
-        tar -zcvf $argv[1].tgz --exclude .git --exclude node_modules --exclude target $argv[1]
+        tar -zcvf (basename -- $argv[1]).tgz --exclude .git --exclude node_modules --exclude target $argv[1]
     end
 end
 
@@ -739,12 +739,6 @@ end
 #
 # function snarkjs-verify
 #     snarkjs groth16 verify verification_key.json public.json proof.json
-# end
-#
-# function v
-#     if test -n "$argv[1]"
-#         fd $argv[1] | xargs -i nvim -p {}
-#     end
 # end
 #
 # # export GOPATH="$HOME/go"

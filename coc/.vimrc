@@ -130,7 +130,7 @@ if !has("nvim")
 endif
 set tm=500
 
-set viminfo=
+set viminfo='0,/0,:1000,<0,@0,f0,h,n~/.viminfo
 
 set confirm
 
