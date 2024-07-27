@@ -575,10 +575,10 @@ end
 function gpush
     git push origin (git branch --show-current)
 end
-#
-# function gpull
-#     git pull origin
-# end
+
+function gpull
+    git pull origin (git branch --show-current)
+end
 #
 # function gstash
 #     git stash push -m ${argv[1]:-latest} -u

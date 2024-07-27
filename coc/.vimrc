@@ -28,9 +28,10 @@
 " crs to convert to foo_bar
 " cru to convert to FOO_BAR
 " cr- to convert to foo-bar
+" :s/\(\d\+\)/GoldilocksField(\1)/g
 
 if has("gui_running")
-    set guifont=Fira\ Code
+    set guifont=Hack
 endif
 
 set t_Co=256
@@ -268,7 +269,6 @@ Plug 'pseewald/vim-anyfold'
 Plug 'tpope/vim-surround'
 Plug 'FooSoft/vim-argwrap'
 Plug 'segeljakt/vim-silicon'
-Plug 'kristijanhusak/vim-carbon-now-sh'
 Plug 'wakatime/vim-wakatime'
 Plug 'dhruvasagar/vim-table-mode'
 Plug 'antoinemadec/FixCursorHold.nvim'
@@ -276,11 +276,17 @@ Plug 'andrewferrier/debugprint.nvim'
 Plug 'famiu/bufdelete.nvim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+" Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
 Plug 'rcarriga/nvim-dap-ui'
+Plug 'nvim-neotest/neotest'
+" Plug 'mfussenegger/nvim-dap-python'
+Plug 'nvim-neotest/neotest-go'
 Plug 'leoluz/nvim-dap-go'
+" Plug 'nvim-neotest/neotest-python'
+" Plug 'alfaix/neotest-gtest'
 Plug 'kaarmu/typst.vim'
 Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'yarn install'}
 Plug 'jamessan/vim-gnupg'
@@ -340,7 +346,7 @@ Plug 'junegunn/fzf.vim'
 
 Plug 'honza/vim-snippets'
 
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 " Plug 'morhetz/gruvbox'
 " Plug 'lifepillar/vim-gruvbox8'
 Plug 'chriskempson/base16-vim'
@@ -477,7 +483,6 @@ let g:coc_global_extensions = [
             \'coc-emmet',
             \'coc-html',
             \'coc-css',
-            \'coc-jest',
             \'coc-json',
             \'coc-lua',
             \'coc-go',
@@ -556,7 +561,9 @@ nmap <silent> gr <Plug>(coc-references)
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 vnoremap <silent> K <cmd>call CocActionAsync('doHover')<CR>
 function! s:show_documentation()
-    if (index(['vim','help'], &filetype) >= 0)
+    if luaeval("require('dap').status() ~= ''")
+        lua require("dapui").eval()
+    elseif (index(['vim','help'], &filetype) >= 0)
         execute 'silent! h '.expand('<cword>')
     elseif (coc#rpc#ready())
         call CocActionAsync('doHover')
@@ -637,17 +644,20 @@ endif
 
 " coc-explorer
 nmap <silent> <space>e :CocCommand explorer --preset default<CR>
-
-" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | qall! | endif
-let g:indentLine_fileTypeExclude = ['coc-explorer']
-let g:indentLine_setConceal = 0
-let g:indentLine_fileTypeExclude = ['json']
-
 let g:coc_explorer_global_presets = {
             \   'default': {
             \     'file-child-template': '[indent][icon | 1] [diagnosticError & 1][filename omitCenter 1] [linkIcon & 1][link growRight 1 omitCenter 5]'
             \   }
             \ }
+
+" indentLine
+" let g:indentLine_enabled = 1
+" " let g:indentLine_setConceal = 0
+" " let g:indentLine_concealcursor = ""
+" autocmd BufEnter * if (winnr("$") == 1 && &filetype == 'coc-explorer') | qall! | endif
+" let g:indentLine_fileTypeExclude = ['coc-explorer']
+" let g:indentLine_setConceal = 0
+" let g:indentLine_fileTypeExclude = ['json']
 
 " coc-git
 nmap <expr> ;k empty(get(b:, "coc_git_status", "")) ? "<Plug>(coc-git-prevconflict)" : "<Plug>(coc-git-prevchunk)"
@@ -675,10 +685,10 @@ vmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
 " coc-jest
-nnoremap <leader>te            : call CocAction('runCommand', 'jest.singleTest')<CR>
-command! -nargs=0 Jest         : call CocAction('runCommand', 'jest.projectTest')
-command! -nargs=0 JestCurrent  : call CocAction('runCommand', 'jest.fileTest', ['%'])
-command! JestInit              : call CocAction('runCommand', 'jest.init')
+" nnoremap <leader>te            : call CocAction('runCommand', 'jest.singleTest')<CR>
+" command! -nargs=0 Jest         : call CocAction('runCommand', 'jest.projectTest')
+" command! -nargs=0 JestCurrent  : call CocAction('runCommand', 'jest.fileTest', ['%'])
+" command! JestInit              : call CocAction('runCommand', 'jest.init')
 
 " coc-yank
 nnoremap <silent> <space>y  :<C-u>CocList --normal yank<cr>
@@ -708,6 +718,8 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>r  :<C-u>CocListResume<CR>
 
+nnoremap <silent><nowait> <space>t  :lua require('neotest').run.run({strategy = 'dap'})<CR>
+
 command! -nargs=+ -complete=custom,s:GrepArgs Grep exe 'CocList grep '.<q-args>
 function! s:GrepArgs(...)
     let list = ['-S', '-smartcase', '-i', '-ignorecase', '-w', '-word',
@@ -718,17 +730,15 @@ endfunction
 nnoremap <silent> <space>q    : exe 'CocList -I --input='.expand('<cword>').' grep'<CR>
 nnoremap <silent> <space>w    : exe 'CocList -I --normal --input='.expand('<cword>').' words'<CR>
 
-" coc-translator
-" let g:translator_default_engines = ['youdao', 'bing', 'google', 'haici']
-" nmap <leader>t <Plug>(coc-translator-p)
-" vmap <leader>t <Plug>(coc-translator-pv)
-
 "--------------------------------------------------------------------------------
 " Plugin configuration
 "--------------------------------------------------------------------------------
+"
+" airline
+" let g:airline_theme='base16_gruvbox_dark_hard'
+" let g:airline_powerline_fonts = 1
 
 " lightline.vim
-set laststatus=1
 " set noshowmode
 " if !has('gui_running')
 "   set t_Co=256
@@ -756,6 +766,8 @@ set laststatus=1
 "       \ 'subseparator': { 'left': '', 'right': '' }
 "       \ }
 " autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
+
+set laststatus=1
 
 " vim-argwrap
 " nnoremap <silent> <leader>a :ArgWrap<CR>
@@ -941,11 +953,6 @@ if !empty($TMUX)
     nnoremap <silent> <C-K> :TmuxNavigateUp<CR>
 endif
 
-" indentLine
-let g:indentLine_enabled = 1
-" let g:indentLine_setConceal = 0
-" let g:indentLine_concealcursor = ""
-
 " emmet-vim
 " imap <expr> <leader><leader> emmet#expandAbbrIntelligent("\<tab>")
 let g:user_emmet_install_global = 0
@@ -969,6 +976,9 @@ let g:gitgutter_max_signs = 1000
 " let g:vimspector_bottombar_height = 5
 " nmap <leader>di <Plug>VimspectorBalloonEval
 " xmap <leader>di <Plug>VimspectorBalloonEval
+
+"vim-doge
+" nmap <silent> <Leader>d <Plug>(doge-generate)
 
 " vim-jsdoc
 " let g:jsdoc_enable_es6 = 1
@@ -1084,18 +1094,18 @@ let g:cmake_jump=1
 let g:cmake_root_markers=['CMakeLists.txt']
 
 " vim-hexokinase
-let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescript', 'typescriptreact', 'vim']
-let g:Hexokinase_optInPatterns = [
-\     'full_hex',
-\     'triple_hex',
-\     'rgb',
-\     'rgba',
-\     'hsl',
-\     'hsla',
-\     'colour_names'
-\ ]
-let g:Hexokinase_highlighters = ['backgroundfull']
-let g:Hexokinase_refreshEvents = ['BufEnter', 'TextChanged', 'TextChangedI']
+" let g:Hexokinase_ftEnabled = ['css', 'html', 'javascript', 'typescript', 'typescriptreact', 'vim']
+" let g:Hexokinase_optInPatterns = [
+" \     'full_hex',
+" \     'triple_hex',
+" \     'rgb',
+" \     'rgba',
+" \     'hsl',
+" \     'hsla',
+" \     'colour_names'
+" \ ]
+" let g:Hexokinase_highlighters = ['backgroundfull']
+" let g:Hexokinase_refreshEvents = ['BufEnter', 'TextChanged', 'TextChangedI']
 
 " vim-silicon
 let g:silicon = {
@@ -1161,6 +1171,29 @@ let g:instant_markdown_mermaid = 1
 let g:instant_markdown_mathjax = 1
 let g:instant_markdown_autostart = 0
 
+" vimtex
+let g:tex_flavor='latex'
+" let g:vimtex_view_method='zathura'
+let g:vimtex_quickfix_mode=0
+" set conceallevel=1
+" let g:tex_conceal='abdmg'
+
+" typst.vim
+let g:typst_pdf_viewer = 'xreader'
+
+" copilot.nvim
+imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
+let g:copilot_no_tab_map = v:true
+
+"vim-floaterm
+let g:floaterm_wintype = "split"
+let g:floaterm_position =  "botright"
+let g:floaterm_height = 0.35
+
+" ranger.vim
+let g:NERDTreeHijackNetrw = 0
+let g:ranger_replace_netrw = 1
+
 " lua <<EOF
 " require('telescope').setup()
 " require('telescope').load_extension('fzf')
@@ -1181,7 +1214,24 @@ require'nvim-treesitter.configs'.setup({
    enable = true
  }
 })
+EOF
+
+" nvim-dap plugins
+lua <<EOF
 require('dap-go').setup()
+-- require('dap-python').setup('python')
+require('neotest').setup({
+  adapters = {
+    require('neotest-go')({
+      experimental = {
+        test_table = true,
+      },
+      args = { '-count=1', '-timeout=60s' }
+    }),
+    -- require('neotest-python')({}),
+    -- require('neotest-gtest').setup({})
+  }
+})
 require('dapui').setup({
   controls = {
     icons = {
@@ -1204,6 +1254,7 @@ require('dapui').setup({
 })
 EOF
 
+" nvim-dapp setup
 lua <<EOF
 local dap = require('dap')
 dap.adapters.codelldb = {
@@ -1250,25 +1301,7 @@ dap.configurations.c = {
 dap.configurations.cpp = dap.configurations.c
 EOF
 
-" let g:airline_theme='base16_gruvbox_dark_hard'
-" let g:airline_powerline_fonts = 1
-
-" vimtex
-let g:tex_flavor='latex'
-" let g:vimtex_view_method='zathura'
-let g:vimtex_quickfix_mode=0
-" set conceallevel=1
-" let g:tex_conceal='abdmg'
-
-" typst.vim
-let g:typst_pdf_viewer = 'xreader'
-
-" copilot.nvim
-imap <silent><script><expr> <C-J> copilot#Accept("\<CR>")
-let g:copilot_no_tab_map = v:true
-
-
-" nvim-dapp
+" nvim-dapp keybindings
 lua <<EOF
     vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
     vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
@@ -1307,13 +1340,3 @@ lua <<EOF
       dapui.close()
     end
 EOF
-vnoremap <C-k> <Cmd>lua require("dapui").eval()<CR>
-
-"vim-floaterm
-let g:floaterm_wintype = "split"
-let g:floaterm_position =  "botright"
-let g:floaterm_height = 0.35
-
-" ranger.vim
-let g:NERDTreeHijackNetrw = 0
-let g:ranger_replace_netrw = 1
