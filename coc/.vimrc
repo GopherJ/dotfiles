@@ -558,19 +558,20 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-vnoremap <silent> K <cmd>call CocActionAsync('doHover')<CR>
-function! s:show_documentation()
-    if luaeval("require('dap').status() ~= ''")
-        lua require("dapui").eval()
-    elseif (index(['vim','help'], &filetype) >= 0)
-        execute 'silent! h '.expand('<cword>')
-    elseif (coc#rpc#ready())
-        call CocActionAsync('doHover')
+lua <<EOF
+function _G.show_docs()
+    local cw = vim.fn.expand('<cword>')
+    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+        vim.api.nvim_command('h ' .. cw)
+    elseif vim.api.nvim_eval('coc#rpc#ready()') then
+        vim.fn.CocActionAsync('doHover')
     else
-        execute 'silent!' . &keywordprg . " " . expand('<cword>')
-    endif
-endfunction
+        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+    end
+end
+vim.keymap.set("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+EOF
+vnoremap <silent> K <cmd>call CocActionAsync('doHover')<CR>
 
 augroup CocCustomGroup
     autocmd!
@@ -1303,28 +1304,39 @@ EOF
 
 " nvim-dapp keybindings
 lua <<EOF
+    local dap = require('dap')
+    local api = vim.api
+    dap.listeners.after['event_initialized']['me'] = function()
+      for _, buf in pairs(api.nvim_list_bufs()) do
+        local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+        for _, keymap in pairs(keymaps) do
+          if keymap.lhs == "K" then
+            api.nvim_buf_del_keymap(buf, 'n', 'K')
+          end
+        end
+      end
+      api.nvim_set_keymap(
+        'n', 'K', '<Cmd>lua require("dap.ui.widgets").hover()<CR>', { silent = true })
+    end
+
+    dap.listeners.after['event_terminated']['me'] = function()
+      for _, buf in pairs(api.nvim_list_bufs()) do
+        local keymaps = api.nvim_buf_get_keymap(buf, 'n')
+        for _, keymap in pairs(keymaps) do
+          if keymap.lhs == "K" then
+            api.nvim_buf_del_keymap(buf, 'n', 'K')
+          end
+        end
+      end
+      api.nvim_set_keymap(
+        'n', 'K', '<CMD>lua _G.show_docs()<CR>', { silent = true })
+    end
+
     vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
-    vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
-    vim.keymap.set('n', '<F11>', function() require('dap').step_into() end)
-    vim.keymap.set('n', '<F12>', function() require('dap').step_out() end)
+    vim.keymap.set('n', '<F6>', function() require('dap').step_over() end)
+    vim.keymap.set('n', '<F7>', function() require('dap').step_out() end)
+    vim.api.nvim_set_keymap('n', '<F8>', "<cmd>lua require'dap'.terminate()<CR>", {noremap = true, silent = true})
     vim.keymap.set('n', '<F9>', function() require('dap').toggle_breakpoint() end)
-    vim.keymap.set('n', '<Leader>lp', function() require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: ')) end)
-    vim.keymap.set('n', '<Leader>dr', function() require('dap').repl.open() end)
-    vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
-    vim.keymap.set({'n', 'v'}, '<Leader>dh', function()
-      require('dap.ui.widgets').hover()
-    end)
-    vim.keymap.set({'n', 'v'}, '<Leader>dp', function()
-      require('dap.ui.widgets').preview()
-    end)
-    vim.keymap.set('n', '<Leader>df', function()
-      local widgets = require('dap.ui.widgets')
-      widgets.centered_float(widgets.frames)
-    end)
-    vim.keymap.set('n', '<Leader>ds', function()
-      local widgets = require('dap.ui.widgets')
-      widgets.centered_float(widgets.scopes)
-    end)
 
     local dap, dapui = require("dap"), require("dapui")
     dap.listeners.before.attach.dapui_config = function()
@@ -1337,6 +1349,9 @@ lua <<EOF
       dapui.close()
     end
     dap.listeners.before.event_exited.dapui_config = function()
+      dapui.close()
+    end
+    dap.listeners.before.disconnect.dapui_config = function()
       dapui.close()
     end
 EOF
