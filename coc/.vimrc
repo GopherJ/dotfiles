@@ -458,7 +458,7 @@ endfunction
 
 call SetupCommandAbbrs('C', 'CocConfig')
 call SetupCommandAbbrs('CP', ":Copilot panel<CR>")
-call SetupCommandAbbrs('Z', ':e ~/.zshenv')
+call SetupCommandAbbrs('F', ':e ~/.config/fish/config.fish')
 call SetupCommandAbbrs('E', ':e ~/.vimrc')
 call SetupCommandAbbrs('RS', ':e ~/Downloads/test-rs/src/main.rs')
 call SetupCommandAbbrs('GO', ':e ~/Downloads/test-go/main.go')

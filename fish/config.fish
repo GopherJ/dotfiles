@@ -57,6 +57,7 @@ alias gf="git diff"
 alias gfc="git diff --cached"
 alias ga="git add"
 alias gc="git checkout"
+alias gb="git branch -l --all"
 alias gm="git commit -s -m"
 alias wip="git commit -s -m 'WIP'"
 alias chore="git commit -s -m 'chore: UPDATE'"
@@ -448,13 +449,13 @@ end
 function ra
     if test -n "$argv[1]" -a -n "$argv[2]"
       echo "s/$argv[1]/$argv[2]/g"
-        rg $argv[1] --color=never -l | xargs -I {} sed -i "s|$argv[1]|$argv[2]|g" {}
+        rg (string escape --style=regex $argv[1]) --color=never -l | xargs -I {} sed -i "s|$argv[1]|$argv[2]|g" {}
     end
 end
 
 function raa
     if test -n "$argv[1]" -a -n "$argv[2]"
-        rg $argv[1] --color=never -l | xargs -I {} perl -pi -e "s|$argv[1]|$argv[2]|g" {}
+        rg (string escape --style=regex $argv[1]) --color=never -l | xargs -I {} perl -pi -e "s|$argv[1]|$argv[2]|g" {}
     end
 end
 #
@@ -663,6 +664,53 @@ plantuml-cmd = "plantuml"
 # [output.pdf-outline]
 # like-wkhtmltopdf = false
 ' >> $argv[1]/book.toml
+    end
+end
+
+function rpc-cli
+    set -l options (fish_opt -s h -l help)
+    set options $options (fish_opt -s u -l url -r)
+    set options $options (fish_opt -s v -l verbose)
+    argparse $options -- $argv
+
+    if set -q _flag_help
+        echo "Usage: rpc-cli [OPTIONS] METHOD [PARAMS...]"
+        echo "Options:"
+        echo "  -h, --help            Show this help message"
+        echo "  -u, --url URL         Specify the RPC URL"
+        echo "  -v, --verbose         Show verbose output"
+        return 0
+    end
+
+    set -q _flag_url; or set _flag_url "http://devnet:devnet@127.0.0.1:1337/bitcoin-rpc/?network=dogeRegtest"
+
+    if test (count $argv) -lt 1
+        echo "Error: METHOD is required"
+        return 1
+    end
+
+    set -l method $argv[1]
+    set -l params (string join ',' $argv[2..-1] | string escape)
+    set -l data "{\"jsonrpc\":\"1.0\",\"id\":\"rpc-cli\",\"method\":\"$method\",\"params\":[$params]}"
+
+    set -l curl_opts -s -X POST -H "Content-Type: application/json" --data-binary $data
+
+    if set -q _flag_verbose
+        set curl_opts $curl_opts -v
+    end
+
+    set -l response (curl $curl_opts $_flag_url)
+
+    if set -q _flag_verbose
+        echo "Response:"
+    end
+
+    echo $response | jq '.'
+
+    if test $status -ne 0
+        echo "Error: Failed to parse JSON response. Raw response:" >&2
+        echo $response >&2
+        return 1
     end
 end
 #
