@@ -17,6 +17,7 @@ alias sig="cast sig"
 alias keccak="cast keccak"
 alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
 alias yt-dlp="yt-dlp --proxy 'socks5://127.0.0.1:10086'"
+alias rsync="rsync -abviuzP --exclude='.git' --exclude='node_modules' --exclude='target' --exclude='.cargo'"
 function rsync-merge
     if test -n "$argv[1]" -a -n "$argv[2]"
         rsync -abviuzP $argv[1]/ $argv[2]/
@@ -39,6 +40,7 @@ alias ta="tmux a"
 alias tk="tmux kill-server"
 alias tl="tmux ls"
 alias ts="tmux source-file ~/.tmux.conf"
+alias sf="source ~/.config/fish/config.fish"
 alias sz="source ~/.zshrc"
 alias sb="source ~/.bashrc"
 alias tz="date +'%Z %z'"
@@ -91,8 +93,9 @@ alias clean-container='docker container ls -q --all | xargs -i docker stop {}; a
 alias clean-artifacts="find . -type d -name 'node_modules' -or -name 'target' | xargs rm -fr"
 alias clean-cache="rm -fr ~/.cargo/registry ~/.cargo/git"
 # alias ord='ord -r --bitcoin-rpc-user=devnet --bitcoin-rpc-pass=devnet'
-# alias bitcoin-cli='bitcoin-cli -regtest -rpcwallet=default -rpcuser=devnet -rpcpassword=devnet'
+alias bitcoin-cli='dogecoin-cli'
 alias make-build='bear -- make -j(nproc)'
+alias make-install='sudo make -j(nproc) install'
 alias make-clean='make -j(nproc) clean; and make -j(nproc) distclean'
 function cmake-generate
     cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug -S . -B Debug
@@ -108,7 +111,17 @@ function cmake-clean
 end
 function cmake-run
     cd Debug
-    make run; or true
+    if test -n "$argv[1]" -a -f "$argv[1]"
+      ./"$argv[1]"; or true
+    else if test -n "bin/$argv[1]" -a -f "bin/$argv[1]"
+      ./bin/"$argv[1]"; or true
+    else if test -f "main"
+      ./main
+    else if test -f "bin/main"
+      ./bin/main
+    else
+      make run; or true
+    end
     cd ..
 end
 alias wrk='wrk -t8 -d30s -c1000'
@@ -140,15 +153,14 @@ alias features='cargo whatfeatures -p'
 # alias disable='sudo systemctl disable'
 # alias logf='sudo journalctl -f -u'
 alias gofmt='gofmt -s -w .'
-alias triple-list='rustc --print target-list | pr -tw100 --columns 3'
+alias rustc-target-list='rustc --print target-list | pr -tw100 --columns 3'
 # alias scan='rustscan'
 alias groups='id -Gn'
-alias revert='git revert HEAD'
 # alias weather='curl wttr.in'
 alias sockstat="netstat -an |awk '/tcp/ {++S[\$NF]}END {for (a in S) print a , S[a]}'"
 # alias cronlogs='sudo grep CRON /var/log/syslog'
 alias cppcheck='cppcheck --enable=warning,performance --project=compile_commands.json'
-alias submodules-init='git submodule update --init --recursive'
+alias submodules='git submodule update --init --recursive'
 alias discover-hosts='nmap -sP 192.168.1.0/24'
 alias discover-macs='sudo arp-scan -I wlp4s0 -l'
 alias tcpdump='sudo tcpdump -i any -nnn -X -vvv -e -tttt'
@@ -160,8 +172,8 @@ alias is-little-endian="echo -n I | hexdump -o | awk '{ print substr(\$2,6,1); e
 alias sshkeygen-ed25519='ssh-keygen -f ~/.ssh/id_ed25519 -t ed25519'
 alias sshkeygen-ecdsa='ssh-keygen -f ~/.ssh/id_ecdsa -t ecdsa'
 alias makehelp="grep -E '^[a-zA-Z_-]+:.*?' Makefile | cut -d: -f1 | sort"
-alias list-global-node-packages="npm list -g --depth 0"
-alias give-me-certificates="certbot certonly --standalone -d"
+alias npm-global-packages="npm list -g --depth 0"
+alias certgen="certbot certonly --standalone -d"
 alias dedup="sort -u | uniq"
 alias ignore-first-line="awk NR\>1"
 alias sum="awk -F',' '{sum+=\$1;} END{print sum;}'"
@@ -171,7 +183,7 @@ alias setproxy="set -x ALL_PROXY socks5://127.0.0.1:10086"
 alias unsetproxy="set -e ALL_PROXY"
 alias setbacktrace="set -x RUST_BACKTRACE full"
 alias unsetbacktrace="set -e RUST_BACKTRACE"
-alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
+# alias largest-files="git ls-tree -r -t -l --full-name HEAD | sort -n -k 4 | tail -n 10"
 alias tcpstats="netstat -n | awk '/^tcp/ {++state[\$NF]} END {for(key in state) print key,\"\t\",state[key]}'"
 alias gpgencrypt="gpg --symmetric --cipher-algo AES256"
 alias gpgkeygen="gpg --expert --full-generate-key"
@@ -179,14 +191,12 @@ alias gpgkill="gpgconf --kill gpg-agent"
 # alias git-big-file-list="git rev-list --objects --all | grep \"$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print\$1}')\""
 # alias up="docker-compose up -d"
 # alias down="docker-compose down --remove-orphans"
-alias gitsubmodules="git submodule update --init --recursive"
-alias reset-last="git reset --hard HEAD^"
 alias diff-last="git diff HEAD^"
-alias rebase-latest='git stash; and git fetch origin; and git rebase origin/(git branch --show-current); and git stash apply'
+# alias rebase-latest='git stash; and git fetch origin; and git rebase origin/(git branch --show-current); and git stash apply'
 alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow-color '#555555' --line-pad 2 --pad-horiz 0 --pad-vert 0 --shadow-blur-radius 0 --shadow-offset-x 0 --shadow-offset-y 0 --output output.png"
-alias aws-list-ec2='aws ec2 describe-instances'
-alias aws-launch-ec2='aws ec2 run-instances --image-id ami-0fc61db8544a617ed --count 1 --instance-type t3.2xlarge --key-name my-key-pair --security-groups my-security-group'
-alias test-cache-misses="perf stat -e cache-misses"
+# alias aws-list-ec2='aws ec2 describe-instances'
+# alias aws-launch-ec2='aws ec2 run-instances --image-id ami-0fc61db8544a617ed --count 1 --instance-type t3.2xlarge --key-name my-key-pair --security-groups my-security-group'
+# alias test-cache-misses="perf stat -e cache-misses"
 alias pkg-config-path="pkg-config --variable pc_path pkg-config"
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
@@ -573,6 +583,14 @@ function rebase
     end
 end
 
+function reset
+    if test -n "$argv[1]"
+      git reset --hard $argv[1]
+    else
+      git reset --hard HEAD^
+    end
+end
+
 function gpush
     git push origin (git branch --show-current)
 end
@@ -667,79 +685,32 @@ plantuml-cmd = "plantuml"
     end
 end
 
-function rpc-cli
-    set -l options (fish_opt -s h -l help)
-    set options $options (fish_opt -s u -l url -r)
-    set options $options (fish_opt -s v -l verbose)
-    argparse $options -- $argv
+function bitcoin-block
+    if test -n "$argv[1]"
+        set blockHash (bitcoin-cli getblockhash $argv[1])
+        set blockData (bitcoin-cli getblock $blockHash)
+        echo $blockData
 
-    if set -q _flag_help
-        echo "Usage: rpc-cli [OPTIONS] METHOD [PARAMS...]"
-        echo "Options:"
-        echo "  -h, --help            Show this help message"
-        echo "  -u, --url URL         Specify the RPC URL"
-        echo "  -v, --verbose         Show verbose output"
-        return 0
-    end
-
-    set -q _flag_url; or set _flag_url "http://devnet:devnet@127.0.0.1:1337/bitcoin-rpc/?network=dogeRegtest"
-
-    if test (count $argv) -lt 1
-        echo "Error: METHOD is required"
-        return 1
-    end
-
-    set -l method $argv[1]
-    set -l params (string join ',' $argv[2..-1] | string escape)
-    set -l data "{\"jsonrpc\":\"1.0\",\"id\":\"rpc-cli\",\"method\":\"$method\",\"params\":[$params]}"
-
-    set -l curl_opts -s -X POST -H "Content-Type: application/json" --data-binary $data
-
-    if set -q _flag_verbose
-        set curl_opts $curl_opts -v
-    end
-
-    set -l response (curl $curl_opts $_flag_url)
-
-    if set -q _flag_verbose
-        echo "Response:"
-    end
-
-    echo $response | jq '.'
-
-    if test $status -ne 0
-        echo "Error: Failed to parse JSON response. Raw response:" >&2
-        echo $response >&2
-        return 1
+        if test -n "$argv[2]"
+            set txHash (echo $blockData | jq -r ".tx[$argv[2]]")
+            set txData (bitcoin-cli getrawtransaction $txHash)
+            bitcoin-cli decoderawtransaction $txData
+        end
     end
 end
-#
-# function bitcoin-block
-#     if test -n "$argv[1]"
-#         set blockHash (bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getblockhash $argv[1])
-#         set blockData (bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getblock $blockHash)
-#         echo $blockData
-#
-#         if test -n "$argv[2]"
-#             set txHash (echo $blockData | jq -r ".tx[$argv[2]]")
-#             set txData (bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getrawtransaction $txHash)
-#             bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet decoderawtransaction $txData
-#         end
-#     end
-# end
-#
-# function bitcoin-tx
-#     if test -n "$argv[1]"
-#         set txData (bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet getrawtransaction $argv[1])
-#         bitcoin-cli -regtest -rpcuser=devnet -rpcpassword=devnet decoderawtransaction $txData
-#     end
-# end
-#
-# function bitcoin-script
-#     if test -n "$argv[1]"
-#         bitcoin-cli decodescript $argv[1]
-#     end
-# end
+
+function bitcoin-tx
+    if test -n "$argv[1]"
+        set txData (bitcoin-cli getrawtransaction $argv[1])
+        bitcoin-cli decoderawtransaction $txData
+    end
+end
+
+function bitcoin-script
+    if test -n "$argv[1]"
+        bitcoin-cli decodescript $argv[1]
+    end
+end
 #
 # function snarkjs-info
 #     if test -n "$argv[1]"

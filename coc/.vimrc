@@ -29,6 +29,7 @@
 " cru to convert to FOO_BAR
 " cr- to convert to foo-bar
 " :s/\(\d\+\)/GoldilocksField(\1)/g
+" :'<,'>gg/^/if line('.') % 5 == 1 | execute "normal g?p" | endif
 
 if has("gui_running")
     set guifont=Hack
@@ -1286,7 +1287,14 @@ dap.configurations.c = {
   program = function()
     return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
   end,
-  args = {},
+  args = function()
+    local input=vim.fn.input('Args: ')
+    local args = {}
+    for word in string.gmatch(input, "%S+") do
+        table.insert(args, word)
+    end
+    return args
+  end,
   cwd = "${workspaceFolder}",
   stopOnEntry = false,
   terminal = "integrated"
