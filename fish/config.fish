@@ -249,8 +249,30 @@ end
 # end
 
 function dog-query
-    if test -n "$argv[1]"
-        dog -q $argv[1] -H @https://dns.alidns.com/dns-query
+    set dns_servers \
+        "https://dns.pub/dns-query" \
+        "https://dns.alidns.com/dns-query" \
+        "https://dns.google/dns-query" \
+        "https://cloudflare-dns.com/dns-query" \
+        "https://doh.opendns.com/dns-query" \
+        "https://dns.adguard.com/dns-query" \
+        "https://dns11.quad9.net/dns-query"
+
+    if test -z "$argv[1]"
+        echo "Usage: dog-query <domain> [specific_dns_server]"
+        return 1
+    end
+
+    set domain $argv[1]
+
+    if test (count $argv) -ge 2
+        set dns_servers $argv[2]
+    end
+
+    for server in $dns_servers
+        echo "Querying $server for $domain:"
+        dog -q $domain -H @$server
+        echo "----------------------------------------"
     end
 end
 
