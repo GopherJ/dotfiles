@@ -455,15 +455,19 @@ end
 #         cargo doc -p $argv[1] --open
 #     end
 # end
+function rr
+    if test -n "$argv[1]"
+        rg (string escape --style=regex $argv[1]) --color=never -l | xargs -I {} sed -i "/$argv[1]/d" {}
+    end
+end
 
-function ra
+function rs
     if test -n "$argv[1]" -a -n "$argv[2]"
-      echo "s/$argv[1]/$argv[2]/g"
         rg (string escape --style=regex $argv[1]) --color=never -l | xargs -I {} sed -i "s|$argv[1]|$argv[2]|g" {}
     end
 end
 
-function raa
+function rp
     if test -n "$argv[1]" -a -n "$argv[2]"
         rg (string escape --style=regex $argv[1]) --color=never -l | xargs -I {} perl -pi -e "s|$argv[1]|$argv[2]|g" {}
     end
