@@ -213,8 +213,6 @@ vnoremap # :<C-u>call <SID>VSetSearch()<CR>?<CR>
 
 nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
-" noremap <leader>p :read !xsel --clipboard --output<cr>
-" noremap <leader>y :w !xsel -ib<cr><cr>
 
 " inoremap <C-a> <Home>
 " inoremap <expr><C-e> pumvisible() ? "\<C-e>" : "\<End>"
