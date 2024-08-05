@@ -15,7 +15,7 @@ alias abi-decode="cast abi-decode"
 alias error-decode="cast calldata-decode 'Error(string)'"
 alias sig="cast sig"
 alias keccak="cast keccak"
-alias cat="bat --paging=never --style=plain --theme=gruvbox-dark"
+alias cat="bat --paging=never --style=plain --theme=base16"
 alias yt-dlp="yt-dlp --proxy 'socks5://127.0.0.1:10086'"
 alias rsync="rsync -abviuzP --exclude='.git' --exclude='node_modules' --exclude='target' --exclude='.cargo'"
 function rsync-merge
