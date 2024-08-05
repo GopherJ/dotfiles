@@ -30,6 +30,7 @@
 " cr- to convert to foo-bar
 " :s/\(\d\+\)/GoldilocksField(\1)/g
 " :'<,'>gg/^/if line('.') % 5 == 1 | execute "normal g?p" | endif
+" :g/^$/normal ixxxxx
 
 if has("gui_running")
     set guifont=Hack
@@ -153,6 +154,7 @@ set guioptions-=L  "remove left-hand scroll bar
 
 augroup FiletypeConfig
     autocmd!
+    autocmd BufNewFile,BufReadPost *.metal setlocal filetype=cpp
     autocmd BufNewFile,BufReadPost *.ebnf setlocal filetype=ebnf
     autocmd BufNewFile,BufReadPost *.kt setlocal filetype=kotlin
     autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
@@ -1205,7 +1207,7 @@ let g:ranger_replace_netrw = 1
 lua <<EOF
 require'debugprint'.setup({})
 require'nvim-treesitter.configs'.setup({
- ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc","typst","nasm","lua","zig","ebnf"},
+ ensure_installed = {"solidity","typescript","go","rust","cpp","cuda","verilog","python","vimdoc","typst","nasm","lua","zig","ebnf","wgsl"},
  highlight = {
    enable = true,
    disable = {},

@@ -59,6 +59,7 @@ alias gf="git diff"
 alias gfc="git diff --cached"
 alias ga="git add"
 alias gc="git checkout"
+alias gr="git remote"
 alias gb="git branch -l --all"
 alias gm="git commit -s -m"
 alias wip="git commit -s -m 'WIP'"
@@ -71,6 +72,7 @@ alias bl="git branch -l"
 alias bd="git branch -d"
 alias gotest="go test -v -run . -tags=debug"
 alias goclean="go clean -modcache"
+alias ca="cargo add"
 alias cr="cargo run"
 alias cre="cargo run --example"
 alias cf="cargo fmt --all -- --check"
@@ -227,6 +229,10 @@ end
 
 function skfd
     nvim (fd --type f --exclude .git --exclude node_modules --exclude .cache --exclude third-party --exclude vendor --exclude target --exclude Cargo.lock --exclude yarn.lock --exclude package-lock.json --exclude .zig-cache --follow --hidden | sk -m)
+end
+
+function skd
+    cd (fd --type d --exclude .git --exclude node_modules --exclude .cache --exclude third-party --exclude vendor --exclude target --exclude .zig-cache --follow --hidden | sk -m)
 end
 
 function skrg
@@ -679,34 +685,37 @@ end
 
 function mdbook-init
     if test -n "$argv[1]"
-        mdbook init --title "Test" --ignore git $argv[1]; and mdbook-mermaid install $argv[1]
-        for file in (find $argv[1] -maxdepth 1 -name '*.md')
-            set md (basename -- $file)
-            mv $argv[1]/$md $argv[1]/src
-            set md (string split -r -m2 . $md)[1]
-            echo "- [$md](./$md.md)" >> $argv[1]/src/SUMMARY.md
+        if test -d $argv[1]/src
+        else
+            mkdir $argv[1]/src
         end
+        for item in (find $argv[1] -mindepth 1 -maxdepth 1 -not -name 'src')
+            mv $item $argv[1]/src
+        end
+        mdbook init --title "Test" --ignore git $argv[1]; and mdbook-mermaid install $argv[1]
+        rm $argv[1]/src/chapter_1.md; and rm $argv[1]/src/SUMMARY.md
+        cd $argv[1]/src; and cat (lmd . | psub) > SUMMARY.md
         sed -i '/additional-js/i mathjax-support = true' $argv[1]/book.toml
         echo '
 
-[preprocessor.katex]
-after = ["links"]
+# [preprocessor.katex]
+# after = ["links"]
 
 [preprocessor.plantuml]
 plantuml-cmd = "plantuml"
 
-# [preprocessor.toc]
-# command  = "mdbook-toc"
-# renderer = ["html"]
-#
-# [output.pdf]
-# enable = true
-# display-header-footer = true
-# header-template = "<span></span>"
-# footer-template = "<p style=\'font-size:10px; margin-left: 48%\'><span class=\'pageNumber\'></span> / <span class=\'totalPages\'></span></p>"
-#
-# [output.pdf-outline]
-# like-wkhtmltopdf = false
+[preprocessor.toc]
+command  = "mdbook-toc"
+renderer = ["html"]
+
+[output.pdf]
+enable = true
+display-header-footer = true
+header-template = "<span></span>"
+footer-template = "<p style=\'font-size:10px; margin-left: 48%\'><span class=\'pageNumber\'></span> / <span class=\'totalPages\'></span></p>"
+
+[output.pdf-outline]
+like-wkhtmltopdf = false
 ' >> $argv[1]/book.toml
     end
 end
