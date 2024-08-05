@@ -275,6 +275,7 @@ Plug 'andrewferrier/debugprint.nvim'
 Plug 'famiu/bufdelete.nvim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
+Plug 'dstein64/vim-startuptime'
 " Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
@@ -1220,18 +1221,18 @@ EOF
 lua <<EOF
 require('dap-go').setup()
 -- require('dap-python').setup('python')
-require('neotest').setup({
-  adapters = {
-    require('neotest-go')({
-      experimental = {
-        test_table = true,
-      },
-      args = { '-count=1', '-timeout=60s' }
-    }),
-    -- require('neotest-python')({}),
-    -- require('neotest-gtest').setup({})
-  }
-})
+-- require('neotest').setup({
+--   adapters = {
+--     require('neotest-go')({
+--       experimental = {
+--         test_table = true,
+--       },
+--       args = { '-count=1', '-timeout=60s' }
+--     }),
+--     -- require('neotest-python')({}),
+--     -- require('neotest-gtest').setup({})
+--   }
+-- })
 require('dapui').setup({
   controls = {
     icons = {
@@ -1254,7 +1255,7 @@ require('dapui').setup({
 })
 EOF
 
-" nvim-dapp setup
+" nvim-dap setup
 lua <<EOF
 local dap = require('dap')
 dap.adapters.codelldb = {
