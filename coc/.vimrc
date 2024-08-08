@@ -154,12 +154,11 @@ set guioptions-=L  "remove left-hand scroll bar
 
 augroup FiletypeConfig
     autocmd!
-    autocmd BufNewFile,BufReadPost *.metal setlocal filetype=cpp
+    autocmd BufNewFile,BufReadPost *.metal setlocal filetype=metal
     autocmd BufNewFile,BufReadPost *.ebnf setlocal filetype=ebnf
     autocmd BufNewFile,BufReadPost *.kt setlocal filetype=kotlin
     autocmd BufNewFile,BufReadPost *.md setlocal filetype=markdown
     autocmd BufNewFile,BufReadPost *.json setlocal filetype=jsonc
-    autocmd BufNewFile,BufReadPost *.sage setlocal filetype=python
     autocmd BufNewFile,BufReadPost *.typst setlocal filetype=typst
     autocmd BufNewFile,BufReadPost *Dockerfile* setlocal filetype=dockerfile
 augroup END
@@ -278,7 +277,7 @@ Plug 'famiu/bufdelete.nvim'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'rbgrouleff/bclose.vim'
 Plug 'dstein64/vim-startuptime'
-" Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
+Plug 'kkoomen/vim-doge', { 'do': { -> doge#install() } }
 " Plug 'puremourning/vimspector'
 Plug 'mfussenegger/nvim-dap'
 Plug 'nvim-neotest/nvim-nio'
@@ -439,6 +438,10 @@ if has("nvim")
 else
     hi link CocHintHighlight Normal
 endif
+
+let g:coc_filetype_map = {
+  \ 'sage': 'python',
+  \ }
 
 " highlight ExtraWhitespace ctermbg=red guibg=red
 " autocmd BufWinEnter * match ExtraWhitespace /\s\+$\| \+\ze\t\+\|\t\+\zs \+/
@@ -684,8 +687,8 @@ nnoremap <silent> <space>m  :<C-u>CocList bcommits<CR>
 " coc-prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-vmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 " coc-jest
 " nnoremap <leader>te            : call CocAction('runCommand', 'jest.singleTest')<CR>
@@ -814,7 +817,7 @@ command! -bang -nargs=? -complete=dir Files
             \ call fzf#vim#files(<q-args>, {'options': ['--layout=reverse', '--info=inline']}, <bang>0)
 command! -bang -nargs=* Rg
             \ call fzf#vim#grep(
-            \   "rg --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' --iglob '!**/.zig-cache' ".shellescape(<q-args>), 1,
+            \   "rg --hidden --line-number --no-heading --color=always --iglob '!**/heiko.json' --iglob '!**/parallel.json' --iglob '!**/vendor' --iglob '!**/*.svg' --iglob '!**/*.min.js' --iglob '!**/*.umd.js' --iglob '!**/*.common.js' --iglob '!**/.cache' --iglob '!**/out' --iglob '!**/package-lock.json' --iglob '!**/Cargo.lock' --iglob '!**/.git/**' --iglob '!**/dist' --iglob '!**/build' --iglob '!**/.yarn' --iglob '!**/node_modules' --iglob '!**/target' --iglob '!**/yarn.lock' --iglob '!**/Cargo.lock' --iglob '!**/go.sum' --iglob '!**/.zig-cache' --iglob '!**/tags' ".shellescape(<q-args>), 1,
             \   <bang>0 ? fzf#vim#with_preview('up:60%')
             \           : fzf#vim#with_preview('right:50%:hidden', '?'),
             \ <bang>0)
@@ -981,7 +984,7 @@ let g:gitgutter_max_signs = 1000
 " xmap <leader>di <Plug>VimspectorBalloonEval
 
 "vim-doge
-" nmap <silent> <Leader>d <Plug>(doge-generate)
+nmap <silent> <leader>d <Plug>(doge-generate)
 
 " vim-jsdoc
 " let g:jsdoc_enable_es6 = 1
@@ -1217,6 +1220,8 @@ require'nvim-treesitter.configs'.setup({
    enable = true
  }
 })
+vim.treesitter.language.register("python", "sage")
+vim.treesitter.language.register("cpp", "metal")
 EOF
 
 " nvim-dap plugins

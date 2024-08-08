@@ -200,6 +200,7 @@ alias silicon="silicon --theme Dracula -f 'Hack' --background '#000000' --shadow
 # alias aws-launch-ec2='aws ec2 run-instances --image-id ami-0fc61db8544a617ed --count 1 --instance-type t3.2xlarge --key-name my-key-pair --security-groups my-security-group'
 # alias test-cache-misses="perf stat -e cache-misses"
 alias pkg-config-path="pkg-config --variable pc_path pkg-config"
+alias http="xdg-open http://127.0.0.1:4000; and basic-http-server . -a 0.0.0.0:4000"
 # alias dotrpc='curl http://localhost:9933 -H "Content-Type:application/json;charset=utf-8"'
 
 function xz
@@ -243,6 +244,12 @@ end
 function v
     if test -n "$argv[1]"
         fd --type file $argv[1] | sort -r | head -n 1 | xargs -i nvim -p {}
+    end
+end
+
+function vb
+    if test -n "$argv[1]"
+        nvim -p (which $argv[1])
     end
 end
 
